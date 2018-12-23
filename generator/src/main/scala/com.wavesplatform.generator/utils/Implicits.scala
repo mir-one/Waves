@@ -1,4 +1,4 @@
-package com.wavesplatform.generator.utils
+package one.mir.generator.utils
 
 import java.util.concurrent.ThreadLocalRandom
 

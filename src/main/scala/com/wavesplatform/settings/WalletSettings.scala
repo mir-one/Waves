@@ -1,7 +1,7 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import java.io.File
 
-import com.wavesplatform.state.ByteStr
+import one.mir.state.ByteStr
 
 case class WalletSettings(file: Option[File], password: Option[String], seed: Option[ByteStr])

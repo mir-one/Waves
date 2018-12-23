@@ -1,12 +1,12 @@
-package com.wavesplatform.api.http.leasing
+package one.mir.api.http.leasing
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.lease.LeaseTransactionV1
+import one.mir.account.{AddressOrAlias, PublicKeyAccount}
+import one.mir.api.http.BroadcastRequest
+import one.mir.transaction.TransactionParsers.SignatureStringLength
+import one.mir.transaction.ValidationError
+import one.mir.transaction.lease.LeaseTransactionV1
 
 case class SignedLeaseV1Request(@ApiModelProperty(value = "Base58 encoded sender public key", required = true)
                                 senderPublicKey: String,

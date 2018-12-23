@@ -1,8 +1,8 @@
-package com.wavesplatform.lang.v1.compiler
+package one.mir.lang.v1.compiler
 
-import com.wavesplatform.lang.v1.compiler.Types.CASETYPEREF
+import one.mir.lang.v1.compiler.Types.CASETYPEREF
 
-import com.wavesplatform.lang.v1.FunctionHeader
+import one.mir.lang.v1.FunctionHeader
 import scodec.bits.ByteVector
 
 object

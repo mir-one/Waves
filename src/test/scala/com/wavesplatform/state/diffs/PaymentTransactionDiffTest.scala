@@ -1,14 +1,14 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.Monoid
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.settings.TestFunctionalitySettings
+import one.mir.state._
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.{GenesisTransaction, PaymentTransaction}
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.transaction.{GenesisTransaction, PaymentTransaction}
 
 class PaymentTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com.wavesplatform.BlockGen
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.db.WithState
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.{Blockchain, Diff, EitherExt2}
-import com.wavesplatform.transaction.GenesisTransaction
+import one.mir.BlockGen
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.Block
+import one.mir.db.WithState
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.settings.FunctionalitySettings
+import one.mir.state.{Blockchain, Diff, EitherExt2}
+import one.mir.transaction.GenesisTransaction
 import org.scalatest.{FreeSpecLike, Matchers}
-import com.wavesplatform.crypto._
+import one.mir.crypto._
 
 class BlockDifferTest extends FreeSpecLike with Matchers with BlockGen with WithState {
 

@@ -1,16 +1,16 @@
-package com.wavesplatform.transaction.smart
+package one.mir.transaction.smart
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.account._
-import com.wavesplatform.crypto
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
+import one.mir.account._
+import one.mir.crypto
+import one.mir.serialization.Deser
+import one.mir.state._
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction._
+import one.mir.transaction.smart.script.{Script, ScriptReader}
 import monix.eval.Coeval
 import play.api.libs.json.Json
-import com.wavesplatform.crypto.KeyLength
+import one.mir.crypto.KeyLength
 
 import scala.util.{Failure, Success, Try}
 

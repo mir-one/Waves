@@ -1,13 +1,13 @@
-package com.wavesplatform.it.sync.matcher.smartcontracts
+package one.mir.it.sync.matcher.smartcontracts
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync.matcher.config.MatcherPriceAssetConfig._
-import com.wavesplatform.it.util._
-import com.wavesplatform.transaction.assets.exchange.OrderType.{BUY, SELL}
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync.matcher.config.MatcherPriceAssetConfig._
+import one.mir.it.util._
+import one.mir.transaction.assets.exchange.OrderType.{BUY, SELL}
+import one.mir.transaction.smart.script.ScriptCompiler
 
 class ExtraFeeTestSuite extends MatcherSuiteBase {
 

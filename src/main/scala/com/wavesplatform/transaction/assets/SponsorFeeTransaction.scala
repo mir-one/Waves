@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction.assets
+package one.mir.transaction.assets
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.crypto
-import com.wavesplatform.state._
+import one.mir.crypto
+import one.mir.state._
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction._
-import com.wavesplatform.crypto._
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.transaction._
+import one.mir.crypto._
 import scala.util.{Failure, Success, Try}
 
 case class SponsorFeeTransaction private (version: Byte,

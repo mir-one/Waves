@@ -1,22 +1,22 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import cats.implicits._
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.block.{Block, BlockHeader, MicroBlock}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.metrics.{Instrumented, TxsInBlockchainStats}
-import com.wavesplatform.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.diffs.BlockDiffer
-import com.wavesplatform.state.reader.{CompositeBlockchain, LeaseDetails}
-import com.wavesplatform.transaction.Transaction.Type
-import com.wavesplatform.transaction.ValidationError.{BlockAppendError, GenericError, MicroBlockAppendError}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.lease._
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
+import one.mir.account.{Address, Alias}
+import one.mir.block.Block.BlockId
+import one.mir.block.{Block, BlockHeader, MicroBlock}
+import one.mir.features.BlockchainFeatures
+import one.mir.features.FeatureProvider._
+import one.mir.metrics.{Instrumented, TxsInBlockchainStats}
+import one.mir.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
+import one.mir.settings.WavesSettings
+import one.mir.state.diffs.BlockDiffer
+import one.mir.state.reader.{CompositeBlockchain, LeaseDetails}
+import one.mir.transaction.Transaction.Type
+import one.mir.transaction.ValidationError.{BlockAppendError, GenericError, MicroBlockAppendError}
+import one.mir.transaction._
+import one.mir.transaction.lease._
+import one.mir.transaction.smart.script.Script
+import one.mir.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.reactive.Observable
@@ -28,7 +28,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
     with ScorexLogging
     with Instrumented {
 
-  import com.wavesplatform.state.BlockchainUpdaterImpl._
+  import one.mir.state.BlockchainUpdaterImpl._
   import settings.blockchainSettings.functionalitySettings
 
   private lazy val maxBlockReadinessAge = settings.minerSettings.intervalAfterLastBlockThenGenerationIsAllowed.toMillis

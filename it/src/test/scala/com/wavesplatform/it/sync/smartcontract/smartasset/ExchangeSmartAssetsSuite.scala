@@ -1,14 +1,14 @@
-package com.wavesplatform.it.sync.smartcontract.smartasset
+package one.mir.it.sync.smartcontract.smartasset
 
-import com.wavesplatform.it.NTPTime
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.sync.smartcontract.{cryptoContextScript, pureContextScript, wavesContextScript, _}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.DataTransaction
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import one.mir.it.NTPTime
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.sync.smartcontract.{cryptoContextScript, pureContextScript, wavesContextScript, _}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.state._
+import one.mir.transaction.DataTransaction
+import one.mir.transaction.assets.exchange._
+import one.mir.transaction.smart.script.ScriptCompiler
 import org.scalatest.CancelAfterFailure
 import scorex.crypto.encode.Base64
 
@@ -122,7 +122,7 @@ class ExchangeSmartAssetsSuite extends BaseTransactionSuite with CancelAfterFail
 
       assertBadRequestAndMessage(
         sender.signedBroadcast(exchangeTx(smartAssetPair, smartMatcherFee + smartFee, smartMatcherFee + smartFee, ntpTime, acc1, acc0, acc2)),
-        "com.wavesplatform.transaction.assets.exchange.ExchangeTransactionV2 does not exceed minimal value of 1500000"
+        "one.mir.transaction.assets.exchange.ExchangeTransactionV2 does not exceed minimal value of 1500000"
       )
 
       sender.signedBroadcast(exchangeTx(smartAssetPair, smartMatcherFee + 2 * smartFee, smartMatcherFee + 2 * smartFee, ntpTime, acc1, acc0, acc2),

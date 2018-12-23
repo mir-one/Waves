@@ -1,12 +1,12 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.implicits._
-import com.wavesplatform.account.Address
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction.ValidationError.AccountBalanceError
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.account.Address
+import one.mir.metrics.Instrumented
+import one.mir.settings.FunctionalitySettings
+import one.mir.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
+import one.mir.transaction.ValidationError.AccountBalanceError
+import one.mir.utils.ScorexLogging
 
 import scala.util.{Left, Right}
 

@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction.smart.script
+package one.mir.transaction.smart.script
 
 import cats.implicits._
-import com.wavesplatform.lang.ScriptVersion
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.directives.{Directive, DirectiveKey, DirectiveParser}
-import com.wavesplatform.lang.v1.ScriptEstimator
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms.EXPR
-import com.wavesplatform.utils._
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import one.mir.lang.ScriptVersion
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.directives.{Directive, DirectiveKey, DirectiveParser}
+import one.mir.lang.v1.ScriptEstimator
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms.EXPR
+import one.mir.utils._
+import one.mir.transaction.smart.script.v1.ScriptV1
 
 import scala.util.{Failure, Success, Try}
 

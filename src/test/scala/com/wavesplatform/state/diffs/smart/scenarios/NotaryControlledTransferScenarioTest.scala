@@ -1,23 +1,23 @@
-package com.wavesplatform.state.diffs.smart.scenarios
+package one.mir.state.diffs.smart.scenarios
 
 import java.nio.charset.StandardCharsets
 
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.lang.{Testing, Global}
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms.EVALUATED
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.diffs.smart._
-import com.wavesplatform.transaction.assets.IssueTransactionV2
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{DataTransaction, GenesisTransaction}
-import com.wavesplatform.utils._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.account.AddressScheme
+import one.mir.lang.{Testing, Global}
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms.EVALUATED
+import one.mir.lang.v1.evaluator.EvaluatorV1
+import one.mir.lang.v1.parser.Parser
+import one.mir.state._
+import one.mir.state.diffs._
+import one.mir.state.diffs.smart._
+import one.mir.transaction.assets.IssueTransactionV2
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer._
+import one.mir.transaction.{DataTransaction, GenesisTransaction}
+import one.mir.utils._
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

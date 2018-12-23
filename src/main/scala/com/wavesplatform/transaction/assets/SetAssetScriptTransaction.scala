@@ -1,17 +1,17 @@
-package com.wavesplatform.transaction.assets
+package one.mir.transaction.assets
 
 import cats.data.State
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.state.ByteStr
+import one.mir.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account._
-//import com.wavesplatform.transaction.validation._
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.crypto._
-import com.wavesplatform.state._
+import one.mir.account._
+//import one.mir.transaction.validation._
+import one.mir.transaction._
+import one.mir.transaction.smart.script.{Script, ScriptReader}
+import one.mir.serialization.Deser
+import one.mir.crypto._
+import one.mir.state._
 import scala.util.{Failure, Success, Try}
 
 case class SetAssetScriptTransaction private (version: Byte,

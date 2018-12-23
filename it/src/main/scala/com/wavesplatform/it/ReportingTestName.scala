@@ -1,8 +1,8 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.http.DebugMessage
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.http.DebugMessage
+import one.mir.it.api.AsyncHttpApi._
+import one.mir.utils.ScorexLogging
 import org.scalatest.{Args, Status, Suite, SuiteMixin}
 
 import scala.concurrent.duration._

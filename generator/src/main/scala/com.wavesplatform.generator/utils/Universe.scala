@@ -1,7 +1,7 @@
-package com.wavesplatform.generator.utils
+package one.mir.generator.utils
 
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.state.ByteStr
+import one.mir.account.PrivateKeyAccount
+import one.mir.state.ByteStr
 
 object Universe {
   var AccountsWithBalances: List[(PrivateKeyAccount, Long)] = Nil

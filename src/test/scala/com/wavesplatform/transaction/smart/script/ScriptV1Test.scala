@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction.smart.script
+package one.mir.transaction.smart.script
 
-import com.wavesplatform.lang.v1.FunctionHeader
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.testing.TypedScriptGen
-import com.wavesplatform.state.diffs.produce
+import one.mir.lang.v1.FunctionHeader
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.testing.TypedScriptGen
+import one.mir.state.diffs.produce
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 import scodec.bits.ByteVector
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.lang.v1.evaluator.FunctionIds._
+import one.mir.lang.v1.evaluator.ctx.impl.PureContext
 
 class ScriptV1Test extends PropSpec with PropertyChecks with Matchers with TypedScriptGen {
 

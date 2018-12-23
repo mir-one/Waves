@@ -1,7 +1,7 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.v1.BaseGlobal
+import one.mir.lang.v1.BaseGlobal
 
 package object hacks {
-  private[lang] val Global: BaseGlobal = com.wavesplatform.lang.Global // Hack for IDEA
+  private[lang] val Global: BaseGlobal = one.mir.lang.Global // Hack for IDEA
 }

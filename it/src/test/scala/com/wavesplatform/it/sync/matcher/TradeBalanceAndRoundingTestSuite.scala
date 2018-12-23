@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.matcher
+package one.mir.it.sync.matcher
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.AssetDecimalsInfo
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.sync.matcher.config.MatcherPriceAssetConfig._
-import com.wavesplatform.it.util._
-import com.wavesplatform.matcher.model.LimitOrder
-import com.wavesplatform.transaction.assets.exchange.OrderType.{BUY, SELL}
-import com.wavesplatform.transaction.assets.exchange.{Order, OrderType}
+import one.mir.it.api.AssetDecimalsInfo
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync._
+import one.mir.it.sync.matcher.config.MatcherPriceAssetConfig._
+import one.mir.it.util._
+import one.mir.matcher.model.LimitOrder
+import one.mir.transaction.assets.exchange.OrderType.{BUY, SELL}
+import one.mir.transaction.assets.exchange.{Order, OrderType}
 
 import scala.concurrent.duration._
 import scala.math.BigDecimal.RoundingMode

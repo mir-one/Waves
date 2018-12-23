@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.api.http.assets
+package one.mir.transaction.api.http.assets
 
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.utils.Base58
+import one.mir.state.{ByteStr, EitherExt2}
+import one.mir.utils.Base58
 import org.scalatest.{FunSuite, Matchers}
 import play.api.libs.json.Json
-import com.wavesplatform.api.http.assets._
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.Proofs
+import one.mir.api.http.assets._
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.Proofs
 
 class SignedRequestsTest extends FunSuite with Matchers {
 
@@ -164,7 +164,7 @@ class SignedRequestsTest extends FunSuite with Matchers {
   }
 
   test("SponsorFeeRequest json parsing works") {
-    import com.wavesplatform.api.http.assets.SponsorFeeRequest._
+    import one.mir.api.http.assets.SponsorFeeRequest._
 
     val One = 100000000L
     val js1 = s"""{

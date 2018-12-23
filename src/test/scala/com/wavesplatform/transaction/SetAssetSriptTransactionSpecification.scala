@@ -1,18 +1,18 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 import play.api.libs.json._
 import org.scalacheck.Gen
-import com.wavesplatform.state._
-import com.wavesplatform.account.{AddressScheme, PublicKeyAccount}
-import com.wavesplatform.transaction.assets.SetAssetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
+import one.mir.state._
+import one.mir.account.{AddressScheme, PublicKeyAccount}
+import one.mir.transaction.assets.SetAssetScriptTransaction
+import one.mir.transaction.smart.script.Script
 
 class SetAssetScriptTransactionSpecification extends GenericTransactionSpecification[SetAssetScriptTransaction] {
-  def transactionParser: com.wavesplatform.transaction.TransactionParserFor[SetAssetScriptTransaction] = SetAssetScriptTransaction
+  def transactionParser: one.mir.transaction.TransactionParserFor[SetAssetScriptTransaction] = SetAssetScriptTransaction
   def updateProofs(tx: SetAssetScriptTransaction, p: Proofs): SetAssetScriptTransaction = {
     tx.copy(proofs = p)
   }
-  def generator: Gen[((Seq[com.wavesplatform.transaction.Transaction], SetAssetScriptTransaction))] = setAssetScriptTransactionGen
+  def generator: Gen[((Seq[one.mir.transaction.Transaction], SetAssetScriptTransaction))] = setAssetScriptTransactionGen
   def assertTxs(first: SetAssetScriptTransaction, second: SetAssetScriptTransaction): Unit = {
     first.sender.address shouldEqual second.sender.address
     first.timestamp shouldEqual second.timestamp

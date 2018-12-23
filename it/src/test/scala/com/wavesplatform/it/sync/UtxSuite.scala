@@ -1,12 +1,12 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.transfer.TransferTransactionV1
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.Node
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.state._
+import one.mir.transaction.transfer.TransferTransactionV1
 import monix.eval.Task
 import monix.execution.Scheduler
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
@@ -83,7 +83,7 @@ class UtxSuite extends FunSuite with CancelAfterFailure with NodesFromDocker wit
 }
 
 object UtxSuite {
-  import com.wavesplatform.it.NodeConfigs._
+  import one.mir.it.NodeConfigs._
   private val minerConfig = ConfigFactory.parseString(s"""
                                                          |waves {
                                                          |  synchronization.synchronization-timeout = 10s

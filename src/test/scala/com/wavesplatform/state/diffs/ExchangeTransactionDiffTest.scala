@@ -1,27 +1,27 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.{Order => _, _}
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.features.{BlockchainFeature, BlockchainFeatures}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.directives.DirectiveParser
-import com.wavesplatform.lang.v1.ScriptEstimator
-import com.wavesplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
-import com.wavesplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.wavesplatform.transaction.ValidationError.AccountBalanceError
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.{Order, _}
-import com.wavesplatform.transaction.assets.{IssueTransaction, IssueTransactionV1, IssueTransactionV2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
-import com.wavesplatform.transaction.transfer.TransferTransaction
-import com.wavesplatform.utils.functionCosts
-import com.wavesplatform.{NoShrink, TransactionGen, crypto}
+import one.mir.OrderOps._
+import one.mir.account.{AddressScheme, PrivateKeyAccount}
+import one.mir.features.{BlockchainFeature, BlockchainFeatures}
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.directives.DirectiveParser
+import one.mir.lang.v1.ScriptEstimator
+import one.mir.lang.v1.compiler.{CompilerContext, CompilerV1}
+import one.mir.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
+import one.mir.state._
+import one.mir.state.diffs.TransactionDiffer.TransactionValidationError
+import one.mir.transaction.ValidationError.AccountBalanceError
+import one.mir.transaction._
+import one.mir.transaction.assets.exchange.{Order, _}
+import one.mir.transaction.assets.{IssueTransaction, IssueTransactionV1, IssueTransactionV2}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.smart.script.{Script, ScriptCompiler}
+import one.mir.transaction.transfer.TransferTransaction
+import one.mir.utils.functionCosts
+import one.mir.{NoShrink, TransactionGen, crypto}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Inside, Matchers, PropSpec}

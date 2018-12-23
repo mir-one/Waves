@@ -1,10 +1,10 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.database.{DBExt, Keys, LevelDBWriter}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.{BlockchainUpdaterImpl, NG}
-import com.wavesplatform.transaction.BlockchainUpdater
-import com.wavesplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
+import one.mir.database.{DBExt, Keys, LevelDBWriter}
+import one.mir.settings.WavesSettings
+import one.mir.state.{BlockchainUpdaterImpl, NG}
+import one.mir.transaction.BlockchainUpdater
+import one.mir.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
 import org.iq80.leveldb.DB
 
 object StorageFactory extends ScorexLogging {

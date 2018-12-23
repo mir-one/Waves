@@ -1,24 +1,24 @@
-package com.wavesplatform.database
+package one.mir.database
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.database.patch.DisableHijackedAliases
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.state.reader.LeaseDetails
-import com.wavesplatform.transaction.Transaction.Type
-import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled, GenericError}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.account.{Address, Alias}
+import one.mir.block.{Block, BlockHeader}
+import one.mir.database.patch.DisableHijackedAliases
+import one.mir.features.BlockchainFeatures
+import one.mir.settings.FunctionalitySettings
+import one.mir.state._
+import one.mir.state.reader.LeaseDetails
+import one.mir.transaction.Transaction.Type
+import one.mir.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled, GenericError}
+import one.mir.transaction._
+import one.mir.transaction.assets._
+import one.mir.transaction.assets.exchange.ExchangeTransaction
+import one.mir.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.transfer._
+import one.mir.utils.ScorexLogging
 import org.iq80.leveldb.DB
 
 import scala.annotation.tailrec

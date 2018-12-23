@@ -1,7 +1,7 @@
-package com.wavesplatform.db
+package one.mir.db
 
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint}
-import com.wavesplatform.state.EitherExt2
+import one.mir.network.{BlockCheckpoint, Checkpoint}
+import one.mir.state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
 

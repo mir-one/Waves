@@ -1,17 +1,17 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.assets.SignedTransferV1Request
-import com.wavesplatform.crypto
-import com.wavesplatform.it.NTPTime
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{someAssetAmount, _}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, _}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
-import com.wavesplatform.utils.Base58
+import one.mir.account.PublicKeyAccount
+import one.mir.api.http.assets.SignedTransferV1Request
+import one.mir.crypto
+import one.mir.it.NTPTime
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync.{someAssetAmount, _}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state._
+import one.mir.transaction.assets.exchange.{AssetPair, Order, _}
+import one.mir.transaction.transfer.MassTransferTransaction.Transfer
+import one.mir.utils.Base58
 import org.asynchttpclient.util.HttpConstants
 import play.api.libs.json._
 

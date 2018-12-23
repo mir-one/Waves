@@ -1,8 +1,8 @@
-# Waves [![Build Status](https://travis-ci.org/wavesplatform/Waves.svg?branch=master)](https://travis-ci.org/wavesplatform/Waves) [![](https://images.microbadger.com/badges/version/wavesplatform/waves-testnet.svg)]
+# Waves [![Build Status](https://travis-ci.org/mir-one/node.svg?branch=master)](https://travis-ci.org/mir-one/node) [![](https://images.microbadger.com/badges/version/mir-one/mir-testnet.svg)]
 
-In the master branch there is a code with functions that is under development. The latest release for each network can be found in the [Releases section](https://github.com/wavesplatform/Waves/releases), you can switch to the corresponding tag and build the application.
+In the master branch there is a code with functions that is under development. The latest release for each network can be found in the [Releases section](https://github.com/mir-one/node/releases), you can switch to the corresponding tag and build the application.
 
-For further information please refer the official [documentation](https://docs.wavesplatform.com).
+For further information please refer the official [documentation](https://docs.mir.one).
 
 # Acknowledgement
 

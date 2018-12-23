@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.parser
+package one.mir.lang.v1.parser
 
 import scodec.bits.ByteVector
 

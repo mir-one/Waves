@@ -1,11 +1,11 @@
-package com.wavesplatform.lagonaki.unit
+package one.mir.lagonaki.unit
 
 import java.io.File
 import java.nio.file.Files
 
-import com.wavesplatform.settings.WalletSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.wallet.Wallet
+import one.mir.settings.WalletSettings
+import one.mir.state.ByteStr
+import one.mir.wallet.Wallet
 import org.scalatest.{FunSuite, Matchers}
 import cats.syntax.option._
 

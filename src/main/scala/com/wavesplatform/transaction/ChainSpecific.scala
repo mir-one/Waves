@@ -1,4 +1,4 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 trait ChainSpecific {
   val chainId: Byte

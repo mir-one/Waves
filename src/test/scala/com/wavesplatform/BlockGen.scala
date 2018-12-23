@@ -1,12 +1,12 @@
-package com.wavesplatform
+package one.mir
 
-import com.wavesplatform.state._
+import one.mir.state._
 import org.scalacheck.Gen
 import org.scalatest.Suite
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.transaction.{ProvenTransaction, Transaction}
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.Block
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.transaction.{ProvenTransaction, Transaction}
 
 trait BlockGen extends TransactionGen { _: Suite =>
 

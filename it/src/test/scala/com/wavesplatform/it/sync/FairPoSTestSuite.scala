@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.{CancelAfterFailure, FunSuite}
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.util._
 import scala.concurrent.duration._
 
 class FairPoSTestSuite extends FunSuite with CancelAfterFailure with NodesFromDocker {
@@ -28,7 +28,7 @@ class FairPoSTestSuite extends FunSuite with CancelAfterFailure with NodesFromDo
 }
 
 object FairPoSTestSuite {
-  import com.wavesplatform.it.NodeConfigs._
+  import one.mir.it.NodeConfigs._
   private val microblockActivationHeight = 0
   private val fairPoSActivationHeight    = 10
 

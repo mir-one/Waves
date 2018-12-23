@@ -1,16 +1,16 @@
-package com.wavesplatform.it.api
+package one.mir.it.api
 
 import com.google.common.primitives.Longs
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.crypto
-import com.wavesplatform.http.api_key
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.api.AsyncHttpApi.NodeAsyncHttpApi
-import com.wavesplatform.matcher.api.CancelOrderRequest
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.utils.Base58
+import one.mir.account.PrivateKeyAccount
+import one.mir.crypto
+import one.mir.http.api_key
+import one.mir.it.Node
+import one.mir.it.api.AsyncHttpApi.NodeAsyncHttpApi
+import one.mir.matcher.api.CancelOrderRequest
+import one.mir.state.ByteStr
+import one.mir.transaction.Proofs
+import one.mir.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import one.mir.utils.Base58
 import org.asynchttpclient.Dsl.{delete => _delete, get => _get}
 import org.asynchttpclient.util.HttpConstants
 import org.asynchttpclient.{RequestBuilder, Response}

@@ -1,17 +1,17 @@
-package com.wavesplatform.it.sync.network
+package one.mir.it.sync.network
 
 import java.nio.charset.StandardCharsets
 
 import com.typesafe.config.Config
-import com.wavesplatform.account.Address
-import com.wavesplatform.it._
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.AsyncNetworkApi._
-import com.wavesplatform.it.api._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.network.{RawBytes, TransactionSpec}
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.Address
+import one.mir.it._
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.AsyncNetworkApi._
+import one.mir.it.api._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.network.{RawBytes, TransactionSpec}
+import one.mir.state.EitherExt2
+import one.mir.transaction.transfer._
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
 import scala.concurrent.duration._

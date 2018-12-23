@@ -1,14 +1,14 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.util._
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.util._
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.PrivateKeyAccount
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.utils.ScorexLogging
+import one.mir.transaction.transfer._
 
 trait IntegrationSuiteWithThreeAddresses
     extends BeforeAndAfterAll

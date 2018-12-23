@@ -1,4 +1,4 @@
-package com.wavesplatform.discovery.network
+package one.mir.discovery.network
 
 import java.net.SocketAddress
 

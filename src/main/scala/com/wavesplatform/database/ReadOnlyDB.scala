@@ -1,9 +1,9 @@
-package com.wavesplatform.database
+package one.mir.database
 
 import java.util
 
-import com.wavesplatform.metrics.LevelDBStats
-import com.wavesplatform.metrics.LevelDBStats.DbHistogramExt
+import one.mir.metrics.LevelDBStats
+import one.mir.metrics.LevelDBStats.DbHistogramExt
 import org.iq80.leveldb.{DB, DBIterator, ReadOptions}
 
 import scala.annotation.tailrec

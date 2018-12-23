@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.assets
+package one.mir.transaction.assets
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.crypto
-import com.wavesplatform.crypto.SignatureLength
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.script.Script
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.crypto
+import one.mir.crypto.SignatureLength
+import one.mir.state.ByteStr
+import one.mir.transaction._
+import one.mir.transaction.smart.script.Script
 import monix.eval.Coeval
 import play.api.libs.json.JsObject
 

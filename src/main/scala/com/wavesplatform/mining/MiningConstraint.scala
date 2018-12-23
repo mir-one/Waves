@@ -1,8 +1,8 @@
-package com.wavesplatform.mining
+package one.mir.mining
 
 import cats.data.NonEmptyList
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.transaction.Transaction
+import one.mir.state.Blockchain
+import one.mir.transaction.Transaction
 
 trait MiningConstraint {
   def isEmpty: Boolean

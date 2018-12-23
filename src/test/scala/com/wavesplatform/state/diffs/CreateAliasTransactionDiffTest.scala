@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats._
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.features.BlockchainFeatures
+import one.mir.state._
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.assets.IssueTransaction
-import com.wavesplatform.transaction.{CreateAliasTransaction, CreateAliasTransactionV1, GenesisTransaction}
+import one.mir.account.PrivateKeyAccount
+import one.mir.settings.TestFunctionalitySettings
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.transaction.assets.IssueTransaction
+import one.mir.transaction.{CreateAliasTransaction, CreateAliasTransactionV1, GenesisTransaction}
 
 class CreateAliasTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

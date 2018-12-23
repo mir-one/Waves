@@ -1,29 +1,29 @@
-package com.wavesplatform.mining
+package one.mir.mining
 
 import cats.data.EitherT
 import cats.implicits._
-import com.wavesplatform.consensus.{GeneratingBalanceProvider, PoSSelector}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.metrics.{BlockStats, HistogramExt, Instrumented}
-import com.wavesplatform.network._
-import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings}
-import com.wavesplatform.state._
-import com.wavesplatform.state.appender.{BlockAppender, MicroblockAppender}
-import com.wavesplatform.utx.UtxPool
+import one.mir.consensus.{GeneratingBalanceProvider, PoSSelector}
+import one.mir.features.BlockchainFeatures
+import one.mir.features.FeatureProvider._
+import one.mir.metrics.{BlockStats, HistogramExt, Instrumented}
+import one.mir.network._
+import one.mir.settings.{FunctionalitySettings, WavesSettings}
+import one.mir.state._
+import one.mir.state.appender.{BlockAppender, MicroblockAppender}
+import one.mir.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
 import monix.execution.cancelables.{CompositeCancelable, SerialCancelable}
 import monix.execution.schedulers.SchedulerService
-import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.block.Block._
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.utils.{ScorexLogging, Time}
-import com.wavesplatform.transaction._
-import com.wavesplatform.wallet.Wallet
+import one.mir.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import one.mir.block.Block._
+import one.mir.block.{Block, MicroBlock}
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.utils.{ScorexLogging, Time}
+import one.mir.transaction._
+import one.mir.wallet.Wallet
 
 import scala.collection.mutable.{Map => MMap}
 import scala.concurrent.Await

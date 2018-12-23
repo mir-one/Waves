@@ -1,13 +1,13 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.Common._
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.wavesplatform.lang.v1.parser.Expressions
-import com.wavesplatform.lang.v1.testing.ScriptGen
-import com.wavesplatform.lang.v1.{FunctionHeader, Serde}
+import one.mir.lang.Common._
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.evaluator.ctx.impl.PureContext
+import one.mir.lang.v1.parser.Expressions
+import one.mir.lang.v1.testing.ScriptGen
+import one.mir.lang.v1.{FunctionHeader, Serde}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, FreeSpec, Matchers}

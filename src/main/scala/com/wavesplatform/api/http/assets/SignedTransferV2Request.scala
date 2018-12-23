@@ -1,10 +1,10 @@
-package com.wavesplatform.api.http.assets
+package one.mir.api.http.assets
 
 import cats.implicits._
-import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
+import one.mir.account.{AddressOrAlias, PublicKeyAccount}
+import one.mir.api.http.BroadcastRequest
+import one.mir.transaction.transfer._
+import one.mir.transaction.{AssetIdStringLength, Proofs, ValidationError}
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, Json, Reads, Writes}

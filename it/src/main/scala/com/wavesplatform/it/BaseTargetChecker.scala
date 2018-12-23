@@ -1,14 +1,14 @@
-package com.wavesplatform.it
+package one.mir.it
 
 import com.typesafe.config.ConfigFactory.{defaultApplication, defaultReference}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.db.openDB
-import com.wavesplatform.history.StorageFactory
-import com.wavesplatform.settings._
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.utils.NTP
+import one.mir.account.PublicKeyAccount
+import one.mir.block.Block
+import one.mir.consensus.PoSSelector
+import one.mir.db.openDB
+import one.mir.history.StorageFactory
+import one.mir.settings._
+import one.mir.state.{ByteStr, EitherExt2}
+import one.mir.utils.NTP
 import net.ceedubs.ficus.Ficus._
 
 object BaseTargetChecker {

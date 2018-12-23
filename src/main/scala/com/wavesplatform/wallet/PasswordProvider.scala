@@ -1,6 +1,6 @@
-package com.wavesplatform.wallet
+package one.mir.wallet
 
-import com.wavesplatform.utils._
+import one.mir.utils._
 
 object PasswordProvider extends ScorexLogging {
 

@@ -1,11 +1,11 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelDuplexHandler, ChannelHandlerContext, ChannelPromise}
-import com.wavesplatform.block.Block
-import com.wavesplatform.network.message.{Message => ScorexMessage}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.Transaction
+import one.mir.block.Block
+import one.mir.network.message.{Message => ScorexMessage}
+import one.mir.utils.ScorexLogging
+import one.mir.transaction.Transaction
 
 @Sharable
 class TrafficLogger(settings: TrafficLogger.Settings) extends ChannelDuplexHandler with ScorexLogging {

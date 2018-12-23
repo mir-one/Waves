@@ -1,15 +1,15 @@
-package com.wavesplatform.it.sync.matcher.config
+package one.mir.it.sync.matcher.config
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory.{empty, parseString}
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.it.NodeConfigs.Default
-import com.wavesplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com.wavesplatform.it.sync.matcher.config.MatcherDefaultConfig._
-import com.wavesplatform.it.util._
-import com.wavesplatform.matcher.AssetPairBuilder
-import com.wavesplatform.transaction.assets.IssueTransactionV2
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import one.mir.account.{AddressScheme, PrivateKeyAccount}
+import one.mir.it.NodeConfigs.Default
+import one.mir.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import one.mir.it.sync.matcher.config.MatcherDefaultConfig._
+import one.mir.it.util._
+import one.mir.matcher.AssetPairBuilder
+import one.mir.transaction.assets.IssueTransactionV2
+import one.mir.transaction.assets.exchange.AssetPair
 import scala.util.Random
 
 // TODO: Make it trait

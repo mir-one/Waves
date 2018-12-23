@@ -1,11 +1,11 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.Common._
-import com.wavesplatform.lang.v1.parser.BinaryOperation._
-import com.wavesplatform.lang.v1.parser.Expressions.Pos.AnyPos
-import com.wavesplatform.lang.v1.parser.Expressions._
-import com.wavesplatform.lang.v1.parser.{BinaryOperation, Parser}
-import com.wavesplatform.lang.v1.testing.ScriptGenParser
+import one.mir.lang.Common._
+import one.mir.lang.v1.parser.BinaryOperation._
+import one.mir.lang.v1.parser.Expressions.Pos.AnyPos
+import one.mir.lang.v1.parser.Expressions._
+import one.mir.lang.v1.parser.{BinaryOperation, Parser}
+import one.mir.lang.v1.testing.ScriptGenParser
 import fastparse.core.Parsed.{Failure, Success}
 import org.scalacheck.Gen
 import org.scalatest.exceptions.TestFailedException

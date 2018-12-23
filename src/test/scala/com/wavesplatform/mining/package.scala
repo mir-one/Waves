@@ -1,12 +1,12 @@
-package com.wavesplatform
+package one.mir
 
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.transaction.Transaction
+import one.mir.state.Blockchain
+import one.mir.transaction.Transaction
 
 package object mining {
   private[mining] def createConstConstraint(maxSize: Long, transactionSize: => Long) = OneDimensionalMiningConstraint(
     maxSize,
-    new com.wavesplatform.mining.TxEstimators.Fn {
+    new one.mir.mining.TxEstimators.Fn {
       override def apply(b: Blockchain, t: Transaction) = transactionSize
       override val minEstimate                          = transactionSize
     }

@@ -1,4 +1,4 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import java.net.{InetAddress, InetSocketAddress, URI}
 import java.util.concurrent.ConcurrentMap
@@ -8,22 +8,22 @@ import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
 import cats.implicits._
 import com.typesafe.config.{ConfigObject, ConfigRenderOptions}
-import com.wavesplatform.account.Address
-import com.wavesplatform.api.http._
-import com.wavesplatform.block.Block
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.crypto
-import com.wavesplatform.mining.{Miner, MinerDebugInfo}
-import com.wavesplatform.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.diffs.TransactionDiffer
-import com.wavesplatform.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
-import com.wavesplatform.transaction.ValidationError.InvalidRequestSignature
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.Verifier
-import com.wavesplatform.utils.{Base58, ScorexLogging, Time}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import one.mir.account.Address
+import one.mir.api.http._
+import one.mir.block.Block
+import one.mir.block.Block.BlockId
+import one.mir.crypto
+import one.mir.mining.{Miner, MinerDebugInfo}
+import one.mir.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
+import one.mir.settings.WavesSettings
+import one.mir.state.diffs.TransactionDiffer
+import one.mir.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
+import one.mir.transaction.ValidationError.InvalidRequestSignature
+import one.mir.transaction._
+import one.mir.transaction.smart.Verifier
+import one.mir.utils.{Base58, ScorexLogging, Time}
+import one.mir.utx.UtxPool
+import one.mir.wallet.Wallet
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
@@ -95,7 +95,7 @@ case class DebugApiRoute(ws: WavesSettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.http.DebugMessage",
+        dataType = "one.mir.http.DebugMessage",
         defaultValue = "{\n\t\"message\": \"foo\"\n}"
       )
     ))
@@ -185,7 +185,7 @@ case class DebugApiRoute(ws: WavesSettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.http.RollbackParams",
+        dataType = "one.mir.http.RollbackParams",
         defaultValue = "{\n\t\"rollbackTo\": 3,\n\t\"returnTransactionsToUTX\": false\n}"
       )
     ))

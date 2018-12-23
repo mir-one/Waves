@@ -1,13 +1,13 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import java.util.concurrent.TimeUnit
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.transaction.{DiscardedMicroBlocks, Transaction}
+import one.mir.utils.ScorexLogging
+import one.mir.block.Block.BlockId
+import one.mir.block.{Block, MicroBlock}
+import one.mir.transaction.{DiscardedMicroBlocks, Transaction}
 
 import scala.collection.mutable.{ListBuffer => MList, Map => MMap}
 

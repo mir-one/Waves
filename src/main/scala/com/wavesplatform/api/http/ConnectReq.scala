@@ -1,4 +1,4 @@
-package com.wavesplatform.api.http
+package one.mir.api.http
 
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.{Format, Json}

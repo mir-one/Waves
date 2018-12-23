@@ -1,8 +1,8 @@
-package com.wavesplatform.state.bench
+package one.mir.state.bench
 
 import java.nio.charset.StandardCharsets
 
-import com.wavesplatform.lang.v1.traits.DataType
+import one.mir.lang.v1.traits.DataType
 import scodec._
 import scodec.bits._
 import scodec.codecs._

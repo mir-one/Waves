@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.compiler
+package one.mir.lang.v1.compiler
 
 object Types {
 

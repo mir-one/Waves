@@ -1,16 +1,16 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 import com.google.common.primitives.Shorts
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.state.DataEntry._
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
-import com.wavesplatform.utils.Base58
+import one.mir.TransactionGen
+import one.mir.state.DataEntry._
+import one.mir.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
+import one.mir.utils.Base58
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{Format, Json}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.SignedDataRequest
+import one.mir.account.PublicKeyAccount
+import one.mir.api.http.SignedDataRequest
 import scorex.crypto.encode.Base64
 
 class DataTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
@@ -87,7 +87,7 @@ class DataTransactionSpecification extends PropSpec with PropertyChecks with Mat
 
   property("positive validation cases") {
     import DataTransaction.MaxEntryCount
-    import com.wavesplatform.state._
+    import one.mir.state._
     forAll(dataTransactionGen, dataEntryGen(500)) {
       case (DataTransaction(version, sender, data, fee, timestamp, proofs), entry) =>
         def check(data: List[DataEntry[_]]): Assertion = {

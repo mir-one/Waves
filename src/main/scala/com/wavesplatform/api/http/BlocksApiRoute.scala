@@ -1,18 +1,18 @@
-package com.wavesplatform.api.http
+package one.mir.api.http
 
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.server.{Route, StandardRoute}
-import com.wavesplatform.network._
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.{Blockchain, ByteStr}
+import one.mir.network._
+import one.mir.settings.RestAPISettings
+import one.mir.state.{Blockchain, ByteStr}
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import monix.eval.Task
 import monix.execution.Scheduler.Implicits.global
 import play.api.libs.json._
-import com.wavesplatform.block.BlockHeader
-import com.wavesplatform.transaction._
+import one.mir.block.BlockHeader
+import one.mir.transaction._
 
 import scala.concurrent._
 import scala.util.Try
@@ -249,7 +249,7 @@ case class BlocksApiRoute(settings: RestAPISettings,
                            value = "Checkpoint message",
                            required = true,
                            paramType = "body",
-                           dataType = "com.wavesplatform.network.Checkpoint")
+                           dataType = "one.mir.network.Checkpoint")
     ))
   @ApiResponses(
     Array(

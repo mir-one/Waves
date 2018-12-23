@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.state.EitherExt2
+import one.mir.TransactionGen
+import one.mir.state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.PrivateKeyAccount
+import one.mir.transaction.transfer._
 
 class TransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

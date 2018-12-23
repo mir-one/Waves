@@ -1,18 +1,18 @@
-package com.wavesplatform.lang.compiler
+package one.mir.lang.compiler
 
-import com.wavesplatform.lang.Common.{NoShrink, multiplierFunction, produce}
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.BinaryOperation.SUM_OP
-import com.wavesplatform.lang.v1.parser.Expressions
-import com.wavesplatform.lang.v1.parser.Expressions.Pos.AnyPos
-import com.wavesplatform.lang.v1.testing.ScriptGen
+import one.mir.lang.Common.{NoShrink, multiplierFunction, produce}
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.parser.BinaryOperation.SUM_OP
+import one.mir.lang.v1.parser.Expressions
+import one.mir.lang.v1.parser.Expressions.Pos.AnyPos
+import one.mir.lang.v1.testing.ScriptGen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 import scodec.bits.ByteVector
 
 class ErrorTest extends PropSpec with PropertyChecks with Matchers with ScriptGen with NoShrink {
 
-  import com.wavesplatform.lang.v1.parser.Expressions._
+  import one.mir.lang.v1.parser.Expressions._
 
   errorTests(
     "can't define LET with the same name as already defined in scope" -> "already defined in the scope" -> BLOCK(

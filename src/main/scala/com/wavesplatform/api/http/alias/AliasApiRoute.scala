@@ -1,15 +1,15 @@
-package com.wavesplatform.api.http.alias
+package one.mir.api.http.alias
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.account.Alias
-import com.wavesplatform.api.http._
-import com.wavesplatform.http.BroadcastRoute
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.transaction._
-import com.wavesplatform.utils.Time
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import one.mir.account.Alias
+import one.mir.api.http._
+import one.mir.http.BroadcastRoute
+import one.mir.settings.RestAPISettings
+import one.mir.state.Blockchain
+import one.mir.transaction._
+import one.mir.utils.Time
+import one.mir.utx.UtxPool
+import one.mir.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
@@ -56,7 +56,7 @@ case class AliasApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool
       new ApiImplicitParam(name = "address", value = "3Mx2afTZ2KbRrLNbytyzTtXukZvqEB8SkW7", required = true, dataType = "string", paramType = "path")
     ))
   def aliasOfAddress: Route = (get & path("by-address" / Segment)) { addressString =>
-    val result: Either[ApiError, Seq[String]] = com.wavesplatform.account.Address
+    val result: Either[ApiError, Seq[String]] = one.mir.account.Address
       .fromString(addressString)
       .map(acc => blockchain.aliasesOfAddress(acc).map(_.stringRepr))
       .left

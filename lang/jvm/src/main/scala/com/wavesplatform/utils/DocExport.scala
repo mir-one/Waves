@@ -1,14 +1,14 @@
 import cats.kernel.Monoid
 import shapeless.{:+:, CNil}
-import com.wavesplatform.lang.{Global, ScriptVersion}
-import com.wavesplatform.lang.v1.CTX
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.wavesplatform.lang.v1.traits.{DataType, Environment}
-import com.wavesplatform.lang.v1.evaluator.ctx.impl._
+import one.mir.lang.{Global, ScriptVersion}
+import one.mir.lang.v1.CTX
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import one.mir.lang.v1.evaluator.ctx._
+import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import one.mir.lang.v1.traits.{DataType, Environment}
+import one.mir.lang.v1.evaluator.ctx.impl._
 
 import scala.collection.JavaConverters._
 import com.github.mustachejava._

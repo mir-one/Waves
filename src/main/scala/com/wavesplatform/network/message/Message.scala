@@ -1,9 +1,9 @@
-package com.wavesplatform.network.message
+package one.mir.network.message
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.crypto
+import one.mir.crypto
 import monix.eval.Coeval
-import com.wavesplatform.serialization.BytesSerializable
+import one.mir.serialization.BytesSerializable
 
 import scala.util.{Success, Try}
 

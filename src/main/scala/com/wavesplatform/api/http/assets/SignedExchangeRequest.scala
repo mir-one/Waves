@@ -1,16 +1,16 @@
-package com.wavesplatform.api.http.assets
+package one.mir.api.http.assets
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.assets.exchange._
+import one.mir.account.PublicKeyAccount
+import one.mir.api.http.BroadcastRequest
+import one.mir.transaction.TransactionParsers.SignatureStringLength
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.assets.exchange._
 
 object SignedExchangeRequest {
-  implicit val orderFormat: Format[Order]                                 = com.wavesplatform.transaction.assets.exchange.OrderJson.orderFormat
+  implicit val orderFormat: Format[Order]                                 = one.mir.transaction.assets.exchange.OrderJson.orderFormat
   implicit val signedExchangeRequestFormat: Format[SignedExchangeRequest] = Json.format
 }
 

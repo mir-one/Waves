@@ -1,10 +1,10 @@
-package com.wavesplatform.transaction.assets.exchange
+package one.mir.transaction.assets.exchange
 
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.crypto.SignatureLength
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.utils.Base58
+import one.mir.account.PublicKeyAccount
+import one.mir.crypto.SignatureLength
+import one.mir.state.ByteStr
+import one.mir.transaction.Proofs
+import one.mir.utils.Base58
 import play.api.libs.json._
 
 import scala.util.{Failure, Success}

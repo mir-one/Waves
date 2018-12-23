@@ -1,21 +1,21 @@
-package com.wavesplatform
+package one.mir
 
 import java.io._
 
 import com.google.common.primitives.Ints
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{Address, AddressScheme}
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.db.openDB
-import com.wavesplatform.history.{CheckpointServiceImpl, StorageFactory}
-import com.wavesplatform.mining.MultiDimensionalMiningConstraint
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.state.appender.BlockAppender
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.utils._
-import com.wavesplatform.utx.UtxPool
+import one.mir.account.{Address, AddressScheme}
+import one.mir.block.Block
+import one.mir.consensus.PoSSelector
+import one.mir.db.openDB
+import one.mir.history.{CheckpointServiceImpl, StorageFactory}
+import one.mir.mining.MultiDimensionalMiningConstraint
+import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.state.ByteStr
+import one.mir.state.appender.BlockAppender
+import one.mir.transaction.Transaction
+import one.mir.utils._
+import one.mir.utx.UtxPool
 import monix.execution.Scheduler
 import org.slf4j.bridge.SLF4JBridgeHandler
 

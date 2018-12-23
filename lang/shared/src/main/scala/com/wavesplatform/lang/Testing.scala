@@ -1,5 +1,5 @@
-package com.wavesplatform.lang
-import com.wavesplatform.lang.v1.compiler.Terms._
+package one.mir.lang
+import one.mir.lang.v1.compiler.Terms._
 import scodec.bits.ByteVector
 
 import scala.util.{Left, Right}

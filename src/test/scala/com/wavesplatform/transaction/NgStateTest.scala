@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.history._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.{Diff, EitherExt2, NgState}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.history._
+import one.mir.state.diffs._
+import one.mir.state.{Diff, EitherExt2, NgState}
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.transaction.transfer._
+import one.mir.transaction.transfer._
 
 class NgStateTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

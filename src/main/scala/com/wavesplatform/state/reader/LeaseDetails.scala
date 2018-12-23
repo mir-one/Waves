@@ -1,5 +1,5 @@
-package com.wavesplatform.state.reader
+package one.mir.state.reader
 
-import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
+import one.mir.account.{AddressOrAlias, PublicKeyAccount}
 
 case class LeaseDetails(sender: PublicKeyAccount, recipient: AddressOrAlias, height: Int, amount: Long, isActive: Boolean)

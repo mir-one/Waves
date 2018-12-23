@@ -1,4 +1,4 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._

@@ -1,12 +1,12 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.it.NTPTime
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange._
+import one.mir.it.NTPTime
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.transaction.assets.IssueTransactionV1
+import one.mir.transaction.assets.exchange._
 
 class ExchangeTransactionSuite extends BaseTransactionSuite with NTPTime {
   test("cannot exchange non-issued assets") {

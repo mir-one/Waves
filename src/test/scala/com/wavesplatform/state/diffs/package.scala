@@ -1,12 +1,12 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import cats.Monoid
-import com.wavesplatform.block.Block
-import com.wavesplatform.db.WithState
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.mining.MiningConstraint
-import com.wavesplatform.settings.{FunctionalitySettings, TestFunctionalitySettings => TFS}
-import com.wavesplatform.transaction.{Transaction, ValidationError}
+import one.mir.block.Block
+import one.mir.db.WithState
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.mining.MiningConstraint
+import one.mir.settings.{FunctionalitySettings, TestFunctionalitySettings => TFS}
+import one.mir.transaction.{Transaction, ValidationError}
 import org.scalatest.Matchers
 
 package object diffs extends WithState with Matchers {

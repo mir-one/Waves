@@ -1,27 +1,27 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
 import java.nio.ByteBuffer
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Common._
-import com.wavesplatform.lang.ExprEvaluator.Log
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.Testing._
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.converters._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext, _}
-import com.wavesplatform.lang.v1.testing.ScriptGen
-import com.wavesplatform.lang.v1.traits.Environment
-import com.wavesplatform.lang.v1.{CTX, FunctionHeader}
-import com.wavesplatform.utils.{Base58, Base64}
+import one.mir.lang.Common._
+import one.mir.lang.ExprEvaluator.Log
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.Testing._
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang.v1.evaluator.EvaluatorV1
+import one.mir.lang.v1.evaluator.FunctionIds._
+import one.mir.lang.v1.evaluator.ctx._
+import one.mir.lang.v1.evaluator.ctx.impl.PureContext._
+import one.mir.lang.v1.evaluator.ctx.impl.converters._
+import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext, _}
+import one.mir.lang.v1.testing.ScriptGen
+import one.mir.lang.v1.traits.Environment
+import one.mir.lang.v1.{CTX, FunctionHeader}
+import one.mir.utils.{Base58, Base64}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

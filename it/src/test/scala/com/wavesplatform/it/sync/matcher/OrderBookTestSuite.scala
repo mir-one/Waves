@@ -1,14 +1,14 @@
-package com.wavesplatform.it.sync.matcher
+package one.mir.it.sync.matcher
 
 import com.typesafe.config.Config
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.sync.matcher.config.MatcherPriceAssetConfig._
-import com.wavesplatform.transaction.assets.exchange.Order.PriceConstant
-import com.wavesplatform.transaction.assets.exchange.OrderType._
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync._
+import one.mir.it.sync.matcher.config.MatcherPriceAssetConfig._
+import one.mir.transaction.assets.exchange.Order.PriceConstant
+import one.mir.transaction.assets.exchange.OrderType._
 
 class OrderBookTestSuite extends MatcherSuiteBase {
 

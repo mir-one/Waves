@@ -1,12 +1,12 @@
-package com.wavesplatform.api.http
+package one.mir.api.http
 
 import java.nio.charset.StandardCharsets
 
-import com.wavesplatform.api.http.assets.AssetsApiRoute
-import com.wavesplatform.http.{RestAPISettingsHelper, RouteSpec}
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.{NoShrink, TestTime, TestWallet, TransactionGen}
+import one.mir.api.http.assets.AssetsApiRoute
+import one.mir.http.{RestAPISettingsHelper, RouteSpec}
+import one.mir.state.{AssetDescription, Blockchain, ByteStr}
+import one.mir.utx.UtxPool
+import one.mir.{NoShrink, TestTime, TestWallet, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks

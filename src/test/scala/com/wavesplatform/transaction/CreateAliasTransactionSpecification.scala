@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.state.{ByteStr, EitherExt2}
+import one.mir.TransactionGen
+import one.mir.state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com.wavesplatform.account.{Alias, PrivateKeyAccount, PublicKeyAccount}
+import one.mir.account.{Alias, PrivateKeyAccount, PublicKeyAccount}
 
 class CreateAliasTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

@@ -1,8 +1,8 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
-import com.wavesplatform.settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
+import one.mir.network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
+import one.mir.settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._

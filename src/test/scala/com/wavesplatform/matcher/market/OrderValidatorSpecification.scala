@@ -1,23 +1,23 @@
-package com.wavesplatform.matcher.market
+package one.mir.matcher.market
 
 import com.google.common.base.Charsets
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.features.{BlockchainFeature, BlockchainFeatures}
-import com.wavesplatform.lang.ScriptVersion
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.matcher.model.Events.{OrderAdded, OrderCanceled}
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.matcher.{MatcherSettings, MatcherTestData}
-import com.wavesplatform.settings.Constants
-import com.wavesplatform.state.diffs.produce
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.utils.randomBytes
-import com.wavesplatform.{NoShrink, TestTime, WithDB}
+import one.mir.OrderOps._
+import one.mir.account.PrivateKeyAccount
+import one.mir.features.{BlockchainFeature, BlockchainFeatures}
+import one.mir.lang.ScriptVersion
+import one.mir.lang.v1.compiler.Terms
+import one.mir.matcher.model.Events.{OrderAdded, OrderCanceled}
+import one.mir.matcher.model._
+import one.mir.matcher.{MatcherSettings, MatcherTestData}
+import one.mir.settings.Constants
+import one.mir.state.diffs.produce
+import one.mir.state.{AssetDescription, Blockchain, ByteStr, LeaseBalance, Portfolio}
+import one.mir.transaction.Proofs
+import one.mir.transaction.assets.exchange._
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.utils.randomBytes
+import one.mir.{NoShrink, TestTime, WithDB}
 import org.scalacheck.Gen
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest._

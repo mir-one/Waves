@@ -1,17 +1,17 @@
-package com.wavesplatform.it.sync.matcher.smartcontracts
+package one.mir.it.sync.matcher.smartcontracts
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync.matcher.config.MatcherDefaultConfig._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import one.mir.features.BlockchainFeatures
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync.matcher.config.MatcherDefaultConfig._
+import one.mir.it.sync._
+import one.mir.it.util._
+import one.mir.state.{ByteStr, EitherExt2}
+import one.mir.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
 
 import scala.concurrent.duration._
 

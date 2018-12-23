@@ -1,26 +1,26 @@
-package com.wavesplatform.utx
+package one.mir.utx
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform._
-import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.block.Block
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.history.StorageFactory
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.v1.compiler.Terms.EXPR
-import com.wavesplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
-import com.wavesplatform.mining._
-import com.wavesplatform.settings._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.{ByteStr, EitherExt2, _}
-import com.wavesplatform.transaction.ValidationError.SenderIsBlacklisted
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.utils.Time
+import one.mir._
+import one.mir.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import one.mir.block.Block
+import one.mir.features.BlockchainFeatures
+import one.mir.history.StorageFactory
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.lang.v1.compiler.Terms.EXPR
+import one.mir.lang.v1.compiler.{CompilerContext, CompilerV1}
+import one.mir.mining._
+import one.mir.settings._
+import one.mir.state.diffs._
+import one.mir.state.{ByteStr, EitherExt2, _}
+import one.mir.transaction.ValidationError.SenderIsBlacklisted
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.transaction.transfer._
+import one.mir.transaction.Transaction
+import one.mir.utils.Time
 import org.scalacheck.Gen
 import org.scalacheck.Gen._
 import org.scalamock.scalatest.MockFactory

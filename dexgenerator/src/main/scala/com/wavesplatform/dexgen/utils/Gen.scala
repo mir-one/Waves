@@ -1,12 +1,12 @@
-package com.wavesplatform.dexgen.utils
+package one.mir.dexgen.utils
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.dexgen.utils.Implicits._
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer.{MassTransferTransaction, TransferTransactionV1}
-import com.wavesplatform.transaction.{Proofs, Transaction}
+import one.mir.account.{Address, PrivateKeyAccount}
+import one.mir.dexgen.utils.Implicits._
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.transaction.transfer.{MassTransferTransaction, TransferTransactionV1}
+import one.mir.transaction.{Proofs, Transaction}
 import scorex.crypto.signatures.Curve25519.KeyLength
 
 object Gen {

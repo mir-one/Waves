@@ -1,21 +1,21 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.http.ApiMarshallers._
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.Terms.TRUE
-import com.wavesplatform.settings.{TestFunctionalitySettings, WalletSettings}
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
-import com.wavesplatform.{BlockGen, NoShrink, TestTime, TransactionGen}
+import one.mir.account.PublicKeyAccount
+import one.mir.api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
+import one.mir.features.BlockchainFeatures
+import one.mir.http.ApiMarshallers._
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.Terms.TRUE
+import one.mir.settings.{TestFunctionalitySettings, WalletSettings}
+import one.mir.state.{AssetDescription, Blockchain, ByteStr}
+import one.mir.transaction.Transaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.utils.Base58
+import one.mir.utx.UtxPool
+import one.mir.wallet.Wallet
+import one.mir.{BlockGen, NoShrink, TestTime, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen
 import org.scalacheck.Gen._

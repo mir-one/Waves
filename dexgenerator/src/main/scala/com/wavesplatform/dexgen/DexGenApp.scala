@@ -1,23 +1,23 @@
-package com.wavesplatform.dexgen
+package one.mir.dexgen
 
 import java.util.concurrent.Executors
 
 import cats.implicits.showInterpolator
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{AddressOrAlias, AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.api.http.assets.{SignedIssueV1Request, SignedMassTransferRequest}
-import com.wavesplatform.dexgen.cli.ScoptImplicits
-import com.wavesplatform.dexgen.config.FicusImplicits
-import com.wavesplatform.dexgen.utils.{ApiRequests, GenOrderType}
-import com.wavesplatform.it.api.Transaction
-import com.wavesplatform.it.util.GlobalTimer
-import com.wavesplatform.network.client.NetworkSender
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.utils.LoggerFacade
+import one.mir.account.{AddressOrAlias, AddressScheme, PrivateKeyAccount}
+import one.mir.api.http.assets.{SignedIssueV1Request, SignedMassTransferRequest}
+import one.mir.dexgen.cli.ScoptImplicits
+import one.mir.dexgen.config.FicusImplicits
+import one.mir.dexgen.utils.{ApiRequests, GenOrderType}
+import one.mir.it.api.Transaction
+import one.mir.it.util.GlobalTimer
+import one.mir.network.client.NetworkSender
+import one.mir.state.ByteStr
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.IssueTransactionV1
+import one.mir.transaction.transfer.MassTransferTransaction
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.utils.LoggerFacade
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.{EnumerationReader, NameMapper}

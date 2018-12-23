@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.net.InetSocketAddress
 
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 

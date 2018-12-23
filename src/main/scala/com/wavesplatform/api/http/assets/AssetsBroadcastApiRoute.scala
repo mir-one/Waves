@@ -1,13 +1,13 @@
-package com.wavesplatform.api.http.assets
+package one.mir.api.http.assets
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.api.http._
-import com.wavesplatform.http.BroadcastRoute
-import com.wavesplatform.network._
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.wavesplatform.transaction.{Transaction, ValidationError}
-import com.wavesplatform.utx.UtxPool
+import one.mir.api.http._
+import one.mir.http.BroadcastRoute
+import one.mir.network._
+import one.mir.settings.RestAPISettings
+import one.mir.state.diffs.TransactionDiffer.TransactionValidationError
+import one.mir.transaction.{Transaction, ValidationError}
+import one.mir.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 
 import scala.concurrent.ExecutionContext.Implicits.global

@@ -1,7 +1,7 @@
-package com.wavesplatform.state.patch
+package one.mir.state.patch
 
-import com.wavesplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import one.mir.utils.ScorexLogging
 
 object CancelAllLeases extends ScorexLogging {
   private def invertLeaseInfo(p: Portfolio) = Portfolio(0, LeaseBalance(-p.lease.in, -p.lease.out), Map.empty)

@@ -1,9 +1,9 @@
-package com.wavesplatform.it.sync.network
+package one.mir.it.sync.network
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.{DockerBased, NodeConfigs}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.{DockerBased, NodeConfigs}
+import one.mir.utils.ScorexLogging
 import org.scalatest.{FreeSpec, Matchers}
 
 import scala.concurrent._

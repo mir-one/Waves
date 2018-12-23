@@ -1,8 +1,8 @@
-package com.wavesplatform.lang.v1.compiler
+package one.mir.lang.v1.compiler
 
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang._
-import com.wavesplatform.lang.v1.evaluator.ctx.DefinedType
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang._
+import one.mir.lang.v1.evaluator.ctx.DefinedType
 
 object TypeInferrer {
 

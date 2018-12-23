@@ -1,15 +1,15 @@
-package com.wavesplatform.lang.v1.evaluator
+package one.mir.lang.v1.evaluator
 
 import cats.Monad
 import cats.implicits._
-import com.wavesplatform.lang.ExprEvaluator.{LetExecResult, LetLogCallback, Log, LogItem}
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.FunctionHeader
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.LoggedEvaluationContext.Lenses._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.task.imports._
-import com.wavesplatform.lang.{ExecutionError, ExprEvaluator, TrampolinedExecResult}
+import one.mir.lang.ExprEvaluator.{LetExecResult, LetLogCallback, Log, LogItem}
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.FunctionHeader
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.evaluator.ctx.LoggedEvaluationContext.Lenses._
+import one.mir.lang.v1.evaluator.ctx._
+import one.mir.lang.v1.task.imports._
+import one.mir.lang.{ExecutionError, ExprEvaluator, TrampolinedExecResult}
 
 import scala.collection.mutable.ListBuffer
 

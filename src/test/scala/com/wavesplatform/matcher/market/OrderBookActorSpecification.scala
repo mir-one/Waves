@@ -1,23 +1,23 @@
-package com.wavesplatform.matcher.market
+package one.mir.matcher.market
 
 import java.util.concurrent.ConcurrentHashMap
 
 import akka.actor.{ActorRef, Props}
 import akka.testkit.{ImplicitSender, TestProbe}
-import com.wavesplatform.NTPTime
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.matcher.MatcherTestData
-import com.wavesplatform.matcher.api.{OrderAccepted, OrderCanceled}
-import com.wavesplatform.matcher.fixtures.RestartableActor
-import com.wavesplatform.matcher.fixtures.RestartableActor.RestartActor
-import com.wavesplatform.matcher.market.OrderBookActor._
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.settings.Constants
-import com.wavesplatform.state.{ByteStr, Diff}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
-import com.wavesplatform.utils.EmptyBlockchain
-import com.wavesplatform.utx.UtxPool
+import one.mir.NTPTime
+import one.mir.OrderOps._
+import one.mir.matcher.MatcherTestData
+import one.mir.matcher.api.{OrderAccepted, OrderCanceled}
+import one.mir.matcher.fixtures.RestartableActor
+import one.mir.matcher.fixtures.RestartableActor.RestartActor
+import one.mir.matcher.market.OrderBookActor._
+import one.mir.matcher.model._
+import one.mir.settings.Constants
+import one.mir.state.{ByteStr, Diff}
+import one.mir.transaction._
+import one.mir.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
+import one.mir.utils.EmptyBlockchain
+import one.mir.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 

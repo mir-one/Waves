@@ -1,5 +1,5 @@
-package com.wavesplatform.consensus.nxt
+package one.mir.consensus.nxt
 
-import com.wavesplatform.state.ByteStr
+import one.mir.state.ByteStr
 
 case class NxtLikeConsensusBlockData(baseTarget: Long, generationSignature: ByteStr)

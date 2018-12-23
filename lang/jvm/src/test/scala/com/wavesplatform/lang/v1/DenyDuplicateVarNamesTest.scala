@@ -1,9 +1,9 @@
-package com.wavesplatform.lang.v1
+package one.mir.lang.v1
 
-import com.wavesplatform.lang.Common._
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.testing.ScriptGen
+import one.mir.lang.Common._
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.testing.ScriptGen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

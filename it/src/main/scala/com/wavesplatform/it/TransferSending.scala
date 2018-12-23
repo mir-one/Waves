@@ -1,17 +1,17 @@
-package com.wavesplatform.it
+package one.mir.it
 
 import java.util.concurrent.ThreadLocalRandom
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.TransferSending.Req
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.api.Transaction
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.utils.{Base58, ScorexLogging}
+import one.mir.it.TransferSending.Req
+import one.mir.it.api.AsyncHttpApi._
+import one.mir.it.api.Transaction
+import one.mir.state.EitherExt2
+import one.mir.utils.{Base58, ScorexLogging}
 import org.scalatest.Suite
-import com.wavesplatform.account.{Address, AddressOrAlias, AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.api.http.assets.SignedTransferV2Request
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.{Address, AddressOrAlias, AddressScheme, PrivateKeyAccount}
+import one.mir.api.http.assets.SignedTransferV2Request
+import one.mir.transaction.transfer._
 
 import scala.concurrent.Future
 import scala.util.Random

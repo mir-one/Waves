@@ -1,17 +1,17 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.mining.Miner.MaxTransactionsPerMicroblock
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.network.message.Message._
-import com.wavesplatform.network.message._
-import com.wavesplatform.transaction.{Transaction, TransactionParsers}
-import com.wavesplatform.crypto._
+import one.mir.mining.Miner.MaxTransactionsPerMicroblock
+import one.mir.state.ByteStr
+import one.mir.account.PublicKeyAccount
+import one.mir.block.{Block, MicroBlock}
+import one.mir.network.message.Message._
+import one.mir.network.message._
+import one.mir.transaction.{Transaction, TransactionParsers}
+import one.mir.crypto._
 import scala.util.Try
 
 object GetPeersSpec extends MessageSpec[GetPeers.type] {

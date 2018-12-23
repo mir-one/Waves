@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.network.TransactionSpec
+import one.mir.network.TransactionSpec
 import play.api.libs.json.{JsArray, JsObject, Json}
-import com.wavesplatform.block.BlockField
+import one.mir.block.BlockField
 
 trait TransactionsBlockField extends BlockField[Seq[Transaction]]
 

@@ -1,18 +1,18 @@
-package com.wavesplatform.state
+package one.mir.state
 
-import com.wavesplatform.consensus.{GeneratingBalanceProvider, PoSSelector}
-import com.wavesplatform.mining._
-import com.wavesplatform.network._
-import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings}
-import com.wavesplatform.utx.UtxPool
+import one.mir.consensus.{GeneratingBalanceProvider, PoSSelector}
+import one.mir.mining._
+import one.mir.network._
+import one.mir.settings.{FunctionalitySettings, WavesSettings}
+import one.mir.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import monix.eval.Task
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.ValidationError.{BlockAppendError, BlockFromFuture, GenericError}
-import com.wavesplatform.transaction._
+import one.mir.block.Block
+import one.mir.transaction.ValidationError.{BlockAppendError, BlockFromFuture, GenericError}
+import one.mir.transaction._
 import cats.implicits._
-import com.wavesplatform.utils.{ScorexLogging, Time}
+import one.mir.utils.{ScorexLogging, Time}
 
 import scala.util.{Left, Right}
 

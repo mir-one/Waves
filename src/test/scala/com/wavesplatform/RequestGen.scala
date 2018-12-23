@@ -1,16 +1,16 @@
-package com.wavesplatform
+package one.mir
 
 import org.scalacheck.Gen.{alphaNumChar, choose, listOfN, oneOf}
 import org.scalacheck.{Arbitrary, Gen => G}
 import org.scalatest.Suite
-import com.wavesplatform.account.Alias
-import com.wavesplatform.api.http.alias.SignedCreateAliasV1Request
-import com.wavesplatform.api.http.assets._
-import com.wavesplatform.api.http.leasing.{SignedLeaseCancelV1Request, SignedLeaseV1Request}
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import one.mir.account.Alias
+import one.mir.api.http.alias.SignedCreateAliasV1Request
+import one.mir.api.http.assets._
+import one.mir.api.http.leasing.{SignedLeaseCancelV1Request, SignedLeaseV1Request}
+import one.mir.utils.Base58
+import one.mir.transaction.assets._
+import one.mir.transaction.transfer._
+import one.mir.crypto._
 
 trait RequestGen extends TransactionGen { _: Suite =>
   val nonPositiveLong: G[Long] = choose(Long.MinValue, 0).label("non-positive value")

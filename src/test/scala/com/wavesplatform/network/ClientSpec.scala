@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.util.concurrent.ConcurrentHashMap
 
-import com.wavesplatform.{TransactionGen, Version}
+import one.mir.{TransactionGen, Version}
 import io.netty.buffer.{ByteBuf, Unpooled}
 import io.netty.channel.Channel
 import io.netty.channel.embedded.EmbeddedChannel

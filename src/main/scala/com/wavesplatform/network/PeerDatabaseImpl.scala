@@ -1,12 +1,12 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.CacheBuilder
 import com.google.common.collect.EvictingQueue
-import com.wavesplatform.settings.NetworkSettings
-import com.wavesplatform.utils.{JsonFileStorage, ScorexLogging}
+import one.mir.settings.NetworkSettings
+import one.mir.utils.{JsonFileStorage, ScorexLogging}
 import io.netty.channel.Channel
 import io.netty.channel.socket.nio.NioSocketChannel
 

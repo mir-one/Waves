@@ -1,7 +1,7 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.{FunctionalitySettings, TestFunctionalitySettings}
+import one.mir.features.BlockchainFeatures
+import one.mir.settings.{FunctionalitySettings, TestFunctionalitySettings}
 
 package object smart {
   val smartEnabledFS: FunctionalitySettings =

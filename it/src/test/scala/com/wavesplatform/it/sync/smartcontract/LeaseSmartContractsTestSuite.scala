@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.smartcontract
+package one.mir.it.sync.smartcontract
 
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{minFee, setScriptFee, transferAmount}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV2, LeaseTransactionV2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import one.mir.account.AddressScheme
+import one.mir.crypto
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync.{minFee, setScriptFee, transferAmount}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state._
+import one.mir.transaction.Proofs
+import one.mir.transaction.lease.{LeaseCancelTransactionV2, LeaseTransactionV2}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
 import org.scalatest.CancelAfterFailure
 
 class LeaseSmartContractsTestSuite extends BaseTransactionSuite with CancelAfterFailure {

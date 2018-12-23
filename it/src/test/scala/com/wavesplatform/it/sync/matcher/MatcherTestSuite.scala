@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.matcher
+package one.mir.it.sync.matcher
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.api.{AssetDecimalsInfo, LevelResponse}
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.sync.matcher.config.MatcherDefaultConfig._
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.OrderType._
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, _}
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.api.{AssetDecimalsInfo, LevelResponse}
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync._
+import one.mir.it.sync.matcher.config.MatcherDefaultConfig._
+import one.mir.it.util._
+import one.mir.state.ByteStr
+import one.mir.transaction.assets.exchange.OrderType._
+import one.mir.transaction.assets.exchange.{AssetPair, _}
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 import scala.concurrent.duration._

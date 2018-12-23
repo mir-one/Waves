@@ -1,10 +1,10 @@
-package com.wavesplatform.matcher.model
+package one.mir.matcher.model
 
 import cats.instances.map._
 import cats.syntax.semigroup._
 import cats.{Monoid, Semigroup}
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.Order
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.exchange.Order
 import play.api.libs.json.{Format, Json}
 
 import scala.util.Try

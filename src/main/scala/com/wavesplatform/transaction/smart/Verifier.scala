@@ -1,17 +1,17 @@
-package com.wavesplatform.transaction.smart
+package one.mir.transaction.smart
 
 import cats.implicits._
 import com.google.common.base.Throwables
-import com.wavesplatform.crypto
-import com.wavesplatform.lang.ExprEvaluator.Log
-import com.wavesplatform.lang.v1.compiler.Terms.{EVALUATED, FALSE, TRUE}
-import com.wavesplatform.metrics._
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError.{GenericError, HasScriptType, ScriptExecutionError, TransactionNotAllowedByScript}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.{ExchangeTransaction, Order}
-import com.wavesplatform.transaction.smart.script.{Script, ScriptRunner}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.crypto
+import one.mir.lang.ExprEvaluator.Log
+import one.mir.lang.v1.compiler.Terms.{EVALUATED, FALSE, TRUE}
+import one.mir.metrics._
+import one.mir.state._
+import one.mir.transaction.ValidationError.{GenericError, HasScriptType, ScriptExecutionError, TransactionNotAllowedByScript}
+import one.mir.transaction._
+import one.mir.transaction.assets.exchange.{ExchangeTransaction, Order}
+import one.mir.transaction.smart.script.{Script, ScriptRunner}
+import one.mir.utils.ScorexLogging
 import shapeless.{:+:, CNil, Coproduct}
 
 import scala.util.{Failure, Success, Try}

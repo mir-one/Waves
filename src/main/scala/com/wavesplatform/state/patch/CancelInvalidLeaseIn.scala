@@ -1,7 +1,7 @@
-package com.wavesplatform.state.patch
+package one.mir.state.patch
 
-import com.wavesplatform.state.{Diff, _}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.state.{Diff, _}
+import one.mir.utils.ScorexLogging
 
 object CancelInvalidLeaseIn extends ScorexLogging {
   def apply(blockchain: Blockchain): Diff = {

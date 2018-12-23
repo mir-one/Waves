@@ -1,20 +1,20 @@
-package com.wavesplatform.it.sync.matcher.smartcontracts
+package one.mir.it.sync.matcher.smartcontracts
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.it.api.SyncHttpApi.NodeExtSync
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync.createSignedIssueRequest
-import com.wavesplatform.it.sync.matcher.config.MatcherDefaultConfig
-import com.wavesplatform.it.util._
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, IssueTransactionV2}
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
+import one.mir.account.{AddressScheme, PrivateKeyAccount}
+import one.mir.features.BlockchainFeatures
+import one.mir.it.api.SyncHttpApi.NodeExtSync
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync.createSignedIssueRequest
+import one.mir.it.sync.matcher.config.MatcherDefaultConfig
+import one.mir.it.util._
+import one.mir.lang.v1.compiler.Terms
+import one.mir.state.EitherExt2
+import one.mir.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import one.mir.transaction.assets.{IssueTransactionV1, IssueTransactionV2}
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.smart.script.{Script, ScriptCompiler}
 
 import scala.concurrent.duration._
 import scala.util.Random

@@ -1,12 +1,12 @@
-package com.wavesplatform.it.async
+package one.mir.it.async
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.api._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.it.{Node, NodeConfigs, ReportingTestName}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.it.api.AsyncHttpApi._
+import one.mir.it.api._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.util._
+import one.mir.it.{Node, NodeConfigs, ReportingTestName}
+import one.mir.utils.ScorexLogging
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.ExecutionContext.Implicits.global

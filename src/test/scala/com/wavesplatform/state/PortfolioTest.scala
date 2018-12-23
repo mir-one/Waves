@@ -1,4 +1,4 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import java.nio.charset.StandardCharsets
 

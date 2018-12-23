@@ -1,8 +1,8 @@
-package com.wavesplatform.api.http.assets
+package one.mir.api.http.assets
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, JsNumber, JsObject, Json}
-import com.wavesplatform.transaction.assets.IssueTransactionV2
+import one.mir.transaction.assets.IssueTransactionV2
 
 case class IssueV2Request(@ApiModelProperty(required = true)
                           version: Byte,

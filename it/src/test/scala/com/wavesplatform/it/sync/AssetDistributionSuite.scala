@@ -1,11 +1,11 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.transactions.BaseTransactionSuite
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.Node
+import one.mir.it.transactions.BaseTransactionSuite
 import org.scalatest.CancelAfterFailure
-import com.wavesplatform.transaction.transfer.MassTransferTransaction
-import com.wavesplatform.it.api.SyncHttpApi._
+import one.mir.transaction.transfer.MassTransferTransaction
+import one.mir.it.api.SyncHttpApi._
 
 class AssetDistributionSuite extends BaseTransactionSuite with CancelAfterFailure {
 

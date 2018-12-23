@@ -1,17 +1,17 @@
-package com.wavesplatform.db
+package one.mir.db
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.{BlockchainUpdaterImpl, _}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
-import com.wavesplatform.transaction.{BlockchainUpdater, GenesisTransaction}
-import com.wavesplatform.utils.Time
-import com.wavesplatform.{TransactionGen, WithDB}
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.Block
+import one.mir.database.LevelDBWriter
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import one.mir.state.{BlockchainUpdaterImpl, _}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.{Script, ScriptCompiler}
+import one.mir.transaction.{BlockchainUpdater, GenesisTransaction}
+import one.mir.utils.Time
+import one.mir.{TransactionGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.{FreeSpec, Matchers}
 

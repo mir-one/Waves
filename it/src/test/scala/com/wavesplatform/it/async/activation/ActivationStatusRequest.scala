@@ -1,9 +1,9 @@
-package com.wavesplatform.it.async.activation
+package one.mir.it.async.activation
 
-import com.wavesplatform.features.BlockchainFeatureStatus
-import com.wavesplatform.features.api.{ActivationStatus, FeatureActivationStatus, NodeFeatureStatus}
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.api.AsyncHttpApi._
+import one.mir.features.BlockchainFeatureStatus
+import one.mir.features.api.{ActivationStatus, FeatureActivationStatus, NodeFeatureStatus}
+import one.mir.it.Node
+import one.mir.it.api.AsyncHttpApi._
 import org.scalactic.source.Position
 import org.scalatest.Matchers
 

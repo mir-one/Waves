@@ -1,11 +1,11 @@
-package com.wavesplatform.matcher.model
+package one.mir.matcher.model
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.fasterxml.jackson.databind.ser.std.StdSerializer
-import com.wavesplatform.matcher.api.JsonSerializer
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import one.mir.matcher.api.JsonSerializer
+import one.mir.transaction.assets.exchange.AssetPair
 
 @JsonSerialize(using = classOf[OrderBookResult.Serializer])
 case class OrderBookResult(timestamp: Long, pair: AssetPair, bids: Seq[LevelAgg], asks: Seq[LevelAgg])

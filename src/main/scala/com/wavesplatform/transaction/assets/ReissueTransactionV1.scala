@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.assets
+package one.mir.transaction.assets
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
+import one.mir.crypto
+import one.mir.state.ByteStr
 import monix.eval.Coeval
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction._
-import com.wavesplatform.crypto._
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.transaction._
+import one.mir.crypto._
 import scala.util.{Failure, Success, Try}
 
 case class ReissueTransactionV1 private (sender: PublicKeyAccount,

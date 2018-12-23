@@ -1,15 +1,15 @@
-package com.wavesplatform.it.sync.smartcontract
+package one.mir.it.sync.smartcontract
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{ReportingTestName, WaitForHeight2}
-import com.wavesplatform.it.util._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.{ReportingTestName, WaitForHeight2}
+import one.mir.it.util._
+import one.mir.it.sync._
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.transfer.TransferTransactionV2
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 class UTXAllowance extends FreeSpec with Matchers with WaitForHeight2 with CancelAfterFailure with ReportingTestName with NodesFromDocker {
@@ -89,7 +89,7 @@ class UTXAllowance extends FreeSpec with Matchers with WaitForHeight2 with Cance
 }
 
 object UTXAllowance {
-  import com.wavesplatform.it.NodeConfigs._
+  import one.mir.it.NodeConfigs._
   private val FirstNode = ConfigFactory.parseString(s"""
                                                          |waves {
                                                          |  utx.allow-transactions-from-smart-accounts = false

@@ -1,7 +1,7 @@
-package com.wavesplatform.lang.v1.evaluator.ctx
+package one.mir.lang.v1.evaluator.ctx
 
-import com.wavesplatform.lang.v1.compiler.Terms.{CaseObj, EVALUATED}
-import com.wavesplatform.lang.v1.compiler.Types.CASETYPEREF
+import one.mir.lang.v1.compiler.Terms.{CaseObj, EVALUATED}
+import one.mir.lang.v1.compiler.Types.CASETYPEREF
 
 package object impl {
   def notImplemented(funcName: String, args: List[Any]): Nothing = throw new Exception(

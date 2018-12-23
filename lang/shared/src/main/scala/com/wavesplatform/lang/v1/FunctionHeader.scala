@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1
+package one.mir.lang.v1
 
 sealed trait FunctionHeader
 object FunctionHeader {

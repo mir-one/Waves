@@ -1,15 +1,15 @@
-package com.wavesplatform.matcher.api
+package one.mir.matcher.api
 
 import java.util.concurrent.ScheduledFuture
 
 import akka.http.scaladsl.model.HttpResponse
 import com.google.common.cache.{CacheBuilder, CacheLoader}
-import com.wavesplatform.matcher.api.OrderBookSnapshotHttpCache.Settings
-import com.wavesplatform.matcher.market.OrderBookActor.GetOrderBookResponse
-import com.wavesplatform.matcher.model.MatcherModel.{Level, Price}
-import com.wavesplatform.matcher.model.{LevelAgg, LimitOrder, OrderBook}
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.utils.Time
+import one.mir.matcher.api.OrderBookSnapshotHttpCache.Settings
+import one.mir.matcher.market.OrderBookActor.GetOrderBookResponse
+import one.mir.matcher.model.MatcherModel.{Level, Price}
+import one.mir.matcher.model.{LevelAgg, LimitOrder, OrderBook}
+import one.mir.transaction.assets.exchange.AssetPair
+import one.mir.utils.Time
 import kamon.Kamon
 
 import scala.concurrent.duration._

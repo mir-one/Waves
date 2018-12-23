@@ -1,9 +1,9 @@
-package com.wavesplatform.lang.v1.testing
+package one.mir.lang.v1.testing
 
-import com.wavesplatform.lang.v1.parser.Parser.keywords
-import com.wavesplatform.lang.v1.parser.BinaryOperation
-import com.wavesplatform.lang.v1.parser.BinaryOperation._
-import com.wavesplatform.lang.v1.parser.Expressions._
+import one.mir.lang.v1.parser.Parser.keywords
+import one.mir.lang.v1.parser.BinaryOperation
+import one.mir.lang.v1.parser.BinaryOperation._
+import one.mir.lang.v1.parser.Expressions._
 import org.scalacheck._
 import scodec.bits.ByteVector
 import scorex.crypto.encode.Base58

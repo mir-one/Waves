@@ -1,17 +1,17 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import java.util.concurrent.ThreadLocalRandom
 
 import cats.Show
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.generator.utils.Gen
-import com.wavesplatform.it.util._
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, ExchangeTransactionV2, OrderV2}
+import one.mir.account.PrivateKeyAccount
+import one.mir.generator.utils.Gen
+import one.mir.it.util._
+import one.mir.state._
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.transfer.TransferTransactionV2
+import one.mir.transaction.Transaction
+import one.mir.transaction.assets.exchange.{AssetPair, ExchangeTransactionV2, OrderV2}
 import scala.concurrent.duration._
 
 class SmartGenerator(settings: SmartGenerator.Settings, val accounts: Seq[PrivateKeyAccount]) extends TransactionGenerator {

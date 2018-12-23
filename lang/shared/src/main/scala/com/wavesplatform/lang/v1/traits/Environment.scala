@@ -1,6 +1,6 @@
-package com.wavesplatform.lang.v1.traits
+package one.mir.lang.v1.traits
 
-import com.wavesplatform.lang.v1.traits.domain._
+import one.mir.lang.v1.traits.domain._
 import shapeless._
 
 trait Environment {

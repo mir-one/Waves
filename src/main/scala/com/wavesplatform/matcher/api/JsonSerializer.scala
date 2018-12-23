@@ -1,12 +1,12 @@
-package com.wavesplatform.matcher.api
+package one.mir.matcher.api
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.databind.{DeserializationContext, JsonNode, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import one.mir.state.ByteStr
+import one.mir.transaction.assets.exchange.AssetPair
 
 object JsonSerializer {
 

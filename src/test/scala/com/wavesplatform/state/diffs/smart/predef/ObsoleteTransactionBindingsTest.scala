@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs.smart.predef
+package one.mir.state.diffs.smart.predef
 
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.{ENOUGH_AMT, assertDiffAndState}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.{GenesisTransaction, PaymentTransaction}
-import com.wavesplatform.utils.compilerContext
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.parser.Parser
+import one.mir.settings.TestFunctionalitySettings
+import one.mir.state._
+import one.mir.state.diffs.{ENOUGH_AMT, assertDiffAndState}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.{GenesisTransaction, PaymentTransaction}
+import one.mir.utils.compilerContext
+import one.mir.{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

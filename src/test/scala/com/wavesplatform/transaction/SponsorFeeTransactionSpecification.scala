@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.features.BlockchainFeatures._
-import com.wavesplatform.lagonaki.mocks.TestBlock.{create => block}
-import com.wavesplatform.settings.{Constants, TestFunctionalitySettings}
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
-import com.wavesplatform.transaction.transfer.TransferTransactionV1
+import one.mir.TransactionGen
+import one.mir.account.PublicKeyAccount
+import one.mir.features.BlockchainFeatures._
+import one.mir.lagonaki.mocks.TestBlock.{create => block}
+import one.mir.settings.{Constants, TestFunctionalitySettings}
+import one.mir.state.diffs._
+import one.mir.state.{ByteStr, EitherExt2}
+import one.mir.transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
+import one.mir.transaction.transfer.TransferTransactionV1
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks

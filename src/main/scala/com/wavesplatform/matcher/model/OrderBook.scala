@@ -1,8 +1,8 @@
-package com.wavesplatform.matcher.model
+package one.mir.matcher.model
 
-import com.wavesplatform.matcher.model.MatcherModel.{Level, Price}
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.matcher.model.MatcherModel.{Level, Price}
+import one.mir.state.ByteStr
+import one.mir.utils.ScorexLogging
 
 import scala.collection.immutable.TreeMap
 

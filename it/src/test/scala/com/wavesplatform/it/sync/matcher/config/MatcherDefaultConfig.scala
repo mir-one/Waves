@@ -1,20 +1,20 @@
-package com.wavesplatform.it.sync.matcher.config
+package one.mir.it.sync.matcher.config
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.api.http.assets.SignedIssueV1Request
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.it.sync._
-import com.wavesplatform.matcher.market.MatcherActor
-import com.wavesplatform.transaction.AssetId
+import one.mir.account.PrivateKeyAccount
+import one.mir.api.http.assets.SignedIssueV1Request
+import one.mir.transaction.assets.IssueTransactionV1
+import one.mir.transaction.assets.exchange.AssetPair
+import one.mir.it.sync._
+import one.mir.matcher.market.MatcherActor
+import one.mir.transaction.AssetId
 
 import scala.util.Random
 
 object MatcherDefaultConfig {
 
   import ConfigFactory._
-  import com.wavesplatform.it.NodeConfigs._
+  import one.mir.it.NodeConfigs._
 
   val ForbiddenAssetId = "FdbnAsset"
   val orderLimit       = 20

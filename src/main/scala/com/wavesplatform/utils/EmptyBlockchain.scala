@@ -1,14 +1,14 @@
-package com.wavesplatform.utils
+package one.mir.utils
 
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.state.reader.LeaseDetails
-import com.wavesplatform.state.{AccountDataInfo, AssetDescription, BalanceSnapshot, Blockchain, ByteStr, DataEntry, Diff, Portfolio, VolumeAndFee}
-import com.wavesplatform.transaction.Transaction.Type
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.lease.LeaseTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.{AssetId, Transaction, ValidationError}
+import one.mir.account.{Address, Alias}
+import one.mir.block.{Block, BlockHeader}
+import one.mir.state.reader.LeaseDetails
+import one.mir.state.{AccountDataInfo, AssetDescription, BalanceSnapshot, Blockchain, ByteStr, DataEntry, Diff, Portfolio, VolumeAndFee}
+import one.mir.transaction.Transaction.Type
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.lease.LeaseTransaction
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.{AssetId, Transaction, ValidationError}
 
 object EmptyBlockchain extends Blockchain {
   override def height: Int = 0

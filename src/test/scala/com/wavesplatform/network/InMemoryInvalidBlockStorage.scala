@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package one.mir.network
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
+import one.mir.state.ByteStr
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.GenericError
 
 class InMemoryInvalidBlockStorage extends InvalidBlockStorage {
 

@@ -1,10 +1,10 @@
-package com.wavesplatform.lang.v1.evaluator.ctx
+package one.mir.lang.v1.evaluator.ctx
 
 import cats.data.EitherT
 import cats.implicits._
-import com.wavesplatform.lang.ExprEvaluator.LogCallback
-import com.wavesplatform.lang.TrampolinedExecResult
-import com.wavesplatform.lang.v1.compiler.Terms.EVALUATED
+import one.mir.lang.ExprEvaluator.LogCallback
+import one.mir.lang.TrampolinedExecResult
+import one.mir.lang.v1.compiler.Terms.EVALUATED
 import monix.eval.Coeval
 
 sealed trait LazyVal {

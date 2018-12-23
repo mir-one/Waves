@@ -1,11 +1,11 @@
-package com.wavesplatform.matcher.api
+package one.mir.matcher.api
 
 import akka.http.scaladsl.model.Uri.Path
 import akka.http.scaladsl.server.PathMatcher.{Matched, Unmatched}
 import akka.http.scaladsl.server.{PathMatcher, PathMatcher1, PathMatchers => AkkaMatchers}
-import com.wavesplatform.account.{Address, PublicKeyAccount}
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import one.mir.account.{Address, PublicKeyAccount}
+import one.mir.state.ByteStr
+import one.mir.transaction.assets.exchange.AssetPair
 
 object PathMatchers {
   class Base58[A](f: String => Option[A]) extends PathMatcher1[A] {

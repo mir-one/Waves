@@ -1,6 +1,6 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.transaction.assets.exchange.Order
+import one.mir.transaction.assets.exchange.Order
 import shapeless._
 
 package object smart {

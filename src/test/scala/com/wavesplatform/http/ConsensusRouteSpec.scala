@@ -1,13 +1,13 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.BlockGen
-import com.wavesplatform.api.http.BlockDoesNotExist
-import com.wavesplatform.consensus.nxt.api.http.NxtConsensusApiRoute
-import com.wavesplatform.db.WithDomain
-import com.wavesplatform.http.ApiMarshallers._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
+import one.mir.BlockGen
+import one.mir.api.http.BlockDoesNotExist
+import one.mir.consensus.nxt.api.http.NxtConsensusApiRoute
+import one.mir.db.WithDomain
+import one.mir.http.ApiMarshallers._
+import one.mir.settings.FunctionalitySettings
+import one.mir.state._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.JsObject
 

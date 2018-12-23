@@ -1,12 +1,12 @@
-package com.wavesplatform.it.sync.smartcontract.smartasset
+package one.mir.it.sync.smartcontract.smartasset
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{someAssetAmount, _}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.state.{ByteStr, IntegerDataEntry}
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync.{someAssetAmount, _}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.state.{ByteStr, IntegerDataEntry}
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.transfer.MassTransferTransaction.Transfer
+import one.mir.transaction.transfer.TransferTransactionV2
 import scala.concurrent.duration._
 
 class AssetSupportedTransactionsSuite extends BaseTransactionSuite {

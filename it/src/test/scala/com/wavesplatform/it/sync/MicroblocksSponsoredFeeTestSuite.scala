@@ -1,11 +1,11 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.NodeConfigs
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.state.diffs.CommonValidation
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.it.NodeConfigs
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.state.diffs.CommonValidation
+import one.mir.utils.ScorexLogging
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 class MicroblocksSponsoredFeeTestSuite extends FreeSpec with Matchers with CancelAfterFailure with NodesFromDocker with ScorexLogging {

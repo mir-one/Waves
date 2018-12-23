@@ -1,21 +1,21 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
 import com.typesafe.config.Config
-import com.wavesplatform.consensus.FairPoSCalculator
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.AsyncNetworkApi.NodeAsyncNetworkApi
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{NodeConfigs, WaitForHeight2}
-import com.wavesplatform.network.RawBytes
-import com.wavesplatform.state._
-import com.wavesplatform.utils.Base58
+import one.mir.consensus.FairPoSCalculator
+import one.mir.crypto
+import one.mir.it.api.AsyncNetworkApi.NodeAsyncNetworkApi
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.{NodeConfigs, WaitForHeight2}
+import one.mir.network.RawBytes
+import one.mir.state._
+import one.mir.utils.Base58
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 import play.api.libs.json.{JsSuccess, Json, Reads}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.{Block, SignerData}
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.http.DebugMessage
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.{Block, SignerData}
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.http.DebugMessage
 
 import scala.util.Random
 

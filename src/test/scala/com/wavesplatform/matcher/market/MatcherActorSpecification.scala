@@ -1,21 +1,21 @@
-package com.wavesplatform.matcher.market
+package one.mir.matcher.market
 
 import java.util.concurrent.atomic.AtomicReference
 
 import akka.actor.{Actor, ActorRef, Kill, Props, Terminated}
 import akka.testkit.{ImplicitSender, TestActorRef, TestProbe}
-import com.wavesplatform.NTPTime
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.matcher.MatcherTestData
-import com.wavesplatform.matcher.api.OrderAccepted
-import com.wavesplatform.matcher.market.MatcherActor.{GetMarkets, MarketData}
-import com.wavesplatform.matcher.market.MatcherActorSpecification.FailAtStartActor
-import com.wavesplatform.matcher.model.ExchangeTransactionCreator
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.utils.{EmptyBlockchain, randomBytes}
-import com.wavesplatform.utx.UtxPool
+import one.mir.NTPTime
+import one.mir.account.PrivateKeyAccount
+import one.mir.matcher.MatcherTestData
+import one.mir.matcher.api.OrderAccepted
+import one.mir.matcher.market.MatcherActor.{GetMarkets, MarketData}
+import one.mir.matcher.market.MatcherActorSpecification.FailAtStartActor
+import one.mir.matcher.model.ExchangeTransactionCreator
+import one.mir.state.{AssetDescription, Blockchain, ByteStr}
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.exchange.AssetPair
+import one.mir.utils.{EmptyBlockchain, randomBytes}
+import one.mir.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.BeforeAndAfterEach

@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{script, someAssetAmount, _}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.assets.SetAssetScriptTransaction
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import one.mir.account.AddressScheme
+import one.mir.crypto
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync.{script, someAssetAmount, _}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state.ByteStr
+import one.mir.transaction.Proofs
+import one.mir.transaction.assets.SetAssetScriptTransaction
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
 import play.api.libs.json._
 import scorex.crypto.encode.Base58
 import scala.concurrent.duration._

@@ -1,8 +1,8 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.matcher.api.OrderBookSnapshotHttpCache
+import one.mir.matcher.MatcherSettings
+import one.mir.matcher.api.OrderBookSnapshotHttpCache
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._

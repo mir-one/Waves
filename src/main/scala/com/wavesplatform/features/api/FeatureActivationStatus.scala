@@ -1,6 +1,6 @@
-package com.wavesplatform.features.api
+package one.mir.features.api
 
-import com.wavesplatform.features.BlockchainFeatureStatus
+import one.mir.features.BlockchainFeatureStatus
 
 case class FeatureActivationStatus(id: Short,
                                    description: String,

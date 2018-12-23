@@ -1,16 +1,16 @@
-package com.wavesplatform.lang.v1.evaluator.ctx.impl
+package one.mir.lang.v1.evaluator.ctx.impl
 
 import java.nio.charset.StandardCharsets
 
 import cats.data.EitherT
-import com.wavesplatform.lang.ScriptVersion
-import com.wavesplatform.lang.v1.CTX
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.parser.BinaryOperation
-import com.wavesplatform.lang.v1.parser.BinaryOperation._
+import one.mir.lang.ScriptVersion
+import one.mir.lang.v1.CTX
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang.v1.evaluator.FunctionIds._
+import one.mir.lang.v1.evaluator.ctx._
+import one.mir.lang.v1.parser.BinaryOperation
+import one.mir.lang.v1.parser.BinaryOperation._
 import scodec.bits.ByteVector
 
 import scala.util.Try

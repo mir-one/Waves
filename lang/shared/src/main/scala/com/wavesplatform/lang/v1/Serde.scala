@@ -1,10 +1,10 @@
-package com.wavesplatform.lang.v1
+package one.mir.lang.v1
 
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
 
-import com.wavesplatform.lang.v1.compiler.Terms._
+import one.mir.lang.v1.compiler.Terms._
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 

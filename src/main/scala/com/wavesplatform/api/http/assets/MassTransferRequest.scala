@@ -1,6 +1,6 @@
-package com.wavesplatform.api.http.assets
+package one.mir.api.http.assets
 
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
+import one.mir.transaction.transfer.MassTransferTransaction.Transfer
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.Json
 

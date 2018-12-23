@@ -1,15 +1,15 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.settings.SynchronizationSettings.UtxSynchronizerSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utx.UtxPool
+import one.mir.settings.SynchronizationSettings.UtxSynchronizerSettings
+import one.mir.state.ByteStr
+import one.mir.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.{ChannelGroup, ChannelMatcher}
 import monix.execution.{CancelableFuture, Scheduler}
-import com.wavesplatform.transaction.Transaction
+import one.mir.transaction.Transaction
 
 object UtxPoolSynchronizer {
   def start(utx: UtxPool,

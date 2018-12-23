@@ -1,14 +1,14 @@
-package com.wavesplatform.it
+package one.mir.it
 
 import java.net.{InetSocketAddress, URL}
 
 import com.typesafe.config.Config
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.it.util.GlobalTimer
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.state.diffs.CommonValidation
-import com.wavesplatform.utils.{Base58, LoggerFacade}
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.it.util.GlobalTimer
+import one.mir.settings.WavesSettings
+import one.mir.state.EitherExt2
+import one.mir.state.diffs.CommonValidation
+import one.mir.utils.{Base58, LoggerFacade}
 import org.asynchttpclient.Dsl.{config => clientConfig, _}
 import org.asynchttpclient._
 import org.slf4j.LoggerFactory

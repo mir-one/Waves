@@ -1,13 +1,13 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.{AssetInfo, Blockchain, Diff, LeaseBalance, Portfolio, SponsorshipValue}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.{AssetId, ProvenTransaction, ValidationError}
+import one.mir.features.BlockchainFeatures
+import one.mir.features.FeatureProvider._
+import one.mir.settings.FunctionalitySettings
+import one.mir.state.{AssetInfo, Blockchain, Diff, LeaseBalance, Portfolio, SponsorshipValue}
+import one.mir.account.PublicKeyAccount
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.assets._
+import one.mir.transaction.{AssetId, ProvenTransaction, ValidationError}
 
 import scala.util.{Left, Right}
 

@@ -1,11 +1,11 @@
-package com.wavesplatform
+package one.mir
 
-import com.wavesplatform.account.{Address, AddressOrAlias, Alias}
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.Transaction.Type
-import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, GenericError}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import one.mir.account.{Address, AddressOrAlias, Alias}
+import one.mir.block.Block
+import one.mir.transaction.Transaction.Type
+import one.mir.transaction.ValidationError.{AliasDoesNotExist, GenericError}
+import one.mir.transaction._
+import one.mir.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
 
 import scala.reflect.ClassTag
 import scala.util.Try

@@ -1,8 +1,8 @@
-package com.wavesplatform.http
+package one.mir.http
 
-import com.wavesplatform.{NTPTime, TestWallet}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.api.http.ApiKeyNotValid
+import one.mir.{NTPTime, TestWallet}
+import one.mir.settings.WavesSettings
+import one.mir.api.http.ApiKeyNotValid
 
 class DebugApiRouteSpec extends RouteSpec("/debug") with RestAPISettingsHelper with TestWallet with NTPTime {
   private val sampleConfig  = com.typesafe.config.ConfigFactory.load()

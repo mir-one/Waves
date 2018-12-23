@@ -1,12 +1,12 @@
-package com.wavesplatform.network.client
+package one.mir.network.client
 
 import java.io.IOException
 import java.net.InetSocketAddress
 
-import com.wavesplatform.Version
-import com.wavesplatform.network.Handshake
-import com.wavesplatform.settings._
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.Version
+import one.mir.network.Handshake
+import one.mir.settings._
+import one.mir.utils.ScorexLogging
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel._
 import io.netty.channel.group.ChannelGroup

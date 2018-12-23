@@ -1,13 +1,13 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.UnexpectedStatusCodeException
-import com.wavesplatform.it.sync.{calcDataFee, minFee}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
-import com.wavesplatform.transaction.DataTransaction
-import com.wavesplatform.utils.Base58
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.UnexpectedStatusCodeException
+import one.mir.it.sync.{calcDataFee, minFee}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
+import one.mir.transaction.DataTransaction
+import one.mir.utils.Base58
 import org.scalatest.{Assertion, Assertions}
 import play.api.libs.json._
 import scala.concurrent.duration._

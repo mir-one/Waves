@@ -1,9 +1,9 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.state._
-import com.wavesplatform.account.Address
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.BlockchainUpdater
+import one.mir.state._
+import one.mir.account.Address
+import one.mir.block.Block
+import one.mir.transaction.BlockchainUpdater
 
 case class Domain(blockchainUpdater: BlockchainUpdater with NG) {
   def effBalance(a: Address): Long          = blockchainUpdater.effectiveBalance(a, blockchainUpdater.height, 1000)

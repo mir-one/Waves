@@ -1,14 +1,14 @@
-package com.wavesplatform.generator
+package one.mir.generator
 import cats.Show
-import com.wavesplatform.crypto
-import com.wavesplatform.generator.utils.Gen
-import com.wavesplatform.state._
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
-import com.wavesplatform.transaction.{Proofs, Transaction}
-import com.wavesplatform.it.util._
+import one.mir.crypto
+import one.mir.generator.utils.Gen
+import one.mir.state._
+import one.mir.account.PrivateKeyAccount
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.transfer.TransferTransactionV2
+import one.mir.transaction.{Proofs, Transaction}
+import one.mir.it.util._
 import scala.util.Random
 
 class MultisigTransactionGenerator(settings: MultisigTransactionGenerator.Settings, val accounts: Seq[PrivateKeyAccount])

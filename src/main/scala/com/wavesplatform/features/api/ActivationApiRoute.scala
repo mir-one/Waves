@@ -1,15 +1,15 @@
-package com.wavesplatform.features.api
+package one.mir.features.api
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.features.{BlockchainFeatureStatus, BlockchainFeatures}
-import com.wavesplatform.settings.{FeaturesSettings, FunctionalitySettings, RestAPISettings}
-import com.wavesplatform.state.Blockchain
+import one.mir.features.FeatureProvider._
+import one.mir.features.{BlockchainFeatureStatus, BlockchainFeatures}
+import one.mir.settings.{FeaturesSettings, FunctionalitySettings, RestAPISettings}
+import one.mir.state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com.wavesplatform.api.http.{ApiRoute, CommonApiFunctions}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.api.http.{ApiRoute, CommonApiFunctions}
+import one.mir.utils.ScorexLogging
 
 @Path("/activation")
 @Api(value = "activation")

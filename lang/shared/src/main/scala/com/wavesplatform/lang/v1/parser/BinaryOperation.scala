@@ -1,6 +1,6 @@
-package com.wavesplatform.lang.v1.parser
+package one.mir.lang.v1.parser
 
-import com.wavesplatform.lang.v1.parser.Expressions._
+import one.mir.lang.v1.parser.Expressions._
 import fastparse.all._
 
 sealed abstract class BinaryOperation {

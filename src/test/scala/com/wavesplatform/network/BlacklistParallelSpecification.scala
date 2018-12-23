@@ -1,9 +1,9 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.net.{InetAddress, InetSocketAddress}
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.settings.{NetworkSettings, loadConfig}
+import one.mir.settings.{NetworkSettings, loadConfig}
 import net.ceedubs.ficus.Ficus._
 import org.scalatest.{FeatureSpec, GivenWhenThen, ParallelTestExecution}
 

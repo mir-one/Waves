@@ -1,12 +1,12 @@
-package com.wavesplatform.it.sync.smartcontract
+package one.mir.it.sync.smartcontract
 
-import com.wavesplatform.it.NTPTime
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.DataTransaction
-import com.wavesplatform.transaction.assets.exchange._
+import one.mir.it.NTPTime
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.state._
+import one.mir.transaction.DataTransaction
+import one.mir.transaction.assets.exchange._
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json._
 import scorex.crypto.encode.Base64

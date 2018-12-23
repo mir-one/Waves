@@ -1,11 +1,11 @@
-package com.wavesplatform.dexgen.config
+package one.mir.dexgen.config
 
 import java.net.InetSocketAddress
 
 import com.google.common.base.CaseFormat
 import com.typesafe.config.Config
 
-import com.wavesplatform.dexgen.utils.GenOrderType
+import one.mir.dexgen.utils.GenOrderType
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.{CollectionReaders, ValueReader}
 

@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it.api.State
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
+import one.mir.it.api.State
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.util._
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 import scala.concurrent.duration._
 
@@ -61,7 +61,7 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
 }
 
 object MinerStateTestSuite {
-  import com.wavesplatform.it.NodeConfigs._
+  import one.mir.it.NodeConfigs._
   private val minerConfig = ConfigFactory.parseString(s"""
     |waves {
     |  synchronization.synchronization-timeout = 10s

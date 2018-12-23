@@ -1,9 +1,9 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.DataTransaction
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, ExchangeTransactionV2, Order}
-import com.wavesplatform.utils.Time
+import one.mir.account.PrivateKeyAccount
+import one.mir.transaction.DataTransaction
+import one.mir.transaction.assets.exchange.{AssetPair, ExchangeTransactionV2, Order}
+import one.mir.utils.Time
 import play.api.libs.json.JsObject
 
 package object smartcontract {

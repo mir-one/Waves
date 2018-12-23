@@ -1,14 +1,14 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.state.diffs._
+import one.mir.TransactionGen
+import one.mir.features.BlockchainFeatures
+import one.mir.state.EitherExt2
+import one.mir.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.transfer._
+import one.mir.transaction._
+import one.mir.transaction.transfer._
 
 class BlockchainUpdaterBlockOnlyTest extends PropSpec with PropertyChecks with DomainScenarioDrivenPropertyCheck with Matchers with TransactionGen {
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.database
+package one.mir.database
 
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.{Ints, Longs}
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
+import one.mir.account.{Address, Alias}
+import one.mir.block.{Block, BlockHeader}
+import one.mir.state._
+import one.mir.transaction.Transaction
+import one.mir.transaction.smart.script.{Script, ScriptReader}
 
 object Keys {
   import KeyHelpers._

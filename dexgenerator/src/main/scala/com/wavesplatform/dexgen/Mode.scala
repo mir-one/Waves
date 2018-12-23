@@ -1,4 +1,4 @@
-package com.wavesplatform.dexgen
+package one.mir.dexgen
 
 object Mode extends Enumeration {
   type Mode = Value

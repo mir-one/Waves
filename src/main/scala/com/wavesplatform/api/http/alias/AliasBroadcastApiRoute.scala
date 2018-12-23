@@ -1,10 +1,10 @@
-package com.wavesplatform.api.http.alias
+package one.mir.api.http.alias
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.api.http._
-import com.wavesplatform.http.BroadcastRoute
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.utx.UtxPool
+import one.mir.api.http._
+import one.mir.http.BroadcastRoute
+import one.mir.settings.RestAPISettings
+import one.mir.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 
 case class AliasBroadcastApiRoute(settings: RestAPISettings, utx: UtxPool, allChannels: ChannelGroup) extends ApiRoute with BroadcastRoute {

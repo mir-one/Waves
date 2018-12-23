@@ -1,11 +1,11 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.util._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.util._
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.utils.ScorexLogging
 import org.scalatest.{BeforeAndAfterAll, Suite}
 
 trait MatcherNode extends BeforeAndAfterAll with Nodes with ScorexLogging {

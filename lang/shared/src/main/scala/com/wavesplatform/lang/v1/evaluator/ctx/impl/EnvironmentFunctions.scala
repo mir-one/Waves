@@ -1,11 +1,11 @@
-package com.wavesplatform.lang.v1.evaluator.ctx.impl
+package one.mir.lang.v1.evaluator.ctx.impl
 
-import com.wavesplatform.lang.ExecutionError
-import com.wavesplatform.lang.v1.compiler.Terms.{CaseObj, CONST_BYTEVECTOR, CONST_STRING}
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.Types
-import com.wavesplatform.lang.v1.traits.domain.Recipient
-import com.wavesplatform.lang.v1.traits.domain.Recipient.{Address, Alias}
-import com.wavesplatform.lang.v1.traits.{DataType, Environment}
+import one.mir.lang.ExecutionError
+import one.mir.lang.v1.compiler.Terms.{CaseObj, CONST_BYTEVECTOR, CONST_STRING}
+import one.mir.lang.v1.evaluator.ctx.impl.waves.Types
+import one.mir.lang.v1.traits.domain.Recipient
+import one.mir.lang.v1.traits.domain.Recipient.{Address, Alias}
+import one.mir.lang.v1.traits.{DataType, Environment}
 
 class EnvironmentFunctions(environment: Environment) {
 

@@ -1,10 +1,10 @@
-package com.wavesplatform.lang.v1.evaluator.ctx
+package one.mir.lang.v1.evaluator.ctx
 
 import cats.data.EitherT
-import com.wavesplatform.lang.TrampolinedExecResult
-import com.wavesplatform.lang.v1.FunctionHeader
-import com.wavesplatform.lang.v1.compiler.Terms.{EVALUATED, EXPR}
-import com.wavesplatform.lang.v1.compiler.Types._
+import one.mir.lang.TrampolinedExecResult
+import one.mir.lang.v1.FunctionHeader
+import one.mir.lang.v1.compiler.Terms.{EVALUATED, EXPR}
+import one.mir.lang.v1.compiler.Types._
 import monix.eval.Coeval
 
 import scala.annotation.meta.field

@@ -1,10 +1,10 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import cats.Show
-import com.wavesplatform.generator.WideTransactionGenerator.Settings
-import com.wavesplatform.generator.utils.Gen
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.Transaction
+import one.mir.generator.WideTransactionGenerator.Settings
+import one.mir.generator.utils.Gen
+import one.mir.account.PrivateKeyAccount
+import one.mir.transaction.Transaction
 
 class WideTransactionGenerator(settings: Settings, accounts: Seq[PrivateKeyAccount]) extends TransactionGenerator {
   require(accounts.nonEmpty)

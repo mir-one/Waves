@@ -1,9 +1,9 @@
-package com.wavesplatform.transaction.assets.exchange
+package one.mir.transaction.assets.exchange
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.Order.assetIdBytes
-import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
+import one.mir.state.ByteStr
+import one.mir.transaction._
+import one.mir.transaction.assets.exchange.Order.assetIdBytes
+import one.mir.transaction.assets.exchange.Validation.booleanOperators
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.{JsObject, Json}
 

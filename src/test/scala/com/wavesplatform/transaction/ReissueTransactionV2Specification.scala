@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 import org.scalacheck.Gen
-import com.wavesplatform.state.{ByteStr, EitherExt2}
+import one.mir.state.{ByteStr, EitherExt2}
 import play.api.libs.json._
-import com.wavesplatform.account.{AddressScheme, PublicKeyAccount}
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, ReissueTransactionV2}
+import one.mir.account.{AddressScheme, PublicKeyAccount}
+import one.mir.transaction.assets.{IssueTransactionV1, ReissueTransactionV2}
 
 class ReissueTransactionV2Specification extends GenericTransactionSpecification[ReissueTransactionV2] {
 
-  def transactionParser: com.wavesplatform.transaction.TransactionParserFor[ReissueTransactionV2] = ReissueTransactionV2
+  def transactionParser: one.mir.transaction.TransactionParserFor[ReissueTransactionV2] = ReissueTransactionV2
 
   def updateProofs(tx: ReissueTransactionV2, p: Proofs): ReissueTransactionV2 = {
     tx.copy(proofs = p)
@@ -26,7 +26,7 @@ class ReissueTransactionV2Specification extends GenericTransactionSpecification[
     first.bytes() shouldEqual second.bytes()
   }
 
-  def generator: Gen[((Seq[com.wavesplatform.transaction.Transaction], ReissueTransactionV2))] =
+  def generator: Gen[((Seq[one.mir.transaction.Transaction], ReissueTransactionV2))] =
     for {
       version                                                                  <- versionGen(ReissueTransactionV2)
       (sender, assetName, description, quantity, decimals, _, iFee, timestamp) <- issueParamGen

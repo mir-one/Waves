@@ -1,18 +1,18 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform._
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.ENOUGH_AMT
+import one.mir._
+import one.mir.state._
+import one.mir.state.diffs.ENOUGH_AMT
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.{Block, MicroBlock, SignerData}
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{GenesisTransaction, Transaction}
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.{Block, MicroBlock, SignerData}
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.transfer._
+import one.mir.transaction.{GenesisTransaction, Transaction}
 
 class BlockchainUpdaterLiquidBlockTest extends PropSpec with PropertyChecks with DomainScenarioDrivenPropertyCheck with Matchers with TransactionGen {
 

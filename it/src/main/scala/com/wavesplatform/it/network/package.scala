@@ -1,4 +1,4 @@
-package com.wavesplatform.it
+package one.mir.it
 
 import java.util.concurrent.CancellationException
 

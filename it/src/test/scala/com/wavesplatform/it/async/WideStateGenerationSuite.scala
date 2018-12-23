@@ -1,12 +1,12 @@
-package com.wavesplatform.it.async
+package one.mir.it.async
 
 import java.util.concurrent.TimeoutException
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it._
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
+import one.mir.it._
+import one.mir.it.api.AsyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.util._
 import org.scalatest._
 
 import scala.concurrent.ExecutionContext.Implicits.global

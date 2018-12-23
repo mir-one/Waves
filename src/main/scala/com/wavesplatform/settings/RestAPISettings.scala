@@ -1,4 +1,4 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import com.typesafe.config.Config
 import net.ceedubs.ficus.Ficus._

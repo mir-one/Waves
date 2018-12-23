@@ -1,17 +1,17 @@
-package com.wavesplatform.it.sync.matcher
+package one.mir.it.sync.matcher
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory.parseString
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.sync.matcher.config.MatcherDefaultConfig._
-import com.wavesplatform.it.sync.{someAssetAmount, _}
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.it.{Node, ReportingTestName}
-import com.wavesplatform.state.ByteStr.decodeBase58
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.transaction.assets.exchange.OrderType.{BUY, SELL}
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.sync.matcher.config.MatcherDefaultConfig._
+import one.mir.it.sync.{someAssetAmount, _}
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.util._
+import one.mir.it.{Node, ReportingTestName}
+import one.mir.state.ByteStr.decodeBase58
+import one.mir.transaction.assets.exchange.AssetPair
+import one.mir.transaction.assets.exchange.OrderType.{BUY, SELL}
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._

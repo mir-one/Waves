@@ -1,6 +1,6 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.v1.BaseGlobal
+import one.mir.lang.v1.BaseGlobal
 
 import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.typedarray.{ArrayBuffer, Int8Array}

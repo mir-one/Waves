@@ -1,10 +1,10 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import com.google.common.primitives.{Bytes, Ints}
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json._
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.crypto._
+import one.mir.utils.Base58
+import one.mir.crypto._
 import scala.collection.immutable.Stream
 import scala.util.{Failure, Success}
 

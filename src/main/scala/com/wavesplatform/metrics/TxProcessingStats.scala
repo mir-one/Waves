@@ -1,7 +1,7 @@
-package com.wavesplatform.metrics
+package one.mir.metrics
 
 import com.google.common.base.CaseFormat
-import com.wavesplatform.transaction.TransactionParsers
+import one.mir.transaction.TransactionParsers
 import kamon.Kamon
 import kamon.metric.TimerMetric
 import supertagged._

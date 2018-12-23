@@ -1,18 +1,18 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats._
-import com.wavesplatform.account.Address
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.features.{BlockchainFeature, BlockchainFeatures}
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError._
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.lease._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.Address
+import one.mir.features.FeatureProvider._
+import one.mir.features.{BlockchainFeature, BlockchainFeatures}
+import one.mir.settings.FunctionalitySettings
+import one.mir.state._
+import one.mir.transaction.ValidationError._
+import one.mir.transaction._
+import one.mir.transaction.assets._
+import one.mir.transaction.assets.exchange._
+import one.mir.transaction.lease._
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.{Left, Right}

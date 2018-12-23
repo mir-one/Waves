@@ -1,4 +1,4 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import akka.http.scaladsl.testkit._
 import org.scalatest.{FreeSpec, Matchers}

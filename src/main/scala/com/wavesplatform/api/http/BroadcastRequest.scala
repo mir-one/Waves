@@ -1,8 +1,8 @@
-package com.wavesplatform.api.http
+package one.mir.api.http
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.Validation
+import one.mir.state.ByteStr
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.Validation
 
 trait BroadcastRequest {
   protected def parseBase58(v: String, error: String, maxLength: Int): Validation[ByteStr] =

@@ -1,12 +1,12 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import java.io.File
 import java.nio.file.Files.createTempDirectory
 
 import akka.persistence.snapshot.SnapshotStoreSpec
 import com.typesafe.config.ConfigFactory.parseString
-import com.wavesplatform.TestHelpers.deleteRecursively
-import com.wavesplatform.settings.loadConfig
+import one.mir.TestHelpers.deleteRecursively
+import one.mir.settings.loadConfig
 import MatcherSnapshotStoreSpec.DirKey
 
 class MatcherSnapshotStoreSpec extends SnapshotStoreSpec(loadConfig(parseString(s"""$DirKey = ${createTempDirectory("matcher").toAbsolutePath}

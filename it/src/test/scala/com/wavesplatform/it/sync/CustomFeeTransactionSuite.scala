@@ -1,13 +1,13 @@
-package com.wavesplatform.it.sync
+package one.mir.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.NodeConfigs.Default
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{EitherExt2, Sponsorship}
-import com.wavesplatform.transaction.assets.IssueTransactionV1
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.NodeConfigs.Default
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state.{EitherExt2, Sponsorship}
+import one.mir.transaction.assets.IssueTransactionV1
 import org.scalatest.CancelAfterFailure
 
 class CustomFeeTransactionSuite extends BaseTransactionSuite with CancelAfterFailure {

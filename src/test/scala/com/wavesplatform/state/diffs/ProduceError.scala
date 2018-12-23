@@ -1,4 +1,4 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import org.scalatest.matchers.{MatchResult, Matcher}
 

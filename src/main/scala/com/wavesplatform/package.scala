@@ -1,11 +1,11 @@
 package com
 
-import com.wavesplatform.block.Block
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.{ByteStr, NG}
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.{BlockchainUpdater, ValidationError}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.block.Block
+import one.mir.settings.WavesSettings
+import one.mir.state.{ByteStr, NG}
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.{BlockchainUpdater, ValidationError}
+import one.mir.utils.ScorexLogging
 
 package object wavesplatform extends ScorexLogging {
   private def checkOrAppend(block: Block, blockchainUpdater: BlockchainUpdater with NG): Either[ValidationError, Unit] = {
@@ -25,7 +25,7 @@ package object wavesplatform extends ScorexLogging {
     Block.genesis(settings.blockchainSettings.genesisSettings).flatMap(b => checkOrAppend(b, blockchainUpdater)).left.foreach { e =>
       log.error("INCORRECT NODE CONFIGURATION!!! NODE STOPPED BECAUSE OF THE FOLLOWING ERROR:")
       log.error(e.toString)
-      com.wavesplatform.utils.forceStopApplication()
+      one.mir.utils.forceStopApplication()
     }
   }
 }

@@ -37,8 +37,8 @@
     <logger name="io.netty" level="INFO"/>
     <logger name="io.swagger" level="INFO"/>
 
-    <logger name="com.wavesplatform.network.PeerSynchronizer" level="DEBUG"/>
-    <logger name="com.wavesplatform.transaction.smart" level="INFO"/>
+    <logger name="one.mir.network.PeerSynchronizer" level="DEBUG"/>
+    <logger name="one.mir.transaction.smart" level="INFO"/>
 
     <logger name="org.aspectj" level="INFO"/>
     <logger name="org.asynchttpclient" level="INFO"/>

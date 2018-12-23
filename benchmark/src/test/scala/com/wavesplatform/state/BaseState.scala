@@ -1,17 +1,17 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import java.io.File
 import java.nio.file.Files
 
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.db.LevelDBFactory
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.mining.MiningConstraint
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.diffs.BlockDiffer
-import com.wavesplatform.transaction.{GenesisTransaction, Transaction}
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.Block
+import one.mir.database.LevelDBWriter
+import one.mir.db.LevelDBFactory
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.mining.MiningConstraint
+import one.mir.settings.FunctionalitySettings
+import one.mir.state.diffs.BlockDiffer
+import one.mir.transaction.{GenesisTransaction, Transaction}
 import org.iq80.leveldb.{DB, Options}
 import org.openjdk.jmh.annotations.{Setup, TearDown}
 import org.scalacheck.{Arbitrary, Gen}

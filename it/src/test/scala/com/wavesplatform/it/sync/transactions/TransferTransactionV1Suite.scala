@@ -1,12 +1,12 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.account.AddressOrAlias
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.AddressOrAlias
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state.EitherExt2
+import one.mir.transaction.transfer._
 import org.scalatest.CancelAfterFailure
 import scala.concurrent.duration._
 

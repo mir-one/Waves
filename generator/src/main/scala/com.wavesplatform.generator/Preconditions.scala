@@ -1,13 +1,13 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import com.typesafe.config.Config
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.lease.LeaseTransactionV1
-import com.wavesplatform.transaction.transfer.TransferTransactionV1
-import com.wavesplatform.utils.Time
+import one.mir.account.{Address, PrivateKeyAccount}
+import one.mir.state._
+import one.mir.transaction.Transaction
+import one.mir.transaction.assets.IssueTransactionV1
+import one.mir.transaction.lease.LeaseTransactionV1
+import one.mir.transaction.transfer.TransferTransactionV1
+import one.mir.utils.Time
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ValueReader
 

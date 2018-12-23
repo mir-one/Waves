@@ -1,9 +1,9 @@
-package com.wavesplatform.account
+package one.mir.account
 
-import com.wavesplatform.utils.base58Length
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.transaction.ValidationError.InvalidAddress
-import com.wavesplatform.crypto._
+import one.mir.utils.base58Length
+import one.mir.utils.Base58
+import one.mir.transaction.ValidationError.InvalidAddress
+import one.mir.crypto._
 
 trait PublicKeyAccount {
   def publicKey: Array[Byte]

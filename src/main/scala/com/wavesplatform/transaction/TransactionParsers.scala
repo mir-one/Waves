@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.utils.base58Length
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
-import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import one.mir.utils.base58Length
+import one.mir.transaction.assets._
+import one.mir.transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
+import one.mir.transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.transfer._
+import one.mir.crypto._
 
 import scala.util.{Failure, Success, Try}
 

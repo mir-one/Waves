@@ -1,18 +1,18 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import java.util.concurrent.Executors
 
 import cats.implicits.showInterpolator
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.generator.Preconditions.{PGenSettings, UniverseHolder}
-import com.wavesplatform.generator.cli.ScoptImplicits
-import com.wavesplatform.generator.config.FicusImplicits
-import com.wavesplatform.generator.utils.Universe
-import com.wavesplatform.network.RawBytes
-import com.wavesplatform.network.client.NetworkSender
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.utils.{LoggerFacade, NTP}
+import one.mir.account.AddressScheme
+import one.mir.generator.Preconditions.{PGenSettings, UniverseHolder}
+import one.mir.generator.cli.ScoptImplicits
+import one.mir.generator.config.FicusImplicits
+import one.mir.generator.utils.Universe
+import one.mir.network.RawBytes
+import one.mir.network.client.NetworkSender
+import one.mir.transaction.Transaction
+import one.mir.utils.{LoggerFacade, NTP}
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.{EnumerationReader, NameMapper}
@@ -26,7 +26,7 @@ import scala.util.{Failure, Random, Success}
 object TransactionsGeneratorApp extends App with ScoptImplicits with FicusImplicits with EnumerationReader {
 
   // IDEA bugs
-  implicit val inetSocketAddressReader        = com.wavesplatform.settings.inetSocketAddressReader
+  implicit val inetSocketAddressReader        = one.mir.settings.inetSocketAddressReader
   implicit val readConfigInHyphen: NameMapper = net.ceedubs.ficus.readers.namemappers.implicits.hyphenCase
 
   val log = LoggerFacade(LoggerFactory.getLogger("generator"))

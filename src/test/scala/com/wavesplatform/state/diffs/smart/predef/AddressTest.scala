@@ -1,12 +1,12 @@
-package com.wavesplatform.state.diffs.smart.predef
+package one.mir.state.diffs.smart.predef
 
-import com.wavesplatform.state._
-import com.wavesplatform.lang.Testing._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.state._
+import one.mir.lang.Testing._
+import one.mir.{NoShrink, TransactionGen}
 import org.scalatest.{Matchers, PropSpec}
 import org.scalatest.prop.PropertyChecks
 import scodec.bits.ByteVector
-import com.wavesplatform.account.Address
+import one.mir.account.Address
 
 class AddressTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
   property("should calculate address from public key") {

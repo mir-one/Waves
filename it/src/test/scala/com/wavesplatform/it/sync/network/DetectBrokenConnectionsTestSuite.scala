@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync.network
+package one.mir.it.sync.network
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it.NodeConfigs.Default
-import com.wavesplatform.it.ReportingTestName
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
+import one.mir.it.NodeConfigs.Default
+import one.mir.it.ReportingTestName
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.NodesFromDocker
 import org.scalatest.{FreeSpec, Matchers}
 
 import scala.concurrent.duration._

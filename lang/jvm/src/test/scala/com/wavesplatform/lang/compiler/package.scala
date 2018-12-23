@@ -1,15 +1,15 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Common.multiplierFunction
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.CTX
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.wavesplatform.lang.v1.evaluator.ctx.{CaseType, LazyVal, NativeFunction}
-import com.wavesplatform.lang.v1.evaluator.ctx.impl._
+import one.mir.lang.Common.multiplierFunction
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.CTX
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang.v1.evaluator.ctx.impl.PureContext
+import one.mir.lang.v1.evaluator.ctx.{CaseType, LazyVal, NativeFunction}
+import one.mir.lang.v1.evaluator.ctx.impl._
 
 package object compiler {
 

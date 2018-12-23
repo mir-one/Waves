@@ -1,4 +1,4 @@
-package com.wavesplatform
+package one.mir
 
 import kamon.metric.{Histogram, Timer}
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import java.util.concurrent.ConcurrentHashMap
 

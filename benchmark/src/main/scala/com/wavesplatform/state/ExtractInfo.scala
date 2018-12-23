@@ -1,21 +1,21 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import java.io.{File, PrintWriter}
 import java.util.concurrent.ThreadLocalRandom
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.db.LevelDBFactory
-import com.wavesplatform.lang.v1.traits.DataType
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.bench.DataTestData
+import one.mir.database.LevelDBWriter
+import one.mir.db.LevelDBFactory
+import one.mir.lang.v1.traits.DataType
+import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.state.bench.DataTestData
 import org.iq80.leveldb.{DB, Options}
 import scodec.bits.{BitVector, ByteVector}
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.assets.IssueTransaction
-import com.wavesplatform.transaction.{Authorized, CreateAliasTransactionV1, DataTransaction, Transaction}
+import one.mir.account.AddressScheme
+import one.mir.utils.ScorexLogging
+import one.mir.block.Block
+import one.mir.transaction.assets.IssueTransaction
+import one.mir.transaction.{Authorized, CreateAliasTransactionV1, DataTransaction, Transaction}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable

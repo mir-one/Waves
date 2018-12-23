@@ -1,22 +1,22 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
-import com.wavesplatform.db.WithState
-import com.wavesplatform.features.{BlockchainFeature, BlockchainFeatures}
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.mining.MiningConstraint
-import com.wavesplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.db.WithState
+import one.mir.features.{BlockchainFeature, BlockchainFeatures}
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.mining.MiningConstraint
+import one.mir.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
+import one.mir.state.EitherExt2
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, Matchers, PropSpec}
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, IssueTransactionV2, SponsorFeeTransaction}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{GenesisTransaction, Transaction, ValidationError}
+import one.mir.account.AddressScheme
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.transaction.assets.{IssueTransactionV1, IssueTransactionV2, SponsorFeeTransaction}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer._
+import one.mir.transaction.{GenesisTransaction, Transaction, ValidationError}
 
 class CommonValidationTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with WithState with NoShrink {
 

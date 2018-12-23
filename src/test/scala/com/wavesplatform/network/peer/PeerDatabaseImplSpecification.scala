@@ -1,12 +1,12 @@
-package com.wavesplatform.network.peer
+package one.mir.network.peer
 
 import java.io.File
 import java.net.InetSocketAddress
 import java.nio.file.Files
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.network.PeerDatabaseImpl
-import com.wavesplatform.settings.NetworkSettings
+import one.mir.network.PeerDatabaseImpl
+import one.mir.settings.NetworkSettings
 import net.ceedubs.ficus.Ficus._
 import org.scalatest.{Matchers, path}
 

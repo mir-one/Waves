@@ -1,4 +1,4 @@
-package com.wavesplatform.metrics
+package one.mir.metrics
 
 import org.influxdb.dto.Point
 

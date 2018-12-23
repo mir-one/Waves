@@ -1,16 +1,16 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import java.nio.ByteBuffer
 
 import com.google.common.primitives.{Ints, Shorts}
-import com.wavesplatform.account.Address
-import com.wavesplatform.crypto
-import com.wavesplatform.database.{Key, RW, ReadOnlyDB}
-import com.wavesplatform.matcher.ActiveOrdersIndex._
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.transaction.assets.exchange.Order.Id
+import one.mir.account.Address
+import one.mir.crypto
+import one.mir.database.{Key, RW, ReadOnlyDB}
+import one.mir.matcher.ActiveOrdersIndex._
+import one.mir.state.ByteStr
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.exchange.AssetPair
+import one.mir.transaction.assets.exchange.Order.Id
 
 class ActiveOrdersIndex(address: Address, maxElements: Int) {
   def add(rw: RW, pair: AssetPair, id: Id): Unit = {

@@ -1,17 +1,17 @@
-package com.wavesplatform.state.reader
+package one.mir.state.reader
 
-import com.wavesplatform.consensus.GeneratingBalanceProvider
-import com.wavesplatform.features.BlockchainFeatures._
-import com.wavesplatform.state.{EitherExt2, LeaseBalance}
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.consensus.GeneratingBalanceProvider
+import one.mir.features.BlockchainFeatures._
+import one.mir.state.{EitherExt2, LeaseBalance}
+import one.mir.state.diffs._
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.lagonaki.mocks.TestBlock.{create => block}
-import com.wavesplatform.settings.TestFunctionalitySettings.Enabled
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.lease.LeaseTransactionV2
+import one.mir.lagonaki.mocks.TestBlock.{create => block}
+import one.mir.settings.TestFunctionalitySettings.Enabled
+import one.mir.transaction.GenesisTransaction
+import one.mir.transaction.lease.LeaseTransactionV2
 
 class StateReaderEffectiveBalancePropertyTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
   property("No-interactions genesis account's effectiveBalance doesn't depend on depths") {

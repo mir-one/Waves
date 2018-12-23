@@ -1,9 +1,9 @@
-package com.wavesplatform.it.transactions
+package one.mir.it.transactions
 
 import java.io.File
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it._
+import one.mir.it._
 import monix.eval.Coeval
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 

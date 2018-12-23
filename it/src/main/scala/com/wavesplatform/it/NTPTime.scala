@@ -1,6 +1,6 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.utils.NTP
+import one.mir.utils.NTP
 import org.scalatest.{BeforeAndAfterAll, Suite}
 
 trait NTPTime extends BeforeAndAfterAll { _: Suite =>

@@ -1,9 +1,9 @@
-package com.wavesplatform.db
+package one.mir.db
 
 import java.nio.charset.{Charset, StandardCharsets}
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.utils.{ScorexLogging, forceStopApplication}
+import one.mir.utils.{ScorexLogging, forceStopApplication}
 import org.iq80.leveldb.{DB, DBIterator, WriteBatch}
 
 import scala.collection.AbstractIterator

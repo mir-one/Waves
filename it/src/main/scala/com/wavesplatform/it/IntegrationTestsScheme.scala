@@ -1,6 +1,6 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.account.AddressScheme
+import one.mir.account.AddressScheme
 
 trait IntegrationTestsScheme {
   AddressScheme.current = new AddressScheme {

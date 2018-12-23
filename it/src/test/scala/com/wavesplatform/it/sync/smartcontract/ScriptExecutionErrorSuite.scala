@@ -1,17 +1,17 @@
-package com.wavesplatform.it.sync.smartcontract
+package one.mir.it.sync.smartcontract
 
-import com.wavesplatform.account.{AddressScheme, Alias}
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{minFee, setScriptFee}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.lang.v1.FunctionHeader
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.CreateAliasTransactionV2
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
+import one.mir.account.{AddressScheme, Alias}
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync.{minFee, setScriptFee}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.lang.v1.FunctionHeader
+import one.mir.lang.v1.compiler.Terms
+import one.mir.state._
+import one.mir.transaction.CreateAliasTransactionV2
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer.TransferTransactionV2
 import org.scalatest.CancelAfterFailure
 
 class ScriptExecutionErrorSuite extends BaseTransactionSuite with CancelAfterFailure {

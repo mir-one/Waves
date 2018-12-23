@@ -1,4 +1,4 @@
-package com.wavesplatform.utils
+package one.mir.utils
 
 import java.io.{File, PrintWriter}
 import javax.crypto.Cipher

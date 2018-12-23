@@ -1,22 +1,22 @@
-package com.wavesplatform.dexgen
+package one.mir.dexgen
 
 import java.util.concurrent.ThreadLocalRandom
 
 import cats.Show
-import com.wavesplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.api.http.assets.SignedTransferV1Request
-import com.wavesplatform.crypto
-import com.wavesplatform.dexgen.Worker._
-import com.wavesplatform.dexgen.utils.{ApiRequests, GenOrderType}
-import com.wavesplatform.it.api.{MatcherResponse, MatcherStatusResponse, OrderbookHistory, Transaction, UnexpectedStatusCodeException}
-import com.wavesplatform.it.util._
-import com.wavesplatform.matcher.AssetPairBuilder
-import com.wavesplatform.matcher.api.CancelOrderRequest
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.transaction.transfer.TransferTransactionV1
-import com.wavesplatform.utils.LoggerFacade
+import one.mir.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import one.mir.api.http.assets.SignedTransferV1Request
+import one.mir.crypto
+import one.mir.dexgen.Worker._
+import one.mir.dexgen.utils.{ApiRequests, GenOrderType}
+import one.mir.it.api.{MatcherResponse, MatcherStatusResponse, OrderbookHistory, Transaction, UnexpectedStatusCodeException}
+import one.mir.it.util._
+import one.mir.matcher.AssetPairBuilder
+import one.mir.matcher.api.CancelOrderRequest
+import one.mir.state.ByteStr
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.exchange.{AssetPair, Order}
+import one.mir.transaction.transfer.TransferTransactionV1
+import one.mir.utils.LoggerFacade
 import org.asynchttpclient.AsyncHttpClient
 import org.slf4j.LoggerFactory
 import play.api.libs.json._

@@ -1,9 +1,9 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.network.InvalidBlockStorageImpl._
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.ValidationError
+import one.mir.network.InvalidBlockStorageImpl._
+import one.mir.state.ByteStr
+import one.mir.transaction.ValidationError
 
 import scala.concurrent.duration.FiniteDuration
 

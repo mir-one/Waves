@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.assets
+package one.mir.transaction.assets
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.state.ByteStr
+import one.mir.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction._
-import com.wavesplatform.crypto._
+import one.mir.account.PublicKeyAccount
+import one.mir.transaction._
+import one.mir.crypto._
 
 trait BurnTransaction extends ProvenTransaction with VersionedTransaction {
 

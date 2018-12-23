@@ -1,14 +1,14 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import com.google.common.primitives.{Bytes, Ints}
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.matcher.model.MatcherModel.Price
-import com.wavesplatform.matcher.model.{BuyLimitOrder, SellLimitOrder}
-import com.wavesplatform.settings.loadConfig
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.{NTPTime, crypto}
+import one.mir.account.PrivateKeyAccount
+import one.mir.matcher.model.MatcherModel.Price
+import one.mir.matcher.model.{BuyLimitOrder, SellLimitOrder}
+import one.mir.settings.loadConfig
+import one.mir.state.ByteStr
+import one.mir.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import one.mir.{NTPTime, crypto}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.Suite
 

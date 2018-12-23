@@ -1,10 +1,10 @@
-package com.wavesplatform.mining
+package one.mir.mining
 
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.transaction.assets.{BurnTransaction, ReissueTransaction, SponsorFeeTransaction}
-import com.wavesplatform.transaction.transfer.{MassTransferTransaction, TransferTransaction}
-import com.wavesplatform.transaction.{Authorized, Transaction}
+import one.mir.state.Blockchain
+import one.mir.transaction.assets.exchange.ExchangeTransaction
+import one.mir.transaction.assets.{BurnTransaction, ReissueTransaction, SponsorFeeTransaction}
+import one.mir.transaction.transfer.{MassTransferTransaction, TransferTransaction}
+import one.mir.transaction.{Authorized, Transaction}
 
 object TxEstimators {
   abstract class Fn extends ((Blockchain, Transaction) => Long) {

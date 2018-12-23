@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.lease
+package one.mir.transaction.lease
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state._
+import one.mir.crypto
+import one.mir.state._
 import monix.eval.Coeval
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction.ValidationError.{GenericError, UnsupportedVersion}
-import com.wavesplatform.transaction._
+import one.mir.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
+import one.mir.transaction.ValidationError.{GenericError, UnsupportedVersion}
+import one.mir.transaction._
 
 import scala.util.{Failure, Success, Try}
 

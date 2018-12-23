@@ -1,13 +1,13 @@
-package com.wavesplatform.db
+package one.mir.db
 
 import java.nio.file.Files
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.history.Domain
-import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.{Blockchain, BlockchainUpdaterImpl}
-import com.wavesplatform.{NTPTime, TestHelpers}
+import one.mir.database.LevelDBWriter
+import one.mir.history.Domain
+import one.mir.settings.{FunctionalitySettings, WavesSettings, loadConfig}
+import one.mir.state.{Blockchain, BlockchainUpdaterImpl}
+import one.mir.{NTPTime, TestHelpers}
 import org.scalatest.Suite
 
 trait WithState {

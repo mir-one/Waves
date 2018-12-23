@@ -1,11 +1,11 @@
-package com.wavesplatform
+package one.mir
 
 import java.io.IOException
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
 
-import com.wavesplatform.settings.{GenesisSettings, GenesisTransactionSettings}
-import com.wavesplatform.account.Address
+import one.mir.settings.{GenesisSettings, GenesisTransactionSettings}
+import one.mir.account.Address
 
 import scala.concurrent.duration._
 

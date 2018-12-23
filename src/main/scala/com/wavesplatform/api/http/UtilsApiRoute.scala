@@ -1,16 +1,16 @@
-package com.wavesplatform.api.http
+package one.mir.api.http
 
 import java.security.SecureRandom
 
 import javax.ws.rs.Path
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.crypto
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.diffs.CommonValidation
-import com.wavesplatform.utils.{Base58, Time}
+import one.mir.crypto
+import one.mir.settings.RestAPISettings
+import one.mir.state.diffs.CommonValidation
+import one.mir.utils.{Base58, Time}
 import io.swagger.annotations._
 import play.api.libs.json._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
+import one.mir.transaction.smart.script.{Script, ScriptCompiler}
 
 @Path("/utils")
 @Api(value = "/utils", description = "Useful functions", position = 3, produces = "application/json")

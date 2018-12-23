@@ -1,14 +1,14 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
+import one.mir.TransactionGen
+import one.mir.features.BlockchainFeatures
+import one.mir.state._
+import one.mir.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.transfer._
+import one.mir.transaction.GenesisTransaction
+import one.mir.transaction.transfer._
 
 class BlockchainUpdaterGeneratorFeeNextBlockOrMicroBlockTest
     extends PropSpec

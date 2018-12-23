@@ -1,10 +1,10 @@
-package com.wavesplatform.matcher.api
+package one.mir.matcher.api
 
 import com.google.common.primitives.Longs
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utils.Base58
+import one.mir.account.PublicKeyAccount
+import one.mir.crypto
+import one.mir.state.ByteStr
+import one.mir.utils.Base58
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.json._

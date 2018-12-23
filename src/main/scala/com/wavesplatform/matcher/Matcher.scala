@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -9,19 +9,19 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.Http.ServerBinding
 import akka.pattern.gracefulStop
 import akka.stream.ActorMaterializer
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.api.http.CompositeHttpService
-import com.wavesplatform.db._
-import com.wavesplatform.matcher.api.{MatcherApiRoute, OrderBookSnapshotHttpCache}
-import com.wavesplatform.matcher.market.OrderBookActor.MarketStatus
-import com.wavesplatform.matcher.market.{MatcherActor, MatcherTransactionWriter, OrderHistoryActor}
-import com.wavesplatform.matcher.model.{ExchangeTransactionCreator, OrderBook, OrderValidator}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.{Blockchain, EitherExt2}
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.utils.{ScorexLogging, Time}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import one.mir.account.{Address, PrivateKeyAccount}
+import one.mir.api.http.CompositeHttpService
+import one.mir.db._
+import one.mir.matcher.api.{MatcherApiRoute, OrderBookSnapshotHttpCache}
+import one.mir.matcher.market.OrderBookActor.MarketStatus
+import one.mir.matcher.market.{MatcherActor, MatcherTransactionWriter, OrderHistoryActor}
+import one.mir.matcher.model.{ExchangeTransactionCreator, OrderBook, OrderValidator}
+import one.mir.settings.WavesSettings
+import one.mir.state.{Blockchain, EitherExt2}
+import one.mir.transaction.assets.exchange.AssetPair
+import one.mir.utils.{ScorexLogging, Time}
+import one.mir.utx.UtxPool
+import one.mir.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 
 import scala.concurrent.Await

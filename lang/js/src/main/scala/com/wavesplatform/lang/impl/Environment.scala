@@ -1,7 +1,7 @@
-package com.wavesplatform.lang.impl
+package one.mir.lang.impl
 
-import com.wavesplatform.lang.v1.traits.DataType
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import one.mir.lang.v1.traits.DataType
+import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
 import shapeless.{:+:, CNil}
 
 import scala.scalajs.js.annotation.JSGlobalScope

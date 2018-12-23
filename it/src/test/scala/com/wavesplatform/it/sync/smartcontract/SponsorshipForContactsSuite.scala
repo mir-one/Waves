@@ -1,8 +1,8 @@
-package com.wavesplatform.it.sync.smartcontract
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.transaction.smart.SetScriptTransaction
+package one.mir.it.sync.smartcontract
+import one.mir.it.sync._
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.transaction.smart.SetScriptTransaction
 import org.scalatest.CancelAfterFailure
 
 class SponsorshipForContactsSuite extends BaseTransactionSuite with CancelAfterFailure {

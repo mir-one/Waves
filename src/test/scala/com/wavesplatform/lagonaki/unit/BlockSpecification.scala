@@ -1,18 +1,18 @@
-package com.wavesplatform.lagonaki.unit
+package one.mir.lagonaki.unit
 
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.produce
-import com.wavesplatform.{NoShrink, TransactionGen, crypto}
+import one.mir.account.PublicKeyAccount
+import one.mir.metrics.Instrumented
+import one.mir.state._
+import one.mir.state.diffs.produce
+import one.mir.{NoShrink, TransactionGen, crypto}
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.block.{Block, SignerData}
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.transfer._
+import one.mir.block.{Block, SignerData}
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.transaction._
+import one.mir.transaction.transfer._
 
 class BlockSpecification extends PropSpec with PropertyChecks with TransactionGen with Matchers with NoShrink {
 

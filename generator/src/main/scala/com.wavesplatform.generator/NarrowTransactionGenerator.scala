@@ -1,20 +1,20 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import java.util.concurrent.ThreadLocalRandom
 
 import cats.Show
-import com.wavesplatform.generator.NarrowTransactionGenerator.Settings
-import com.wavesplatform.state.DataEntry.{MaxValueSize, Type}
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, EitherExt2, IntegerDataEntry, StringDataEntry}
+import one.mir.generator.NarrowTransactionGenerator.Settings
+import one.mir.state.DataEntry.{MaxValueSize, Type}
+import one.mir.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, EitherExt2, IntegerDataEntry, StringDataEntry}
 import org.slf4j.LoggerFactory
-import com.wavesplatform.account.{Alias, PrivateKeyAccount}
-import com.wavesplatform.utils.LoggerFacade
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseCancelTransactionV1, LeaseTransactionV1}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.{Alias, PrivateKeyAccount}
+import one.mir.utils.LoggerFacade
+import one.mir.transaction._
+import one.mir.transaction.assets._
+import one.mir.transaction.assets.exchange._
+import one.mir.transaction.lease.{LeaseCancelTransaction, LeaseCancelTransactionV1, LeaseTransactionV1}
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.Random

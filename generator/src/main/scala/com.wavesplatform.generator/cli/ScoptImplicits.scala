@@ -1,6 +1,6 @@
-package com.wavesplatform.generator.cli
+package one.mir.generator.cli
 
-import com.wavesplatform.generator.Mode
+import one.mir.generator.Mode
 import scopt.Read
 
 import scala.concurrent.duration.FiniteDuration

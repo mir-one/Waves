@@ -1,6 +1,6 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.transaction.ValidationError.InvalidSignature
+import one.mir.transaction.ValidationError.InvalidSignature
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.{Coeval, Task}
 import monix.execution.Scheduler

@@ -1,4 +1,4 @@
-package com.wavesplatform.serialization
+package one.mir.serialization
 
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval

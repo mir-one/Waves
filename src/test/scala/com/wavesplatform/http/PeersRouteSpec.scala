@@ -1,16 +1,16 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.ConcurrentHashMap
 
-import com.wavesplatform.http.ApiMarshallers._
-import com.wavesplatform.network.{PeerDatabase, PeerInfo}
+import one.mir.http.ApiMarshallers._
+import one.mir.network.{PeerDatabase, PeerInfo}
 import io.netty.channel.Channel
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{Format, JsObject, JsValue, Json}
-import com.wavesplatform.api.http.{ApiKeyNotValid, PeersApiRoute}
+import one.mir.api.http.{ApiKeyNotValid, PeersApiRoute}
 
 class PeersRouteSpec extends RouteSpec("/peers") with RestAPISettingsHelper with PropertyChecks with MockFactory {
 

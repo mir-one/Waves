@@ -1,18 +1,18 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.utils.Base58
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
+import one.mir.state.EitherExt2
+import one.mir.utils.Base58
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json._
-import com.wavesplatform.account.Alias
-import com.wavesplatform.api.http.assets.{MassTransferRequest, SignedMassTransferRequest}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.{MaxTransferCount, Transfer}
-import com.wavesplatform.transaction.transfer.TransferTransaction.MaxAttachmentSize
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.Alias
+import one.mir.api.http.assets.{MassTransferRequest, SignedMassTransferRequest}
+import one.mir.transaction.transfer.MassTransferTransaction.{MaxTransferCount, Transfer}
+import one.mir.transaction.transfer.TransferTransaction.MaxAttachmentSize
+import one.mir.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.Random
@@ -95,7 +95,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
   }
 
   test("invalid transfer should not be in UTX or blockchain") {
-    import com.wavesplatform.transaction.transfer._
+    import one.mir.transaction.transfer._
 
     def request(version: Byte = MassTransferTransaction.version,
                 transfers: List[Transfer] = List(Transfer(secondAddress, transferAmount)),

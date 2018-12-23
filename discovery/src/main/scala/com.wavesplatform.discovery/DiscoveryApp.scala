@@ -1,4 +1,4 @@
-package com.wavesplatform.discovery
+package one.mir.discovery
 
 import java.util.concurrent.TimeUnit
 
@@ -8,9 +8,9 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.ws.TextMessage
 import akka.stream.scaladsl.{Flow, Sink, Source}
 import akka.stream.{ActorMaterializer, OverflowStrategy}
-import com.wavesplatform.discovery.actors.MainActor
-import com.wavesplatform.discovery.actors.MainActor.WebSocketConnected
-import com.wavesplatform.discovery.CancellableExt._
+import one.mir.discovery.actors.MainActor
+import one.mir.discovery.actors.MainActor.WebSocketConnected
+import one.mir.discovery.CancellableExt._
 import scorex.utils.ScorexLogging
 
 import scala.concurrent.ExecutionContext

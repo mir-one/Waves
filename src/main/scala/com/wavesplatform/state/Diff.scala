@@ -1,14 +1,14 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com.wavesplatform.account.{Address, Alias, PublicKeyAccount}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.diffs.CommonValidation
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.{AssetId, Transaction}
+import one.mir.account.{Address, Alias, PublicKeyAccount}
+import one.mir.features.BlockchainFeatures
+import one.mir.features.FeatureProvider._
+import one.mir.settings.FunctionalitySettings
+import one.mir.state.diffs.CommonValidation
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.{AssetId, Transaction}
 
 case class LeaseBalance(in: Long, out: Long)
 

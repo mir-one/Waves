@@ -1,19 +1,19 @@
-package com.wavesplatform.api
+package one.mir.api
 
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
-import com.wavesplatform.http.ApiMarshallers
-import com.wavesplatform.api.http.DataRequest._
-import com.wavesplatform.api.http.alias.{CreateAliasV1Request, CreateAliasV2Request}
-import com.wavesplatform.api.http.assets.SponsorFeeRequest._
-import com.wavesplatform.api.http.assets._
-import com.wavesplatform.api.http.leasing._
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.lease._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.account.PublicKeyAccount
+import one.mir.http.ApiMarshallers
+import one.mir.api.http.DataRequest._
+import one.mir.api.http.alias.{CreateAliasV1Request, CreateAliasV2Request}
+import one.mir.api.http.assets.SponsorFeeRequest._
+import one.mir.api.http.assets._
+import one.mir.api.http.leasing._
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction._
+import one.mir.transaction.assets._
+import one.mir.transaction.lease._
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.transfer._
+import one.mir.account.PublicKeyAccount
 
 import play.api.libs.json._
 

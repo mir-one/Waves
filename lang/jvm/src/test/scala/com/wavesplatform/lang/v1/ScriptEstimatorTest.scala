@@ -1,18 +1,18 @@
-package com.wavesplatform.lang.v1
+package one.mir.lang.v1
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Common._
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang._
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.Types
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.lang.v1.testing.ScriptGen
+import one.mir.lang.Common._
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang._
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.evaluator.FunctionIds._
+import one.mir.lang.v1.evaluator.ctx._
+import one.mir.lang.v1.evaluator.ctx.impl.PureContext
+import one.mir.lang.v1.evaluator.ctx.impl.waves.Types
+import one.mir.lang.v1.parser.Parser
+import one.mir.lang.v1.testing.ScriptGen
 import monix.eval.Coeval
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

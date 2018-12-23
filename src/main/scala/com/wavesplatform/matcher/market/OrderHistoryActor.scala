@@ -1,14 +1,14 @@
-package com.wavesplatform.matcher.market
+package one.mir.matcher.market
 
 import akka.actor.{Actor, Props}
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.matcher.api.BatchCancel
-import com.wavesplatform.matcher.market.OrderHistoryActor._
-import com.wavesplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.metrics.TimerExt
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.matcher.MatcherSettings
+import one.mir.matcher.api.BatchCancel
+import one.mir.matcher.market.OrderHistoryActor._
+import one.mir.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
+import one.mir.matcher.model._
+import one.mir.metrics.TimerExt
+import one.mir.state.ByteStr
+import one.mir.utils.ScorexLogging
 import kamon.Kamon
 import org.iq80.leveldb.DB
 

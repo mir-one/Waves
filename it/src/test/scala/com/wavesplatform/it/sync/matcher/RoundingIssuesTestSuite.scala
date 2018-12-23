@@ -1,13 +1,13 @@
-package com.wavesplatform.it.sync.matcher
+package one.mir.it.sync.matcher
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.LevelResponse
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.matcher.MatcherSuiteBase
-import com.wavesplatform.it.sync.matcher.config.MatcherPriceAssetConfig._
-import com.wavesplatform.transaction.assets.exchange.OrderType
+import one.mir.it.api.LevelResponse
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.matcher.MatcherSuiteBase
+import one.mir.it.sync.matcher.config.MatcherPriceAssetConfig._
+import one.mir.transaction.assets.exchange.OrderType
 
 import scala.concurrent.duration._
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.account
+package one.mir.account
 
 abstract class AddressScheme {
   val chainId: Byte

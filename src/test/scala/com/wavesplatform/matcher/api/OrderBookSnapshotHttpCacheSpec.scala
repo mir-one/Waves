@@ -1,14 +1,14 @@
-package com.wavesplatform.matcher.api
+package one.mir.matcher.api
 
 import java.nio.charset.StandardCharsets
 
 import akka.http.scaladsl.model.{HttpEntity, HttpResponse}
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.matcher.model.MatcherModel.Price
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.{NTPTime, TransactionGenBase}
+import one.mir.OrderOps._
+import one.mir.matcher.model.MatcherModel.Price
+import one.mir.matcher.model._
+import one.mir.state.ByteStr
+import one.mir.transaction.assets.exchange.{AssetPair, Order}
+import one.mir.{NTPTime, TransactionGenBase}
 import org.scalacheck.Gen
 import org.scalatest.{FreeSpec, Matchers}
 

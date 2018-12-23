@@ -1,6 +1,6 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
-import com.wavesplatform.transaction.Transaction
+import one.mir.transaction.Transaction
 
 trait TransactionGenerator extends Iterator[Iterator[Transaction]] {
   override val hasNext = true

@@ -1,4 +1,4 @@
-package com.wavesplatform.utils
+package one.mir.utils
 
 import com.google.common.util.concurrent.UncheckedExecutionException
 import monix.eval.Task

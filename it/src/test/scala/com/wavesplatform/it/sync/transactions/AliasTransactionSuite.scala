@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync.transactions
+package one.mir.it.sync.transactions
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.it.util._
 import org.scalatest.prop.TableDrivenPropertyChecks
-import com.wavesplatform.it.sync._
+import one.mir.it.sync._
 
 import scala.util.Random
 

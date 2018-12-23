@@ -1,7 +1,7 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint}
-import com.wavesplatform.state.ByteStr
+import one.mir.network.{BlockCheckpoint, Checkpoint}
+import one.mir.state.ByteStr
 
 trait CheckpointService {
 

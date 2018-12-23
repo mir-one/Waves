@@ -1,12 +1,12 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.implicits._
-import com.wavesplatform.state._
-import com.wavesplatform.account.Address
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.{GenericError, Validation}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
+import one.mir.state._
+import one.mir.account.Address
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.{GenericError, Validation}
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.transaction.transfer._
 
 object MassTransferTransactionDiff {
 

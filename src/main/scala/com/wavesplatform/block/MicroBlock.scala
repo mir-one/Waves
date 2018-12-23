@@ -1,16 +1,16 @@
-package com.wavesplatform.block
+package one.mir.block
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.crypto
-import com.wavesplatform.mining.Miner.MaxTransactionsPerMicroblock
-import com.wavesplatform.state._
+import one.mir.crypto
+import one.mir.mining.Miner.MaxTransactionsPerMicroblock
+import one.mir.state._
 import monix.eval.Coeval
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.Block.{BlockId, transParseBytes}
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction._
-import com.wavesplatform.crypto._
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.utils.ScorexLogging
+import one.mir.block.Block.{BlockId, transParseBytes}
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction._
+import one.mir.crypto._
 import scala.util.{Failure, Try}
 
 case class MicroBlock(version: Byte,

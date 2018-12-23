@@ -1,15 +1,15 @@
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.FunctionHeader.{Native, User}
-import com.wavesplatform.lang.v1.{Serde, CTX}
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.parser.{Expressions, Parser}
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.wavesplatform.lang.v1.traits.{DataType, Environment}
+import one.mir.lang.Global
+import one.mir.lang.v1.FunctionHeader.{Native, User}
+import one.mir.lang.v1.{Serde, CTX}
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import one.mir.lang.v1.parser.{Expressions, Parser}
+import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import one.mir.lang.v1.traits.{DataType, Environment}
 import fastparse.core.Parsed.{Failure, Success}
 import shapeless.{:+:, CNil}
 
@@ -43,7 +43,7 @@ object JsAPI {
     r(ast)
   }
 
-  val version = com.wavesplatform.lang.ScriptVersion.Versions.V1
+  val version = one.mir.lang.ScriptVersion.Versions.V1
 
   val wavesContext = WavesContext.build(
     version,

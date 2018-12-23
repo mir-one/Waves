@@ -1,7 +1,7 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.state.ByteStr
+import one.mir.state.ByteStr
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._

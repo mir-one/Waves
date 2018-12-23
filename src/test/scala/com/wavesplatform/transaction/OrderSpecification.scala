@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.matcher.ValidationMatcher
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType, _}
-import com.wavesplatform.transaction.smart.Verifier
-import com.wavesplatform.{NTPTime, TransactionGen}
+import one.mir.OrderOps._
+import one.mir.matcher.ValidationMatcher
+import one.mir.state.ByteStr
+import one.mir.state.diffs._
+import one.mir.transaction.assets.exchange.{AssetPair, Order, OrderType, _}
+import one.mir.transaction.smart.Verifier
+import one.mir.{NTPTime, TransactionGen}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 

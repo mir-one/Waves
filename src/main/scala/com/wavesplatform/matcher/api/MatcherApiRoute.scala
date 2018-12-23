@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher.api
+package one.mir.matcher.api
 
 import java.util.concurrent.Executors
 
@@ -9,21 +9,21 @@ import akka.http.scaladsl.server.{Directive1, Route}
 import akka.pattern.ask
 import akka.util.Timeout
 import com.google.common.primitives.Longs
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http._
-import com.wavesplatform.crypto
-import com.wavesplatform.matcher.AssetPairBuilder
-import com.wavesplatform.matcher.market.MatcherActor.{GetMarkets, MarketData}
-import com.wavesplatform.matcher.market.OrderBookActor._
-import com.wavesplatform.matcher.market.OrderHistoryActor
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.metrics.TimerExt
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetAcc
-import com.wavesplatform.transaction.assets.exchange.OrderJson._
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.utils.{Base58, ScorexLogging, Time}
+import one.mir.account.PublicKeyAccount
+import one.mir.api.http._
+import one.mir.crypto
+import one.mir.matcher.AssetPairBuilder
+import one.mir.matcher.market.MatcherActor.{GetMarkets, MarketData}
+import one.mir.matcher.market.OrderBookActor._
+import one.mir.matcher.market.OrderHistoryActor
+import one.mir.matcher.model._
+import one.mir.metrics.TimerExt
+import one.mir.settings.WavesSettings
+import one.mir.state.ByteStr
+import one.mir.transaction.AssetAcc
+import one.mir.transaction.assets.exchange.OrderJson._
+import one.mir.transaction.assets.exchange.{AssetPair, Order}
+import one.mir.utils.{Base58, ScorexLogging, Time}
 import io.netty.util.concurrent.DefaultThreadFactory
 import io.swagger.annotations._
 import javax.ws.rs.Path
@@ -153,7 +153,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.transaction.assets.exchange.Order"
+        dataType = "one.mir.transaction.assets.exchange.Order"
       )
     ))
   def place: Route = path("orderbook") {
@@ -247,7 +247,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.matcher.api.CancelOrderRequest"
+        dataType = "one.mir.matcher.api.CancelOrderRequest"
       )
     ))
   def cancel: Route = (path("orderbook" / AssetPairPM / "cancel") & post) { p =>
@@ -281,7 +281,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.matcher.api.CancelOrderRequest"
+        dataType = "one.mir.matcher.api.CancelOrderRequest"
       )
     ))
   def cancelAll: Route = (path("orderbook" / "cancel") & post) {
@@ -311,7 +311,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.matcher.api.CancelOrderRequest"
+        dataType = "one.mir.matcher.api.CancelOrderRequest"
       )
     ))
   def historyDelete: Route = (path("orderbook" / AssetPairPM / "delete") & post) { _ =>

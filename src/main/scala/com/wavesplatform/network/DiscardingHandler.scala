@@ -1,6 +1,6 @@
-package com.wavesplatform.network
+package one.mir.network
 
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelDuplexHandler, ChannelHandlerContext}
 import monix.execution.schedulers.SchedulerService

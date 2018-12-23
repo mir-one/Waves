@@ -1,9 +1,9 @@
-package com.wavesplatform.network.client
+package one.mir.network.client
 
 import java.io.IOException
 
-import com.wavesplatform.network._
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.network._
+import one.mir.utils.ScorexLogging
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.{LengthFieldBasedFrameDecoder, LengthFieldPrepender}

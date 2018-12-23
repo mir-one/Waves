@@ -1,19 +1,19 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import java.io.File
 import java.util.concurrent.{ThreadLocalRandom, TimeUnit}
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{AddressOrAlias, AddressScheme, Alias}
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.db.LevelDBFactory
-import com.wavesplatform.lang.v1.traits.Environment
-import com.wavesplatform.lang.v1.traits.domain.Recipient
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.WavesEnvironmentBenchmark._
-import com.wavesplatform.state.bench.DataTestData
-import com.wavesplatform.transaction.smart.WavesEnvironment
-import com.wavesplatform.utils.Base58
+import one.mir.account.{AddressOrAlias, AddressScheme, Alias}
+import one.mir.database.LevelDBWriter
+import one.mir.db.LevelDBFactory
+import one.mir.lang.v1.traits.Environment
+import one.mir.lang.v1.traits.domain.Recipient
+import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.state.WavesEnvironmentBenchmark._
+import one.mir.state.bench.DataTestData
+import one.mir.transaction.smart.WavesEnvironment
+import one.mir.utils.Base58
 import monix.eval.Coeval
 import org.iq80.leveldb.{DB, Options}
 import org.openjdk.jmh.annotations._
@@ -25,7 +25,7 @@ import scala.io.Codec
 /**
   * Tests over real database. How to test:
   * 1. Download a database
-  * 2. Import it: https://github.com/wavesplatform/Waves/wiki/Export-and-import-of-the-blockchain#import-blocks-from-the-binary-file
+  * 2. Import it: https://github.com/mir-one/node/wiki/Export-and-import-of-the-blockchain#import-blocks-from-the-binary-file
   * 3. Run ExtractInfo to collect queries for tests
   * 4. Make Caches.MaxSize = 1
   * 5. Run this test

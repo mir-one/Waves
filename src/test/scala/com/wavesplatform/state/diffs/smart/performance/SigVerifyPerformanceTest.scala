@@ -1,20 +1,20 @@
-package com.wavesplatform.state.diffs.smart.performance
+package one.mir.state.diffs.smart.performance
 
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.diffs.smart._
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils._
-import com.wavesplatform.{NoShrink, TransactionGen, WithDB}
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.parser.Parser
+import one.mir.metrics.Instrumented
+import one.mir.state._
+import one.mir.state.diffs._
+import one.mir.state.diffs.smart._
+import one.mir.transaction.GenesisTransaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer._
+import one.mir.utils._
+import one.mir.{NoShrink, TransactionGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

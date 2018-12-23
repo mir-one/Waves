@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.smartcontract
+package one.mir.it.sync.smartcontract
 
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.Base58
+import one.mir.crypto
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync._
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.state._
+import one.mir.transaction.Proofs
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.transfer.MassTransferTransaction.Transfer
+import one.mir.transaction.transfer._
+import one.mir.utils.Base58
 import org.scalatest.CancelAfterFailure
 import scala.concurrent.duration._
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}

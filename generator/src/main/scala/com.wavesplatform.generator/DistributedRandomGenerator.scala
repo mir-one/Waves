@@ -1,4 +1,4 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import scala.collection.immutable.TreeMap
 

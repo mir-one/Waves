@@ -1,4 +1,4 @@
-package com.wavesplatform.it
+package one.mir.it
 
 import java.io.{FileOutputStream, IOException}
 import java.net.{InetAddress, InetSocketAddress, URL}
@@ -17,13 +17,13 @@ import com.spotify.docker.client.messages._
 import com.spotify.docker.client.{DefaultDockerClient, DockerClient}
 import com.typesafe.config.ConfigFactory._
 import com.typesafe.config.{Config, ConfigRenderOptions}
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.block.Block
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.util.GlobalTimer.{instance => timer}
-import com.wavesplatform.settings._
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.account.AddressScheme
+import one.mir.block.Block
+import one.mir.it.api.AsyncHttpApi._
+import one.mir.it.util.GlobalTimer.{instance => timer}
+import one.mir.settings._
+import one.mir.state.EitherExt2
+import one.mir.utils.ScorexLogging
 import monix.eval.Coeval
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
@@ -241,7 +241,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
 
       val containerConfig = ContainerConfig
         .builder()
-        .image("com.wavesplatform/it:latest")
+        .image("one.mir/it:latest")
         .exposedPorts(s"$ProfilerPort", restApiPort, networkPort, matcherApiPort)
         .networkingConfig(ContainerConfig.NetworkingConfig.create(Map(
           wavesNetwork.name() -> endpointConfigFor(nodeName)
@@ -567,7 +567,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
         "sh",
         "-c",
         s"""rm /opt/waves/start-waves.sh && echo '#!/bin/bash' >> /opt/waves/start-waves.sh &&
-             |echo 'java ${renderProperties(asProperties(genesisOverride))} -cp /opt/waves/waves.jar com.wavesplatform.matcher.MatcherTool /opt/waves/template.conf cb > /opt/waves/migration-tool.log' >> /opt/waves/start-waves.sh &&
+             |echo 'java ${renderProperties(asProperties(genesisOverride))} -cp /opt/waves/waves.jar one.mir.matcher.MatcherTool /opt/waves/template.conf cb > /opt/waves/migration-tool.log' >> /opt/waves/start-waves.sh &&
              |echo 'less /opt/waves/migration-tool.log | grep -ir completed && cp /opt/waves/start-waves.sh.bk /opt/waves/start-waves.sh && chmod +x /opt/waves/start-waves.sh' >> /opt/waves/start-waves.sh &&
              |chmod +x /opt/waves/start-waves.sh
            """.stripMargin

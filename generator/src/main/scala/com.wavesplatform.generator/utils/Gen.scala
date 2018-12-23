@@ -1,15 +1,15 @@
-package com.wavesplatform.generator.utils
+package one.mir.generator.utils
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.generator.utils.Implicits._
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, IntegerDataEntry, StringDataEntry}
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{Proofs, Transaction}
-import com.wavesplatform.utils.LoggerFacade
+import one.mir.account.{Address, PrivateKeyAccount}
+import one.mir.generator.utils.Implicits._
+import one.mir.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, IntegerDataEntry, StringDataEntry}
+import one.mir.transaction.smart.script.{Script, ScriptCompiler}
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.transaction.transfer._
+import one.mir.transaction.{Proofs, Transaction}
+import one.mir.utils.LoggerFacade
 import org.slf4j.LoggerFactory
 import scorex.crypto.signatures.Curve25519._
 

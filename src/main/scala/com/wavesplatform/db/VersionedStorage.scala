@@ -1,4 +1,4 @@
-package com.wavesplatform.db
+package one.mir.db
 
 trait VersionedStorage {
   this: PropertiesStorage =>

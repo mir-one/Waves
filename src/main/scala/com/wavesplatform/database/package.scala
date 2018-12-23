@@ -1,4 +1,4 @@
-package com.wavesplatform
+package one.mir
 
 import java.nio.ByteBuffer
 
@@ -6,9 +6,9 @@ import com.google.common.base.Charsets.UTF_8
 import com.google.common.io.ByteStreams.{newDataInput, newDataOutput}
 import com.google.common.io.{ByteArrayDataInput, ByteArrayDataOutput}
 import com.google.common.primitives.{Ints, Shorts}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
-import com.wavesplatform.transaction.{Transaction, TransactionParsers}
+import one.mir.state._
+import one.mir.transaction.smart.script.{Script, ScriptReader}
+import one.mir.transaction.{Transaction, TransactionParsers}
 import org.iq80.leveldb.{DB, ReadOptions}
 import java.util.{Map => JMap}
 
@@ -224,7 +224,7 @@ package object database {
   }
 
   implicit class EntryExt(val e: JMap.Entry[Array[Byte], Array[Byte]]) extends AnyVal {
-    import com.wavesplatform.crypto.DigestSize
+    import one.mir.crypto.DigestSize
     def extractId(offset: Int = 2, length: Int = DigestSize): ByteStr = {
       val id = ByteStr(new Array[Byte](length))
       Array.copy(e.getKey, offset, id.arr, 0, length)

@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction.transfer
+package one.mir.transaction.transfer
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.validation._
-import com.wavesplatform.utils.{Base58, base58Length}
+import one.mir.account.{AddressOrAlias, PublicKeyAccount}
+import one.mir.serialization.Deser
+import one.mir.transaction._
+import one.mir.transaction.validation._
+import one.mir.utils.{Base58, base58Length}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.crypto._
+import one.mir.crypto._
 
 trait TransferTransaction extends ProvenTransaction with VersionedTransaction {
   def assetId: Option[AssetId]

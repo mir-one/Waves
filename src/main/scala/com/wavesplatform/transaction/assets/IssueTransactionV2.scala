@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction.assets
+package one.mir.transaction.assets
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
+import one.mir.crypto
+import one.mir.state.ByteStr
 import monix.eval.Coeval
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction.ValidationError.{GenericError, UnsupportedVersion}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
+import one.mir.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
+import one.mir.serialization.Deser
+import one.mir.transaction.ValidationError.{GenericError, UnsupportedVersion}
+import one.mir.transaction._
+import one.mir.transaction.smart.script.{Script, ScriptReader}
 import play.api.libs.json.{JsObject, Json}
 
 import scala.util.Try

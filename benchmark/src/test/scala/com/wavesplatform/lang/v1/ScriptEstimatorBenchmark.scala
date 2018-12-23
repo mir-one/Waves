@@ -1,10 +1,10 @@
-package com.wavesplatform.lang.v1
+package one.mir.lang.v1
 
 import java.util.concurrent.TimeUnit
 
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.ScriptEstimatorBenchmark.St
-import com.wavesplatform.utils
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.ScriptEstimatorBenchmark.St
+import one.mir.utils
 import monix.eval.Coeval
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole

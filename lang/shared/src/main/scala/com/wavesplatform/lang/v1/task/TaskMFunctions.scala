@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.task
+package one.mir.lang.v1.task
 
 import cats.data.Kleisli
 import monix.eval.Coeval

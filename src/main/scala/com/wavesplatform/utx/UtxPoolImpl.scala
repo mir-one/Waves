@@ -1,4 +1,4 @@
-package com.wavesplatform.utx
+package one.mir.utx
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
@@ -6,19 +6,19 @@ import java.util.concurrent.ConcurrentHashMap
 
 import cats._
 import cats.implicits._
-import com.wavesplatform.account.Address
-import com.wavesplatform.consensus.TransactionsOrdering
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.mining.MultiDimensionalMiningConstraint
-import com.wavesplatform.settings.{FunctionalitySettings, UtxSettings}
-import com.wavesplatform.state.diffs.TransactionDiffer
-import com.wavesplatform.state.reader.CompositeBlockchain.composite
-import com.wavesplatform.state.{Blockchain, ByteStr, Diff, Portfolio}
-import com.wavesplatform.transaction.ValidationError.{GenericError, SenderIsBlacklisted}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.ReissueTransaction
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.{ScorexLogging, Time}
+import one.mir.account.Address
+import one.mir.consensus.TransactionsOrdering
+import one.mir.metrics.Instrumented
+import one.mir.mining.MultiDimensionalMiningConstraint
+import one.mir.settings.{FunctionalitySettings, UtxSettings}
+import one.mir.state.diffs.TransactionDiffer
+import one.mir.state.reader.CompositeBlockchain.composite
+import one.mir.state.{Blockchain, ByteStr, Diff, Portfolio}
+import one.mir.transaction.ValidationError.{GenericError, SenderIsBlacklisted}
+import one.mir.transaction._
+import one.mir.transaction.assets.ReissueTransaction
+import one.mir.transaction.transfer._
+import one.mir.utils.{ScorexLogging, Time}
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
@@ -36,7 +36,7 @@ class UtxPoolImpl(time: Time, blockchain: Blockchain, fs: FunctionalitySettings,
     with UtxPool {
   outer =>
 
-  import com.wavesplatform.utx.UtxPoolImpl._
+  import one.mir.utx.UtxPoolImpl._
 
   private implicit val scheduler: SchedulerService = Scheduler.singleThread("utx-pool-cleanup")
 

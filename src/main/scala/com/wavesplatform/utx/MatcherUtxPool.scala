@@ -1,14 +1,14 @@
-package com.wavesplatform.utx
+package one.mir.utx
 
 import akka.event.EventStream
 import cats.kernel.Monoid
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.matcher.model.Events.BalanceChanged
-import com.wavesplatform.mining.MultiDimensionalMiningConstraint
-import com.wavesplatform.state.{ByteStr, Diff, Portfolio}
-import com.wavesplatform.account.Address
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.{AssetId, Authorized, Transaction, ValidationError}
+import one.mir.matcher.MatcherSettings
+import one.mir.matcher.model.Events.BalanceChanged
+import one.mir.mining.MultiDimensionalMiningConstraint
+import one.mir.state.{ByteStr, Diff, Portfolio}
+import one.mir.account.Address
+import one.mir.utils.ScorexLogging
+import one.mir.transaction.{AssetId, Authorized, Transaction, ValidationError}
 
 import scala.collection.mutable
 

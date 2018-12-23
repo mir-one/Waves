@@ -1,6 +1,6 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
-import com.wavesplatform.features.BlockchainFeatures
+import one.mir.features.BlockchainFeatures
 
 object TestFunctionalitySettings {
   val Enabled = FunctionalitySettings(

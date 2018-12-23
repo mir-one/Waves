@@ -1,12 +1,12 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import com.google.common.base.Charsets
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.settings.loadConfig
-import com.wavesplatform.state.diffs.produce
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import one.mir.account.PublicKeyAccount
+import one.mir.settings.loadConfig
+import one.mir.state.diffs.produce
+import one.mir.state.{AssetDescription, Blockchain, ByteStr}
+import one.mir.transaction.assets.exchange.AssetPair
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FreeSpec, Matchers}

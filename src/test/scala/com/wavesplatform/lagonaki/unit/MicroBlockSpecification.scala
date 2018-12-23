@@ -1,15 +1,15 @@
-package com.wavesplatform.lagonaki.unit
+package one.mir.lagonaki.unit
 
-import com.wavesplatform.mining.Miner
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.produce
+import one.mir.mining.Miner
+import one.mir.state._
+import one.mir.state.diffs.produce
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.words.ShouldVerb
 import org.scalatest.{FunSuite, Matchers}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.{Block, MicroBlock}
+import one.mir.transaction._
+import one.mir.transaction.transfer._
 
 import scala.util.Random
 

@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction.lease
+package one.mir.transaction.lease
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
+import one.mir.crypto
+import one.mir.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com.wavesplatform.crypto.KeyLength
+import one.mir.account.PublicKeyAccount
+import one.mir.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import one.mir.crypto.KeyLength
 
 trait LeaseCancelTransaction extends ProvenTransaction with VersionedTransaction {
   def chainByte: Option[Byte]

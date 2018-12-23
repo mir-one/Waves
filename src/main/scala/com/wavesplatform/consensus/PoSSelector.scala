@@ -1,14 +1,14 @@
-package com.wavesplatform.consensus
+package one.mir.consensus
 
 import cats.implicits._
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.BlockchainSettings
-import com.wavesplatform.state.{Blockchain, ByteStr, _}
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
+import one.mir.features.BlockchainFeatures
+import one.mir.features.FeatureProvider._
+import one.mir.settings.BlockchainSettings
+import one.mir.state.{Blockchain, ByteStr, _}
+import one.mir.block.Block
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.GenericError
 
 import scala.concurrent.duration.FiniteDuration
 

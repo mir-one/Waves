@@ -1,17 +1,17 @@
-package com.wavesplatform.http
+package one.mir.http
 
-import com.wavesplatform.http.ApiMarshallers._
-import com.wavesplatform.state.{Diff, EitherExt2}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.{NoShrink, TestWallet, TransactionGen}
+import one.mir.http.ApiMarshallers._
+import one.mir.state.{Diff, EitherExt2}
+import one.mir.utx.UtxPool
+import one.mir.{NoShrink, TestWallet, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.api.http.{ApiKeyNotValid, PaymentApiRoute}
-import com.wavesplatform.utils.Time
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.transfer._
+import one.mir.api.http.{ApiKeyNotValid, PaymentApiRoute}
+import one.mir.utils.Time
+import one.mir.transaction.Transaction
+import one.mir.transaction.transfer._
 
 class PaymentRouteSpec
     extends RouteSpec("/payment")

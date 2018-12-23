@@ -1,4 +1,4 @@
-package com.wavesplatform.db
+package one.mir.db
 
 import com.google.common.primitives.{Bytes, Ints}
 import org.iq80.leveldb.{DB, WriteBatch}

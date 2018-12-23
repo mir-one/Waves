@@ -1,4 +1,4 @@
-package com.wavesplatform
+package one.mir
 
 trait Shutdownable {
   def shutdown(): Unit

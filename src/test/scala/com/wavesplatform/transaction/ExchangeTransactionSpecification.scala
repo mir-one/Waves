@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.transaction.ValidationError.OrderValidationError
-import com.wavesplatform.transaction.assets.exchange.{Order, _}
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.{NTPTime, TransactionGen}
+import one.mir.OrderOps._
+import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
+import one.mir.state.{ByteStr, EitherExt2}
+import one.mir.transaction.ValidationError.OrderValidationError
+import one.mir.transaction.assets.exchange.{Order, _}
+import one.mir.utils.Base58
+import one.mir.{NTPTime, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks

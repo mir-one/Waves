@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import java.io.{File, PrintWriter}
 import java.util.{HashMap => JHashMap, HashSet => JHashSet}
@@ -9,17 +9,17 @@ import akka.serialization.SerializationExtension
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.{Ints, Shorts}
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.{Address, AddressScheme}
-import com.wavesplatform.database._
-import com.wavesplatform.db.openDB
-import com.wavesplatform.matcher.api.DBUtils
-import com.wavesplatform.matcher.market.{MatcherActor, OrderBookActor}
-import com.wavesplatform.matcher.model.{LimitOrder, OrderBook}
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.account.{Address, AddressScheme}
+import one.mir.database._
+import one.mir.db.openDB
+import one.mir.matcher.api.DBUtils
+import one.mir.matcher.market.{MatcherActor, OrderBookActor}
+import one.mir.matcher.model.{LimitOrder, OrderBook}
+import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.state.{ByteStr, EitherExt2}
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.exchange.{AssetPair, Order}
+import one.mir.utils.ScorexLogging
 import org.iq80.leveldb.DB
 
 import scala.collection.JavaConverters._

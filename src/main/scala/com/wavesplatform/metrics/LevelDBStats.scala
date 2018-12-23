@@ -1,6 +1,6 @@
-package com.wavesplatform.metrics
+package one.mir.metrics
 
-import com.wavesplatform.database.Key
+import one.mir.database.Key
 import kamon.Kamon
 import kamon.metric.{HistogramMetric, MeasurementUnit}
 

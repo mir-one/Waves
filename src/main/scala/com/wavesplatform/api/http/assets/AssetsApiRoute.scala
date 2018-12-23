@@ -1,4 +1,4 @@
-package com.wavesplatform.api.http.assets
+package one.mir.api.http.assets
 
 import java.util.concurrent._
 
@@ -6,21 +6,21 @@ import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.server.Route
 import cats.implicits._
 import com.google.common.base.Charsets
-import com.wavesplatform.account.Address
-import com.wavesplatform.api.http._
-import com.wavesplatform.api.http.assets.AssetsApiRoute.DistributionParams
-import com.wavesplatform.http.BroadcastRoute
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.{Blockchain, ByteStr}
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.assets.IssueTransaction
-import com.wavesplatform.transaction.assets.exchange.Order
-import com.wavesplatform.transaction.assets.exchange.OrderJson._
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.{AssetId, AssetIdStringLength, TransactionFactory, ValidationError}
-import com.wavesplatform.utils.{Base58, Time, _}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import one.mir.account.Address
+import one.mir.api.http._
+import one.mir.api.http.assets.AssetsApiRoute.DistributionParams
+import one.mir.http.BroadcastRoute
+import one.mir.settings.RestAPISettings
+import one.mir.state.{Blockchain, ByteStr}
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.assets.IssueTransaction
+import one.mir.transaction.assets.exchange.Order
+import one.mir.transaction.assets.exchange.OrderJson._
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.{AssetId, AssetIdStringLength, TransactionFactory, ValidationError}
+import one.mir.utils.{Base58, Time, _}
+import one.mir.utx.UtxPool
+import one.mir.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path

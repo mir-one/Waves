@@ -1,11 +1,11 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import java.io.File
 
 import com.typesafe.config.Config
-import com.wavesplatform.account.Address
-import com.wavesplatform.matcher.api.OrderBookSnapshotHttpCache
-import com.wavesplatform.state.EitherExt2
+import one.mir.account.Address
+import one.mir.matcher.api.OrderBookSnapshotHttpCache
+import one.mir.state.EitherExt2
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader.arbitraryTypeValueReader
 import net.ceedubs.ficus.readers.{NameMapper, ValueReader}

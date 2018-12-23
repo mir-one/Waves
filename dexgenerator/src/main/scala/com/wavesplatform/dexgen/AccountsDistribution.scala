@@ -1,7 +1,7 @@
-package com.wavesplatform.dexgen
+package one.mir.dexgen
 
 import cats.Show
-import com.wavesplatform.dexgen.AccountsDistribution.Settings
+import one.mir.dexgen.AccountsDistribution.Settings
 
 class AccountsDistribution(settings: Settings, valid: Int, invalid: Int, fake: Int) {}
 

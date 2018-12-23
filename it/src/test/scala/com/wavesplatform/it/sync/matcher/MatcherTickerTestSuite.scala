@@ -1,18 +1,18 @@
-package com.wavesplatform.it.sync.matcher
+package one.mir.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.it.ReportingTestName
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, OrderType}
+import one.mir.account.PrivateKeyAccount
+import one.mir.it.ReportingTestName
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.api.SyncMatcherHttpApi
+import one.mir.it.api.SyncMatcherHttpApi._
+import one.mir.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import one.mir.it.sync._
+import one.mir.it.transactions.NodesFromDocker
+import one.mir.it.util._
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.IssueTransactionV1
+import one.mir.transaction.assets.exchange.{AssetPair, OrderType}
 import org.scalatest._
 
 import scala.util.Random
@@ -160,7 +160,7 @@ class MatcherTickerTestSuite
 object MatcherTickerTestSuite {
 
   import ConfigFactory._
-  import com.wavesplatform.it.NodeConfigs._
+  import one.mir.it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   val Decimals: Byte           = 2

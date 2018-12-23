@@ -1,16 +1,16 @@
-package com.wavesplatform.lang.v1.evaluator.ctx.impl.waves
+package one.mir.lang.v1.evaluator.ctx.impl.waves
 
 import cats.data.EitherT
 import cats.implicits._
-import com.wavesplatform.lang.ScriptVersion
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types.{BYTEVECTOR, LONG, STRING, _}
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{EnvironmentFunctions, PureContext, _}
-import com.wavesplatform.lang.v1.traits._
-import com.wavesplatform.lang.v1.traits.domain.{OrdType, Recipient}
-import com.wavesplatform.lang.v1.{CTX, FunctionHeader}
+import one.mir.lang.ScriptVersion
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.compiler.Types.{BYTEVECTOR, LONG, STRING, _}
+import one.mir.lang.v1.evaluator.FunctionIds._
+import one.mir.lang.v1.evaluator.ctx._
+import one.mir.lang.v1.evaluator.ctx.impl.{EnvironmentFunctions, PureContext, _}
+import one.mir.lang.v1.traits._
+import one.mir.lang.v1.traits.domain.{OrdType, Recipient}
+import one.mir.lang.v1.{CTX, FunctionHeader}
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 
@@ -18,7 +18,7 @@ object WavesContext {
 
   import Bindings._
   import Types._
-  import com.wavesplatform.lang.v1.evaluator.ctx.impl.converters._
+  import one.mir.lang.v1.evaluator.ctx.impl.converters._
 
   def build(version: ScriptVersion, env: Environment, isTokenContext: Boolean): CTX = {
     val environmentFunctions = new EnvironmentFunctions(env)
@@ -269,7 +269,7 @@ object WavesContext {
           buildActiveTransactionTypes(proofsEnabled)).map(_.typeRef))
 
     val txByIdF: BaseFunction = {
-      val returnType = com.wavesplatform.lang.v1.compiler.Types.UNION.create(UNIT +: anyTransactionType.l)
+      val returnType = one.mir.lang.v1.compiler.Types.UNION.create(UNIT +: anyTransactionType.l)
       NativeFunction("transactionById", 100, GETTRANSACTIONBYID, returnType, "Lookup transaction", ("id", BYTEVECTOR, "transaction Id")) {
         case CONST_BYTEVECTOR(id: ByteVector) :: Nil =>
           val maybeDomainTx: Option[CaseObj] = env.transactionById(id.toArray).map(transactionObject(_, proofsEnabled))
@@ -329,7 +329,7 @@ object WavesContext {
         UNION((buildOrderType(proofsEnabled) :: buildActiveTransactionTypes(proofsEnabled)).map(_.typeRef))
 
     val commonVars = Map(
-      ("height", ((com.wavesplatform.lang.v1.compiler.Types.LONG, "Current blockchain height"), LazyVal(EitherT(heightCoeval)))),
+      ("height", ((one.mir.lang.v1.compiler.Types.LONG, "Current blockchain height"), LazyVal(EitherT(heightCoeval)))),
       ("tx", ((scriptInputType, "Processing transaction"), LazyVal(EitherT(inputEntityCoeval))))
     )
 

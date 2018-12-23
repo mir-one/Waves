@@ -1,6 +1,6 @@
-package com.wavesplatform.lang.v1.evaluator.ctx
+package one.mir.lang.v1.evaluator.ctx
 
-import com.wavesplatform.lang.v1.compiler.Types.{CASETYPEREF, FINAL, REAL, UNION}
+import one.mir.lang.v1.compiler.Types.{CASETYPEREF, FINAL, REAL, UNION}
 
 trait DefinedType {
   def name: String

@@ -1,20 +1,20 @@
-package com.wavesplatform.database
+package one.mir.database
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.block.Block
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.diffs.ENOUGH_AMT
-import com.wavesplatform.state.{BlockchainUpdaterImpl, EitherExt2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.{TransferTransaction, TransferTransactionV1}
-import com.wavesplatform.transaction.{GenesisTransaction, Transaction}
-import com.wavesplatform.utils.Time
-import com.wavesplatform.{RequestGen, WithDB}
+import one.mir.account.{Address, PrivateKeyAccount}
+import one.mir.block.Block
+import one.mir.features.BlockchainFeatures
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.lang.v1.compiler.Terms
+import one.mir.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import one.mir.state.diffs.ENOUGH_AMT
+import one.mir.state.{BlockchainUpdaterImpl, EitherExt2}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer.{TransferTransaction, TransferTransactionV1}
+import one.mir.transaction.{GenesisTransaction, Transaction}
+import one.mir.utils.Time
+import one.mir.{RequestGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.{FreeSpec, Matchers}
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.matcher.market
+package one.mir.matcher.market
 
 import akka.actor.{Actor, Props}
-import com.wavesplatform.database.{DBExt, RW}
-import com.wavesplatform.matcher.model.Events._
-import com.wavesplatform.matcher.{MatcherKeys, MatcherSettings}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.database.{DBExt, RW}
+import one.mir.matcher.model.Events._
+import one.mir.matcher.{MatcherKeys, MatcherSettings}
+import one.mir.state._
+import one.mir.transaction.assets.exchange.ExchangeTransaction
+import one.mir.utils.ScorexLogging
 import org.iq80.leveldb.DB
 
 class MatcherTransactionWriter(db: DB) extends Actor with ScorexLogging {

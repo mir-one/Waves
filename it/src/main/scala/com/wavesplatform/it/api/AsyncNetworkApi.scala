@@ -1,8 +1,8 @@
-package com.wavesplatform.it.api
+package one.mir.it.api
 
-import com.wavesplatform.it.Node
-import com.wavesplatform.network.RawBytes
-import com.wavesplatform.network.client.NetworkSender
+import one.mir.it.Node
+import one.mir.network.RawBytes
+import one.mir.network.client.NetworkSender
 
 import scala.concurrent.Future
 

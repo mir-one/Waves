@@ -1,15 +1,15 @@
-package com.wavesplatform
+package one.mir
 
-import com.wavesplatform.state._
+import one.mir.state._
 import monix.execution.schedulers.SchedulerService
 import monix.execution.{Ack, Scheduler}
 import monix.reactive.Observer
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.{Block, MicroBlock, SignerData}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.{Block, MicroBlock, SignerData}
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.transaction.transfer._
+import one.mir.crypto._
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 

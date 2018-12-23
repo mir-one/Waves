@@ -1,23 +1,23 @@
-package com.wavesplatform.it.api
+package one.mir.it.api
 
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeoutException
 
-import com.wavesplatform.api.http.alias.CreateAliasV1Request
-import com.wavesplatform.api.http.assets._
-import com.wavesplatform.api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
-import com.wavesplatform.api.http.{AddressApiRoute, ConnectReq, DataRequest}
-import com.wavesplatform.features.api.ActivationStatus
-import com.wavesplatform.http.DebugApiRoute._
-import com.wavesplatform.http.DebugMessage._
-import com.wavesplatform.http.{DebugMessage, RollbackParams, api_key}
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.util.GlobalTimer.{instance => timer}
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{DataEntry, EitherExt2, Portfolio}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
-import com.wavesplatform.transaction.transfer._
+import one.mir.api.http.alias.CreateAliasV1Request
+import one.mir.api.http.assets._
+import one.mir.api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
+import one.mir.api.http.{AddressApiRoute, ConnectReq, DataRequest}
+import one.mir.features.api.ActivationStatus
+import one.mir.http.DebugApiRoute._
+import one.mir.http.DebugMessage._
+import one.mir.http.{DebugMessage, RollbackParams, api_key}
+import one.mir.it.Node
+import one.mir.it.util.GlobalTimer.{instance => timer}
+import one.mir.it.util._
+import one.mir.state.{DataEntry, EitherExt2, Portfolio}
+import one.mir.transaction.transfer.MassTransferTransaction.Transfer
+import one.mir.transaction.transfer._
 import org.asynchttpclient.Dsl.{get => _get, post => _post}
 import org.asynchttpclient._
 import org.asynchttpclient.util.HttpConstants

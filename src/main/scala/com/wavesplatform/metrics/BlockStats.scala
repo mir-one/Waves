@@ -1,10 +1,10 @@
-package com.wavesplatform.metrics
+package one.mir.metrics
 
-import com.wavesplatform.network.{HandshakeHandler, MicroBlockInv}
-import com.wavesplatform.state.ByteStr
+import one.mir.network.{HandshakeHandler, MicroBlockInv}
+import one.mir.state.ByteStr
 import io.netty.channel.Channel
 import org.influxdb.dto.Point
-import com.wavesplatform.block.{Block, MicroBlock}
+import one.mir.block.{Block, MicroBlock}
 
 object BlockStats {
 

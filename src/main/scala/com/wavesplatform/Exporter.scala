@@ -1,16 +1,16 @@
-package com.wavesplatform
+package one.mir
 
 import java.io.{BufferedOutputStream, File, FileOutputStream, OutputStream}
 import java.nio.charset.StandardCharsets
 
 import com.google.common.primitives.Ints
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.db.openDB
-import com.wavesplatform.history.StorageFactory
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.utils._
+import one.mir.account.AddressScheme
+import one.mir.db.openDB
+import one.mir.history.StorageFactory
+import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.state.Blockchain
+import one.mir.utils._
 import org.slf4j.bridge.SLF4JBridgeHandler
 
 import scala.util.{Failure, Success, Try}

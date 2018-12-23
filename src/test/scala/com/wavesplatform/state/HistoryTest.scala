@@ -1,8 +1,8 @@
-package com.wavesplatform.state
+package one.mir.state
 
-import com.wavesplatform.block.Block
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.crypto._
+import one.mir.block.Block
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.crypto._
 
 trait HistoryTest {
   val genesisBlock: Block = TestBlock.withReference(ByteStr(Array.fill(SignatureLength)(0: Byte)))

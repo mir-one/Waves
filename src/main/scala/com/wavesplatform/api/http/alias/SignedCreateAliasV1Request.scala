@@ -1,11 +1,11 @@
-package com.wavesplatform.api.http.alias
+package one.mir.api.http.alias
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com.wavesplatform.account.{Alias, PublicKeyAccount}
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
-import com.wavesplatform.transaction.{CreateAliasTransactionV1, ValidationError}
+import one.mir.account.{Alias, PublicKeyAccount}
+import one.mir.api.http.BroadcastRequest
+import one.mir.transaction.TransactionParsers.SignatureStringLength
+import one.mir.transaction.{CreateAliasTransactionV1, ValidationError}
 
 case class SignedCreateAliasV1Request(@ApiModelProperty(value = "Base58 encoded sender public key", required = true)
                                       senderPublicKey: String,

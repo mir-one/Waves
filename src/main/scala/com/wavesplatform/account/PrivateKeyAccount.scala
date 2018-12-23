@@ -1,8 +1,8 @@
-package com.wavesplatform.account
+package one.mir.account
 
-import com.wavesplatform.crypto
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.transaction.ValidationError.GenericError
+import one.mir.crypto
+import one.mir.utils.Base58
+import one.mir.transaction.ValidationError.GenericError
 
 import scala.util.{Failure, Success}
 

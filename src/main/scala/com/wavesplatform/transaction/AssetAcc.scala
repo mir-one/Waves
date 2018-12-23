@@ -1,5 +1,5 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.account.Address
+import one.mir.account.Address
 
 case class AssetAcc(account: Address, assetId: Option[AssetId])

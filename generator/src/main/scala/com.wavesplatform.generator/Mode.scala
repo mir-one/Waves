@@ -1,4 +1,4 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 object Mode extends Enumeration {
   type Mode = Value

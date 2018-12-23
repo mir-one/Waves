@@ -1,27 +1,27 @@
-package com.wavesplatform
+package one.mir
 
 import cats.syntax.semigroup._
-import com.wavesplatform.account.PublicKeyAccount._
-import com.wavesplatform.account._
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.testing.ScriptGen
-import com.wavesplatform.settings.Constants
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.ENOUGH_AMT
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.lease._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.PublicKeyAccount._
+import one.mir.account._
+import one.mir.lang.Global
+import one.mir.lang.v1.compiler.CompilerV1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import one.mir.lang.v1.testing.ScriptGen
+import one.mir.settings.Constants
+import one.mir.state._
+import one.mir.state.diffs.ENOUGH_AMT
+import one.mir.transaction._
+import one.mir.transaction.assets._
+import one.mir.transaction.assets.exchange._
+import one.mir.transaction.lease._
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.Script
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import one.mir.transaction.transfer._
 import MassTransferTransaction.MaxTransferCount
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
+import one.mir.lang.ScriptVersion.Versions.V1
 import org.scalacheck.Gen.{alphaLowerChar, alphaUpperChar, frequency, numChar}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.Suite

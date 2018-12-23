@@ -1,9 +1,9 @@
-package com.wavesplatform.account
+package one.mir.account
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
+import one.mir.state.ByteStr
+import one.mir.serialization.Deser
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.GenericError
 
 sealed trait Alias extends AddressOrAlias {
   lazy val stringRepr: String = Alias.Prefix + networkByte.toChar + ":" + name

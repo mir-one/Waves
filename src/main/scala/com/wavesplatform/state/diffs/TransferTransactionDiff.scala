@@ -1,12 +1,12 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.implicits._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.account.Address
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.transfer._
+import one.mir.settings.FunctionalitySettings
+import one.mir.state._
+import one.mir.account.Address
+import one.mir.transaction.ValidationError
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.transfer._
 
 import scala.util.Right
 

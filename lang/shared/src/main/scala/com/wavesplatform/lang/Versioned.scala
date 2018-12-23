@@ -1,4 +1,4 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
 trait Versioned {
   type Ver <: ScriptVersion

@@ -1,4 +1,4 @@
-package com.wavesplatform.utils
+package one.mir.utils
 
 sealed abstract class ApplicationStopReason(val code: Int)
 case object Default              extends ApplicationStopReason(1)

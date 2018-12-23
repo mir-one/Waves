@@ -1,4 +1,4 @@
-package com.wavesplatform.generator
+package one.mir.generator
 
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -6,10 +6,10 @@ import java.net.InetSocketAddress
 import cats.Show
 import cats.data._
 import cats.implicits._
-import com.wavesplatform.generator.Worker.Settings
-import com.wavesplatform.network.RawBytes
-import com.wavesplatform.network.client.NetworkSender
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.generator.Worker.Settings
+import one.mir.network.RawBytes
+import one.mir.network.client.NetworkSender
+import one.mir.utils.ScorexLogging
 import io.netty.channel.Channel
 
 import scala.concurrent.duration.FiniteDuration

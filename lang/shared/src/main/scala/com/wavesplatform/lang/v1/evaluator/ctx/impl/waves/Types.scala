@@ -1,8 +1,8 @@
-package com.wavesplatform.lang.v1.evaluator.ctx.impl.waves
+package one.mir.lang.v1.evaluator.ctx.impl.waves
 
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl._
-import com.wavesplatform.lang.v1.evaluator.ctx.{CaseType, DefinedType, UnionType}
+import one.mir.lang.v1.compiler.Types._
+import one.mir.lang.v1.evaluator.ctx.impl._
+import one.mir.lang.v1.evaluator.ctx.{CaseType, DefinedType, UnionType}
 
 object Types {
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.discovery
+package one.mir.discovery
 
 import java.net.InetSocketAddress
 

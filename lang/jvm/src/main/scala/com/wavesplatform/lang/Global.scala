@@ -1,7 +1,7 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.v1.BaseGlobal
-import com.wavesplatform.utils.{Base58, Base64}
+import one.mir.lang.v1.BaseGlobal
+import one.mir.utils.{Base58, Base64}
 import scorex.crypto.hash.{Blake2b256, Keccak256, Sha256}
 import scorex.crypto.signatures.{Curve25519, PublicKey, Signature}
 

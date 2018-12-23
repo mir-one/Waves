@@ -1,21 +1,21 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.Monoid
 import cats.implicits._
 import cats.syntax.either.catsSyntaxEitherId
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.mining.MiningConstraint
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.state.patch.{CancelAllLeases, CancelInvalidLeaseIn, CancelLeaseOverflow}
-import com.wavesplatform.state.reader.CompositeBlockchain.composite
-import com.wavesplatform.account.Address
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.transaction.ValidationError.ActivationError
-import com.wavesplatform.transaction.{Transaction, ValidationError}
+import one.mir.features.BlockchainFeatures
+import one.mir.features.FeatureProvider._
+import one.mir.metrics.Instrumented
+import one.mir.mining.MiningConstraint
+import one.mir.settings.FunctionalitySettings
+import one.mir.state._
+import one.mir.state.patch.{CancelAllLeases, CancelInvalidLeaseIn, CancelLeaseOverflow}
+import one.mir.state.reader.CompositeBlockchain.composite
+import one.mir.account.Address
+import one.mir.utils.ScorexLogging
+import one.mir.block.{Block, MicroBlock}
+import one.mir.transaction.ValidationError.ActivationError
+import one.mir.transaction.{Transaction, ValidationError}
 
 object BlockDiffer extends ScorexLogging with Instrumented {
 

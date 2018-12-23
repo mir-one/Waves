@@ -1,11 +1,11 @@
-package com.wavesplatform.network
+package one.mir.network
 
 import com.google.common.cache.{CacheBuilder, CacheLoader}
-import com.wavesplatform.network.HistoryReplier._
-import com.wavesplatform.network.MicroBlockSynchronizer.MicroBlockSignature
-import com.wavesplatform.settings.SynchronizationSettings
-import com.wavesplatform.state.{ByteStr, NG}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.network.HistoryReplier._
+import one.mir.network.MicroBlockSynchronizer.MicroBlockSignature
+import one.mir.settings.SynchronizationSettings
+import one.mir.state.{ByteStr, NG}
+import one.mir.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 import monix.eval.Task

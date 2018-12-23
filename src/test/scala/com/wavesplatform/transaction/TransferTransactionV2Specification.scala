@@ -1,10 +1,10 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.account.{Address, PublicKeyAccount}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.Base58
+import one.mir.TransactionGen
+import one.mir.account.{Address, PublicKeyAccount}
+import one.mir.state._
+import one.mir.transaction.transfer._
+import one.mir.utils.Base58
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks

@@ -1,7 +1,7 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.wavesplatform.lang.v1.traits.{DataType, Environment}
+import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import one.mir.lang.v1.traits.{DataType, Environment}
 import shapeless.{:+:, CNil}
 
 object WavesContext {

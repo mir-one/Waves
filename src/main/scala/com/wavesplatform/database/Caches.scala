@@ -1,16 +1,16 @@
-package com.wavesplatform.database
+package one.mir.database
 
 import java.util
 
 import cats.syntax.monoid._
 import com.google.common.cache.{CacheBuilder, CacheLoader, LoadingCache}
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.{AssetId, Transaction}
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.metrics.LevelDBStats
+import one.mir.account.{Address, Alias}
+import one.mir.block.{Block, BlockHeader}
+import one.mir.state._
+import one.mir.transaction.{AssetId, Transaction}
+import one.mir.transaction.smart.script.Script
+import one.mir.utils.ScorexLogging
+import one.mir.metrics.LevelDBStats
 
 import scala.collection.JavaConverters._
 import scala.concurrent.duration._

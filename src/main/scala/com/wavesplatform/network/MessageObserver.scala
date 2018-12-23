@@ -1,11 +1,11 @@
-package com.wavesplatform.network
+package one.mir.network
 
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{Channel, ChannelHandlerContext, ChannelInboundHandlerAdapter}
 import monix.reactive.subjects.ConcurrentSubject
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.Transaction
+import one.mir.block.Block
+import one.mir.transaction.Transaction
 
 @Sharable
 class MessageObserver extends ChannelInboundHandlerAdapter with ScorexLogging {

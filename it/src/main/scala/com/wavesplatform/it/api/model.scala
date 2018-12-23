@@ -1,7 +1,7 @@
-package com.wavesplatform.it.api
+package one.mir.it.api
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import one.mir.state.ByteStr
+import one.mir.transaction.assets.exchange.AssetPair
 import play.api.libs.json._
 
 import scala.util.{Failure, Success}

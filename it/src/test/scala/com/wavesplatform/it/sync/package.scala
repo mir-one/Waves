@@ -1,11 +1,11 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.api.http.assets.{SignedIssueV1Request, SignedIssueV2Request}
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.DataEntry
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, IssueTransactionV2}
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.utils.Base58
+import one.mir.api.http.assets.{SignedIssueV1Request, SignedIssueV2Request}
+import one.mir.it.util._
+import one.mir.state.DataEntry
+import one.mir.transaction.assets.{IssueTransactionV1, IssueTransactionV2}
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.utils.Base58
 
 package object sync {
   val smartFee                   = 0.004.waves

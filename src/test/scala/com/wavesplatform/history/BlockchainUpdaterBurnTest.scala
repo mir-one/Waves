@@ -1,16 +1,16 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.{BlockchainSettings, WavesSettings}
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.{ENOUGH_AMT, produce}
+import one.mir.TransactionGen
+import one.mir.features.BlockchainFeatures
+import one.mir.settings.{BlockchainSettings, WavesSettings}
+import one.mir.state._
+import one.mir.state.diffs.{ENOUGH_AMT, produce}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.assets.{BurnTransactionV1, IssueTransactionV1, ReissueTransactionV1}
-import com.wavesplatform.transaction.transfer.TransferTransactionV1
+import one.mir.transaction.GenesisTransaction
+import one.mir.transaction.assets.{BurnTransactionV1, IssueTransactionV1, ReissueTransactionV1}
+import one.mir.transaction.transfer.TransferTransactionV1
 
 class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with DomainScenarioDrivenPropertyCheck with Matchers with TransactionGen {
 

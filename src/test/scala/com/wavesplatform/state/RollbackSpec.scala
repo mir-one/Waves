@@ -1,22 +1,22 @@
-package com.wavesplatform.state
+package one.mir.state
 
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.crypto.SignatureLength
-import com.wavesplatform.db.WithDomain
-import com.wavesplatform.features.BlockchainFeatures._
-import com.wavesplatform.features._
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.v1.compiler.Terms.TRUE
-import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings}
-import com.wavesplatform.state.reader.LeaseDetails
-import com.wavesplatform.transaction.ValidationError.AliasDoesNotExist
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
-import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction, Transaction}
-import com.wavesplatform.{NoShrink, TestTime, TransactionGen, history}
+import one.mir.account.{Address, PrivateKeyAccount}
+import one.mir.crypto.SignatureLength
+import one.mir.db.WithDomain
+import one.mir.features.BlockchainFeatures._
+import one.mir.features._
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.lang.v1.compiler.Terms.TRUE
+import one.mir.settings.{TestFunctionalitySettings, WavesSettings}
+import one.mir.state.reader.LeaseDetails
+import one.mir.transaction.ValidationError.AliasDoesNotExist
+import one.mir.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
+import one.mir.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
+import one.mir.transaction.smart.SetScriptTransaction
+import one.mir.transaction.smart.script.v1.ScriptV1
+import one.mir.transaction.transfer._
+import one.mir.transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction, Transaction}
+import one.mir.{NoShrink, TestTime, TransactionGen, history}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertions, FreeSpec, Matchers}
@@ -35,7 +35,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithDomain with Transacti
     TransferTransactionV1.selfSigned(None, sender, recipient, amount, nextTs, None, 1, Array.empty[Byte]).explicitGet()
 
   private def randomOp(sender: PrivateKeyAccount, recipient: Address, amount: Long, op: Int, nextTs: => Long = nextTs) = {
-    import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+    import one.mir.transaction.transfer.MassTransferTransaction.ParsedTransfer
     op match {
       case 1 =>
         val lease = LeaseTransactionV1.selfSigned(sender, amount, 100000, nextTs, recipient).explicitGet()
@@ -75,7 +75,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithDomain with Transacti
     "forget rollbacked transaction for querying" in forAll(accountGen, accountGen, Gen.nonEmptyListOf(Gen.choose(1, 10))) {
       case (sender, recipient, txCount) =>
         withDomain(createSettings(MassTransfer -> 0)) { d =>
-          d.appendBlock(genesisBlock(nextTs, sender, com.wavesplatform.state.diffs.ENOUGH_AMT))
+          d.appendBlock(genesisBlock(nextTs, sender, one.mir.state.diffs.ENOUGH_AMT))
 
           val genesisSignature = d.lastBlockId
 
@@ -462,7 +462,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithDomain with Transacti
         withDomain(createSettings(MassTransfer -> 0)) { d =>
           val ts = nextTs
 
-          d.appendBlock(genesisBlock(ts, sender, com.wavesplatform.state.diffs.ENOUGH_AMT))
+          d.appendBlock(genesisBlock(ts, sender, one.mir.state.diffs.ENOUGH_AMT))
 
           val transferAmount = 100
 

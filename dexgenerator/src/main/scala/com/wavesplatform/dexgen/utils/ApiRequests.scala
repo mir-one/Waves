@@ -1,13 +1,13 @@
-package com.wavesplatform.dexgen.utils
+package one.mir.dexgen.utils
 
 import java.io.IOException
 import java.util.concurrent.TimeoutException
 
 import com.google.common.primitives.Longs
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.api.http.assets.{SignedIssueV1Request, SignedMassTransferRequest, SignedTransferV1Request}
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.{
+import one.mir.account.PrivateKeyAccount
+import one.mir.api.http.assets.{SignedIssueV1Request, SignedMassTransferRequest, SignedTransferV1Request}
+import one.mir.crypto
+import one.mir.it.api.{
   AssetBalance,
   Balance,
   MatcherResponse,
@@ -18,16 +18,16 @@ import com.wavesplatform.it.api.{
   Transaction,
   UnexpectedStatusCodeException
 }
-import com.wavesplatform.it.util.GlobalTimer.{instance => timer}
-import com.wavesplatform.it.util._
-import com.wavesplatform.matcher.api.CancelOrderRequest
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.{ParsedTransfer, Transfer}
-import com.wavesplatform.transaction.transfer.{MassTransferTransaction, TransferTransactionV1}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.it.util.GlobalTimer.{instance => timer}
+import one.mir.it.util._
+import one.mir.matcher.api.CancelOrderRequest
+import one.mir.state.ByteStr
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.IssueTransactionV1
+import one.mir.transaction.assets.exchange.{AssetPair, Order}
+import one.mir.transaction.transfer.MassTransferTransaction.{ParsedTransfer, Transfer}
+import one.mir.transaction.transfer.{MassTransferTransaction, TransferTransactionV1}
+import one.mir.utils.ScorexLogging
 import org.asynchttpclient.Dsl.{get => _get, post => _post}
 import org.asynchttpclient._
 import org.asynchttpclient.util.HttpConstants

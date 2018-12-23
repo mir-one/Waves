@@ -1,7 +1,7 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
-import com.wavesplatform.Version
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.Version
+import one.mir.utils.ScorexLogging
 
 /**
   * System constants here.

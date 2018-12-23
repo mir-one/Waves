@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.evaluator
+package one.mir.lang.v1.evaluator
 
 object FunctionIds {
 

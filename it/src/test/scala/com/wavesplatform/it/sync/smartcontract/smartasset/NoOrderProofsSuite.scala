@@ -1,14 +1,14 @@
-package com.wavesplatform.it.sync.smartcontract.smartasset
+package one.mir.it.sync.smartcontract.smartasset
 
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{someAssetAmount, _}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.assets.BurnTransactionV2
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
+import one.mir.account.AddressScheme
+import one.mir.it.api.SyncHttpApi._
+import one.mir.it.sync.{someAssetAmount, _}
+import one.mir.it.transactions.BaseTransactionSuite
+import one.mir.state.ByteStr
+import one.mir.transaction.Proofs
+import one.mir.transaction.assets.BurnTransactionV2
+import one.mir.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.transfer.TransferTransactionV2
 import scala.concurrent.duration._
 
 class NoOrderProofsSuite extends BaseTransactionSuite {

@@ -1,6 +1,6 @@
-package com.wavesplatform.dexgen.cli
+package one.mir.dexgen.cli
 
-import com.wavesplatform.dexgen.Mode
+import one.mir.dexgen.Mode
 import scopt.Read
 
 import scala.concurrent.duration.FiniteDuration

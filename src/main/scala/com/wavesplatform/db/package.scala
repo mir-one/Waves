@@ -1,8 +1,8 @@
-package com.wavesplatform
+package one.mir
 
 import java.io.File
 
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.utils.ScorexLogging
 import org.iq80.leveldb.{DB, Options}
 
 package object db extends ScorexLogging {

@@ -1,4 +1,4 @@
-package com.wavesplatform.dexgen.utils
+package one.mir.dexgen.utils
 
 object GenOrderType extends Enumeration {
 

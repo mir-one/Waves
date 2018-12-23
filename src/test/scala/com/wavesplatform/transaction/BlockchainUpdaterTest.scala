@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 import java.security.Permission
 import java.util.concurrent.{Semaphore, TimeUnit}
 
-import com.wavesplatform.block.Block
-import com.wavesplatform.db.WithDomain
-import com.wavesplatform.features.BlockchainFeatureStatus
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.history
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.produce
+import one.mir.block.Block
+import one.mir.db.WithDomain
+import one.mir.features.BlockchainFeatureStatus
+import one.mir.features.FeatureProvider._
+import one.mir.history
+import one.mir.state._
+import one.mir.state.diffs.produce
 import org.scalatest.words.ShouldVerb
 import org.scalatest.{FreeSpec, Matchers}
 

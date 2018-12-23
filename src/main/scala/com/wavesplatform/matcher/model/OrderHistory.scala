@@ -1,25 +1,25 @@
-package com.wavesplatform.matcher.model
+package one.mir.matcher.model
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com.wavesplatform.account.Address
-import com.wavesplatform.database.{DBExt, RW}
-import com.wavesplatform.matcher._
-import com.wavesplatform.matcher.api.DBUtils
-import com.wavesplatform.matcher.model.Events._
-import com.wavesplatform.matcher.model.LimitOrder._
-import com.wavesplatform.metrics.TimerExt
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.Order
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.account.Address
+import one.mir.database.{DBExt, RW}
+import one.mir.matcher._
+import one.mir.matcher.api.DBUtils
+import one.mir.matcher.model.Events._
+import one.mir.matcher.model.LimitOrder._
+import one.mir.metrics.TimerExt
+import one.mir.state._
+import one.mir.transaction.AssetId
+import one.mir.transaction.assets.exchange.Order
+import one.mir.utils.ScorexLogging
 import kamon.Kamon
 import org.iq80.leveldb.DB
 
 class OrderHistory(db: DB, settings: MatcherSettings) extends ScorexLogging {
   import DBUtils.indexes
   import OrderHistory._
-  import com.wavesplatform.matcher.MatcherKeys._
+  import one.mir.matcher.MatcherKeys._
 
   private val timer               = Kamon.timer("matcher.order-history.impl")
   private val saveOpenVolumeTimer = timer.refine("action" -> "save-open-volume")

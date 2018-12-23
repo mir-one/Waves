@@ -1,5 +1,5 @@
-package com.wavesplatform.matcher.api
-import com.wavesplatform.account.Address
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+package one.mir.matcher.api
+import one.mir.account.Address
+import one.mir.transaction.assets.exchange.AssetPair
 
 case class BatchCancel(address: Address, assetPair: Option[AssetPair], timestamp: Long)

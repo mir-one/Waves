@@ -1,17 +1,17 @@
-package com.wavesplatform.consensus
+package one.mir.consensus
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.settings.{WavesSettings, _}
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.{ENOUGH_AMT, ProduceError}
-import com.wavesplatform.transaction.{BlockchainUpdater, GenesisTransaction}
-import com.wavesplatform.utils.Time
-import com.wavesplatform.{TransactionGen, WithDB}
+import one.mir.account.PrivateKeyAccount
+import one.mir.block.Block
+import one.mir.consensus.nxt.NxtLikeConsensusBlockData
+import one.mir.database.LevelDBWriter
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.settings.{WavesSettings, _}
+import one.mir.state._
+import one.mir.state.diffs.{ENOUGH_AMT, ProduceError}
+import one.mir.transaction.{BlockchainUpdater, GenesisTransaction}
+import one.mir.utils.Time
+import one.mir.{TransactionGen, WithDB}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{FreeSpec, Matchers}
 

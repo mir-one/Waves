@@ -1,4 +1,4 @@
-package com.wavesplatform.state
+package one.mir.state
 
 import java.nio.charset.StandardCharsets.UTF_8
 
@@ -6,9 +6,9 @@ import io.swagger.annotations.ApiModelProperty
 import scala.annotation.meta.field
 
 import com.google.common.primitives.{Longs, Shorts}
-import com.wavesplatform.state.DataEntry._
+import one.mir.state.DataEntry._
 import play.api.libs.json._
-import com.wavesplatform.serialization.Deser
+import one.mir.serialization.Deser
 
 sealed abstract class DataEntry[T](
     @(ApiModelProperty @field)(required = true, dataType = "java.lang.String", value = "integer", allowableValues = "integer,boolean,binary,string")

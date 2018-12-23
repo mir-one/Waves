@@ -1,6 +1,6 @@
-package com.wavesplatform.it
+package one.mir.it
 
-import com.wavesplatform.settings.Constants
+import one.mir.settings.Constants
 import io.netty.util.Timer
 
 import scala.concurrent.duration.FiniteDuration

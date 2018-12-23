@@ -1,25 +1,25 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import akka.http.scaladsl.model.StatusCodes
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.RequestGen
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.Diff
-import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.wavesplatform.utx.{UtxBatchOps, UtxPool}
+import one.mir.RequestGen
+import one.mir.settings.RestAPISettings
+import one.mir.state.Diff
+import one.mir.state.diffs.TransactionDiffer.TransactionValidationError
+import one.mir.utx.{UtxBatchOps, UtxPool}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen._
 import org.scalacheck.{Gen => G}
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{JsObject, JsValue, Json, Writes}
-import com.wavesplatform.api.http._
-import com.wavesplatform.api.http.assets._
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{Proofs, Transaction, ValidationError}
-import com.wavesplatform.wallet.Wallet
+import one.mir.api.http._
+import one.mir.api.http.assets._
+import one.mir.utils.Base58
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.transfer._
+import one.mir.transaction.{Proofs, Transaction, ValidationError}
+import one.mir.wallet.Wallet
 import shapeless.Coproduct
 
 class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with RequestGen with PathMockFactory with PropertyChecks {

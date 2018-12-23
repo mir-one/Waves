@@ -1,6 +1,6 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
-import com.wavesplatform.account.PublicKeyAccount
+import one.mir.account.PublicKeyAccount
 
 trait Authorized {
   val sender: PublicKeyAccount

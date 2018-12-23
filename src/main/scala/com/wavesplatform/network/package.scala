@@ -1,11 +1,11 @@
-package com.wavesplatform
+package one.mir
 
 import java.net.{InetSocketAddress, SocketAddress, URI}
 import java.util.concurrent.Callable
 
 import cats.Eq
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.state.ByteStr
+import one.mir.utils.ScorexLogging
 import io.netty.channel.group.{ChannelGroup, ChannelGroupFuture, ChannelMatcher}
 import io.netty.channel.local.LocalAddress
 import io.netty.channel.socket.nio.NioSocketChannel
@@ -15,8 +15,8 @@ import io.netty.util.concurrent.{EventExecutorGroup, ScheduledFuture}
 import monix.eval.Coeval
 import monix.execution.Scheduler
 import monix.reactive.Observable
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.Transaction
+import one.mir.block.Block
+import one.mir.transaction.Transaction
 
 import scala.concurrent.duration._
 

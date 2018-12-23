@@ -1,12 +1,12 @@
-package com.wavesplatform.api.http
+package one.mir.api.http
 
 import cats.implicits._
-import com.wavesplatform.state.DataEntry
+import one.mir.state.DataEntry
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import scala.annotation.meta.field
 import play.api.libs.json.Json
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction.{DataTransaction, Proofs, ValidationError}
+import one.mir.account.PublicKeyAccount
+import one.mir.transaction.{DataTransaction, Proofs, ValidationError}
 
 object DataRequest {
   implicit val unsignedDataRequestReads = Json.reads[DataRequest]

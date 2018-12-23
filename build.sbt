@@ -17,7 +17,7 @@ val versionSource = Def.task {
   // In case of not updating the version nodes build from headless sources will fail to connect to newer versions
   val FallbackVersion = (0, 15, 0)
 
-  val versionFile      = (sourceManaged in Compile).value / "com" / "wavesplatform" / "Version.scala"
+  val versionFile      = (sourceManaged in Compile).value / "one" / "mir" / "Version.scala"
   val versionExtractor = """(\d+)\.(\d+)\.(\d+).*""".r
   val (major, minor, patch) = version.value match {
     case versionExtractor(ma, mi, pa) => (ma.toInt, mi.toInt, pa.toInt)
@@ -25,7 +25,7 @@ val versionSource = Def.task {
   }
   IO.write(
     versionFile,
-    s"""package com.wavesplatform
+    s"""package one.mir
        |
        |object Version {
        |  val VersionString = "${version.value}"
@@ -47,7 +47,7 @@ logBuffered := false
 inThisBuild(
   Seq(
     scalaVersion := "2.12.7",
-    organization := "com.wavesplatform",
+    organization := "one.mir",
     crossPaths := false,
     scalacOptions ++= Seq("-feature", "-deprecation", "-language:higherKinds", "-language:implicitConversions", "-Ywarn-unused:-implicits", "-Xlint")
   ))
@@ -106,7 +106,7 @@ inTask(assembly)(
 
 inConfig(Compile)(
   Seq(
-    mainClass := Some("com.wavesplatform.Application"),
+    mainClass := Some("one.mir.Application"),
     publishArtifact in packageDoc := false,
     publishArtifact in packageSrc := false,
     sourceGenerators += versionSource
@@ -122,7 +122,7 @@ inConfig(Test)(
 
 inConfig(Linux)(
   Seq(
-    maintainer := "wavesplatform.com",
+    maintainer := "mir.one",
     packageSummary := "Waves node",
     packageDescription := "Waves node"
   ))
@@ -264,13 +264,13 @@ lazy val lang =
       name := "RIDE Compiler",
       normalizedName := "lang",
       description := "The RIDE smart contract language compiler",
-      homepage := Some(url("https://docs.wavesplatform.com/en/technical-details/waves-contracts-language-description/maven-compiler-package.html")),
-      licenses := Seq(("MIT", url("https://github.com/wavesplatform/Waves/blob/master/LICENSE"))),
-      organization := "com.wavesplatform",
-      organizationName := "Waves Platform",
-      organizationHomepage := Some(url("https://wavesplatform.com")),
-      scmInfo := Some(ScmInfo(url("https://github.com/wavesplatform/Waves"), "git@github.com:wavesplatform/Waves.git", None)),
-      developers := List(Developer("petermz", "Peter Zhelezniakov", "peterz@rambler.ru", url("https://wavesplatform.com"))),
+      homepage := Some(url("https://docs.mir.one/en/technical-details/waves-contracts-language-description/maven-compiler-package.html")),
+      licenses := Seq(("MIT", url("https://github.com/mir-one/node/blob/master/LICENSE"))),
+      organization := "one.mir",
+      organizationName := "Mir One",
+      organizationHomepage := Some(url("https://mir.one")),
+      scmInfo := Some(ScmInfo(url("https://github.com/mir-one/node"), "git@github.com:mir-one/node.git", None)),
+      developers := List(Developer("petermz", "Peter Zhelezniakov", "peterz@rambler.ru", url("https://mir.one"))),
       libraryDependencies ++= Seq(
         "org.scala-js"                      %% "scalajs-stubs" % "1.0.0-RC1" % "provided",
         "com.github.spullara.mustache.java" % "compiler" % "0.9.5"

@@ -1,16 +1,16 @@
-package com.wavesplatform.http
+package one.mir.http
 
 import java.time.Instant
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.Shutdownable
-import com.wavesplatform.settings.{Constants, RestAPISettings}
-import com.wavesplatform.state.Blockchain
+import one.mir.Shutdownable
+import one.mir.settings.{Constants, RestAPISettings}
+import one.mir.state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com.wavesplatform.api.http.{ApiRoute, CommonApiFunctions}
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.api.http.{ApiRoute, CommonApiFunctions}
+import one.mir.utils.ScorexLogging
 
 @Path("/node")
 @Api(value = "node")

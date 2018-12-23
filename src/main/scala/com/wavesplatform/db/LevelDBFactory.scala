@@ -1,6 +1,6 @@
-package com.wavesplatform.db
+package one.mir.db
 
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.utils.ScorexLogging
 import org.iq80.leveldb.DBFactory
 
 import scala.util.Try

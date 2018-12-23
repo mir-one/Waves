@@ -1,4 +1,4 @@
-package com.wavesplatform.dexgen
+package one.mir.dexgen
 
 import scala.collection.immutable.TreeMap
 

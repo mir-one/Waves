@@ -1,16 +1,16 @@
-package com.wavesplatform.it.api
+package one.mir.it.api
 
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeoutException
 
 import akka.http.scaladsl.model.StatusCodes.{BadRequest, NotFound}
-import com.wavesplatform.api.http.AddressApiRoute
-import com.wavesplatform.api.http.assets.{SignedIssueV1Request, SignedIssueV2Request}
-import com.wavesplatform.features.api.ActivationStatus
-import com.wavesplatform.http.DebugMessage
-import com.wavesplatform.it.Node
-import com.wavesplatform.state.DataEntry
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
+import one.mir.api.http.AddressApiRoute
+import one.mir.api.http.assets.{SignedIssueV1Request, SignedIssueV2Request}
+import one.mir.features.api.ActivationStatus
+import one.mir.http.DebugMessage
+import one.mir.it.Node
+import one.mir.state.DataEntry
+import one.mir.transaction.transfer.MassTransferTransaction.Transfer
 import org.asynchttpclient.Response
 import org.scalactic.source.Position
 import org.scalatest.{Assertion, Assertions, Matchers}
@@ -72,7 +72,7 @@ object SyncHttpApi extends Assertions {
     }
 
   implicit class NodeExtSync(n: Node) extends Assertions with Matchers {
-    import com.wavesplatform.it.api.AsyncHttpApi.{NodeAsyncHttpApi => async}
+    import one.mir.it.api.AsyncHttpApi.{NodeAsyncHttpApi => async}
 
     private def maybeWaitForTransaction(tx: Transaction, wait: Boolean): Transaction = {
       if (wait) waitForTransaction(tx.id)
@@ -306,7 +306,7 @@ object SyncHttpApi extends Assertions {
 
   implicit class NodesExtSync(nodes: Seq[Node]) {
 
-    import com.wavesplatform.it.api.AsyncHttpApi.{NodesAsyncHttpApi => async}
+    import one.mir.it.api.AsyncHttpApi.{NodesAsyncHttpApi => async}
 
     private val TxInBlockchainAwaitTime = 8 * nodes.head.blockDelay
     private val ConditionAwaitTime      = 5.minutes
@@ -333,7 +333,7 @@ object SyncHttpApi extends Assertions {
     def rollback(height: Int, returnToUTX: Boolean = true): Unit = {
       sync(
         Future.traverse(nodes) { node =>
-          com.wavesplatform.it.api.AsyncHttpApi.NodeAsyncHttpApi(node).rollback(height, returnToUTX)
+          one.mir.it.api.AsyncHttpApi.NodeAsyncHttpApi(node).rollback(height, returnToUTX)
         },
         ConditionAwaitTime
       )
@@ -342,7 +342,7 @@ object SyncHttpApi extends Assertions {
     def waitForHeight(height: Int): Unit = {
       sync(
         Future.traverse(nodes) { node =>
-          com.wavesplatform.it.api.AsyncHttpApi.NodeAsyncHttpApi(node).waitForHeight(height)
+          one.mir.it.api.AsyncHttpApi.NodeAsyncHttpApi(node).waitForHeight(height)
         },
         ConditionAwaitTime
       )

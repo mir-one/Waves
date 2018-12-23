@@ -1,4 +1,4 @@
-package com.wavesplatform.transaction
+package one.mir.transaction
 
 import scala.reflect.ClassTag
 import scala.util.Try

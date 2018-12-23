@@ -1,18 +1,18 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.{BlockchainSettings, WavesSettings}
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
+import one.mir.TransactionGen
+import one.mir.features.BlockchainFeatures
+import one.mir.settings.{BlockchainSettings, WavesSettings}
+import one.mir.state._
+import one.mir.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.assets.{IssueTransaction, SponsorFeeTransaction}
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import one.mir.account.PrivateKeyAccount
+import one.mir.transaction.GenesisTransaction
+import one.mir.transaction.assets.{IssueTransaction, SponsorFeeTransaction}
+import one.mir.transaction.transfer._
+import one.mir.crypto._
 
 class BlockchainUpdaterSponsoredFeeBlockTest
     extends PropSpec

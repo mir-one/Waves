@@ -1,11 +1,11 @@
-package com.wavesplatform.lang
+package one.mir.lang
 
-import com.wavesplatform.lang.v1.compiler.Types._
+import one.mir.lang.v1.compiler.Types._
 import org.scalatest.{FreeSpec, Matchers}
 import Common._
-import com.wavesplatform.lang.v1.compiler.TypeInferrer
-import com.wavesplatform.lang.v1.evaluator.ctx.CaseType
-import com.wavesplatform.lang.v1.evaluator.ctx.impl._
+import one.mir.lang.v1.compiler.TypeInferrer
+import one.mir.lang.v1.evaluator.ctx.CaseType
+import one.mir.lang.v1.evaluator.ctx.impl._
 
 class TypeInferrerTest extends FreeSpec with Matchers {
 

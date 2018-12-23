@@ -1,4 +1,4 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import java.net.InetSocketAddress
 

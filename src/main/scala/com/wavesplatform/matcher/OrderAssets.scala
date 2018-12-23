@@ -1,14 +1,14 @@
-package com.wavesplatform.matcher
+package one.mir.matcher
 
 import java.nio.ByteBuffer
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetId
+import one.mir.state.ByteStr
+import one.mir.transaction.AssetId
 
 case class OrderAssets(orderId: ByteStr, spendAsset: Option[AssetId])
 
 object OrderAssets {
-  import com.wavesplatform.matcher.util.Codecs._
+  import one.mir.matcher.util.Codecs._
 
   def read(b: Array[Byte]): OrderAssets = {
     val bb  = ByteBuffer.wrap(b)

@@ -1,7 +1,7 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.{DataTransaction, ValidationError}
+import one.mir.state._
+import one.mir.transaction.{DataTransaction, ValidationError}
 
 object DataTransactionDiff {
 

@@ -1,16 +1,16 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
-import com.wavesplatform.metrics._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError.UnsupportedTransactionType
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.wavesplatform.transaction.smart.{SetScriptTransaction, Verifier}
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.ScorexLogging
+import one.mir.metrics._
+import one.mir.settings.FunctionalitySettings
+import one.mir.state._
+import one.mir.transaction.ValidationError.UnsupportedTransactionType
+import one.mir.transaction._
+import one.mir.transaction.assets._
+import one.mir.transaction.assets.exchange.ExchangeTransaction
+import one.mir.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import one.mir.transaction.smart.{SetScriptTransaction, Verifier}
+import one.mir.transaction.transfer._
+import one.mir.utils.ScorexLogging
 
 object TransactionDiffer extends Instrumented with ScorexLogging {
 

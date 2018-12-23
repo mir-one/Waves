@@ -1,21 +1,21 @@
-package com.wavesplatform.state.appender
+package one.mir.state.appender
 
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.metrics.{BlockStats, Instrumented, Metrics}
-import com.wavesplatform.mining.Miner
-import com.wavesplatform.network.{InvalidBlockStorage, PeerDatabase, formatBlocks, id}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state._
-import com.wavesplatform.utils.{ScorexLogging, Time}
-import com.wavesplatform.utx.UtxPool
+import one.mir.consensus.PoSSelector
+import one.mir.metrics.{BlockStats, Instrumented, Metrics}
+import one.mir.mining.Miner
+import one.mir.network.{InvalidBlockStorage, PeerDatabase, formatBlocks, id}
+import one.mir.settings.WavesSettings
+import one.mir.state._
+import one.mir.utils.{ScorexLogging, Time}
+import one.mir.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import monix.eval.{Coeval, Task}
 import monix.execution.Scheduler
 import org.influxdb.dto.Point
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction._
+import one.mir.block.Block
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction._
 
 import scala.util.{Left, Right}
 

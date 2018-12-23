@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction.smart.script.v1
+package one.mir.transaction.smart.script.v1
 
-import com.wavesplatform.lang.ScriptVersion
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.{FunctionHeader, ScriptEstimator, Serde}
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.crypto
-import com.wavesplatform.utils.{functionCosts, varNames}
+import one.mir.lang.ScriptVersion
+import one.mir.lang.ScriptVersion.Versions.V1
+import one.mir.lang.v1.compiler.Terms._
+import one.mir.lang.v1.evaluator.FunctionIds._
+import one.mir.lang.v1.{FunctionHeader, ScriptEstimator, Serde}
+import one.mir.state.ByteStr
+import one.mir.transaction.smart.script.Script
+import one.mir.crypto
+import one.mir.utils.{functionCosts, varNames}
 import monix.eval.Coeval
 
 object ScriptV1 {

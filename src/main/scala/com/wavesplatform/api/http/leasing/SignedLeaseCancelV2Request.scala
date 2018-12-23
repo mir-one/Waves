@@ -1,14 +1,14 @@
-package com.wavesplatform.api.http.leasing
+package one.mir.api.http.leasing
 
 import cats.implicits._
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
-import com.wavesplatform.transaction.lease.LeaseCancelTransactionV2
-import com.wavesplatform.transaction.{Proofs, ValidationError}
+import one.mir.account.PublicKeyAccount
+import one.mir.api.http.BroadcastRequest
+import one.mir.transaction.TransactionParsers.SignatureStringLength
+import one.mir.transaction.lease.LeaseCancelTransactionV2
+import one.mir.transaction.{Proofs, ValidationError}
 
 case class SignedLeaseCancelV2Request(@ApiModelProperty(required = true)
                                       version: Byte,

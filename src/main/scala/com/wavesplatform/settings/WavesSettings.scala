@@ -1,8 +1,8 @@
-package com.wavesplatform.settings
+package one.mir.settings
 
 import com.typesafe.config.Config
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.metrics.Metrics
+import one.mir.matcher.MatcherSettings
+import one.mir.metrics.Metrics
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import scala.concurrent.duration._

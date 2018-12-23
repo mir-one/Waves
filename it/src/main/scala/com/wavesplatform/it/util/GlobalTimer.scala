@@ -1,4 +1,4 @@
-package com.wavesplatform.it.util
+package one.mir.it.util
 
 import io.netty.util.{HashedWheelTimer, Timer}
 

@@ -1,9 +1,9 @@
-package com.wavesplatform.consensus
+package one.mir.consensus
 
 import cats.data.NonEmptyList
 import cats.implicits._
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.PrivateKeyAccount
+import one.mir.account.PrivateKeyAccount
 
 import scala.util.Random
 

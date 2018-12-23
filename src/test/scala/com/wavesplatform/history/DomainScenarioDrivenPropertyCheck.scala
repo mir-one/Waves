@@ -1,7 +1,7 @@
-package com.wavesplatform.history
+package one.mir.history
 
-import com.wavesplatform.db.WithDomain
-import com.wavesplatform.settings.WavesSettings
+import one.mir.db.WithDomain
+import one.mir.settings.WavesSettings
 import org.scalacheck.Gen
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{Assertion, Suite}

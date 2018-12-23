@@ -1,11 +1,11 @@
-package com.wavesplatform.lang.v1
+package one.mir.lang.v1
 
 import java.util.concurrent.TimeUnit
 
-import com.wavesplatform.lang.v1.CompilerBenchmark.St
+import one.mir.lang.v1.CompilerBenchmark.St
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import one.mir.transaction.smart.script.ScriptCompiler
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Array(Mode.AverageTime))

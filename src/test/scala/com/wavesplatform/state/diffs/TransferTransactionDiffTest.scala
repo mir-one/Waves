@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs
+package one.mir.state.diffs
 
 import cats.implicits._
-import com.wavesplatform.state.{EitherExt2, LeaseBalance, Portfolio}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import one.mir.state.{EitherExt2, LeaseBalance, Portfolio}
+import one.mir.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.Address
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.transfer._
+import one.mir.account.Address
+import one.mir.lagonaki.mocks.TestBlock
+import one.mir.transaction.GenesisTransaction
+import one.mir.transaction.ValidationError.GenericError
+import one.mir.transaction.assets._
+import one.mir.transaction.transfer._
 
 class TransferTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 
