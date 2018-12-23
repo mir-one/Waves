@@ -247,7 +247,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
           wavesNetwork.name() -> endpointConfigFor(nodeName)
         ).asJava))
         .hostConfig(hostConfig)
-        .env(s"WAVES_OPTS=$configOverrides")
+        .env(s"MIR_OPTS=$configOverrides")
         .build()
 
       val containerId = {
@@ -344,7 +344,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
       log.debug("Set new config directly in the script for starting node")
       val shPath = "/opt/waves/start-waves.sh"
       val scriptCmd: Array[String] =
-        Array("sh", "-c", s"sed -i 's|$$WAVES_OPTS.*-jar|$$WAVES_OPTS $renderedConfig -jar|' $shPath && chmod +x $shPath")
+        Array("sh", "-c", s"sed -i 's|$$MIR_OPTS.*-jar|$$MIR_OPTS $renderedConfig -jar|' $shPath && chmod +x $shPath")
 
       val execScriptCmd = client.execCreate(node.containerId, scriptCmd).id()
       client.execStart(execScriptCmd)

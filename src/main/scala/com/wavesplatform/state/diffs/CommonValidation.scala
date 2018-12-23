@@ -256,7 +256,7 @@ object CommonValidation {
           minFee <= tx.assetFee._2,
           (),
           GenericError(
-            s"Fee in ${feeAssetId.fold("WAVES")(_.toString)} for ${tx.builder.classTag} does not exceed minimal value of $minWaves WAVES: ${tx.assetFee._2}")
+            s"Fee in ${feeAssetId.fold("MIR")(_.toString)} for ${tx.builder.classTag} does not exceed minimal value of $minWaves MIR: ${tx.assetFee._2}")
         )
       } yield ()
     } else {

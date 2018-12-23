@@ -292,7 +292,7 @@ object WavesContext {
         LONG,
         "get asset balance for account",
         ("addressOrAlias", addressOrAliasType, "account"),
-        ("assetId", UNION(UNIT, BYTEVECTOR), "assetId (WAVES if none)")
+        ("assetId", UNION(UNIT, BYTEVECTOR), "assetId (MIR if none)")
       ) {
         case (c: CaseObj) :: u :: Nil if u == unit => env.accountBalanceOf(caseObjToRecipient(c), None).map(CONST_LONG)
         case (c: CaseObj) :: CONST_BYTEVECTOR(assetId: ByteVector) :: Nil =>
@@ -302,7 +302,7 @@ object WavesContext {
       }
 
     val wavesBalanceF: UserFunction =
-      UserFunction("wavesBalance", LONG, "get WAVES balanse for account", ("@addressOrAlias", addressOrAliasType, "account")) {
+      UserFunction("wavesBalance", LONG, "get MIR balanse for account", ("@addressOrAlias", addressOrAliasType, "account")) {
         FUNCTION_CALL(assetBalanceF.header, List(REF("@addressOrAlias"), REF("unit")))
 
       }

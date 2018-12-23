@@ -40,7 +40,7 @@ class OrderValidatorSpecification
   private val defaultPortfolio = Portfolio(0, LeaseBalance.empty, Map(wbtc -> 10 * Constants.UnitsInWave))
 
   "OrderValidator" should {
-    "allow buying WAVES for BTC without balance for order fee" in
+    "allow buying MIR for BTC without balance for order fee" in
       portfolioTest(defaultPortfolio) { (ov, bc) =>
         activate(bc, BlockchainFeatures.SmartAccountTrading -> 0)
 

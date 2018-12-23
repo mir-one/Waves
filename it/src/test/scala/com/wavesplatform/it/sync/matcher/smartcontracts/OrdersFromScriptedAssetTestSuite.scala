@@ -70,7 +70,7 @@ class OrdersFromScriptedAssetTestSuite extends MatcherSuiteBase {
   }
 
   "if counter order has expired then cancel its only, not a submitted order" in {
-    val pair = AssetPair.createAssetPair("WAVES", AllowAssetId).get
+    val pair = AssetPair.createAssetPair("MIR", AllowAssetId).get
 
     // place expiring counter order
     val counterId =

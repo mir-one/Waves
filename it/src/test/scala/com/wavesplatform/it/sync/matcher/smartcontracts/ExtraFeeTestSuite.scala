@@ -63,7 +63,7 @@ class ExtraFeeTestSuite extends MatcherSuiteBase {
         matcherNode.waitOrderStatus(oneSmartPair, counter, "Accepted")
 
         info("expected fee should be reserved")
-        matcherNode.reservedBalance(aliceAcc)("WAVES") shouldBe expectedFee
+        matcherNode.reservedBalance(aliceAcc)("MIR") shouldBe expectedFee
 
         val submitted = matcherNode.placeOrder(bobAcc, oneSmartPair, BUY, amount, price, expectedFee, 2).message.id
         matcherNode.waitOrderInBlockchain(submitted)
@@ -101,7 +101,7 @@ class ExtraFeeTestSuite extends MatcherSuiteBase {
           matcherNode.waitOrderStatus(bothSmartPair, counter, "Accepted")
 
           info("expected fee should be reserved")
-          matcherNode.reservedBalance(aliceAcc)("WAVES") shouldBe expectedFee
+          matcherNode.reservedBalance(aliceAcc)("MIR") shouldBe expectedFee
 
           val submitted = matcherNode.placeOrder(bobAcc, bothSmartPair, BUY, amount, price, expectedFee, 2).message.id
           matcherNode.waitOrderInBlockchain(submitted)

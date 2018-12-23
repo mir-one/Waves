@@ -142,7 +142,7 @@ object MatcherPriceAssetConfig {
   val orderLimit = 10
 
   private val updatedMatcherConfig = parseString(s"""waves.matcher {
-                                                    |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+                                                    |  price-assets = [ "$UsdId", "$BtcId", "MIR" ]
                                                     |  rest-order-limit = $orderLimit
                                                     |}""".stripMargin)
 

@@ -25,7 +25,7 @@ class MatcherSettingsSpecification extends FlatSpec with Matchers {
         |    default-order-timestamp = 9999
         |    order-timestamp-drift = 10m
         |    price-assets = [
-        |      WAVES
+        |      MIR
         |      8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS
         |      DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J
         |    ]
@@ -57,7 +57,7 @@ class MatcherSettingsSpecification extends FlatSpec with Matchers {
     settings.maxOrdersPerRequest should be(100)
     settings.defaultOrderTimestamp should be(9999)
     settings.orderTimestampDrift should be(10.minutes.toMillis)
-    settings.priceAssets should be(Seq("WAVES", "8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS", "DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J"))
+    settings.priceAssets should be(Seq("MIR", "8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS", "DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J"))
     settings.blacklistedAssets shouldBe Set("a")
     settings.blacklistedNames.map(_.pattern.pattern()) shouldBe Seq("b")
     settings.blacklistedAddresses shouldBe Set("3N5CBq8NYBMBU3UVS3rfMgaQEpjZrkWcBAD")

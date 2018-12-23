@@ -343,7 +343,7 @@ class OrderBookActorSpecification extends MatcherSpec("OrderBookActor") with NTP
     }
 
     "buy small amount of pricey asset" in obcTest { (_, actor) =>
-      val p = AssetPair(Some(ByteStr("WAVES".getBytes)), Some(ByteStr("USD".getBytes)))
+      val p = AssetPair(Some(ByteStr("MIR".getBytes)), Some(ByteStr("USD".getBytes)))
       val b = rawBuy(p, 700000L, 280)
       val s = rawSell(p, 30000000000L, 280)
       actor ! s

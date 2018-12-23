@@ -45,7 +45,7 @@ class ExchangeTransactionSuite extends BaseTransactionSuite with NTPTime {
       val sellPrice           = 2 * Order.PriceConstant
       val buyAmount           = 1
       val sellAmount          = 1
-      val assetPair           = AssetPair.createAssetPair("WAVES", assetId).get
+      val assetPair           = AssetPair.createAssetPair("MIR", assetId).get
       val buy                 = Order.buy(buyer, matcher, assetPair, buyAmount, buyPrice, ts, expirationTimestamp, matcherFee, o1ver)
       val sell                = Order.sell(seller, matcher, assetPair, sellAmount, sellPrice, ts, expirationTimestamp, matcherFee, o2ver)
 

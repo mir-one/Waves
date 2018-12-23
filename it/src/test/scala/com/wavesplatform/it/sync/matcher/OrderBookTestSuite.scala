@@ -31,7 +31,7 @@ class OrderBookTestSuite extends MatcherSuiteBase {
     ReservedBalances(
       reservedBalances.getOrElse(WctId.toString, 0),
       reservedBalances.getOrElse(UsdId.toString, 0),
-      reservedBalances.getOrElse("WAVES", 0)
+      reservedBalances.getOrElse("MIR", 0)
     )
   }
 
