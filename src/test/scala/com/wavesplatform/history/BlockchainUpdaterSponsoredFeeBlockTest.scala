@@ -41,13 +41,13 @@ class BlockchainUpdaterSponsoredFeeBlockTest
     alice                       <- accountGen
     bob                         <- accountGen
     (feeAsset, sponsorTx, _, _) <- sponsorFeeCancelSponsorFeeGen(alice)
-    wavesFee                    = Sponsorship.toMir(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
+    mirFee                    = Sponsorship.toMir(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
     genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
     masterToAlice: TransferTransactionV1 = TransferTransactionV1
       .selfSigned(None,
                   master,
                   alice,
-                  feeAsset.fee + sponsorTx.fee + transferAssetMirFee + wavesFee,
+                  feeAsset.fee + sponsorTx.fee + transferAssetMirFee + mirFee,
                   ts + 1,
                   None,
                   transferAssetMirFee,
@@ -103,7 +103,7 @@ class BlockchainUpdaterSponsoredFeeBlockTest
 
   val SponsoredActivatedAt0MirSettings: MirSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
 
-  property("not enough waves to sponsor sponsored tx") {
+  property("not enough mir to sponsor sponsored tx") {
     scenario(sponsorPreconditions, SponsoredActivatedAt0MirSettings) {
       case (domain, (genesis, masterToAlice, feeAsset, sponsor, aliceToBob, bobToMaster, bobToMaster2)) =>
         val (block0, microBlocks) = chainBaseAndMicro(randomSig, genesis, Seq(masterToAlice, feeAsset, sponsor).map(Seq(_)))
@@ -123,7 +123,7 @@ class BlockchainUpdaterSponsoredFeeBlockTest
         domain.blockchainUpdater.processBlock(block1).explicitGet()
         domain.blockchainUpdater.processBlock(block2).explicitGet()
         domain.blockchainUpdater.processBlock(block3).explicitGet()
-        domain.blockchainUpdater.processBlock(block4) should produce("negative waves balance" /*"unavailable funds"*/ )
+        domain.blockchainUpdater.processBlock(block4) should produce("negative mir balance" /*"unavailable funds"*/ )
 
     }
   }

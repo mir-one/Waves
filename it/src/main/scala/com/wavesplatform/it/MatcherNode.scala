@@ -31,7 +31,7 @@ trait MatcherNode extends BeforeAndAfterAll with Nodes with ScorexLogging {
   def initialBalances(): Unit = {
     List(matcherNode, aliceNode, bobNode).indices
       .map { i =>
-        nodes(i).transfer(nodes(i).address, addresses(i), 10000.waves, 0.001.waves).id
+        nodes(i).transfer(nodes(i).address, addresses(i), 10000.mir, 0.001.mir).id
       }
       .foreach(nodes.waitForTransaction)
   }
@@ -41,7 +41,7 @@ trait MatcherNode extends BeforeAndAfterAll with Nodes with ScorexLogging {
       val script = ScriptCompiler("true", isAssetScript = false).explicitGet()._1
       val pk     = PrivateKeyAccount.fromSeed(nodes(i).seed(addresses(i))).right.get
       val setScriptTransaction = SetScriptTransaction
-        .selfSigned(SetScriptTransaction.supportedVersions.head, pk, Some(script), 0.01.waves, System.currentTimeMillis())
+        .selfSigned(SetScriptTransaction.supportedVersions.head, pk, Some(script), 0.01.mir, System.currentTimeMillis())
         .right
         .get
 
@@ -56,7 +56,7 @@ trait MatcherNode extends BeforeAndAfterAll with Nodes with ScorexLogging {
       ScriptCompiler(scriptText, isAssetScript = false).explicitGet()._1
     }
     val setScriptTransaction = SetScriptTransaction
-      .selfSigned(SetScriptTransaction.supportedVersions.head, acc, script, 0.014.waves, System.currentTimeMillis())
+      .selfSigned(SetScriptTransaction.supportedVersions.head, acc, script, 0.014.mir, System.currentTimeMillis())
       .right
       .get
 

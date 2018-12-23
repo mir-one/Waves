@@ -42,7 +42,7 @@ object MatcherPriceAssetConfig {
       decimals = Decimals,
       reissuable = false,
       script = None,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -59,7 +59,7 @@ object MatcherPriceAssetConfig {
       decimals = Decimals,
       reissuable = false,
       script = None,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -76,7 +76,7 @@ object MatcherPriceAssetConfig {
       decimals = 8,
       reissuable = false,
       script = None,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -93,7 +93,7 @@ object MatcherPriceAssetConfig {
       decimals = 8,
       reissuable = false,
       script = None,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -124,7 +124,7 @@ object MatcherPriceAssetConfig {
     priceAsset = Some(BtcId)
   )
 
-  val wavesUsdPair = AssetPair(
+  val mirUsdPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(UsdId)
   )
@@ -134,14 +134,14 @@ object MatcherPriceAssetConfig {
     priceAsset = Some(UsdId)
   )
 
-  val wavesBtcPair = AssetPair(
+  val mirBtcPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(BtcId)
   )
 
   val orderLimit = 10
 
-  private val updatedMatcherConfig = parseString(s"""waves.matcher {
+  private val updatedMatcherConfig = parseString(s"""mir.matcher {
                                                     |  price-assets = [ "$UsdId", "$BtcId", "MIR" ]
                                                     |  rest-order-limit = $orderLimit
                                                     |}""".stripMargin)

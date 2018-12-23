@@ -9,7 +9,7 @@ import scala.concurrent.duration._
 
 class UTXSettingsSpecification extends FlatSpec with Matchers {
   "UTXSettings" should "read values" in {
-    val config   = ConfigFactory.parseString("""waves {
+    val config   = ConfigFactory.parseString("""mir {
         |  utx {
         |    max-size = 100
         |    max-transaction-age = 100m
@@ -19,7 +19,7 @@ class UTXSettingsSpecification extends FlatSpec with Matchers {
         |    allow-transactions-from-smart-accounts = false
         |  }
         |}""".stripMargin).resolve()
-    val settings = config.as[UtxSettings]("waves.utx")
+    val settings = config.as[UtxSettings]("mir.utx")
     settings.maxSize should be(100)
     settings.maxTransactionAge shouldBe 100.minutes
     settings.cleanupInterval shouldBe 10.minutes

@@ -13,7 +13,7 @@ case class RestAPISettings(enable: Boolean,
                            distributionAddressLimit: Int)
 
 object RestAPISettings {
-  val configPath: String = "waves.rest-api"
+  val configPath: String = "mir.rest-api"
 
   def fromConfig(config: Config): RestAPISettings = {
     RestAPISettings(

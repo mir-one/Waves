@@ -3,7 +3,7 @@ import shapeless.{:+:, CNil}
 import one.mir.lang.{Global, ScriptVersion}
 import one.mir.lang.v1.CTX
 import one.mir.lang.v1.compiler.Types._
-import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
+import one.mir.lang.v1.evaluator.ctx.impl.mir.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.lang.v1.evaluator.ctx._
 import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
@@ -19,7 +19,7 @@ object DocExport {
       System.err.println("Expected args: --gen-doc <version> <template> <output>")
     } else {
       val version = ScriptVersion.fromInt(args(1).toByte).get
-      val wavesContext = MirContext.build(
+      val mirContext = MirContext.build(
         version,
         new Environment {
           override def height: Long                                                                                    = ???
@@ -67,7 +67,7 @@ object DocExport {
         case t       => nativeTypeDoc(t.toString)
       }
 
-      val fullContext: CTX = Monoid.combineAll(Seq(PureContext.build(version), cryptoContext, wavesContext))
+      val fullContext: CTX = Monoid.combineAll(Seq(PureContext.build(version), cryptoContext, mirContext))
 
       def getTypes() = fullContext.types.map(v => typeRepr(v.typeRef)(v.name))
 

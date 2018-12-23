@@ -48,7 +48,7 @@ class Worker(workerSettings: Settings,
   private val invalidAccounts  = generatorSettings.invalidAccounts
   private val fakeAccounts     = generatorSettings.fakeAccounts
 
-  private val fee = 0.003.waves
+  private val fee = 0.003.mir
 
   private def now = System.currentTimeMillis()
 
@@ -123,7 +123,7 @@ class Worker(workerSettings: Settings,
       implicit tag: String): Future[Transaction] =
     to(endpoint).balance(sender.address, assetId).flatMap { balance =>
       val halfAmount     = if (halfBalance) balance / 2 else balance
-      val transferAmount = assetId.fold(halfAmount - 0.001.waves)(_ => halfAmount)
+      val transferAmount = assetId.fold(halfAmount - 0.001.mir)(_ => halfAmount)
 
       TransferTransactionV1.selfSigned(assetId,
                                        sender,

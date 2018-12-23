@@ -30,7 +30,7 @@ class NotActivateFeatureTestSuite
     NodeConfigs.newBuilder
       .overrideBase(
         _.raw(
-          s"""waves {
+          s"""mir {
          |  blockchain {
          |    custom {
          |      functionality {

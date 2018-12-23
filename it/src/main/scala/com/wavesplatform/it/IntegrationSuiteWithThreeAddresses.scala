@@ -34,7 +34,7 @@ trait IntegrationSuiteWithThreeAddresses
   abstract protected override def beforeAll(): Unit = {
     super.beforeAll()
 
-    val defaultBalance: Long = 100.waves
+    val defaultBalance: Long = 100.mir
 
     def dumpBalances(node: Node, accounts: Seq[String], label: String): Unit = {
       accounts.foreach(acc => {
@@ -90,7 +90,7 @@ trait IntegrationSuiteWithThreeAddresses
       ScriptCompiler(scriptText, isAssetScript = false).explicitGet()._1
     }
     val setScriptTransaction = SetScriptTransaction
-      .selfSigned(SetScriptTransaction.supportedVersions.head, acc, script, 0.014.waves, System.currentTimeMillis())
+      .selfSigned(SetScriptTransaction.supportedVersions.head, acc, script, 0.014.mir, System.currentTimeMillis())
       .right
       .get
     sender

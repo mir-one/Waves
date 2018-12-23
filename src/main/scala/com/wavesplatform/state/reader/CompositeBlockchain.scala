@@ -183,8 +183,8 @@ class CompositeBlockchain(inner: Blockchain, maybeDiff: => Option[Diff], carry: 
     }
   }
 
-  override def wavesDistribution(height: Int): Map[Address, Long] = {
-    val innerDistribution = inner.wavesDistribution(height)
+  override def mirDistribution(height: Int): Map[Address, Long] = {
+    val innerDistribution = inner.mirDistribution(height)
     if (height < this.height) innerDistribution
     else {
       innerDistribution ++ changedBalances(_.balance != 0, portfolio(_).balance)

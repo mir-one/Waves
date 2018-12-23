@@ -59,7 +59,7 @@ class TradersTestSuite extends MatcherSuiteBase {
 
     matcherNode.assertAssetBalance(bobAcc.address, bobNewAsset, bobAssetQuantity)
 
-    "owner moves assets/waves to another account and order become an invalid" ignore {
+    "owner moves assets/mir to another account and order become an invalid" ignore {
       // todo: reactivate after balance watcher is reimplemented
       // Could not work sometimes because of NODE-546
       "order with assets" - {
@@ -85,7 +85,7 @@ class TradersTestSuite extends MatcherSuiteBase {
           matcherNode.waitForTransaction(transferBackId)
         }
 
-        "leased waves, insufficient fee" in {
+        "leased mir, insufficient fee" in {
           val bobBalance    = matcherNode.accountBalances(bobAcc.address)._1
           val oldestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
           val newestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
@@ -110,7 +110,7 @@ class TradersTestSuite extends MatcherSuiteBase {
           matcherNode.waitForTransaction(cancelLeaseId)
         }
 
-        "moved waves, insufficient fee" in {
+        "moved mir, insufficient fee" in {
           val bobBalance    = matcherNode.accountBalances(bobAcc.address)._1
           val oldestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
           val newestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
@@ -136,16 +136,16 @@ class TradersTestSuite extends MatcherSuiteBase {
         }
       }
 
-      "order with waves" - {
-        "leased waves, insufficient fee for one ExchangeTransaction" in {
-          // Amount of waves in order is smaller than fee
+      "order with mir" - {
+        "leased mir, insufficient fee for one ExchangeTransaction" in {
+          // Amount of mir in order is smaller than fee
           val bobBalance = matcherNode.accountBalances(bobAcc.address)._1
 
-          val oldestOrderId = bobPlacesWaveOrder(bobMirPair, 1, 10.waves * Order.PriceConstant)
-          val newestOrderId = bobPlacesWaveOrder(bobMirPair, 1, 10.waves * Order.PriceConstant)
+          val oldestOrderId = bobPlacesWaveOrder(bobMirPair, 1, 10.mir * Order.PriceConstant)
+          val newestOrderId = bobPlacesWaveOrder(bobMirPair, 1, 10.mir * Order.PriceConstant)
 
           //      waitForOrderStatus(matcherNode, bobAssetIdRaw, id, "Accepted")
-          val leaseAmount = bobBalance - exTxFee - 10.waves - matcherFee
+          val leaseAmount = bobBalance - exTxFee - 10.mir - matcherFee
           val leaseId     = bobNode.lease(bobAcc.address, aliceAcc.address, leaseAmount, exTxFee, 2).id
           matcherNode.waitForTransaction(leaseId)
 
@@ -164,9 +164,9 @@ class TradersTestSuite extends MatcherSuiteBase {
           matcherNode.waitForTransaction(cancelLeaseId)
         }
 
-        "leased waves, insufficient waves" in {
+        "leased mir, insufficient mir" in {
           val bobBalance = matcherNode.accountBalances(bobAcc.address)._1
-          val price      = 1.waves
+          val price      = 1.mir
           val order2     = bobPlacesWaveOrder(bobMirPair, 1, price * Order.PriceConstant)
 
           val leaseAmount = bobBalance - exTxFee - price / 2
@@ -182,8 +182,8 @@ class TradersTestSuite extends MatcherSuiteBase {
           matcherNode.waitForTransaction(cancelLeaseId)
         }
 
-        "moved waves, insufficient fee" in {
-          // Amount of waves in order is smaller than fee
+        "moved mir, insufficient fee" in {
+          // Amount of mir in order is smaller than fee
           val bobBalance = matcherNode.accountBalances(bobAcc.address)._1
           val price      = exTxFee / 2
           val order3     = bobPlacesWaveOrder(bobMirPair, 1, price * Order.PriceConstant)

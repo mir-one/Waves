@@ -84,7 +84,7 @@ object EmptyBlockchain extends Blockchain {
 
   override def assetDistribution(assetId: ByteStr): Map[Address, Long] = Map.empty
 
-  override def wavesDistribution(height: Int): Map[Address, Long] = Map.empty
+  override def mirDistribution(height: Int): Map[Address, Long] = Map.empty
 
   override def allActiveLeases: Set[LeaseTransaction] = Set.empty
 

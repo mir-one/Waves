@@ -25,7 +25,7 @@ class OrderBookTestSuite extends MatcherSuiteBase {
     matcherNode.waitForTransaction(tx.id)
   }
 
-  case class ReservedBalances(wct: Long, usd: Long, waves: Long)
+  case class ReservedBalances(wct: Long, usd: Long, mir: Long)
   def reservedBalancesOf(pk: PrivateKeyAccount): ReservedBalances = {
     val reservedBalances = matcherNode.reservedBalance(pk)
     ReservedBalances(
@@ -78,9 +78,9 @@ class OrderBookTestSuite extends MatcherSuiteBase {
     "reserved balances should be released for the pair" in {
       val (aliceReservedBalances, bobReservedBalances) = (reservedBalancesOf(aliceAcc), reservedBalancesOf(bobAcc))
       aliceReservedBalances.usd shouldBe 0
-      aliceReservedBalances.waves shouldBe (aliceRBForBothPairs.waves - aliceRBForOnePair.waves)
+      aliceReservedBalances.mir shouldBe (aliceRBForBothPairs.mir - aliceRBForOnePair.mir)
       bobReservedBalances.wct shouldBe (bobRBForBothPairs.wct - bobRBForOnePair.wct)
-      bobReservedBalances.waves shouldBe (bobRBForBothPairs.waves - bobRBForOnePair.waves)
+      bobReservedBalances.mir shouldBe (bobRBForBothPairs.mir - bobRBForOnePair.mir)
     }
 
     "it should not affect other pairs and their orders" in {

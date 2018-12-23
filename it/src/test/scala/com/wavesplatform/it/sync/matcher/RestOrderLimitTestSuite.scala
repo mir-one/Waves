@@ -67,22 +67,22 @@ class RestOrderLimitTestSuite
     val aliceAcc = alice.privateKey
     val bobAcc   = bob.privateKey
 
-    val active0 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 15.waves, matcherFee).message.id
+    val active0 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 15.mir, matcherFee).message.id
 
-    val active1    = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val partial1   = matcher.placeOrder(aliceAcc, alicePair, SELL, 2, 9.waves, matcherFee).message.id
-    val filled1    = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 8.waves, matcherFee).message.id
-    val cancelled1 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 11.waves, matcherFee).message.id
-    val active2    = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.waves, matcherFee).message.id
-    val filled2    = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 4.waves, matcherFee).message.id
-    val partial2   = matcher.placeOrder(aliceAcc, bobPair, BUY, 2, 3.waves, matcherFee).message.id
-    val cancelled2 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.waves, matcherFee).message.id
+    val active1    = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val partial1   = matcher.placeOrder(aliceAcc, alicePair, SELL, 2, 9.mir, matcherFee).message.id
+    val filled1    = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 8.mir, matcherFee).message.id
+    val cancelled1 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 11.mir, matcherFee).message.id
+    val active2    = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.mir, matcherFee).message.id
+    val filled2    = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 4.mir, matcherFee).message.id
+    val partial2   = matcher.placeOrder(aliceAcc, bobPair, BUY, 2, 3.mir, matcherFee).message.id
+    val cancelled2 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.mir, matcherFee).message.id
 
     // orders for matching Alice's orders
-    matcher.placeOrder(bobAcc, alicePair, BUY, 1, 8.waves, matcherFee).message.id // fill filled1
-    matcher.placeOrder(bobAcc, alicePair, BUY, 1, 9.waves, matcherFee).message.id // part fill partial1
-    matcher.placeOrder(bobAcc, bobPair, SELL, 1, 4.waves, matcherFee).message.id  // fill filled2
-    matcher.placeOrder(bobAcc, bobPair, SELL, 1, 3.waves, matcherFee).message.id  // part fill partial2
+    matcher.placeOrder(bobAcc, alicePair, BUY, 1, 8.mir, matcherFee).message.id // fill filled1
+    matcher.placeOrder(bobAcc, alicePair, BUY, 1, 9.mir, matcherFee).message.id // part fill partial1
+    matcher.placeOrder(bobAcc, bobPair, SELL, 1, 4.mir, matcherFee).message.id  // fill filled2
+    matcher.placeOrder(bobAcc, bobPair, SELL, 1, 3.mir, matcherFee).message.id  // part fill partial2
 
     matcher.cancelOrder(aliceAcc, alicePair, cancelled1)
     matcher.cancelOrder(aliceAcc, alicePair, cancelled2)
@@ -100,10 +100,10 @@ class RestOrderLimitTestSuite
 
     info("'fullOrderHistory' and 'ordersByAddress' must return all active orders, even if they are more than the limit")
 
-    val active3 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active4 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active5 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.waves, matcherFee).message.id
-    val active6 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.waves, matcherFee).message.id
+    val active3 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active4 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active5 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.mir, matcherFee).message.id
+    val active6 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 2.mir, matcherFee).message.id
 
     matcher.waitOrderStatus(bobPair, active6, "Accepted", 1.minutes)
 
@@ -117,10 +117,10 @@ class RestOrderLimitTestSuite
 
     info("'orderHistoryByPair' must return no more 'rest-order-limit' orders")
 
-    val active7  = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 9.waves, matcherFee).message.id
-    val active8  = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active9  = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 1.waves, matcherFee).message.id
-    val active10 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 1.waves, matcherFee).message.id
+    val active7  = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 9.mir, matcherFee).message.id
+    val active8  = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active9  = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 1.mir, matcherFee).message.id
+    val active10 = matcher.placeOrder(aliceAcc, bobPair, BUY, 1, 1.mir, matcherFee).message.id
 
     matcher.waitOrderStatus(bobPair, active10, "Accepted", 1.minutes)
 
@@ -134,10 +134,10 @@ class RestOrderLimitTestSuite
 
     info("all the methods move active orders that were filled")
 
-    matcher.placeOrder(bobAcc, bobPair, SELL, 1, 3.waves, matcherFee).message.id   // fill partial2
-    matcher.placeOrder(bobAcc, bobPair, SELL, 2, 2.waves, matcherFee).message.id   // fill active2, active5
-    matcher.placeOrder(bobAcc, alicePair, BUY, 2, 9.waves, matcherFee).message.id  // fill partial1, active7
-    matcher.placeOrder(bobAcc, alicePair, BUY, 1, 10.waves, matcherFee).message.id // fill active1
+    matcher.placeOrder(bobAcc, bobPair, SELL, 1, 3.mir, matcherFee).message.id   // fill partial2
+    matcher.placeOrder(bobAcc, bobPair, SELL, 2, 2.mir, matcherFee).message.id   // fill active2, active5
+    matcher.placeOrder(bobAcc, alicePair, BUY, 2, 9.mir, matcherFee).message.id  // fill partial1, active7
+    matcher.placeOrder(bobAcc, alicePair, BUY, 1, 10.mir, matcherFee).message.id // fill active1
 
     matcher.waitOrderStatus(bobPair, active1, "Filled", 1.minutes)
 
@@ -153,11 +153,11 @@ class RestOrderLimitTestSuite
 
     info("'orderHistoryByPair' must return all active orders, even if they are more than the limit")
 
-    val active11 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active12 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active13 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active14 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
-    val active15 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.waves, matcherFee).message.id
+    val active11 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active12 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active13 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active14 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
+    val active15 = matcher.placeOrder(aliceAcc, alicePair, SELL, 1, 10.mir, matcherFee).message.id
 
     matcher.waitOrderStatus(bobPair, active15, "Accepted", 1.minutes)
 
@@ -173,7 +173,7 @@ class RestOrderLimitTestSuite
 object RestOrderLimitTestSuite {
   val reducedLimit                            = 8
   val configWithReducedRestOrderLimit: Config = parseString(s"""
-                                                       |waves.matcher {
+                                                       |mir.matcher {
                                                        |  rest-order-limit=$reducedLimit
                                                        |}
     """.stripMargin)

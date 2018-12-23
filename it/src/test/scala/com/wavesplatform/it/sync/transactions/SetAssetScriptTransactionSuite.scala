@@ -115,7 +115,7 @@ class SetAssetScriptTransactionSuite extends BaseTransactionSuite {
     notMiner.assertBalances(secondAddress, balance2, eff2)
   }
 
-  test("sender's waves balance is decreased by fee") {
+  test("sender's mir balance is decreased by fee") {
     val script2 = ScriptCompiler(
       s"""
            |match tx {
@@ -140,13 +140,13 @@ class SetAssetScriptTransactionSuite extends BaseTransactionSuite {
     assert(details2.script == script2)
   }
 
-  test("cannot transact without having enough waves") {
+  test("cannot transact without having enough mir") {
     val (balance, eff) = notMiner.accountBalances(firstAddress)
-    assertBadRequestAndResponse(sender.setAssetScript(assetWScript, firstAddress, balance + 1, Some(scriptBase64)), "negative waves balance")
+    assertBadRequestAndResponse(sender.setAssetScript(assetWScript, firstAddress, balance + 1, Some(scriptBase64)), "negative mir balance")
     nodes.waitForHeightArise()
     notMiner.assertBalances(firstAddress, balance, eff)
 
-    val leaseAmount = 1.waves
+    val leaseAmount = 1.mir
     val leaseId     = sender.lease(firstAddress, secondAddress, leaseAmount, minFee).id
     nodes.waitForHeightAriseAndTxPresent(leaseId)
 
@@ -278,7 +278,7 @@ class SetAssetScriptTransactionSuite extends BaseTransactionSuite {
       accountA,
       ByteStr.decodeBase58(assetWScript).get,
       Some(unchangeableScript),
-      setAssetScriptFee + 0.004.waves,
+      setAssetScriptFee + 0.004.mir,
       System.currentTimeMillis,
       Proofs.empty
     )
@@ -300,7 +300,7 @@ class SetAssetScriptTransactionSuite extends BaseTransactionSuite {
       accountA,
       ByteStr.decodeBase58(assetWScript).get,
       Some(script),
-      setAssetScriptFee + 0.004.waves,
+      setAssetScriptFee + 0.004.mir,
       System.currentTimeMillis,
       Proofs.empty
     )

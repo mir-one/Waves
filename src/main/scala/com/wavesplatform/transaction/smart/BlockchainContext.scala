@@ -3,7 +3,7 @@ package one.mir.transaction.smart
 import cats.kernel.Monoid
 import one.mir.lang.{Global, ScriptVersion}
 import one.mir.lang.v1.evaluator.ctx.EvaluationContext
-import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
+import one.mir.lang.v1.evaluator.ctx.impl.mir.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.state._
 import one.mir.transaction._

@@ -75,7 +75,7 @@ class OrdersFromScriptedAssetTestSuite extends MatcherSuiteBase {
     // place expiring counter order
     val counterId =
       matcherNode
-        .placeOrder(matcherPk, pair, OrderType.SELL, 2.waves, 10, version = 2, fee = smartTradeFee, timeToLive = 61.seconds)
+        .placeOrder(matcherPk, pair, OrderType.SELL, 2.mir, 10, version = 2, fee = smartTradeFee, timeToLive = 61.seconds)
         .message
         .id
     matcherNode.waitOrderStatus(pair, counterId, "Accepted")
@@ -86,7 +86,7 @@ class OrdersFromScriptedAssetTestSuite extends MatcherSuiteBase {
 
     // place a submitted order
     val submittedId =
-      matcherNode.placeOrder(matcherPk, pair, OrderType.BUY, 2.waves, 10, version = 2, fee = smartTradeFee).message.id
+      matcherNode.placeOrder(matcherPk, pair, OrderType.BUY, 2.mir, 10, version = 2, fee = smartTradeFee).message.id
 
     matcherNode.waitOrderStatus(pair, counterId, "Cancelled")
     matcherNode.orderStatus(submittedId, pair).status shouldBe "Accepted"
@@ -131,7 +131,7 @@ class OrdersFromScriptedAssetTestSuite extends MatcherSuiteBase {
     matcherNode.waitOrderStatus(pair, counterId, "Accepted")
 
     info("update a script")
-    val setAssetScriptId = matcherNode.setAssetScript(AllowAsset2Id, matcherPk.address, 1.waves, Some(DenyBigAmountScript.bytes().base64)).id
+    val setAssetScriptId = matcherNode.setAssetScript(AllowAsset2Id, matcherPk.address, 1.mir, Some(DenyBigAmountScript.bytes().base64)).id
     matcherNode.waitForTransaction(setAssetScriptId)
 
     info("a counter order wasn't rejected")
@@ -154,7 +154,7 @@ class OrdersFromScriptedAssetTestSuite extends MatcherSuiteBase {
     matcherNode.waitOrderStatus(pair, counterId, "Accepted")
 
     info("update a script")
-    val setAssetScriptId = matcherNode.setAssetScript(AllowAsset3Id, matcherPk.address, 1.waves, Some(DenyBigAmountScript.bytes().base64)).id
+    val setAssetScriptId = matcherNode.setAssetScript(AllowAsset3Id, matcherPk.address, 1.mir, Some(DenyBigAmountScript.bytes().base64)).id
     matcherNode.waitForTransaction(setAssetScriptId)
 
     info("a counter order wasn't rejected")
@@ -201,7 +201,7 @@ object OrdersFromScriptedAssetTestSuite {
       quantity = Int.MaxValue / 3,
       decimals = 0,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .explicitGet()
@@ -220,7 +220,7 @@ object OrdersFromScriptedAssetTestSuite {
         decimals = 0,
         reissuable = false,
         script = Some(ScriptV1(Terms.TRUE).explicitGet()),
-        fee = 1.waves,
+        fee = 1.mir,
         timestamp = System.currentTimeMillis()
       )
       .explicitGet()
@@ -244,7 +244,7 @@ object OrdersFromScriptedAssetTestSuite {
       decimals = 0,
       reissuable = false,
       script = Some(ScriptV1(Terms.FALSE).explicitGet()),
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .explicitGet()
@@ -265,14 +265,14 @@ object OrdersFromScriptedAssetTestSuite {
   val activationHeight = 10
 
   private val commonConfig = ConfigFactory.parseString(s"""
-                                                           |waves {
+                                                           |mir {
                                                            |  blockchain.custom.functionality.pre-activated-features = {
                                                            |    ${BlockchainFeatures.SmartAssets.id} = 0,
                                                            |    ${BlockchainFeatures.SmartAccountTrading.id} = $activationHeight
                                                            |  }
                                                            |  matcher.price-assets = ["$AllowAssetId", "$DenyAssetId", "$UnscriptedAssetId"]
                                                            |}
-                                                           |waves.matcher {
+                                                           |mir.matcher {
                                                            |  order-cleanup-interval = 5m
                                                            |}""".stripMargin)
 

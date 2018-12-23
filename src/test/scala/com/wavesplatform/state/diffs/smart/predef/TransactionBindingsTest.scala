@@ -7,7 +7,7 @@ import one.mir.lang.Testing.evaluated
 import one.mir.lang.v1.compiler.CompilerV1
 import one.mir.lang.v1.compiler.Terms.{CONST_BOOLEAN, CONST_LONG, EVALUATED}
 import one.mir.lang.v1.evaluator.EvaluatorV1
-import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
+import one.mir.lang.v1.evaluator.ctx.impl.mir.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.lang.v1.parser.Parser
 import one.mir.state._

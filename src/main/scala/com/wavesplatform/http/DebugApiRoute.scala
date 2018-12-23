@@ -60,7 +60,7 @@ case class DebugApiRoute(ws: MirSettings,
 
   private lazy val configStr             = configRoot.render(ConfigRenderOptions.concise().setJson(true).setFormatted(true))
   private lazy val fullConfig: JsValue   = Json.parse(configStr)
-  private lazy val wavesConfig: JsObject = Json.obj("waves" -> (fullConfig \ "waves").get)
+  private lazy val mirConfig: JsObject = Json.obj("mir" -> (fullConfig \ "mir").get)
 
   override val settings = ws.restAPISettings
   override lazy val route: Route = pathPrefix("debug") {
@@ -146,7 +146,7 @@ case class DebugApiRoute(ws: MirSettings,
   @ApiOperation(value = "State", notes = "Get current state", httpMethod = "GET")
   @ApiResponses(Array(new ApiResponse(code = 200, message = "Json state")))
   def state: Route = (path("state") & get & withAuth) {
-    complete(ng.wavesDistribution(ng.height).map { case (a, b) => a.stringRepr -> b })
+    complete(ng.mirDistribution(ng.height).map { case (a, b) => a.stringRepr -> b })
   }
 
   @Path("/stateMir/{height}")
@@ -156,7 +156,7 @@ case class DebugApiRoute(ws: MirSettings,
       new ApiImplicitParam(name = "height", value = "height", required = true, dataType = "integer", paramType = "path")
     ))
   def stateMir: Route = (path("stateMir" / IntNumber) & get & withAuth) { height =>
-    complete(ng.wavesDistribution(height).map { case (a, b) => a.stringRepr -> b })
+    complete(ng.mirDistribution(height).map { case (a, b) => a.stringRepr -> b })
   }
 
   private def rollbackToBlock(blockId: ByteStr, returnTransactionsToUtx: Boolean): Future[ToResponseMarshallable] = {
@@ -269,7 +269,7 @@ case class DebugApiRoute(ws: MirSettings,
       new ApiResponse(code = 200, message = "Json state")
     ))
   def configInfo: Route = (path("configInfo") & get & parameter('full.as[Boolean]) & withAuth) { full =>
-    complete(if (full) fullConfig else wavesConfig)
+    complete(if (full) fullConfig else mirConfig)
   }
 
   @Path("/rollback-to/{signature}")

@@ -178,7 +178,7 @@ trait Caches extends Blockchain with ScorexLogging {
   protected def doAppend(block: Block,
                          carryFee: Long,
                          addresses: Map[Address, BigInt],
-                         wavesBalances: Map[BigInt, Long],
+                         mirBalances: Map[BigInt, Long],
                          assetBalances: Map[BigInt, Map[ByteStr, Long]],
                          leaseBalances: Map[BigInt, LeaseBalance],
                          leaseStates: Map[ByteStr, Boolean],
@@ -212,7 +212,7 @@ trait Caches extends Blockchain with ScorexLogging {
     log.trace(s"CACHE newAddressIds = $newAddressIds")
     log.trace(s"CACHE lastAddressId = $lastAddressId")
 
-    val wavesBalances = Map.newBuilder[BigInt, Long]
+    val mirBalances = Map.newBuilder[BigInt, Long]
     val assetBalances = Map.newBuilder[BigInt, Map[ByteStr, Long]]
     val leaseBalances = Map.newBuilder[BigInt, LeaseBalance]
     val newPortfolios = Map.newBuilder[Address, Portfolio]
@@ -220,7 +220,7 @@ trait Caches extends Blockchain with ScorexLogging {
     for ((address, portfolioDiff) <- diff.portfolios) {
       val newPortfolio = portfolioCache.get(address).combine(portfolioDiff)
       if (portfolioDiff.balance != 0) {
-        wavesBalances += addressId(address) -> newPortfolio.balance
+        mirBalances += addressId(address) -> newPortfolio.balance
       }
 
       if (portfolioDiff.lease != LeaseBalance.empty) {
@@ -253,7 +253,7 @@ trait Caches extends Blockchain with ScorexLogging {
       block,
       carryFee,
       newAddressIds,
-      wavesBalances.result(),
+      mirBalances.result(),
       assetBalances.result(),
       leaseBalances.result(),
       diff.leaseState,

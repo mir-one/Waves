@@ -28,9 +28,9 @@ object Keys {
 
   def heightOf(blockId: ByteStr): Key[Option[Int]] = Key.opt[Int]("height-of", hash(4, blockId), Ints.fromByteArray, Ints.toByteArray)
 
-  def wavesBalanceHistory(addressId: BigInt): Key[Seq[Int]] = historyKey("waves-balance-history", 5, addressId.toByteArray)
-  def wavesBalance(addressId: BigInt)(height: Int): Key[Long] =
-    Key("waves-balance", hAddr(6, height, addressId), Option(_).fold(0L)(Longs.fromByteArray), Longs.toByteArray)
+  def mirBalanceHistory(addressId: BigInt): Key[Seq[Int]] = historyKey("mir-balance-history", 5, addressId.toByteArray)
+  def mirBalance(addressId: BigInt)(height: Int): Key[Long] =
+    Key("mir-balance", hAddr(6, height, addressId), Option(_).fold(0L)(Longs.fromByteArray), Longs.toByteArray)
 
   def assetList(addressId: BigInt): Key[Set[ByteStr]] =
     Key("asset-list", addr(7, addressId), readTxIds(_).toSet, assets => writeTxIds(assets.toSeq))
@@ -92,8 +92,8 @@ object Keys {
   def sponsorship(assetId: ByteStr)(height: Int): Key[SponsorshipValue] =
     Key("sponsorship", hBytes(36, height, assetId.arr), readSponsorship, writeSponsorship)
 
-  val addressesForMirSeqNr: Key[Int]                = intKey("addresses-for-waves-seq-nr", 37)
-  def addressesForMir(seqNr: Int): Key[Seq[BigInt]] = Key("addresses-for-waves", h(38, seqNr), readBigIntSeq, writeBigIntSeq)
+  val addressesForMirSeqNr: Key[Int]                = intKey("addresses-for-mir-seq-nr", 37)
+  def addressesForMir(seqNr: Int): Key[Seq[BigInt]] = Key("addresses-for-mir", h(38, seqNr), readBigIntSeq, writeBigIntSeq)
 
   def addressesForAssetSeqNr(assetId: ByteStr): Key[Int] = bytesSeqNr("addresses-for-asset-seq-nr", 39, assetId.arr)
   def addressesForAsset(assetId: ByteStr, seqNr: Int): Key[Seq[BigInt]] =

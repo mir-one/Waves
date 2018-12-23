@@ -33,7 +33,7 @@ class MatcherRestartTestSuite extends MatcherSuiteBase {
     "make order and after matcher's restart try to cancel it" in {
       // Alice places sell order
       val aliceOrder = matcherNode
-        .placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 500, 2.waves * Order.PriceConstant, matcherFee, orderVersion)
+        .placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 500, 2.mir * Order.PriceConstant, matcherFee, orderVersion)
       aliceOrder.status shouldBe "OrderAccepted"
       val firstOrder = aliceOrder.message.id
 
@@ -42,7 +42,7 @@ class MatcherRestartTestSuite extends MatcherSuiteBase {
       // check that order is correct
       val orders = matcherNode.orderBook(aliceMirPair)
       orders.asks.head.amount shouldBe 500
-      orders.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders.asks.head.price shouldBe 2.mir * Order.PriceConstant
 
       // sell order should be in the aliceNode orderbook
       matcherNode.fullOrderHistory(aliceAcc).head.status shouldBe "Accepted"
@@ -59,15 +59,15 @@ class MatcherRestartTestSuite extends MatcherSuiteBase {
 
       val orders1 = matcherNode.orderBook(aliceMirPair)
       orders1.asks.head.amount shouldBe 500
-      orders1.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders1.asks.head.price shouldBe 2.mir * Order.PriceConstant
 
       val aliceSecondOrder =
-        matcherNode.placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 500, 2.waves * Order.PriceConstant, matcherFee, orderVersion, 5.minutes)
+        matcherNode.placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 500, 2.mir * Order.PriceConstant, matcherFee, orderVersion, 5.minutes)
       aliceSecondOrder.status shouldBe "OrderAccepted"
 
       val orders2 = matcherNode.orderBook(aliceMirPair)
       orders2.asks.head.amount shouldBe 1000
-      orders2.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders2.asks.head.price shouldBe 2.mir * Order.PriceConstant
 
       val cancel = matcherNode.cancelOrder(aliceAcc, aliceMirPair, firstOrder)
       cancel.status should be("OrderCanceled")

@@ -34,7 +34,7 @@ class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
       (issue, reissue, burn) <- issueReissueBurnGeneratorP(ia, ra, ba, master) suchThat (_._1.reissuable == isReissuable)
     } yield ((genesis, issue), (reissue, burn))
 
-  property("Issue+Reissue+Burn do not break waves invariant and updates state") {
+  property("Issue+Reissue+Burn do not break mir invariant and updates state") {
     forAll(issueReissueBurnTxs(isReissuable = true)) {
       case (((gen, issue), (reissue, burn))) =>
         assertDiffAndState(Seq(TestBlock.create(Seq(gen, issue))), TestBlock.create(Seq(reissue, burn))) {
@@ -102,9 +102,9 @@ class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
       genesis: GenesisTransaction = GenesisTransaction.create(issuer, ENOUGH_AMT, timestamp).explicitGet()
       (issue, _, _) <- issueReissueBurnGeneratorP(ENOUGH_AMT, issuer)
       assetTransfer <- transferGeneratorP(issuer, burner, Some(issue.assetId()), None)
-      wavesTransfer <- wavesTransferGeneratorP(issuer, burner)
-      burn = BurnTransactionV1.selfSigned(burner, issue.assetId(), assetTransfer.amount, wavesTransfer.amount, timestamp).explicitGet()
-    } yield (genesis, issue, assetTransfer, wavesTransfer, burn)
+      mirTransfer <- mirTransferGeneratorP(issuer, burner)
+      burn = BurnTransactionV1.selfSigned(burner, issue.assetId(), assetTransfer.amount, mirTransfer.amount, timestamp).explicitGet()
+    } yield (genesis, issue, assetTransfer, mirTransfer, burn)
 
     val fs =
       TestFunctionalitySettings.Enabled
@@ -113,8 +113,8 @@ class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
         )
 
     forAll(setup) {
-      case (genesis, issue, assetTransfer, wavesTransfer, burn) =>
-        assertDiffAndState(Seq(TestBlock.create(Seq(genesis, issue, assetTransfer, wavesTransfer))), TestBlock.create(Seq(burn)), fs) {
+      case (genesis, issue, assetTransfer, mirTransfer, burn) =>
+        assertDiffAndState(Seq(TestBlock.create(Seq(genesis, issue, assetTransfer, mirTransfer))), TestBlock.create(Seq(burn)), fs) {
           case (_, newState) =>
             newState.portfolio(burn.sender).assets shouldBe Map(burn.assetId -> 0)
         }

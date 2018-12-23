@@ -3,7 +3,7 @@ package one.mir.it.sync.smartcontract.smartasset
 import one.mir.it.NTPTime
 import one.mir.it.api.SyncHttpApi._
 import one.mir.it.sync._
-import one.mir.it.sync.smartcontract.{cryptoContextScript, pureContextScript, wavesContextScript, _}
+import one.mir.it.sync.smartcontract.{cryptoContextScript, pureContextScript, mirContextScript, _}
 import one.mir.it.transactions.BaseTransactionSuite
 import one.mir.state._
 import one.mir.transaction.DataTransaction
@@ -117,7 +117,7 @@ class ExchangeSmartAssetsSuite extends BaseTransactionSuite with CancelAfterFail
     sender.signedBroadcast(exchangeTx(smartAssetPair, matcherFee + 2 * smartFee, matcherFee + 2 * smartFee, ntpTime, acc1, acc0, acc2),
                            waitForTx = true)
 
-    withClue("check fee for smart accounts and smart AssetPair - extx.fee == 0.015.waves") {
+    withClue("check fee for smart accounts and smart AssetPair - extx.fee == 0.015.mir") {
       setContracts((sc1, acc0), (sc1, acc1), (sc1, acc2))
 
       assertBadRequestAndMessage(
@@ -145,7 +145,7 @@ class ExchangeSmartAssetsSuite extends BaseTransactionSuite with CancelAfterFail
   test("use all functions from RIDE for asset script") {
     val script1 = Some(ScriptCompiler(cryptoContextScript(false), isAssetScript = true).explicitGet()._1.bytes.value.base64)
     val script2 = Some(ScriptCompiler(pureContextScript(dtx, false), isAssetScript = true).explicitGet()._1.bytes.value.base64)
-    val script3 = Some(ScriptCompiler(wavesContextScript(dtx, false), isAssetScript = true).explicitGet()._1.bytes.value.base64)
+    val script3 = Some(ScriptCompiler(mirContextScript(dtx, false), isAssetScript = true).explicitGet()._1.bytes.value.base64)
 
     List(script1, script2, script3)
       .map { i =>

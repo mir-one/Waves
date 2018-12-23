@@ -30,26 +30,26 @@ class SeveralPartialOrdersTestSuite extends MatcherSuiteBase {
     val buyOrderAmount  = 425532L
     val sellOrderAmount = 840340L
 
-    "place usd-waves order" in {
+    "place usd-mir order" in {
       // Alice wants to sell USD for Mir
       val bobMirBalanceBefore = matcherNode.accountBalances(bobAcc.address)._1
 
-      val bobOrder1   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, sellOrderAmount, price)
+      val bobOrder1   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, sellOrderAmount, price)
       val bobOrder1Id = matcherNode.placeOrder(bobOrder1).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder1Id, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder1Id, "Accepted", 1.minute)
       matcherNode.reservedBalance(bobAcc)("MIR") shouldBe sellOrderAmount + matcherFee
-      matcherNode.tradableBalance(bobAcc, wavesUsdPair)("MIR") shouldBe bobMirBalanceBefore - (sellOrderAmount + matcherFee)
+      matcherNode.tradableBalance(bobAcc, mirUsdPair)("MIR") shouldBe bobMirBalanceBefore - (sellOrderAmount + matcherFee)
 
-      val aliceOrder   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, buyOrderAmount, price)
+      val aliceOrder   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, buyOrderAmount, price)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrderId, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, aliceOrderId, "Filled", 1.minute)
 
-      val aliceOrder2   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, buyOrderAmount, price)
+      val aliceOrder2   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, buyOrderAmount, price)
       val aliceOrder2Id = matcherNode.placeOrder(aliceOrder2).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrder2Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, aliceOrder2Id, "Filled", 1.minute)
 
       // Bob wants to buy some USD
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder1Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder1Id, "Filled", 1.minute)
 
       // Each side get fair amount of assets
       val exchangeTx = matcherNode.transactionsByOrder(bobOrder1Id).headOption.getOrElse(fail("Expected an exchange transaction"))
@@ -58,38 +58,38 @@ class SeveralPartialOrdersTestSuite extends MatcherSuiteBase {
       matcherNode.reservedBalance(aliceAcc) shouldBe empty
 
       // Previously cancelled order should not affect new orders
-      val orderBook1 = matcherNode.orderBook(wavesUsdPair)
+      val orderBook1 = matcherNode.orderBook(mirUsdPair)
       orderBook1.asks shouldBe empty
       orderBook1.bids shouldBe empty
 
-      val bobOrder2   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, sellOrderAmount, price)
+      val bobOrder2   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, sellOrderAmount, price)
       val bobOrder2Id = matcherNode.placeOrder(bobOrder2).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder2Id, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder2Id, "Accepted", 1.minute)
 
-      val orderBook2 = matcherNode.orderBook(wavesUsdPair)
+      val orderBook2 = matcherNode.orderBook(mirUsdPair)
       orderBook2.asks shouldBe List(LevelResponse(bobOrder2.amount, bobOrder2.price))
       orderBook2.bids shouldBe empty
 
-      matcherNode.cancelOrder(bobAcc, wavesUsdPair, bobOrder2Id)
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder2Id, "Cancelled", 1.minute)
+      matcherNode.cancelOrder(bobAcc, mirUsdPair, bobOrder2Id)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder2Id, "Cancelled", 1.minute)
 
       matcherNode.reservedBalance(bobAcc) shouldBe empty
       matcherNode.reservedBalance(aliceAcc) shouldBe empty
     }
 
     "place one submitted orders and two counter" in {
-      val aliceOrder1   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, buyOrderAmount, price)
+      val aliceOrder1   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, buyOrderAmount, price)
       val aliceOrder1Id = matcherNode.placeOrder(aliceOrder1).message.id
 
-      val aliceOrder2   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, buyOrderAmount, price)
+      val aliceOrder2   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, buyOrderAmount, price)
       val aliceOrder2Id = matcherNode.placeOrder(aliceOrder2).message.id
 
-      val bobOrder1   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, sellOrderAmount, price)
+      val bobOrder1   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, sellOrderAmount, price)
       val bobOrder1Id = matcherNode.placeOrder(bobOrder1).message.id
 
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrder1Id, "Filled", 1.minute)
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrder2Id, "Filled", 1.minute)
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder1Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, aliceOrder1Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, aliceOrder2Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder1Id, "Filled", 1.minute)
 
       // Each side get fair amount of assets
       val exchangeTxs = matcherNode.transactionsByOrder(bobOrder1Id)
@@ -102,15 +102,15 @@ class SeveralPartialOrdersTestSuite extends MatcherSuiteBase {
       matcherNode.reservedBalance(aliceAcc) shouldBe empty
 
       // Previously cancelled order should not affect new orders
-      val orderBook1 = matcherNode.orderBook(wavesUsdPair)
+      val orderBook1 = matcherNode.orderBook(mirUsdPair)
       orderBook1.asks shouldBe empty
       orderBook1.bids shouldBe empty
 
-      val bobOrder2   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, sellOrderAmount, price)
+      val bobOrder2   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, sellOrderAmount, price)
       val bobOrder2Id = matcherNode.placeOrder(bobOrder2).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder2Id, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder2Id, "Accepted", 1.minute)
 
-      val orderBook2 = matcherNode.orderBook(wavesUsdPair)
+      val orderBook2 = matcherNode.orderBook(mirUsdPair)
       orderBook2.asks shouldBe List(LevelResponse(bobOrder2.amount, bobOrder2.price))
       orderBook2.bids shouldBe empty
     }

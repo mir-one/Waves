@@ -5,7 +5,7 @@ import one.mir.lang.v1.{Serde, CTX}
 import one.mir.lang.v1.compiler.CompilerV1
 import one.mir.lang.v1.compiler.Terms._
 import one.mir.lang.v1.compiler.Types._
-import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
+import one.mir.lang.v1.evaluator.ctx.impl.mir.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.lang.v1.parser.{Expressions, Parser}
 import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
@@ -45,7 +45,7 @@ object JsAPI {
 
   val version = one.mir.lang.ScriptVersion.Versions.V1
 
-  val wavesContext = MirContext.build(
+  val mirContext = MirContext.build(
     version,
     new Environment {
       override def height: Long                                                                                    = 0
@@ -71,7 +71,7 @@ object JsAPI {
   }
 
   @JSExportTopLevel("fullContext")
-  val fullContext: CTX = Monoid.combineAll(Seq(PureContext.build(version), cryptoContext, wavesContext))
+  val fullContext: CTX = Monoid.combineAll(Seq(PureContext.build(version), cryptoContext, mirContext))
 
   @JSExportTopLevel("getTypes")
   def getTypes() = fullContext.types.map(v => js.Dynamic.literal("name" -> v.name, "type" -> typeRepr(v.typeRef))).toJSArray

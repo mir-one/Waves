@@ -44,13 +44,13 @@ class MatcherTickerTestSuite
     }
 
     "status of empty orderbook" in {
-//    TODO: add error message after fix of https://wavesplatform.atlassian.net/browse/NODE-1151
-//      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.marketStatus(wavesUsdPair), s"")
+//    TODO: add error message after fix of https://mirplatform.atlassian.net/browse/NODE-1151
+//      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.marketStatus(mirUsdPair), s"")
     }
 
     "error of non-existed order" in {
-      //TODO: add error message after fix of https://wavesplatform.atlassian.net/browse/NODE-1151
-//      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.orderStatus(IssueUsdTx.id().toString, wavesUsdPair), s"")
+      //TODO: add error message after fix of https://mirplatform.atlassian.net/browse/NODE-1151
+//      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.orderStatus(IssueUsdTx.id().toString, mirUsdPair), s"")
     }
 
     "try to work with incorrect pair" in {
@@ -65,8 +65,8 @@ class MatcherTickerTestSuite
           .getHeader("Location")
           .contains(s"MIR/${usdMirPair.amountAssetStr}"))
 
-      //TODO: add error message after fix of https://wavesplatform.atlassian.net/browse/NODE-1151
-//      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.placeOrder(aliceNode, usdMirPair, OrderType.BUY, 1.waves, 200), "")
+      //TODO: add error message after fix of https://mirplatform.atlassian.net/browse/NODE-1151
+//      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.placeOrder(aliceNode, usdMirPair, OrderType.BUY, 1.mir, 200), "")
     }
 
     "issue tokens" in {
@@ -75,7 +75,7 @@ class MatcherTickerTestSuite
     }
 
     val bidPrice  = 200
-    val bidAmount = 1.waves
+    val bidAmount = 1.mir
     val askPrice  = 400
     val askAmount = bidAmount / 2
 
@@ -165,9 +165,9 @@ object MatcherTickerTestSuite {
   private val ForbiddenAssetId = "FdbnAsset"
   val Decimals: Byte           = 2
 
-  private val minerDisabled = parseString("waves.miner.enable = no")
+  private val minerDisabled = parseString("mir.miner.enable = no")
   private val matcherConfig = parseString(s"""
-                                             |waves.matcher {
+                                             |mir.matcher {
                                              |  enable = yes
                                              |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
                                              |  bind-address = "0.0.0.0"
@@ -195,7 +195,7 @@ object MatcherTickerTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -209,7 +209,7 @@ object MatcherTickerTestSuite {
       quantity = defaultAssetQuantity,
       decimals = 8,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.mir,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -228,13 +228,13 @@ object MatcherTickerTestSuite {
     priceAsset = None
   )
 
-  val wavesUsdPair = AssetPair(
+  val mirUsdPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(UsdId)
   )
 
   private val updatedMatcherConfig = parseString(s"""
-                                                    |waves.matcher {
+                                                    |mir.matcher {
                                                     |  price-assets = [ "$UsdId", "MIR"]
                                                     |}
      """.stripMargin)

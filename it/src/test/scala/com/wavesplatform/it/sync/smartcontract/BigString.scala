@@ -59,7 +59,7 @@ class BigString extends BaseTransactionSuite with CancelAfterFailure {
           2,
           acc0,
           transferAmount,
-          minFee + 0.2.waves,
+          minFee + 0.2.mir,
           System.currentTimeMillis(),
           acc2,
           Proofs.empty

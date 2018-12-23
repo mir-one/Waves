@@ -54,7 +54,7 @@ class MirEnvironmentBenchmark {
   }
 
   @Benchmark
-  def accountBalanceOf_waves_test(st: AccountBalanceOfMirSt, bh: Blackhole): Unit = {
+  def accountBalanceOf_mir_test(st: AccountBalanceOfMirSt, bh: Blackhole): Unit = {
     bh.consume(st.environment.accountBalanceOf(Recipient.Address(ByteVector(st.accounts.random)), None))
   }
 
@@ -106,23 +106,23 @@ object MirEnvironmentBenchmark {
   @State(Scope.Benchmark)
   class BaseSt {
     protected val benchSettings: Settings = Settings.fromConfig(ConfigFactory.load())
-    private val wavesSettings: MirSettings = {
+    private val mirSettings: MirSettings = {
       val config = loadConfig(ConfigFactory.parseFile(new File(benchSettings.networkConfigFile)))
       MirSettings.fromConfig(config)
     }
 
     AddressScheme.current = new AddressScheme {
-      override val chainId: Byte = wavesSettings.blockchainSettings.addressSchemeCharacter.toByte
+      override val chainId: Byte = mirSettings.blockchainSettings.addressSchemeCharacter.toByte
     }
 
     private val db: DB = {
-      val dir = new File(wavesSettings.dataDirectory)
-      if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${wavesSettings.dataDirectory}'")
+      val dir = new File(mirSettings.dataDirectory)
+      if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${mirSettings.dataDirectory}'")
       LevelDBFactory.factory.open(dir, new Options)
     }
 
     val environment: Environment = {
-      val state = new LevelDBWriter(db, wavesSettings.blockchainSettings.functionalitySettings, 100000, 2000, 120 * 60 * 1000)
+      val state = new LevelDBWriter(db, mirSettings.blockchainSettings.functionalitySettings, 100000, 2000, 120 * 60 * 1000)
       new MirEnvironment(
         AddressScheme.current.chainId,
         Coeval.raiseError(new NotImplementedError("tx is not implemented")),

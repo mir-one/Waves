@@ -6,10 +6,10 @@ import one.mir.api.http.ApiKeyNotValid
 
 class DebugApiRouteSpec extends RouteSpec("/debug") with RestAPISettingsHelper with TestWallet with NTPTime {
   private val sampleConfig  = com.typesafe.config.ConfigFactory.load()
-  private val wavesSettings = MirSettings.fromConfig(sampleConfig)
+  private val mirSettings = MirSettings.fromConfig(sampleConfig)
   private val configObject  = sampleConfig.root()
   private val route =
-    DebugApiRoute(wavesSettings, ntpTime, null, null, null, null, null, null, null, null, null, null, null, null, null, configObject).route
+    DebugApiRoute(mirSettings, ntpTime, null, null, null, null, null, null, null, null, null, null, null, null, null, configObject).route
 
   routePath("/configInfo") - {
     "requires api-key header" in {

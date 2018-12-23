@@ -35,7 +35,7 @@ trait TransactionGen extends TransactionGenBase { _: Suite =>
 trait TransactionGenBase extends ScriptGen with NTPTime { _: Suite =>
 
   val ScriptExtraFee                  = 400000L
-  protected def waves(n: Float): Long = (n * 100000000L).toLong
+  protected def mir(n: Float): Long = (n * 100000000L).toLong
 
   def byteArrayGen(length: Int): Gen[Array[Byte]] = Gen.containerOfN[Array, Byte](length, Arbitrary.arbitrary[Byte])
 
@@ -91,8 +91,8 @@ trait TransactionGenBase extends ScriptGen with NTPTime { _: Suite =>
   val maxOrderTimeGen: Gen[Long] = Gen.choose(10000L, Order.MaxLiveTime).map(_ + ntpTime.correctedTime())
   val timestampGen: Gen[Long]    = Gen.choose(1, Long.MaxValue - 100)
 
-  val wavesAssetGen: Gen[Option[ByteStr]] = Gen.const(None)
-  val assetIdGen: Gen[Option[ByteStr]]    = Gen.frequency((1, wavesAssetGen), (10, Gen.option(bytes32gen.map(ByteStr(_)))))
+  val mirAssetGen: Gen[Option[ByteStr]] = Gen.const(None)
+  val assetIdGen: Gen[Option[ByteStr]]    = Gen.frequency((1, mirAssetGen), (10, Gen.option(bytes32gen.map(ByteStr(_)))))
 
   val assetPairGen = assetIdGen.flatMap {
     case None => bytes32gen.map(b => AssetPair(None, Some(ByteStr(b))))
@@ -283,10 +283,10 @@ trait TransactionGenBase extends ScriptGen with NTPTime { _: Suite =>
       (_, _, _, amount, _, _, feeAmount, attachment) <- transferParamGen
     } yield TransferTransactionV1.selfSigned(assetId, sender, recipient, amount, timestamp, feeAssetId, feeAmount, attachment).explicitGet()
 
-  def wavesTransferGeneratorP(sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
+  def mirTransferGeneratorP(sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
     transferGeneratorP(sender, recipient, None, None)
 
-  def wavesTransferGeneratorP(timestamp: Long, sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
+  def mirTransferGeneratorP(timestamp: Long, sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
     transferGeneratorP(timestamp, sender, recipient, None, None)
 
   def massTransferGeneratorP(sender: PrivateKeyAccount, transfers: List[ParsedTransfer], assetId: Option[AssetId]): Gen[MassTransferTransaction] =

@@ -7,8 +7,8 @@ import one.mir.lang.v1.compiler.Terms.{CONST_LONG, CaseObj}
 import one.mir.lang.v1.compiler.Types.FINAL
 import one.mir.lang.v1.evaluator.FunctionIds._
 import one.mir.lang.v1.evaluator.ctx._
-import one.mir.lang.v1.evaluator.ctx.impl.waves.Bindings.{ordType, orderObject}
-import one.mir.lang.v1.evaluator.ctx.impl.waves.Types._
+import one.mir.lang.v1.evaluator.ctx.impl.mir.Bindings.{ordType, orderObject}
+import one.mir.lang.v1.evaluator.ctx.impl.mir.Types._
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext, _}
 import one.mir.lang.v1.traits.domain.OrdType
 import one.mir.lang.v1.{CTX, FunctionHeader}
@@ -67,7 +67,7 @@ object MatcherContext {
     val addressFromStringF: BaseFunction    = inaccessibleUserFunction("addressFromStringF")
     val addressFromRecipientF: BaseFunction = inaccessibleFunction("addressFromRecipientF", ADDRESSFROMRECIPIENT)
     val assetBalanceF: BaseFunction         = inaccessibleFunction("assetBalanceF", ACCOUNTASSETBALANCE)
-    val wavesBalanceF: BaseFunction         = inaccessibleUserFunction("wavesBalanceF")
+    val mirBalanceF: BaseFunction         = inaccessibleUserFunction("mirBalanceF")
 
     val functions = Array(
       txByIdF,
@@ -80,7 +80,7 @@ object MatcherContext {
       addressFromStringF,
       addressFromRecipientF,
       assetBalanceF,
-      wavesBalanceF
+      mirBalanceF
     )
 
     val matcherContext = CTX(matcherTypes, matcherVars, functions).evaluationContext

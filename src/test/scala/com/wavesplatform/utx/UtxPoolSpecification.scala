@@ -245,11 +245,11 @@ class UtxPoolSpecification extends FreeSpec with Matchers with MockFactory with 
     }
 
   private def transactionV1Gen(sender: PrivateKeyAccount, ts: Long, feeAmount: Long): Gen[TransferTransactionV1] = accountGen.map { recipient =>
-    TransferTransactionV1.selfSigned(None, sender, recipient, waves(1), ts, None, feeAmount, Array.emptyByteArray).explicitGet()
+    TransferTransactionV1.selfSigned(None, sender, recipient, mir(1), ts, None, feeAmount, Array.emptyByteArray).explicitGet()
   }
 
   private def transactionV2Gen(sender: PrivateKeyAccount, ts: Long, feeAmount: Long): Gen[TransferTransactionV2] = accountGen.map { recipient =>
-    TransferTransactionV2.selfSigned(2, None, sender, recipient, waves(1), ts, None, feeAmount, Array.emptyByteArray).explicitGet()
+    TransferTransactionV2.selfSigned(2, None, sender, recipient, mir(1), ts, None, feeAmount, Array.emptyByteArray).explicitGet()
   }
 
   "UTX Pool" - {

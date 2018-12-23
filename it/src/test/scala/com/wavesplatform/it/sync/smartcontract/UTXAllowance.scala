@@ -26,7 +26,7 @@ class UTXAllowance extends FreeSpec with Matchers with WaitForHeight2 with Cance
       val nodeAddress = i.createAddress()
       val acc         = PrivateKeyAccount.fromSeed(i.seed(nodeAddress)).right.get
 
-      val tx = i.transfer(i.address, nodeAddress, 10.waves, 0.005.waves).id
+      val tx = i.transfer(i.address, nodeAddress, 10.mir, 0.005.mir).id
       nodes.waitForHeightAriseAndTxPresent(tx)
 
       val scriptText = s"""true""".stripMargin
@@ -52,10 +52,10 @@ class UTXAllowance extends FreeSpec with Matchers with WaitForHeight2 with Cance
           assetId = None,
           sender = accounts(0),
           recipient = accounts(0),
-          amount = 1.waves,
+          amount = 1.mir,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = minFee + 0.004.waves,
+          feeAmount = minFee + 0.004.mir,
           attachment = Array.emptyByteArray
         )
         .right
@@ -72,10 +72,10 @@ class UTXAllowance extends FreeSpec with Matchers with WaitForHeight2 with Cance
           assetId = None,
           sender = accounts(1),
           recipient = accounts(1),
-          amount = 1.waves,
+          amount = 1.mir,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = minFee + 0.004.waves,
+          feeAmount = minFee + 0.004.mir,
           attachment = Array.emptyByteArray
         )
         .right
@@ -91,7 +91,7 @@ class UTXAllowance extends FreeSpec with Matchers with WaitForHeight2 with Cance
 object UTXAllowance {
   import one.mir.it.NodeConfigs._
   private val FirstNode = ConfigFactory.parseString(s"""
-                                                         |waves {
+                                                         |mir {
                                                          |  utx.allow-transactions-from-smart-accounts = false
                                                          |  miner {
                                                          |      quorum = 0
@@ -100,7 +100,7 @@ object UTXAllowance {
                                                          |}""".stripMargin)
 
   private val SecondNode = ConfigFactory.parseString(s"""
-                                                          |waves {
+                                                          |mir {
                                                           |  utx.allow-transactions-from-smart-accounts = true
                                                           |  miner {
                                                           |      enable = no

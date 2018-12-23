@@ -7,7 +7,7 @@ import one.mir.utils.ScorexLogging
   * System constants here.
   */
 object Constants extends ScorexLogging {
-  val ApplicationName = "waves"
+  val ApplicationName = "mir"
   val AgentName       = s"Mir v${Version.VersionString}"
 
   val UnitsInWave = 100000000L

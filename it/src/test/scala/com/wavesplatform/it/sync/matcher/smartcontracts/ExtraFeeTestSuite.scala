@@ -33,9 +33,9 @@ class ExtraFeeTestSuite extends MatcherSuiteBase {
   Seq(asset1, asset2).foreach(matcherNode.waitForTransaction(_))
 
   Seq(
-    aliceNode.transfer(aliceAcc.address, bobAcc.address, defaultAssetQuantity / 2, 0.005.waves, Some(asset0), None, 2).id,
-    aliceNode.transfer(aliceAcc.address, bobAcc.address, defaultAssetQuantity / 2, 0.009.waves, Some(asset1), None, 2).id,
-    bobNode.transfer(bobAcc.address, aliceAcc.address, defaultAssetQuantity / 2, 0.005.waves, Some(asset2), None, 2).id
+    aliceNode.transfer(aliceAcc.address, bobAcc.address, defaultAssetQuantity / 2, 0.005.mir, Some(asset0), None, 2).id,
+    aliceNode.transfer(aliceAcc.address, bobAcc.address, defaultAssetQuantity / 2, 0.009.mir, Some(asset1), None, 2).id,
+    bobNode.transfer(bobAcc.address, aliceAcc.address, defaultAssetQuantity / 2, 0.005.mir, Some(asset2), None, 2).id
   ).foreach(matcherNode.waitForTransaction(_))
 
   "When matcher executes orders" - {

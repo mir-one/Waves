@@ -46,21 +46,21 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
 
     log.debug(s"correctedSellAmount: $correctedSellAmount, adjustedAmount: $adjustedAmount, adjustedTotal: $adjustedTotal")
 
-    "place usd-waves order" in {
+    "place usd-mir order" in {
       // Alice wants to sell USD for Mir
 
-      val bobOrder1   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, sellOrderAmount, price)
+      val bobOrder1   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, sellOrderAmount, price)
       val bobOrder1Id = matcherNode.placeOrder(bobOrder1).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder1Id, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder1Id, "Accepted", 1.minute)
       matcherNode.reservedBalance(bobAcc)("MIR") shouldBe sellOrderAmount + matcherFee
-      matcherNode.tradableBalance(bobAcc, wavesUsdPair)("MIR") shouldBe bobMirBalanceBefore - (sellOrderAmount + matcherFee)
+      matcherNode.tradableBalance(bobAcc, mirUsdPair)("MIR") shouldBe bobMirBalanceBefore - (sellOrderAmount + matcherFee)
 
-      val aliceOrder   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, buyOrderAmount, price)
+      val aliceOrder   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, buyOrderAmount, price)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
-      matcherNode.waitOrderStatusAndAmount(wavesUsdPair, aliceOrderId, "Filled", Some(420169L), 1.minute)
+      matcherNode.waitOrderStatusAndAmount(mirUsdPair, aliceOrderId, "Filled", Some(420169L), 1.minute)
 
       // Bob wants to buy some USD
-      matcherNode.waitOrderStatusAndAmount(wavesUsdPair, bobOrder1Id, "PartiallyFilled", Some(420169L), 1.minute)
+      matcherNode.waitOrderStatusAndAmount(mirUsdPair, bobOrder1Id, "PartiallyFilled", Some(420169L), 1.minute)
 
       // Each side get fair amount of assets
       val exchangeTx = matcherNode.transactionsByOrder(aliceOrder.idStr()).headOption.getOrElse(fail("Expected an exchange transaction"))
@@ -79,7 +79,7 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
       markets.priceAssetInfo shouldBe Some(AssetDecimalsInfo(Decimals))
     }
 
-    "check usd and waves balance after fill" in {
+    "check usd and mir balance after fill" in {
       val aliceMirBalanceAfter = matcherNode.accountBalances(aliceAcc.address)._1
       val aliceUsdBalance        = matcherNode.assetBalance(aliceAcc.address, UsdId.base58).balance
 
@@ -97,7 +97,7 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
 
     "check filled amount and tradable balance" in {
       val bobsOrderId  = matcherNode.fullOrderHistory(bobAcc).head.id
-      val filledAmount = matcherNode.orderStatus(bobsOrderId, wavesUsdPair).filledAmount.getOrElse(0L)
+      val filledAmount = matcherNode.orderStatus(bobsOrderId, mirUsdPair).filledAmount.getOrElse(0L)
 
       filledAmount shouldBe adjustedAmount
     }
@@ -111,48 +111,48 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
       matcherNode.reservedBalance(aliceAcc) shouldBe empty
     }
 
-    "check waves-usd tradable balance" in {
+    "check mir-usd tradable balance" in {
       val expectedBobTradableBalance = bobMirBalanceBefore - (correctedSellAmount + matcherFee)
-      matcherNode.tradableBalance(bobAcc, wavesUsdPair)("MIR") shouldBe expectedBobTradableBalance
-      matcherNode.tradableBalance(aliceAcc, wavesUsdPair)("MIR") shouldBe aliceNode.accountBalances(aliceAcc.address)._1
+      matcherNode.tradableBalance(bobAcc, mirUsdPair)("MIR") shouldBe expectedBobTradableBalance
+      matcherNode.tradableBalance(aliceAcc, mirUsdPair)("MIR") shouldBe aliceNode.accountBalances(aliceAcc.address)._1
 
       val orderId = matcherNode.fullOrderHistory(bobAcc).head.id
       matcherNode.fullOrderHistory(bobAcc).size should be(1)
-      matcherNode.cancelOrder(bobAcc, wavesUsdPair, orderId)
-      matcherNode.waitOrderStatus(wavesUsdPair, orderId, "Cancelled", 1.minute)
-      matcherNode.tradableBalance(bobAcc, wavesUsdPair)("MIR") shouldBe bobNode.accountBalances(bobAcc.address)._1
+      matcherNode.cancelOrder(bobAcc, mirUsdPair, orderId)
+      matcherNode.waitOrderStatus(mirUsdPair, orderId, "Cancelled", 1.minute)
+      matcherNode.tradableBalance(bobAcc, mirUsdPair)("MIR") shouldBe bobNode.accountBalances(bobAcc.address)._1
     }
   }
 
   "Alice and Bob trade MIR-USD check CELLING" - {
     val price2           = 289
-    val buyOrderAmount2  = 0.07.waves
-    val sellOrderAmount2 = 3.waves
+    val buyOrderAmount2  = 0.07.mir
+    val sellOrderAmount2 = 3.mir
 
     val correctedSellAmount2 = correctAmount(sellOrderAmount2, price2)
 
-    "place usd-waves order" in {
+    "place usd-mir order" in {
       // Alice wants to sell USD for Mir
       val bobMirBalanceBefore = matcherNode.accountBalances(bobAcc.address)._1
-      matcherNode.tradableBalance(bobAcc, wavesUsdPair)("MIR")
-      val bobOrder1   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, sellOrderAmount2, price2)
+      matcherNode.tradableBalance(bobAcc, mirUsdPair)("MIR")
+      val bobOrder1   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, sellOrderAmount2, price2)
       val bobOrder1Id = matcherNode.placeOrder(bobOrder1).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder1Id, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder1Id, "Accepted", 1.minute)
 
       matcherNode.reservedBalance(bobAcc)("MIR") shouldBe correctedSellAmount2 + matcherFee
-      matcherNode.tradableBalance(bobAcc, wavesUsdPair)("MIR") shouldBe bobMirBalanceBefore - (correctedSellAmount2 + matcherFee)
+      matcherNode.tradableBalance(bobAcc, mirUsdPair)("MIR") shouldBe bobMirBalanceBefore - (correctedSellAmount2 + matcherFee)
 
-      val aliceOrder   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, buyOrderAmount2, price2)
+      val aliceOrder   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, buyOrderAmount2, price2)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrderId, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, aliceOrderId, "Filled", 1.minute)
 
       // Bob wants to buy some USD
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrder1Id, "PartiallyFilled", 1.minute)
+      matcherNode.waitOrderStatus(mirUsdPair, bobOrder1Id, "PartiallyFilled", 1.minute)
 
       // Each side get fair amount of assets
       val exchangeTx = matcherNode.transactionsByOrder(aliceOrder.idStr()).headOption.getOrElse(fail("Expected an exchange transaction"))
       matcherNode.waitForTransaction(exchangeTx.id)
-      matcherNode.cancelOrder(bobAcc, wavesUsdPair, bobOrder1Id)
+      matcherNode.cancelOrder(bobAcc, mirUsdPair, bobOrder1Id)
     }
 
   }
@@ -253,7 +253,7 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
     val wctMirSellAmount = 2
     val wctMirPrice      = 11234560000000L
 
-    "bob lease all waves exact half matcher fee" in {
+    "bob lease all mir exact half matcher fee" in {
       val leasingAmount = bobNode.accountBalances(bobAcc.address)._1 - leasingFee - matcherFee / 2
       val leaseTxId     = bobNode.lease(bobAcc.address, matcherAcc.address, leasingAmount, leasingFee, 2).id
       matcherNode.waitForTransaction(leaseTxId)
@@ -297,14 +297,14 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
   }
 
   "Submitted order Canceled during match" in {
-    val bobOrder   = matcherNode.prepareOrder(matcherAcc, wavesUsdPair, OrderType.SELL, 10000000L, 10L)
+    val bobOrder   = matcherNode.prepareOrder(matcherAcc, mirUsdPair, OrderType.SELL, 10000000L, 10L)
     val bobOrderId = matcherNode.placeOrder(bobOrder).message.id
-    matcherNode.waitOrderStatus(wavesUsdPair, bobOrderId, "Accepted", 1.minute)
+    matcherNode.waitOrderStatus(mirUsdPair, bobOrderId, "Accepted", 1.minute)
 
-    val aliceOrder   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, 100000L, 1000L)
+    val aliceOrder   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, 100000L, 1000L)
     val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
 
-    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, aliceOrderId, "Filled", Some(0), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(mirUsdPair, aliceOrderId, "Filled", Some(0), 1.minute)
 
     withClue("Alice's reserved balance:") {
       matcherNode.reservedBalance(aliceAcc) shouldBe empty
@@ -316,7 +316,7 @@ class TradeBalanceAndRoundingTestSuite extends MatcherSuiteBase {
     val order = aliceOrders.find(_.id == aliceOrderId).getOrElse(throw new IllegalStateException(s"Alice should have the $aliceOrderId order"))
     order.status shouldBe "Filled"
 
-    matcherNode.cancelOrder(matcherAcc, wavesUsdPair, bobOrderId)
+    matcherNode.cancelOrder(matcherAcc, mirUsdPair, bobOrderId)
   }
 
   def correctAmount(a: Long, price: Long): Long = {

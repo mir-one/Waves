@@ -62,9 +62,9 @@ object NodeConfigs {
 
   object Templates {
     def raw(x: String): String = x
-    def quorum(n: Int): String = s"waves.miner.quorum = $n"
+    def quorum(n: Int): String = s"mir.miner.quorum = $n"
 
-    val nonMiner: String = "waves.miner.enable = no"
+    val nonMiner: String = "mir.miner.enable = no"
   }
 
 }

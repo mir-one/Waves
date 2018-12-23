@@ -12,7 +12,7 @@ import MatcherSnapshotStoreSpec.DirKey
 class MatcherSnapshotStoreSpec extends SnapshotStoreSpec(loadConfig(parseString(s"""$DirKey = ${createTempDirectory("matcher").toAbsolutePath}
          |akka {
          |  actor.allow-java-serialization = on
-         |  persistence.snapshot-store.plugin = waves.matcher.snapshot-store
+         |  persistence.snapshot-store.plugin = mir.matcher.snapshot-store
          |}""".stripMargin))) {
   protected override def afterAll(): Unit = {
     super.afterAll()
@@ -21,5 +21,5 @@ class MatcherSnapshotStoreSpec extends SnapshotStoreSpec(loadConfig(parseString(
 }
 
 object MatcherSnapshotStoreSpec {
-  val DirKey = "waves.matcher.snapshot-store.dir"
+  val DirKey = "mir.matcher.snapshot-store.dir"
 }

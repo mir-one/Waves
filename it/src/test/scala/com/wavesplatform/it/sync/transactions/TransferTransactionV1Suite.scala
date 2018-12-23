@@ -12,7 +12,7 @@ import scala.concurrent.duration._
 
 class TransferTransactionV1Suite extends BaseTransactionSuite with CancelAfterFailure {
 
-  test("asset transfer changes sender's and recipient's asset balance; issuer's.waves balance is decreased by fee") {
+  test("asset transfer changes sender's and recipient's asset balance; issuer's.mir balance is decreased by fee") {
     val (firstBalance, firstEffBalance)   = notMiner.accountBalances(firstAddress)
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
@@ -32,7 +32,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with CancelAfterFa
     notMiner.assertAssetBalance(secondAddress, issuedAssetId, someAssetAmount)
   }
 
-  test("waves transfer changes waves balances and eff.b.") {
+  test("mir transfer changes mir balances and eff.b.") {
     val (firstBalance, firstEffBalance)   = notMiner.accountBalances(firstAddress)
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
@@ -44,7 +44,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with CancelAfterFa
     notMiner.assertBalances(secondAddress, secondBalance + transferAmount, secondEffBalance + transferAmount)
   }
 
-  test("invalid signed waves transfer should not be in UTX or blockchain") {
+  test("invalid signed mir transfer should not be in UTX or blockchain") {
     def invalidTx(timestamp: Long = System.currentTimeMillis, fee: Long = 100000): TransferTransactionV1.TransactionT =
       TransferTransactionV1
         .selfSigned(None, sender.privateKey, AddressOrAlias.fromString(sender.address).explicitGet(), 1, timestamp, None, fee, Array.emptyByteArray)
@@ -80,7 +80,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with CancelAfterFa
   test("can not make transfer without having enough balance") {
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
-    assertBadRequestAndResponse(sender.transfer(secondAddress, firstAddress, secondBalance + 1.waves, minFee),
+    assertBadRequestAndResponse(sender.transfer(secondAddress, firstAddress, secondBalance + 1.mir, minFee),
                                 "Attempt to transfer unavailable funds")
     notMiner.assertBalances(secondAddress, secondBalance, secondEffBalance)
   }

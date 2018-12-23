@@ -496,8 +496,8 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: MirSettings, time:
     }
   }
 
-  override def wavesDistribution(height: Int): Map[Address, Long] = ngState.fold(blockchain.wavesDistribution(height)) { ng =>
-    val innerDistribution = blockchain.wavesDistribution(height)
+  override def mirDistribution(height: Int): Map[Address, Long] = ngState.fold(blockchain.mirDistribution(height)) { ng =>
+    val innerDistribution = blockchain.mirDistribution(height)
     if (height < this.height) innerDistribution
     else {
       innerDistribution ++ changedBalances(_.balance != 0, portfolio(_).balance)

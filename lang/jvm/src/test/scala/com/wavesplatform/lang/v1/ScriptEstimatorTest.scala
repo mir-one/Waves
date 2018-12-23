@@ -10,7 +10,7 @@ import one.mir.lang.v1.compiler.Terms._
 import one.mir.lang.v1.evaluator.FunctionIds._
 import one.mir.lang.v1.evaluator.ctx._
 import one.mir.lang.v1.evaluator.ctx.impl.PureContext
-import one.mir.lang.v1.evaluator.ctx.impl.waves.Types
+import one.mir.lang.v1.evaluator.ctx.impl.mir.Types
 import one.mir.lang.v1.parser.Parser
 import one.mir.lang.v1.testing.ScriptGen
 import monix.eval.Coeval

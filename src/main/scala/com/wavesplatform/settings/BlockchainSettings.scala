@@ -79,7 +79,7 @@ object FunctionalitySettings {
     doubleFeaturesPeriodsAfterHeight = Int.MaxValue
   )
 
-  val configPath = "waves.blockchain.custom.functionality"
+  val configPath = "mir.blockchain.custom.functionality"
 }
 
 case class GenesisTransactionSettings(recipient: String, amount: Long)
@@ -137,7 +137,7 @@ object BlockchainType extends Enumeration {
 }
 
 object BlockchainSettings {
-  val configPath: String = "waves.blockchain"
+  val configPath: String = "mir.blockchain"
 
   def fromConfig(config: Config): BlockchainSettings = {
     val blockchainType = config.as[BlockchainType.Value](s"$configPath.type")
@@ -148,8 +148,8 @@ object BlockchainSettings {
         ('W', FunctionalitySettings.MAINNET, GenesisSettings.MAINNET)
       case BlockchainType.CUSTOM =>
         val addressSchemeCharacter = config.as[String](s"$configPath.custom.address-scheme-character").charAt(0)
-        val functionalitySettings  = config.as[FunctionalitySettings]("waves.blockchain.custom.functionality")
-        val genesisSettings        = config.as[GenesisSettings]("waves.blockchain.custom.genesis")
+        val functionalitySettings  = config.as[FunctionalitySettings]("mir.blockchain.custom.functionality")
+        val genesisSettings        = config.as[GenesisSettings]("mir.blockchain.custom.genesis")
         (addressSchemeCharacter, functionalitySettings, genesisSettings)
     }
 

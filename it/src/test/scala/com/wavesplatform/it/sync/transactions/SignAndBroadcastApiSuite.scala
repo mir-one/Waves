@@ -19,7 +19,7 @@ import scala.util.Random
 
 class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
   test("height should always be reported for transactions") {
-    val txId = sender.transfer(firstAddress, secondAddress, 1.waves, fee = 1.waves).id
+    val txId = sender.transfer(firstAddress, secondAddress, 1.mir, fee = 1.mir).id
 
     sender.waitForTransaction(txId)
     val jsv1               = Json.parse(sender.get(s"/transactions/info/$txId").getResponseBody)
@@ -98,7 +98,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
       val issueId = signBroadcastAndCalcFee(
         Json.obj("type"        -> 3,
                  "name"        -> "Gigacoin",
-                 "quantity"    -> 100.waves,
+                 "quantity"    -> 100.mir,
                  "description" -> "Gigacoin",
                  "sender"      -> firstAddress,
                  "decimals"    -> 8,
@@ -108,7 +108,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
       )
 
       signBroadcastAndCalcFee(
-        Json.obj("type" -> 5, "quantity" -> 200.waves, "assetId" -> issueId, "sender" -> firstAddress, "reissuable" -> false),
+        Json.obj("type" -> 5, "quantity" -> 200.mir, "assetId" -> issueId, "sender" -> firstAddress, "reissuable" -> false),
         usesProofs = isProof,
         version = v
       )
@@ -117,7 +117,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
                               usesProofs = isProof,
                               version = v)
 
-      signBroadcastAndCalcFee(Json.obj("type" -> 6, "quantity" -> 100.waves, "assetId" -> issueId, "sender" -> firstAddress),
+      signBroadcastAndCalcFee(Json.obj("type" -> 6, "quantity" -> 100.mir, "assetId" -> issueId, "sender" -> firstAddress),
                               usesProofs = isProof,
                               version = v)
 
@@ -127,7 +127,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
           "sender"     -> firstAddress,
           "recipient"  -> secondAddress,
           "assetId"    -> issueId,
-          "amount"     -> 1.waves,
+          "amount"     -> 1.mir,
           "attachment" -> Base58.encode("asset transfer".getBytes)
         ),
         usesProofs = isProof,
@@ -142,7 +142,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
         Json.obj("type"       -> 4,
                  "sender"     -> firstAddress,
                  "recipient"  -> secondAddress,
-                 "amount"     -> 1.waves,
+                 "amount"     -> 1.mir,
                  "attachment" -> Base58.encode("falafel".getBytes)),
         usesProofs = Option(v).nonEmpty,
         version = v
@@ -156,7 +156,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
         "type"       -> 11,
         "version"    -> 1,
         "sender"     -> firstAddress,
-        "transfers"  -> Json.toJson(Seq(Transfer(secondAddress, 1.waves), Transfer(thirdAddress, 2.waves))),
+        "transfers"  -> Json.toJson(Seq(Transfer(secondAddress, 1.mir), Transfer(thirdAddress, 2.mir))),
         "attachment" -> Base58.encode("masspay".getBytes)
       ),
       usesProofs = true
@@ -167,7 +167,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
     for (v <- supportedVersions) {
       val isProof = Option(v).nonEmpty
       val leaseId =
-        signBroadcastAndCalcFee(Json.obj("type" -> 8, "sender" -> firstAddress, "amount" -> 1.waves, "recipient" -> secondAddress),
+        signBroadcastAndCalcFee(Json.obj("type" -> 8, "sender" -> firstAddress, "amount" -> 1.mir, "recipient" -> secondAddress),
                                 usesProofs = isProof,
                                 version = v)
 
@@ -220,7 +220,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
         Json.obj(
           "type"        -> 3,
           "name"        -> "Sponsored Coin",
-          "quantity"    -> 100.waves,
+          "quantity"    -> 100.mir,
           "description" -> "Sponsored Coin",
           "sender"      -> firstAddress,
           "decimals"    -> 2,
@@ -260,7 +260,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
       "sender"    -> firstAddress,
       "recipient" -> secondAddress,
       "fee"       -> 100000,
-      "amount"    -> 1.waves
+      "amount"    -> 1.mir
     )
 
     val signedRequestResponse = sender.postJsonWithApiKey(s"/transactions/sign/$thirdAddress", json)
@@ -270,7 +270,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite with NTPTime {
     assert(PublicKeyAccount.fromBase58String(signedRequest.senderPublicKey).explicitGet().address == firstAddress)
     assert(signedRequest.recipient == secondAddress)
     assert(signedRequest.fee == 100000)
-    assert(signedRequest.amount == 1.waves)
+    assert(signedRequest.amount == 1.mir)
     val signature  = Base58.decode((signedRequestJson \ "signature").as[String]).get
     val tx         = signedRequest.toTx.explicitGet()
     val privateKey = pkByAddress(thirdAddress)

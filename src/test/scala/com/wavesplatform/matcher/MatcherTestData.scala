@@ -22,7 +22,7 @@ trait MatcherTestData extends NTPTime { _: Suite =>
   val accountGen: Gen[PrivateKeyAccount] = bytes32gen.map(seed => PrivateKeyAccount(seed))
   val positiveLongGen: Gen[Long]         = Gen.choose(1, Long.MaxValue)
 
-  val wavesAssetGen: Gen[Option[Array[Byte]]] = Gen.const(None)
+  val mirAssetGen: Gen[Option[Array[Byte]]] = Gen.const(None)
 
   def assetIdGen(prefix: Byte) = Gen.listOfN(signatureSize - 1, Arbitrary.arbitrary[Byte]).map(xs => Some(ByteStr(Array(prefix, xs: _*))))
   val distinctPairGen: Gen[AssetPair] = for {
@@ -35,8 +35,8 @@ trait MatcherTestData extends NTPTime { _: Suite =>
   val maxTimeGen: Gen[Long]     = Gen.choose(10000L, Order.MaxLiveTime).map(_ + System.currentTimeMillis())
   val createdTimeGen: Gen[Long] = Gen.choose(0L, 10000L).map(System.currentTimeMillis() - _)
 
-  val config = loadConfig(ConfigFactory.parseString("""waves {
-      |  directory: "/tmp/waves-test"
+  val config = loadConfig(ConfigFactory.parseString("""mir {
+      |  directory: "/tmp/mir-test"
       |  matcher {
       |    enable: yes
       |    account: ""

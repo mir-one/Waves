@@ -61,7 +61,7 @@ package object smartcontract {
        | }
      """.stripMargin
 
-  def wavesContextScript(dtx: DataTransaction, accountScript: Boolean): String =
+  def mirContextScript(dtx: DataTransaction, accountScript: Boolean): String =
     s"""
        | match tx {
        |  case ext : ExchangeTransaction =>
@@ -98,7 +98,7 @@ package object smartcontract {
        |
        |     #case t1: TransferTransaction => addressFromRecipient(t1.recipient) == Address(base58'')
        |
-       |     let balances = assetBalance(ext.sender, unit) > 0 && wavesBalance(ext.sender) != 0
+       |     let balances = assetBalance(ext.sender, unit) > 0 && mirBalance(ext.sender) != 0
        |
        |     entries && balances && aFromPK && aFromStr && height > 0
        |  ${if (accountScript) "case s : SetScriptTransaction => true" else ""}

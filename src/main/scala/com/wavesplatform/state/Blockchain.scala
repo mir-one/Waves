@@ -71,7 +71,7 @@ trait Blockchain {
 
   def assetDistribution(assetId: ByteStr): Map[Address, Long]
   def assetDistributionAtHeight(assetId: AssetId, height: Int, count: Int, fromAddress: Option[Address]): Either[ValidationError, Map[Address, Long]]
-  def wavesDistribution(height: Int): Map[Address, Long]
+  def mirDistribution(height: Int): Map[Address, Long]
 
   // the following methods are used exclusively by patches
   def allActiveLeases: Set[LeaseTransaction]

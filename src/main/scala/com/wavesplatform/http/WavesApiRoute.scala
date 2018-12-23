@@ -12,14 +12,14 @@ import io.swagger.annotations._
 import javax.ws.rs.Path
 import one.mir.wallet.Wallet
 
-@Path("/waves")
-@Api(value = "waves")
+@Path("/mir")
+@Api(value = "mir")
 @Deprecated
 case class MirApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool, allChannels: ChannelGroup, time: Time)
     extends ApiRoute
     with BroadcastRoute {
 
-  override lazy val route = pathPrefix("waves") {
+  override lazy val route = pathPrefix("mir") {
     externalPayment ~ signPayment ~ broadcastSignedPayment ~ payment ~ createdSignedPayment
   }
 

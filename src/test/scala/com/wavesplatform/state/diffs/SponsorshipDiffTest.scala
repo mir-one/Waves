@@ -107,14 +107,14 @@ class SponsorshipDiffTest extends PropSpec with PropertyChecks with Matchers wit
         .right
         .get
       fee = 3000 * sponsorTx.minSponsoredAssetFee.get
-      wavesOverspend = TransferTransactionV1
+      mirOverspend = TransferTransactionV1
         .selfSigned(None, master, recipient.toAddress, 1000000, ts + 3, Some(assetId), fee, Array.emptyByteArray)
         .right
         .get
-    } yield (genesis, issueTx, sponsorTx, assetOverspend, insufficientFee, wavesOverspend)
+    } yield (genesis, issueTx, sponsorTx, assetOverspend, insufficientFee, mirOverspend)
 
     forAll(setup) {
-      case (genesis, issue, sponsor, assetOverspend, insufficientFee, wavesOverspend) =>
+      case (genesis, issue, sponsor, assetOverspend, insufficientFee, mirOverspend) =>
         val setupBlocks = Seq(block(Seq(genesis, issue, sponsor)))
         assertDiffEi(setupBlocks, block(Seq(assetOverspend)), s) { blockDiffEi =>
           blockDiffEi should produce("unavailable funds")
@@ -122,16 +122,16 @@ class SponsorshipDiffTest extends PropSpec with PropertyChecks with Matchers wit
         assertDiffEi(setupBlocks, block(Seq(insufficientFee)), s) { blockDiffEi =>
           blockDiffEi should produce("does not exceed minimal value of 100000 MIR")
         }
-        assertDiffEi(setupBlocks, block(Seq(wavesOverspend)), s) { blockDiffEi =>
-          if (wavesOverspend.fee > issue.quantity)
+        assertDiffEi(setupBlocks, block(Seq(mirOverspend)), s) { blockDiffEi =>
+          if (mirOverspend.fee > issue.quantity)
             blockDiffEi should produce("unavailable funds")
           else
-            blockDiffEi should produce("negative waves balance")
+            blockDiffEi should produce("negative mir balance")
         }
     }
   }
 
-  property("not enough waves to pay fee after leasing") {
+  property("not enough mir to pay fee after leasing") {
     val s = settings(0)
     val setup = for {
       master <- accountGen
@@ -262,7 +262,7 @@ class SponsorshipDiffTest extends PropSpec with PropertyChecks with Matchers wit
         .selfSigned(Some(assetId), master, recipient, issue.quantity, ts + 3, None, 100000, Array.emptyByteArray)
         .right
         .get
-      wavesTransfer = TransferTransactionV1
+      mirTransfer = TransferTransactionV1
         .selfSigned(None, master, recipient, 99800000, ts + 4, None, 100000, Array.emptyByteArray)
         .right
         .get
@@ -270,11 +270,11 @@ class SponsorshipDiffTest extends PropSpec with PropertyChecks with Matchers wit
         .selfSigned(None, recipient, master, 100000, ts + 5, Some(assetId), 100, Array.emptyByteArray)
         .right
         .get
-    } yield (genesis, issue, sponsor, assetTransfer, wavesTransfer, backMirTransfer)
+    } yield (genesis, issue, sponsor, assetTransfer, mirTransfer, backMirTransfer)
 
     forAll(setup) {
-      case (genesis, issue, sponsor, assetTransfer, wavesTransfer, backMirTransfer) =>
-        assertDiffAndState(Seq(block(Seq(genesis, issue, sponsor, assetTransfer, wavesTransfer))), block(Seq(backMirTransfer)), s) {
+      case (genesis, issue, sponsor, assetTransfer, mirTransfer, backMirTransfer) =>
+        assertDiffAndState(Seq(block(Seq(genesis, issue, sponsor, assetTransfer, mirTransfer))), block(Seq(backMirTransfer)), s) {
           case (diff, state) =>
             val portfolio = state.portfolio(genesis.recipient)
             portfolio.balance shouldBe 0

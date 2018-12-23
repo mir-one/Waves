@@ -29,7 +29,7 @@ object MirSettings {
 
   import NetworkSettings.networkSettingsValueReader
 
-  val configPath: String = "waves"
+  val configPath: String = "mir"
 
   def fromConfig(config: Config): MirSettings = {
     val directory               = config.as[String](s"$configPath.directory")
@@ -38,16 +38,16 @@ object MirSettings {
     val maxRollbackDepth        = config.as[Int](s"$configPath.max-rollback-depth")
     val rememberBlocks          = config.as[FiniteDuration](s"$configPath.remember-blocks-interval-in-cache")
     val ntpServer               = config.as[String](s"$configPath.ntp-server")
-    val networkSettings         = config.as[NetworkSettings]("waves.network")
-    val walletSettings          = config.as[WalletSettings]("waves.wallet")
+    val networkSettings         = config.as[NetworkSettings]("mir.network")
+    val walletSettings          = config.as[WalletSettings]("mir.wallet")
     val blockchainSettings      = BlockchainSettings.fromConfig(config)
     val checkpointsSettings     = CheckpointsSettings.fromConfig(config)
     val matcherSettings         = MatcherSettings.fromConfig(config)
     val minerSettings           = MinerSettings.fromConfig(config)
     val restAPISettings         = RestAPISettings.fromConfig(config)
     val synchronizationSettings = SynchronizationSettings.fromConfig(config)
-    val utxSettings             = config.as[UtxSettings]("waves.utx")
-    val featuresSettings        = config.as[FeaturesSettings]("waves.features")
+    val utxSettings             = config.as[UtxSettings]("mir.utx")
+    val featuresSettings        = config.as[FeaturesSettings]("mir.features")
     val metrics                 = config.as[Metrics.Settings]("metrics")
 
     MirSettings(

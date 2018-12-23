@@ -173,7 +173,7 @@ case class TransactionsApiRoute(settings: RestAPISettings,
           )
           createTransaction(senderPk, enrichedJsv) { tx =>
             CommonValidation.getMinFee(blockchain, functionalitySettings, blockchain.height, tx).map {
-              case (assetId, assetAmount, wavesAmount) =>
+              case (assetId, assetAmount, mirAmount) =>
                 Json.obj(
                   "feeAssetId" -> assetId,
                   "feeAmount"  -> assetAmount

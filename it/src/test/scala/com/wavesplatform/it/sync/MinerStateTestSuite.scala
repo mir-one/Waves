@@ -13,7 +13,7 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
 
   override protected def nodeConfigs: Seq[Config] = Configs
 
-  private val transferAmount = 1000.waves
+  private val transferAmount = 1000.mir
 
   private def miner = nodes.head
   private def last  = nodes.last
@@ -54,7 +54,7 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
     assert(last.balanceDetails(newAddress).generating == balance2)
 
     all(miner.debugMinerInfo()) shouldNot matchPattern { case State(`newAddress`, _, ts) if ts > 0 => }
-    // uncomment after https://wavesplatform.atlassian.net/browse/NODE-1287 fix
+    // uncomment after https://mirplatform.atlassian.net/browse/NODE-1287 fix
     //all(last.debugMinerInfo()) shouldNot matchPattern { case State(`newAddress`, _, ts) if ts > 0  => }
 
   }
@@ -63,7 +63,7 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
 object MinerStateTestSuite {
   import one.mir.it.NodeConfigs._
   private val minerConfig = ConfigFactory.parseString(s"""
-    |waves {
+    |mir {
     |  synchronization.synchronization-timeout = 10s
     |  blockchain.custom.functionality {
     |    pre-activated-features.1 = 0

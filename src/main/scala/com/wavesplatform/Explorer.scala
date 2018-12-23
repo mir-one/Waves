@@ -25,8 +25,8 @@ object Explorer extends ScorexLogging {
     "score",
     "block-at-height",
     "height-of",
-    "waves-balance-history",
-    "waves-balance",
+    "mir-balance-history",
+    "mir-balance",
     "assets-for-address",
     "asset-balance-history",
     "asset-balance",
@@ -57,8 +57,8 @@ object Explorer extends ScorexLogging {
     "data",
     "sponsorship-history",
     "sponsorship",
-    "addresses-for-waves-seq-nr",
-    "addresses-for-waves",
+    "addresses-for-mir-seq-nr",
+    "addresses-for-mir",
     "addresses-for-asset-seq-nr",
     "addresses-for-asset",
     "address-transaction-ids-seq-nr",
@@ -74,7 +74,7 @@ object Explorer extends ScorexLogging {
     SLF4JBridgeHandler.removeHandlersForRootLogger()
     SLF4JBridgeHandler.install()
 
-    val configFilename = Try(args(0)).toOption.getOrElse("waves-testnet.conf")
+    val configFilename = Try(args(0)).toOption.getOrElse("mir-testnet.conf")
 
     val settings = MirSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
     AddressScheme.current = new AddressScheme {
@@ -138,11 +138,11 @@ object Explorer extends ScorexLogging {
           val addressId = aid.parse(db.get(aid.keyBytes)).get
           log.info(s"Address id = $addressId")
 
-          val kwbh = Keys.wavesBalanceHistory(addressId)
+          val kwbh = Keys.mirBalanceHistory(addressId)
           val wbh  = kwbh.parse(db.get(kwbh.keyBytes))
 
           val balances = wbh.map { h =>
-            val k = Keys.wavesBalance(addressId)(h)
+            val k = Keys.mirBalance(addressId)(h)
             h -> k.parse(db.get(k.keyBytes))
           }
           balances.foreach(b => log.info(s"h = ${b._1}: balance = ${b._2}"))

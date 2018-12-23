@@ -1,4 +1,4 @@
-package one.mir.lang.v1.evaluator.ctx.impl.waves
+package one.mir.lang.v1.evaluator.ctx.impl.mir
 
 import one.mir.lang.v1.compiler.Types._
 import one.mir.lang.v1.evaluator.ctx.impl._

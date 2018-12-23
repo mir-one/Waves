@@ -17,7 +17,7 @@ trait RestAPISettingsHelper {
       ConfigFactory
         .parseString(
           s"""
-             |waves.rest-api {
+             |mir.rest-api {
              |  api-key-hash = $keyHash
              |  transactions-by-address-limit = $MaxTransactionsPerRequest
              |  distribution-by-address-limit = $MaxAddressesPerRequest

@@ -1,4 +1,4 @@
-package one.mir.lang.v1.evaluator.ctx.impl.waves
+package one.mir.lang.v1.evaluator.ctx.impl.mir
 
 import cats.data.EitherT
 import cats.implicits._
@@ -301,8 +301,8 @@ object MirContext {
         case _ => ???
       }
 
-    val wavesBalanceF: UserFunction =
-      UserFunction("wavesBalance", LONG, "get MIR balanse for account", ("@addressOrAlias", addressOrAliasType, "account")) {
+    val mirBalanceF: UserFunction =
+      UserFunction("mirBalance", LONG, "get MIR balanse for account", ("@addressOrAlias", addressOrAliasType, "account")) {
         FUNCTION_CALL(assetBalanceF.header, List(REF("@addressOrAlias"), REF("unit")))
 
       }
@@ -360,7 +360,7 @@ object MirContext {
       addressFromStringF,
       addressFromRecipientF,
       assetBalanceF,
-      wavesBalanceF
+      mirBalanceF
     )
 
     val activeTxTypes   = buildActiveTransactionTypes(proofsEnabled)

@@ -33,18 +33,18 @@ class RoundingIssuesTestSuite extends MatcherSuiteBase {
     val aliceBalanceBefore = matcherNode.accountBalances(aliceAcc.address)._1
     val bobBalanceBefore   = matcherNode.accountBalances(bobAcc.address)._1
 
-    val counter   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, 3100000000L, 238)
+    val counter   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, 3100000000L, 238)
     val counterId = matcherNode.placeOrder(counter).message.id
 
-    val submitted   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, 425532L, 235)
+    val submitted   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, 425532L, 235)
     val submittedId = matcherNode.placeOrder(submitted).message.id
 
     val filledAmount = 420169L
-    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, submittedId, "Filled", Some(filledAmount), 1.minute)
-    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, counterId, "PartiallyFilled", Some(filledAmount), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(mirUsdPair, submittedId, "Filled", Some(filledAmount), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(mirUsdPair, counterId, "PartiallyFilled", Some(filledAmount), 1.minute)
 
     val tx = matcherNode.waitOrderInBlockchain(counterId).head
-    matcherNode.cancelOrder(aliceAcc, wavesUsdPair, counterId)
+    matcherNode.cancelOrder(aliceAcc, mirUsdPair, counterId)
     val rawExchangeTx = matcherNode.rawTransactionInfo(tx.id)
 
     (rawExchangeTx \ "price").as[Long] shouldBe counter.price
@@ -79,20 +79,20 @@ class RoundingIssuesTestSuite extends MatcherSuiteBase {
   }
 
   "should correctly fill 2 counter orders" in {
-    val counter1 = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, 98333333L, 60L)
+    val counter1 = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, 98333333L, 60L)
     matcherNode.placeOrder(counter1).message.id
 
-    val counter2   = matcherNode.prepareOrder(bobAcc, wavesUsdPair, OrderType.SELL, 100000000L, 70L)
+    val counter2   = matcherNode.prepareOrder(bobAcc, mirUsdPair, OrderType.SELL, 100000000L, 70L)
     val counter2Id = matcherNode.placeOrder(counter2).message.id
 
-    val submitted   = matcherNode.prepareOrder(aliceAcc, wavesUsdPair, OrderType.BUY, 100000000L, 1000L)
+    val submitted   = matcherNode.prepareOrder(aliceAcc, mirUsdPair, OrderType.BUY, 100000000L, 1000L)
     val submittedId = matcherNode.placeOrder(submitted).message.id
 
-    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, counter2Id, "PartiallyFilled", Some(2857143L), 1.minute)
-    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, submittedId, "Filled", Some(99523810L), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(mirUsdPair, counter2Id, "PartiallyFilled", Some(2857143L), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(mirUsdPair, submittedId, "Filled", Some(99523810L), 1.minute)
 
     withClue("orderBook check") {
-      val ob = matcherNode.orderBook(wavesUsdPair)
+      val ob = matcherNode.orderBook(mirUsdPair)
       ob.bids shouldBe empty
       ob.asks shouldBe List(LevelResponse(97142857L, 70L)) // = 100000000 - 2857143
     }

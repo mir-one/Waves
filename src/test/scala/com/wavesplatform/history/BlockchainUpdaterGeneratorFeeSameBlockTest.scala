@@ -25,7 +25,7 @@ class BlockchainUpdaterGeneratorFeeSameBlockTest
     fee       <- smallFeeGen
     ts        <- positiveIntGen
     genesis: GenesisTransaction = GenesisTransaction.create(sender, ENOUGH_AMT, ts).explicitGet()
-    payment: TransferTransactionV1 <- wavesTransferGeneratorP(sender, recipient)
+    payment: TransferTransactionV1 <- mirTransferGeneratorP(sender, recipient)
     generatorPaymentOnFee: TransferTransactionV1 = createMirTransfer(defaultSigner, recipient, payment.fee, fee, ts + 1).explicitGet()
   } yield (genesis, payment, generatorPaymentOnFee)
 

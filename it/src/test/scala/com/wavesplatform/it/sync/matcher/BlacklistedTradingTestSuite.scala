@@ -26,10 +26,10 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
   val (dec2, dec8) = (1000L, 1000000000L)
 
   "When blacklists are empty and some orders was placed" - {
-    val usdOrder = matcher.placeOrder(alice.privateKey, wavesUsdPair, BUY, dec8, dec2, matcherFee).message.id
+    val usdOrder = matcher.placeOrder(alice.privateKey, mirUsdPair, BUY, dec8, dec2, matcherFee).message.id
     val wctOrder = matcher.placeOrder(alice.privateKey, wctMirPair, BUY, dec2, dec8, matcherFee).message.id
     val ethOrder = matcher.placeOrder(alice.privateKey, ethMirPair, SELL, dec8, dec8, matcherFee).message.id
-    val btcOrder = matcher.placeOrder(bob.privateKey, wavesBtcPair, SELL, dec8, dec8, matcherFee).message.id
+    val btcOrder = matcher.placeOrder(bob.privateKey, mirBtcPair, SELL, dec8, dec8, matcherFee).message.id
 
     matcher.waitOrderStatus(wctMirPair, btcOrder, "Accepted")
 
@@ -48,18 +48,18 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
       matcher.orderStatusExpectInvalidAssetId(ethOrder, ethMirPair, EthId.toString)
       matcher.expectRejectedOrderPlacement(alice.privateKey, wctMirPair, BUY, dec2, dec8)
       matcher.expectRejectedOrderPlacement(alice.privateKey, ethMirPair, SELL, dec8, dec8)
-      matcher.expectRejectedOrderPlacement(bob.privateKey, wavesBtcPair, SELL, dec8, dec8)
+      matcher.expectRejectedOrderPlacement(bob.privateKey, mirBtcPair, SELL, dec8, dec8)
 
       And("orders of blacklisted address are still available")
-      matcher.orderStatus(btcOrder, wavesBtcPair).status shouldBe "Accepted"
+      matcher.orderStatus(btcOrder, mirBtcPair).status shouldBe "Accepted"
 
       And("orders for other assets are still available")
-      matcher.orderStatus(usdOrder, wavesUsdPair).status shouldBe "Accepted"
+      matcher.orderStatus(usdOrder, mirUsdPair).status shouldBe "Accepted"
 
       And("OrderBook for blacklisted assets is not available")
       matcher.orderBookExpectInvalidAssetId(wctMirPair, WctId.toString)
       matcher.orderBookExpectInvalidAssetId(ethMirPair, EthId.toString)
-      matcher.orderBook(wavesBtcPair).asks.size shouldBe 1
+      matcher.orderBook(mirBtcPair).asks.size shouldBe 1
 
       And("OrderHistory returns info about all orders")
       matcher.activeOrderHistory(alice.privateKey).size shouldBe 3
@@ -75,7 +75,7 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
       matcher.reservedBalance(bob.privateKey).size shouldBe 1
 
       And("orders for other assets are still available")
-      matcher.orderStatus(usdOrder, wavesUsdPair).status shouldBe "Accepted"
+      matcher.orderStatus(usdOrder, mirUsdPair).status shouldBe "Accepted"
     }
 
     "And now if all blacklists are cleared" in {
@@ -92,7 +92,7 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
       And("new orders can be placed")
       val newWctOrder = matcher.placeOrder(alice.privateKey, wctMirPair, BUY, dec2, dec8, matcherFee).message.id
       val newEthOrder = matcher.placeOrder(alice.privateKey, ethMirPair, SELL, dec8, dec8, matcherFee).message.id
-      val newBtcOrder = matcher.placeOrder(bob.privateKey, wavesBtcPair, SELL, dec8, dec8, matcherFee).message.id
+      val newBtcOrder = matcher.placeOrder(bob.privateKey, mirBtcPair, SELL, dec8, dec8, matcherFee).message.id
       matcher.waitOrderStatus(wctMirPair, newBtcOrder, "Accepted")
       matcher.orderStatus(newWctOrder, wctMirPair).status shouldBe "Accepted"
       matcher.orderStatus(newEthOrder, ethMirPair).status shouldBe "Accepted"
@@ -107,7 +107,7 @@ object BlacklistedTradingTestSuite {
   def configWithBlacklisted(assets: Array[String] = Array(), names: Array[String] = Array(), addresses: Array[String] = Array()): Config = {
     def toStr(array: Array[String]): String = if (array.length == 0) "" else array.mkString("\"", "\", \"", "\"")
     parseString(s"""
-                |waves.matcher {
+                |mir.matcher {
                 |  blacklisted-assets = [${toStr(assets)}]
                 |  blacklisted-names = [${toStr(names)}]
                 |  blacklisted-addresses = [${toStr(addresses)}]

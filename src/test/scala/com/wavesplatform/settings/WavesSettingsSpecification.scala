@@ -9,13 +9,13 @@ class MirSettingsSpecification extends FlatSpec with Matchers {
   private val home = System.getProperty("user.home")
 
   private def config(configName: String) =
-    MirSettings.fromConfig(ConfigFactory.parseFile(new File(s"waves-$configName.conf")).withFallback(ConfigFactory.load()))
+    MirSettings.fromConfig(ConfigFactory.parseFile(new File(s"mir-$configName.conf")).withFallback(ConfigFactory.load()))
 
   def testConfig(configName: String)(additionalChecks: MirSettings => Unit = _ => ()) {
     "MirSettings" should s"read values from default config with $configName overrides" in {
       val settings = config(configName)
 
-      settings.directory should be(home + "/waves")
+      settings.directory should be(home + "/mir")
       settings.networkSettings should not be null
       settings.walletSettings should not be null
       settings.blockchainSettings should not be null
@@ -34,7 +34,7 @@ class MirSettingsSpecification extends FlatSpec with Matchers {
   testConfig("devnet")()
 
   "MirSettings" should "resolve folders correctly" in {
-    val config = loadConfig(ConfigFactory.parseString(s"""waves {
+    val config = loadConfig(ConfigFactory.parseString(s"""mir {
          |  directory = "/xxx"
          |  data-directory = "/xxx/data"
          |  ntp-server = "example.com"

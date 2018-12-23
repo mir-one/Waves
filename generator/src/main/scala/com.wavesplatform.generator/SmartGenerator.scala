@@ -27,18 +27,18 @@ class SmartGenerator(settings: SmartGenerator.Settings, val accounts: Seq[Privat
   private def generate(settings: SmartGenerator.Settings): Seq[Transaction] = {
     val bank = randomFrom(accounts).get
 
-    val fee = 0.005.waves
+    val fee = 0.005.mir
 
     val script: Script = Gen.script(settings.complexity)
 
     val setScripts = Range(0, settings.scripts) flatMap (_ =>
       accounts.map { i =>
-        SetScriptTransaction.selfSigned(1, i, Some(script), 1.waves, System.currentTimeMillis()).explicitGet()
+        SetScriptTransaction.selfSigned(1, i, Some(script), 1.mir, System.currentTimeMillis()).explicitGet()
       })
 
     val txs = Range(0, settings.transfers).map { i =>
       TransferTransactionV2
-        .selfSigned(2, None, bank, bank, 1.waves - 2 * fee, System.currentTimeMillis(), None, fee, Array.emptyByteArray)
+        .selfSigned(2, None, bank, bank, 1.mir - 2 * fee, System.currentTimeMillis(), None, fee, Array.emptyByteArray)
         .explicitGet()
     }
 
@@ -49,10 +49,10 @@ class SmartGenerator(settings: SmartGenerator.Settings, val accounts: Seq[Privat
       val asset           = randomFrom(settings.assets.toSeq)
       val tradeAssetIssue = ByteStr.decodeBase58(asset.get).toOption
       val pair            = AssetPair(None, tradeAssetIssue)
-      val sellOrder       = OrderV2.sell(seller, matcher, pair, 100000000L, 1, ts, ts + 30.days.toMillis, 0.003.waves)
-      val buyOrder        = OrderV2.buy(buyer, matcher, pair, 100000000L, 1, ts, ts + 1.day.toMillis, 0.003.waves)
+      val sellOrder       = OrderV2.sell(seller, matcher, pair, 100000000L, 1, ts, ts + 30.days.toMillis, 0.003.mir)
+      val buyOrder        = OrderV2.buy(buyer, matcher, pair, 100000000L, 1, ts, ts + 1.day.toMillis, 0.003.mir)
 
-      ExchangeTransactionV2.create(matcher, buyOrder, sellOrder, 100000000, 1, 0.003.waves, 0.003.waves, 0.011.waves, ts).explicitGet()
+      ExchangeTransactionV2.create(matcher, buyOrder, sellOrder, 100000000, 1, 0.003.mir, 0.003.mir, 0.011.mir, ts).explicitGet()
     }
 
     setScripts ++ txs ++ extxs

@@ -45,7 +45,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
                            orderBook: AssetPair => Option[Either[Unit, ActorRef]],
                            getMarketStatus: AssetPair => Option[MarketStatus],
                            orderBookSnapshot: OrderBookSnapshotHttpCache,
-                           wavesSettings: MirSettings,
+                           mirSettings: MirSettings,
                            db: DB,
                            time: Time)
     extends ApiRoute
@@ -53,7 +53,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
 
   import MatcherApiRoute._
   import PathMatchers._
-  import wavesSettings._
+  import mirSettings._
 
   override val settings = restAPISettings
 

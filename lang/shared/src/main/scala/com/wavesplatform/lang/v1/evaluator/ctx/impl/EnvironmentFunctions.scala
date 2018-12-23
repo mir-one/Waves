@@ -2,7 +2,7 @@ package one.mir.lang.v1.evaluator.ctx.impl
 
 import one.mir.lang.ExecutionError
 import one.mir.lang.v1.compiler.Terms.{CaseObj, CONST_BYTEVECTOR, CONST_STRING}
-import one.mir.lang.v1.evaluator.ctx.impl.waves.Types
+import one.mir.lang.v1.evaluator.ctx.impl.mir.Types
 import one.mir.lang.v1.traits.domain.Recipient
 import one.mir.lang.v1.traits.domain.Recipient.{Address, Alias}
 import one.mir.lang.v1.traits.{DataType, Environment}

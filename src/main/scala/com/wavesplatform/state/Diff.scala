@@ -98,15 +98,15 @@ object Sponsorship {
       .getOrElse(Int.MaxValue)
 
   def toMir(assetFee: Long, sponsorship: Long): Long = {
-    val waves = (BigDecimal(assetFee) * BigDecimal(CommonValidation.FeeUnit)) / BigDecimal(sponsorship)
-    if (waves > Long.MaxValue) {
+    val mir = (BigDecimal(assetFee) * BigDecimal(CommonValidation.FeeUnit)) / BigDecimal(sponsorship)
+    if (mir > Long.MaxValue) {
       throw new java.lang.ArithmeticException("Overflow")
     }
-    waves.toLong
+    mir.toLong
   }
 
-  def fromMir(wavesFee: Long, sponsorship: Long): Long = {
-    val assetFee = (BigDecimal(wavesFee) / BigDecimal(CommonValidation.FeeUnit)) * BigDecimal(sponsorship)
+  def fromMir(mirFee: Long, sponsorship: Long): Long = {
+    val assetFee = (BigDecimal(mirFee) / BigDecimal(CommonValidation.FeeUnit)) * BigDecimal(sponsorship)
     if (assetFee > Long.MaxValue) {
       throw new java.lang.ArithmeticException("Overflow")
     }

@@ -33,23 +33,23 @@ object ExtractInfo extends App with ScorexLogging {
   }
 
   val benchSettings = Settings.fromConfig(ConfigFactory.load())
-  val wavesSettings = {
+  val mirSettings = {
     val config = loadConfig(ConfigFactory.parseFile(new File(args.head)))
     MirSettings.fromConfig(config)
   }
 
   AddressScheme.current = new AddressScheme {
-    override val chainId: Byte = wavesSettings.blockchainSettings.addressSchemeCharacter.toByte
+    override val chainId: Byte = mirSettings.blockchainSettings.addressSchemeCharacter.toByte
   }
 
   val db: DB = {
-    val dir = new File(wavesSettings.dataDirectory)
-    if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${wavesSettings.dataDirectory}'")
+    val dir = new File(mirSettings.dataDirectory)
+    if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${mirSettings.dataDirectory}'")
     LevelDBFactory.factory.open(dir, new Options)
   }
 
   try {
-    val state = new LevelDBWriter(db, wavesSettings.blockchainSettings.functionalitySettings, 100000, 2000, 120 * 60 * 1000)
+    val state = new LevelDBWriter(db, mirSettings.blockchainSettings.functionalitySettings, 100000, 2000, 120 * 60 * 1000)
 
     def nonEmptyBlockHeights(from: Int): Iterator[Integer] =
       for {

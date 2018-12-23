@@ -8,7 +8,7 @@ import one.mir.account.AddressScheme
 import one.mir.db.{Storage, VersionedStorage}
 import one.mir.lang.v1.compiler.CompilerContext
 import one.mir.lang.v1.evaluator.ctx._
-import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
+import one.mir.lang.v1.evaluator.ctx.impl.mir.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.lang.v1.{CTX, FunctionHeader, ScriptEstimator}
 import one.mir.lang.{Global, ScriptVersion}
@@ -51,7 +51,7 @@ package object utils extends ScorexLogging {
   def forceStopApplication(reason: ApplicationStopReason = Default): Unit =
     new Thread(() => {
       System.exit(reason.code)
-    }, "waves-platform-shutdown-thread").start()
+    }, "mir-platform-shutdown-thread").start()
 
   def humanReadableSize(bytes: Long, si: Boolean = true): String = {
     val (baseValue, unitStrings) =

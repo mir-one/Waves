@@ -65,7 +65,7 @@ object CommonValidation {
           Left(
             GenericError(
               "Attempt to transfer unavailable funds: Transaction application leads to " +
-                s"negative waves balance to (at least) temporary negative state, current balance equals $oldMirBalance, " +
+                s"negative mir balance to (at least) temporary negative state, current balance equals $oldMirBalance, " +
                 s"spends equals ${spendings.balance}, result is $newMirBalance"))
         } else if (spendings.assets.nonEmpty) {
           val oldAssetBalances = blockchain.portfolio(sender).assets
@@ -199,12 +199,12 @@ object CommonValidation {
             case Some(assetId) =>
               for {
                 assetInfo <- blockchain.assetDescription(assetId).toRight(GenericError(s"Asset $assetId does not exist, cannot be used to pay fees"))
-                wavesFee <- Either.cond(
+                mirFee <- Either.cond(
                   assetInfo.sponsorship > 0,
                   feeInUnits * FeeUnit,
                   GenericError(s"Asset $assetId is not sponsored, cannot be used to pay fees")
                 )
-              } yield (Some((assetId, assetInfo)), wavesFee)
+              } yield (Some((assetId, assetInfo)), mirFee)
           }
         } yield r
 

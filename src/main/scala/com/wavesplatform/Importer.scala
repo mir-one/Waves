@@ -29,7 +29,7 @@ object Importer extends ScorexLogging {
     SLF4JBridgeHandler.removeHandlersForRootLogger()
     SLF4JBridgeHandler.install()
 
-    val configFilename     = Try(args(0)).toOption.getOrElse("waves-testnet.conf")
+    val configFilename     = Try(args(0)).toOption.getOrElse("mir-testnet.conf")
     val blockchainFilename = Try(args(1))
     val importHeight       = Try(args(2)).map(_.toInt).getOrElse(Int.MaxValue)
 

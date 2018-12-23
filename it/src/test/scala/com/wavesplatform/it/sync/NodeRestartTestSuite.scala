@@ -37,7 +37,7 @@ class NodeRestartTestSuite extends FreeSpec with Matchers with WaitForHeight2 wi
                   None,
                   nodeB.privateKey,
                   AddressOrAlias.fromString(nodeA.address).explicitGet(),
-                  1.waves,
+                  1.mir,
                   System.currentTimeMillis(),
                   None,
                   minFee,
@@ -66,7 +66,7 @@ class NodeRestartTestSuite extends FreeSpec with Matchers with WaitForHeight2 wi
 object NodeRestartTestSuite {
   import one.mir.it.NodeConfigs._
   private val FirstNode = ConfigFactory.parseString(s"""
-                                                         |waves {
+                                                         |mir {
                                                          |  synchronization.synchronization-timeout = 10s
                                                          |  blockchain.custom.functionality {
                                                          |    pre-activated-features.1 = 0
@@ -80,7 +80,7 @@ object NodeRestartTestSuite {
                                                          |}""".stripMargin)
 
   private val SecondNode = ConfigFactory.parseString(s"""
-                                                            |waves {
+                                                            |mir {
                                                             |  synchronization.synchronization-timeout = 10s
                                                             |  blockchain.custom.functionality {
                                                             |    pre-activated-features.1 = 0

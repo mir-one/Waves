@@ -8,22 +8,22 @@ import one.mir.transaction.smart.script.ScriptCompiler
 import one.mir.utils.Base58
 
 package object sync {
-  val smartFee                   = 0.004.waves
-  val minFee                     = 0.001.waves
-  val leasingFee                 = 0.002.waves
-  val issueFee                   = 1.waves
-  val burnFee                    = 1.waves
-  val sponsorFee                 = 1.waves
-  val setAssetScriptFee          = 1.waves
-  val setScriptFee               = 0.01.waves
-  val transferAmount             = 10.waves
+  val smartFee                   = 0.004.mir
+  val minFee                     = 0.001.mir
+  val leasingFee                 = 0.002.mir
+  val issueFee                   = 1.mir
+  val burnFee                    = 1.mir
+  val sponsorFee                 = 1.mir
+  val setAssetScriptFee          = 1.mir
+  val setScriptFee               = 0.01.mir
+  val transferAmount             = 10.mir
   val leasingAmount              = transferAmount
   val issueAmount                = transferAmount
-  val massTransferFeePerTransfer = 0.0005.waves
+  val massTransferFeePerTransfer = 0.0005.mir
   val someAssetAmount            = 9999999999999l
-  val matcherFee                 = 0.003.waves
+  val matcherFee                 = 0.003.mir
   val orderFee                   = matcherFee
-  val smartMatcherFee            = 0.007.waves
+  val smartMatcherFee            = 0.007.mir
   val smartMinFee                = minFee + smartFee
 
   def calcDataFee(data: List[DataEntry[_]]): Long = {

@@ -5,7 +5,7 @@ import one.mir.lang.ScriptVersion.Versions.V1
 import one.mir.lang.v1.compiler.CompilerV1
 import one.mir.lang.v1.compiler.Terms.EXPR
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
+import one.mir.lang.v1.evaluator.ctx.impl.mir.MirContext
 
 object JavaAdapter {
   private val version = V1
