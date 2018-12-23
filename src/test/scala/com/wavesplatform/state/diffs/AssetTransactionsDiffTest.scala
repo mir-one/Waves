@@ -226,12 +226,12 @@ class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
     for {
       version            <- Gen.oneOf(IssueTransactionV2.supportedVersions.toSeq)
       timestamp          <- timestampGen
-      initialWavesAmount <- Gen.choose(Long.MaxValue / 1000, Long.MaxValue / 100)
+      initialMirAmount <- Gen.choose(Long.MaxValue / 1000, Long.MaxValue / 100)
       accountA           <- accountGen
       accountB           <- accountGen
       smallFee           <- Gen.choose(1l, 10l)
-      genesisTx1 = GenesisTransaction.create(accountA, initialWavesAmount, timestamp).explicitGet()
-      genesisTx2 = GenesisTransaction.create(accountB, initialWavesAmount, timestamp).explicitGet()
+      genesisTx1 = GenesisTransaction.create(accountA, initialMirAmount, timestamp).explicitGet()
+      genesisTx2 = GenesisTransaction.create(accountB, initialMirAmount, timestamp).explicitGet()
       reissuable = true
       (_, assetName, description, quantity, decimals, _, _, _) <- issueParamGen
       issue = IssueTransactionV2

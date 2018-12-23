@@ -5,7 +5,7 @@ import one.mir.account.{Address, PrivateKeyAccount}
 import one.mir.block.Block
 import one.mir.database.LevelDBWriter
 import one.mir.lagonaki.mocks.TestBlock
-import one.mir.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import one.mir.settings.{TestFunctionalitySettings, MirSettings, loadConfig}
 import one.mir.state.diffs.ENOUGH_AMT
 import one.mir.transaction.{GenesisTransaction, Transaction}
 import one.mir.transaction.transfer.{TransferTransaction, TransferTransactionV1}
@@ -18,7 +18,7 @@ class BlockchainUpdaterImplSpec extends FreeSpec with Matchers with WithDB with 
 
   def baseTest(gen: Time => Gen[(PrivateKeyAccount, Seq[Block])])(f: (BlockchainUpdaterImpl, PrivateKeyAccount) => Unit): Unit = {
     val defaultWriter = new LevelDBWriter(db, TestFunctionalitySettings.Stub, 100000, 2000, 120 * 60 * 1000)
-    val settings      = WavesSettings.fromConfig(loadConfig(ConfigFactory.load()))
+    val settings      = MirSettings.fromConfig(loadConfig(ConfigFactory.load()))
     val bcu           = new BlockchainUpdaterImpl(defaultWriter, settings, ntpTime)
     try {
       val (account, blocks) = gen(ntpTime).sample.get

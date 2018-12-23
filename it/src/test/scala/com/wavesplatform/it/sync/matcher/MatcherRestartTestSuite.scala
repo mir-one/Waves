@@ -25,7 +25,7 @@ class MatcherRestartTestSuite extends MatcherSuiteBase {
         .id
     matcherNode.waitForTransaction(aliceAsset)
 
-    val aliceWavesPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
+    val aliceMirPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
     // check assets's balances
     matcherNode.assertAssetBalance(aliceAcc.address, aliceAsset, someAssetAmount)
     matcherNode.assertAssetBalance(matcherAcc.address, aliceAsset, 0)
@@ -33,14 +33,14 @@ class MatcherRestartTestSuite extends MatcherSuiteBase {
     "make order and after matcher's restart try to cancel it" in {
       // Alice places sell order
       val aliceOrder = matcherNode
-        .placeOrder(aliceAcc, aliceWavesPair, OrderType.SELL, 500, 2.waves * Order.PriceConstant, matcherFee, orderVersion)
+        .placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 500, 2.waves * Order.PriceConstant, matcherFee, orderVersion)
       aliceOrder.status shouldBe "OrderAccepted"
       val firstOrder = aliceOrder.message.id
 
-      matcherNode.waitOrderStatus(aliceWavesPair, firstOrder, "Accepted")
+      matcherNode.waitOrderStatus(aliceMirPair, firstOrder, "Accepted")
 
       // check that order is correct
-      val orders = matcherNode.orderBook(aliceWavesPair)
+      val orders = matcherNode.orderBook(aliceMirPair)
       orders.asks.head.amount shouldBe 500
       orders.asks.head.price shouldBe 2.waves * Order.PriceConstant
 
@@ -54,28 +54,28 @@ class MatcherRestartTestSuite extends MatcherSuiteBase {
       val height = nodes.map(_.height).max
 
       matcherNode.waitForHeight(height + 1, 40.seconds)
-      matcherNode.waitOrderStatus(aliceWavesPair, firstOrder, "Accepted")
+      matcherNode.waitOrderStatus(aliceMirPair, firstOrder, "Accepted")
       matcherNode.fullOrderHistory(aliceAcc).head.status shouldBe "Accepted"
 
-      val orders1 = matcherNode.orderBook(aliceWavesPair)
+      val orders1 = matcherNode.orderBook(aliceMirPair)
       orders1.asks.head.amount shouldBe 500
       orders1.asks.head.price shouldBe 2.waves * Order.PriceConstant
 
       val aliceSecondOrder =
-        matcherNode.placeOrder(aliceAcc, aliceWavesPair, OrderType.SELL, 500, 2.waves * Order.PriceConstant, matcherFee, orderVersion, 5.minutes)
+        matcherNode.placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 500, 2.waves * Order.PriceConstant, matcherFee, orderVersion, 5.minutes)
       aliceSecondOrder.status shouldBe "OrderAccepted"
 
-      val orders2 = matcherNode.orderBook(aliceWavesPair)
+      val orders2 = matcherNode.orderBook(aliceMirPair)
       orders2.asks.head.amount shouldBe 1000
       orders2.asks.head.price shouldBe 2.waves * Order.PriceConstant
 
-      val cancel = matcherNode.cancelOrder(aliceAcc, aliceWavesPair, firstOrder)
+      val cancel = matcherNode.cancelOrder(aliceAcc, aliceMirPair, firstOrder)
       cancel.status should be("OrderCanceled")
 
-      val orders3 = matcherNode.orderBook(aliceWavesPair)
+      val orders3 = matcherNode.orderBook(aliceMirPair)
       orders3.asks.head.amount shouldBe 500
 
-      matcherNode.waitOrderStatus(aliceWavesPair, firstOrder, "Cancelled")
+      matcherNode.waitOrderStatus(aliceMirPair, firstOrder, "Cancelled")
       matcherNode.fullOrderHistory(aliceAcc).head.status shouldBe "Accepted"
     }
   }

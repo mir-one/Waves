@@ -134,7 +134,7 @@ class BlockDifferTest extends FreeSpecLike with Matchers with BlockGen with With
     val features: Set[Short] = Set[Short](2)
 
     val paymentTxs = (1 to numPayments).map { i =>
-      createWavesTransfer(
+      createMirTransfer(
         from,
         to,
         amount = 10000,

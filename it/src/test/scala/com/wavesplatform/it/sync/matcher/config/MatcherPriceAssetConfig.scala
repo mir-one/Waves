@@ -109,12 +109,12 @@ object MatcherPriceAssetConfig {
     priceAsset = Some(UsdId)
   )
 
-  val wctWavesPair = AssetPair(
+  val wctMirPair = AssetPair(
     amountAsset = Some(WctId),
     priceAsset = None
   )
 
-  val ethWavesPair = AssetPair(
+  val ethMirPair = AssetPair(
     amountAsset = Some(EthId),
     priceAsset = None
   )

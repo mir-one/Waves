@@ -6,7 +6,7 @@ import one.mir.block.Block
 import one.mir.consensus.nxt.NxtLikeConsensusBlockData
 import one.mir.database.LevelDBWriter
 import one.mir.lagonaki.mocks.TestBlock
-import one.mir.settings.{WavesSettings, _}
+import one.mir.settings.{MirSettings, _}
 import one.mir.state._
 import one.mir.state.diffs.{ENOUGH_AMT, ProduceError}
 import one.mir.transaction.{BlockchainUpdater, GenesisTransaction}
@@ -200,7 +200,7 @@ class FPPoSSelectorTest extends FreeSpec with Matchers with WithDB with Transact
 
   def withEnv(gen: Time => Gen[(Seq[PrivateKeyAccount], Seq[Block])])(f: Env => Unit): Unit = {
     val defaultWriter = new LevelDBWriter(db, TestFunctionalitySettings.Stub, 100000, 2000, 120 * 60 * 1000)
-    val settings0     = WavesSettings.fromConfig(loadConfig(ConfigFactory.load()))
+    val settings0     = MirSettings.fromConfig(loadConfig(ConfigFactory.load()))
     val settings      = settings0.copy(featuresSettings = settings0.featuresSettings.copy(autoShutdownOnUnsupportedFeature = false))
     val bcu           = new BlockchainUpdaterImpl(defaultWriter, settings, ntpTime)
     val pos           = new PoSSelector(bcu, settings.blockchainSettings)

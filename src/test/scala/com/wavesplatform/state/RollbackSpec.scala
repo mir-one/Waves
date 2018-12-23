@@ -7,7 +7,7 @@ import one.mir.features.BlockchainFeatures._
 import one.mir.features._
 import one.mir.lagonaki.mocks.TestBlock
 import one.mir.lang.v1.compiler.Terms.TRUE
-import one.mir.settings.{TestFunctionalitySettings, WavesSettings}
+import one.mir.settings.{TestFunctionalitySettings, MirSettings}
 import one.mir.state.reader.LeaseDetails
 import one.mir.transaction.ValidationError.AliasDoesNotExist
 import one.mir.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
@@ -339,14 +339,14 @@ class RollbackSpec extends FreeSpec with Matchers with WithDomain with Transacti
         }
     }
 
-    def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): WavesSettings = {
+    def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): MirSettings = {
       val tfs = TestFunctionalitySettings.Enabled.copy(
         preActivatedFeatures = preActivatedFeatures.map { case (k, v) => k.id -> v }(collection.breakOut),
         blocksForFeatureActivation = 1,
         featureCheckBlocksPeriod = 1
       )
 
-      history.DefaultWavesSettings.copy(blockchainSettings = history.DefaultWavesSettings.blockchainSettings.copy(functionalitySettings = tfs))
+      history.DefaultMirSettings.copy(blockchainSettings = history.DefaultMirSettings.blockchainSettings.copy(functionalitySettings = tfs))
     }
 
     "asset sponsorship" in forAll(for {

@@ -5,7 +5,7 @@ import one.mir.consensus.PoSSelector
 import one.mir.metrics._
 import one.mir.mining.Miner
 import one.mir.network._
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.Blockchain
 import one.mir.utils.{ScorexLogging, Time}
 import one.mir.utx.UtxPool
@@ -27,7 +27,7 @@ object BlockAppender extends ScorexLogging with Instrumented {
             time: Time,
             utxStorage: UtxPool,
             pos: PoSSelector,
-            settings: WavesSettings,
+            settings: MirSettings,
             scheduler: Scheduler)(newBlock: Block): Task[Either[ValidationError, Option[BigInt]]] =
     Task {
       measureSuccessful(
@@ -48,7 +48,7 @@ object BlockAppender extends ScorexLogging with Instrumented {
             time: Time,
             utxStorage: UtxPool,
             pos: PoSSelector,
-            settings: WavesSettings,
+            settings: MirSettings,
             allChannels: ChannelGroup,
             peerDatabase: PeerDatabase,
             miner: Miner,

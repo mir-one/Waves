@@ -219,12 +219,12 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
     val threshold        = height - maxRollbackDepth
     val balanceThreshold = height - balanceSnapshotMaxRollbackDepth
 
-    val newAddressesForWaves = ArrayBuffer.empty[BigInt]
+    val newAddressesForMir = ArrayBuffer.empty[BigInt]
     val updatedBalanceAddresses = for ((addressId, balance) <- wavesBalances) yield {
       val kwbh = Keys.wavesBalanceHistory(addressId)
       val wbh  = rw.get(kwbh)
       if (wbh.isEmpty) {
-        newAddressesForWaves += addressId
+        newAddressesForMir += addressId
       }
       rw.put(Keys.wavesBalance(addressId)(height), balance)
       expiredKeys ++= updateHistory(rw, wbh, kwbh, balanceThreshold, Keys.wavesBalance(addressId))
@@ -233,10 +233,10 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
     val changedAddresses = addressTransactions.keys ++ updatedBalanceAddresses
 
-    if (newAddressesForWaves.nonEmpty) {
-      val newSeqNr = rw.get(Keys.addressesForWavesSeqNr) + 1
-      rw.put(Keys.addressesForWavesSeqNr, newSeqNr)
-      rw.put(Keys.addressesForWaves(newSeqNr), newAddressesForWaves)
+    if (newAddressesForMir.nonEmpty) {
+      val newSeqNr = rw.get(Keys.addressesForMirSeqNr) + 1
+      rw.put(Keys.addressesForMirSeqNr, newSeqNr)
+      rw.put(Keys.addressesForMir(newSeqNr), newAddressesForMir)
     }
 
     for ((addressId, leaseBalance) <- leaseBalances) {
@@ -795,8 +795,8 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
   override def wavesDistribution(height: Int): Map[Address, Long] = readOnly { db =>
     (for {
-      seqNr     <- (1 to db.get(Keys.addressesForWavesSeqNr)).par
-      addressId <- db.get(Keys.addressesForWaves(seqNr)).par
+      seqNr     <- (1 to db.get(Keys.addressesForMirSeqNr)).par
+      addressId <- db.get(Keys.addressesForMir(seqNr)).par
       history = db.get(Keys.wavesBalanceHistory(addressId))
       actualHeight <- history.partition(_ > height)._2.headOption
       balance = db.get(Keys.wavesBalance(addressId)(actualHeight))

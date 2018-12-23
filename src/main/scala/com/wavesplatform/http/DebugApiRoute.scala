@@ -15,7 +15,7 @@ import one.mir.block.Block.BlockId
 import one.mir.crypto
 import one.mir.mining.{Miner, MinerDebugInfo}
 import one.mir.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.diffs.TransactionDiffer
 import one.mir.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
 import one.mir.transaction.ValidationError.InvalidRequestSignature
@@ -37,7 +37,7 @@ import scala.util.{Failure, Success}
 
 @Path("/debug")
 @Api(value = "/debug")
-case class DebugApiRoute(ws: WavesSettings,
+case class DebugApiRoute(ws: MirSettings,
                          time: Time,
                          blockchain: Blockchain,
                          wallet: Wallet,
@@ -64,7 +64,7 @@ case class DebugApiRoute(ws: WavesSettings,
 
   override val settings = ws.restAPISettings
   override lazy val route: Route = pathPrefix("debug") {
-    blocks ~ state ~ info ~ stateWaves ~ rollback ~ rollbackTo ~ blacklist ~ portfolios ~ minerInfo ~ historyInfo ~ configInfo ~ print ~ validate
+    blocks ~ state ~ info ~ stateMir ~ rollback ~ rollbackTo ~ blacklist ~ portfolios ~ minerInfo ~ historyInfo ~ configInfo ~ print ~ validate
   }
 
   @Path("/blocks/{howMany}")
@@ -149,13 +149,13 @@ case class DebugApiRoute(ws: WavesSettings,
     complete(ng.wavesDistribution(ng.height).map { case (a, b) => a.stringRepr -> b })
   }
 
-  @Path("/stateWaves/{height}")
+  @Path("/stateMir/{height}")
   @ApiOperation(value = "State at block", notes = "Get state at specified height", httpMethod = "GET")
   @ApiImplicitParams(
     Array(
       new ApiImplicitParam(name = "height", value = "height", required = true, dataType = "integer", paramType = "path")
     ))
-  def stateWaves: Route = (path("stateWaves" / IntNumber) & get & withAuth) { height =>
+  def stateMir: Route = (path("stateMir" / IntNumber) & get & withAuth) { height =>
     complete(ng.wavesDistribution(height).map { case (a, b) => a.stringRepr -> b })
   }
 

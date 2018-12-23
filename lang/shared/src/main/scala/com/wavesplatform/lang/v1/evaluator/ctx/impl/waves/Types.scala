@@ -262,7 +262,7 @@ object Types {
       )
   }
 
-  def buildWavesTypes(proofsEnabled: Boolean): Seq[DefinedType] = {
+  def buildMirTypes(proofsEnabled: Boolean): Seq[DefinedType] = {
 
     val activeTxTypes                    = buildActiveTransactionTypes(proofsEnabled)
     val obsoleteTxTypes                  = buildObsoleteTransactionTypes(proofsEnabled)

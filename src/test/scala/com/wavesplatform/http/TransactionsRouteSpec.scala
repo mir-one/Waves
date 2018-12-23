@@ -43,7 +43,7 @@ class TransactionsRouteSpec
   private val invalidBase58Gen = alphaNumStr.map(_ + "0")
 
   routePath("/calculateFee") - {
-    "transfer with Waves fee" - {
+    "transfer with Mir fee" - {
       "TransferTransaction" in {
         val sender: PublicKeyAccount = accountGen.sample.get
         val transferTx = Json.obj(

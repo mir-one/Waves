@@ -6,7 +6,7 @@ import one.mir.block.{Block, MicroBlock}
 import one.mir.consensus.nxt.NxtLikeConsensusBlockData
 import one.mir.features.BlockchainFeatures
 import one.mir.lagonaki.mocks.TestBlock
-import one.mir.settings.{BlockchainSettings, TestFunctionalitySettings, WavesSettings}
+import one.mir.settings.{BlockchainSettings, TestFunctionalitySettings, MirSettings}
 import one.mir.state._
 import one.mir.transaction.Transaction
 import one.mir.crypto._
@@ -22,14 +22,14 @@ package object history {
   )
 
   val config   = ConfigFactory.load()
-  val settings = WavesSettings.fromConfig(config)
+  val settings = MirSettings.fromConfig(config)
 
   val MicroblocksActivatedAt0BlockchainSettings: BlockchainSettings = DefaultBlockchainSettings.copy(
     functionalitySettings = DefaultBlockchainSettings.functionalitySettings.copy(preActivatedFeatures = Map(BlockchainFeatures.NG.id -> 0)))
 
-  val MicroblocksActivatedAt0WavesSettings: WavesSettings = settings.copy(blockchainSettings = MicroblocksActivatedAt0BlockchainSettings)
+  val MicroblocksActivatedAt0MirSettings: MirSettings = settings.copy(blockchainSettings = MicroblocksActivatedAt0BlockchainSettings)
 
-  val DefaultWavesSettings: WavesSettings = settings.copy(blockchainSettings = DefaultBlockchainSettings,
+  val DefaultMirSettings: MirSettings = settings.copy(blockchainSettings = DefaultBlockchainSettings,
                                                           featuresSettings = settings.featuresSettings.copy(autoShutdownOnUnsupportedFeature = false))
 
   val defaultSigner       = PrivateKeyAccount(Array.fill(KeyLength)(0))

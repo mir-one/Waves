@@ -13,9 +13,9 @@ class SwaggerDocService(val actorSystem: ActorSystem, val materializer: ActorMat
 
   override val host: String = settings.bindAddress + ":" + settings.port
   override val info: Info = Info(
-    "The Web Interface to the Waves Full Node API",
+    "The Web Interface to the Mir Full Node API",
     Version.VersionString,
-    "Waves Full Node",
+    "Mir Full Node",
     "License: MIT License",
     None,
     Some(License("MIT License", "https://github.com/mir-one/node/blob/master/LICENSE"))

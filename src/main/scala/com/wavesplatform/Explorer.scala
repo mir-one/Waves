@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import one.mir.account.{Address, AddressScheme}
 import one.mir.database.{Keys, LevelDBWriter}
 import one.mir.db.openDB
-import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.settings.{MirSettings, loadConfig}
 import one.mir.state.{ByteStr, EitherExt2}
 import one.mir.utils.{Base58, Base64, ScorexLogging}
 import org.slf4j.bridge.SLF4JBridgeHandler
@@ -76,7 +76,7 @@ object Explorer extends ScorexLogging {
 
     val configFilename = Try(args(0)).toOption.getOrElse("waves-testnet.conf")
 
-    val settings = WavesSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
+    val settings = MirSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
     AddressScheme.current = new AddressScheme {
       override val chainId: Byte = settings.blockchainSettings.addressSchemeCharacter.toByte
     }

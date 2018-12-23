@@ -16,7 +16,7 @@ import one.mir.matcher.api.{MatcherApiRoute, OrderBookSnapshotHttpCache}
 import one.mir.matcher.market.OrderBookActor.MarketStatus
 import one.mir.matcher.market.{MatcherActor, MatcherTransactionWriter, OrderHistoryActor}
 import one.mir.matcher.model.{ExchangeTransactionCreator, OrderBook, OrderValidator}
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.{Blockchain, EitherExt2}
 import one.mir.transaction.assets.exchange.AssetPair
 import one.mir.utils.{ScorexLogging, Time}
@@ -33,7 +33,7 @@ class Matcher(actorSystem: ActorSystem,
               utx: UtxPool,
               allChannels: ChannelGroup,
               blockchain: Blockchain,
-              settings: WavesSettings,
+              settings: MirSettings,
               matcherPrivateKey: PrivateKeyAccount)
     extends ScorexLogging {
 
@@ -156,7 +156,7 @@ object Matcher extends ScorexLogging {
             utx: UtxPool,
             allChannels: ChannelGroup,
             blockchain: Blockchain,
-            settings: WavesSettings): Option[Matcher] =
+            settings: MirSettings): Option[Matcher] =
     try {
       val privateKey = (for {
         address <- Address.fromString(settings.matcherSettings.account)

@@ -2,7 +2,7 @@ package one.mir.history
 
 import one.mir.TransactionGen
 import one.mir.features.BlockchainFeatures
-import one.mir.settings.{BlockchainSettings, WavesSettings}
+import one.mir.settings.{BlockchainSettings, MirSettings}
 import one.mir.state._
 import one.mir.state.diffs._
 import org.scalacheck.Gen
@@ -36,21 +36,21 @@ class BlockchainUpdaterSponsoredFeeBlockTest
 
     master                      <- accountGen
     ts                          <- timestampGen
-    transferAssetWavesFee       <- smallFeeGen
+    transferAssetMirFee       <- smallFeeGen
     sponsor                     <- accountGen
     alice                       <- accountGen
     bob                         <- accountGen
     (feeAsset, sponsorTx, _, _) <- sponsorFeeCancelSponsorFeeGen(alice)
-    wavesFee                    = Sponsorship.toWaves(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
+    wavesFee                    = Sponsorship.toMir(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
     genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
     masterToAlice: TransferTransactionV1 = TransferTransactionV1
       .selfSigned(None,
                   master,
                   alice,
-                  feeAsset.fee + sponsorTx.fee + transferAssetWavesFee + wavesFee,
+                  feeAsset.fee + sponsorTx.fee + transferAssetMirFee + wavesFee,
                   ts + 1,
                   None,
-                  transferAssetWavesFee,
+                  transferAssetMirFee,
                   Array.emptyByteArray)
       .right
       .get
@@ -62,7 +62,7 @@ class BlockchainUpdaterSponsoredFeeBlockTest
         feeAsset.quantity / 2,
         ts + 2,
         None,
-        transferAssetWavesFee,
+        transferAssetMirFee,
         Array.emptyByteArray
       )
       .right
@@ -101,10 +101,10 @@ class BlockchainUpdaterSponsoredFeeBlockTest
             blocksForFeatureActivation = 1,
             preActivatedFeatures = Map(BlockchainFeatures.FeeSponsorship.id -> 0, BlockchainFeatures.NG.id -> 0)))
 
-  val SponsoredActivatedAt0WavesSettings: WavesSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
+  val SponsoredActivatedAt0MirSettings: MirSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
 
   property("not enough waves to sponsor sponsored tx") {
-    scenario(sponsorPreconditions, SponsoredActivatedAt0WavesSettings) {
+    scenario(sponsorPreconditions, SponsoredActivatedAt0MirSettings) {
       case (domain, (genesis, masterToAlice, feeAsset, sponsor, aliceToBob, bobToMaster, bobToMaster2)) =>
         val (block0, microBlocks) = chainBaseAndMicro(randomSig, genesis, Seq(masterToAlice, feeAsset, sponsor).map(Seq(_)))
         val block1 = customBuildBlockOfTxs(microBlocks.last.totalResBlockSig,

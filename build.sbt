@@ -123,8 +123,8 @@ inConfig(Test)(
 inConfig(Linux)(
   Seq(
     maintainer := "mir.one",
-    packageSummary := "Waves node",
-    packageDescription := "Waves node"
+    packageSummary := "Mir node",
+    packageDescription := "Mir node"
   ))
 
 bashScriptExtraDefines += s"""addJava "-Dwaves.directory=/var/lib/${normalizedName.value}""""

@@ -97,7 +97,7 @@ object Sponsorship {
       .map(h => h + fs.activationWindowSize(h))
       .getOrElse(Int.MaxValue)
 
-  def toWaves(assetFee: Long, sponsorship: Long): Long = {
+  def toMir(assetFee: Long, sponsorship: Long): Long = {
     val waves = (BigDecimal(assetFee) * BigDecimal(CommonValidation.FeeUnit)) / BigDecimal(sponsorship)
     if (waves > Long.MaxValue) {
       throw new java.lang.ArithmeticException("Overflow")
@@ -105,7 +105,7 @@ object Sponsorship {
     waves.toLong
   }
 
-  def fromWaves(wavesFee: Long, sponsorship: Long): Long = {
+  def fromMir(wavesFee: Long, sponsorship: Long): Long = {
     val assetFee = (BigDecimal(wavesFee) / BigDecimal(CommonValidation.FeeUnit)) * BigDecimal(sponsorship)
     if (assetFee > Long.MaxValue) {
       throw new java.lang.ArithmeticException("Overflow")

@@ -177,10 +177,10 @@ class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with Requ
           assetId = None,
           sender = senderPrivateKey,
           recipient = receiverPrivateKey.toAddress,
-          amount = 1 * Waves,
+          amount = 1 * Mir,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = Waves / 3,
+          feeAmount = Mir / 3,
           attachment = Array.emptyByteArray
         )
         .right
@@ -193,10 +193,10 @@ class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with Requ
           assetId = None,
           sender = senderPrivateKey,
           recipient = receiverPrivateKey.toAddress,
-          amount = 1 * Waves,
+          amount = 1 * Mir,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = Waves / 3,
+          feeAmount = Mir / 3,
           attachment = Array.emptyByteArray,
           version = 2,
           proofs = Proofs(Seq.empty)

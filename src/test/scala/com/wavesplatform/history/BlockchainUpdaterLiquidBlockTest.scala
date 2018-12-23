@@ -50,7 +50,7 @@ class BlockchainUpdaterLiquidBlockTest extends PropSpec with PropertyChecks with
     import Block.{MaxTransactionsPerBlockVer3 => Max}
     forAll(preconditionsAndPayments(Max + 1, Max + 100)) {
       case (prevBlock, keyBlock, microBlocks) =>
-        withDomain(MicroblocksActivatedAt0WavesSettings) { d =>
+        withDomain(MicroblocksActivatedAt0MirSettings) { d =>
           val blocksApplied = for {
             _ <- d.blockchainUpdater.processBlock(prevBlock)
             _ <- d.blockchainUpdater.processBlock(keyBlock)
@@ -77,9 +77,9 @@ class BlockchainUpdaterLiquidBlockTest extends PropSpec with PropertyChecks with
   }
 
   property("miner settings don't interfere with micro block processing") {
-    val oneTxPerMicroSettings = MicroblocksActivatedAt0WavesSettings
+    val oneTxPerMicroSettings = MicroblocksActivatedAt0MirSettings
       .copy(
-        minerSettings = MicroblocksActivatedAt0WavesSettings.minerSettings.copy(
+        minerSettings = MicroblocksActivatedAt0MirSettings.minerSettings.copy(
           maxTransactionsInMicroBlock = 1
         )
       )

@@ -10,7 +10,7 @@ import one.mir.consensus.PoSSelector
 import one.mir.db.openDB
 import one.mir.history.{CheckpointServiceImpl, StorageFactory}
 import one.mir.mining.MultiDimensionalMiningConstraint
-import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.settings.{MirSettings, loadConfig}
 import one.mir.state.ByteStr
 import one.mir.state.appender.BlockAppender
 import one.mir.transaction.Transaction
@@ -34,7 +34,7 @@ object Importer extends ScorexLogging {
     val importHeight       = Try(args(2)).map(_.toInt).getOrElse(Int.MaxValue)
 
     val config   = loadConfig(ConfigFactory.parseFile(new File(configFilename)))
-    val settings = WavesSettings.fromConfig(config)
+    val settings = MirSettings.fromConfig(config)
     AddressScheme.current = new AddressScheme {
       override val chainId: Byte = settings.blockchainSettings.addressSchemeCharacter.toByte
     }

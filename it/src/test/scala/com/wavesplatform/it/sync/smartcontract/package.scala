@@ -65,7 +65,7 @@ package object smartcontract {
     s"""
        | match tx {
        |  case ext : ExchangeTransaction =>
-       |    # Waves context
+       |    # Mir context
        |    let dtx = extract(transactionById(base58'${dtx.id().base58}'))
        |    let entries = match dtx {
        |       case d: DataTransaction =>

@@ -50,12 +50,12 @@ class OrderBookTestSuite extends MatcherSuiteBase {
 
     val (aliceRBForOnePair, bobRBForOnePair) = (reservedBalancesOf(aliceAcc), reservedBalancesOf(bobAcc))
 
-    val buyOrderForAnotherPair = matcherNode.placeOrder(aliceAcc, wctWavesPair, BUY, amount, price, matcherFee).message.id
+    val buyOrderForAnotherPair = matcherNode.placeOrder(aliceAcc, wctMirPair, BUY, amount, price, matcherFee).message.id
     val sellOrderForAnotherPair =
-      matcherNode.placeOrder(bobAcc, wctWavesPair, SELL, amount, 2 * price, matcherFee).message.id
+      matcherNode.placeOrder(bobAcc, wctMirPair, SELL, amount, 2 * price, matcherFee).message.id
 
-    matcherNode.waitOrderStatus(wctWavesPair, buyOrderForAnotherPair, "Accepted")
-    matcherNode.waitOrderStatus(wctWavesPair, sellOrderForAnotherPair, "Accepted")
+    matcherNode.waitOrderStatus(wctMirPair, buyOrderForAnotherPair, "Accepted")
+    matcherNode.waitOrderStatus(wctMirPair, sellOrderForAnotherPair, "Accepted")
 
     val (aliceRBForBothPairs, bobRBForBothPairs) = (reservedBalancesOf(aliceAcc), reservedBalancesOf(bobAcc))
 
@@ -84,10 +84,10 @@ class OrderBookTestSuite extends MatcherSuiteBase {
     }
 
     "it should not affect other pairs and their orders" in {
-      matcherNode.orderStatus(buyOrderForAnotherPair, wctWavesPair).status shouldBe "Accepted"
-      matcherNode.orderStatus(sellOrderForAnotherPair, wctWavesPair).status shouldBe "Accepted"
+      matcherNode.orderStatus(buyOrderForAnotherPair, wctMirPair).status shouldBe "Accepted"
+      matcherNode.orderStatus(sellOrderForAnotherPair, wctMirPair).status shouldBe "Accepted"
 
-      val orderBook = matcherNode.orderBook(wctWavesPair)
+      val orderBook = matcherNode.orderBook(wctMirPair)
       orderBook.bids shouldNot be(empty)
       orderBook.asks shouldNot be(empty)
     }

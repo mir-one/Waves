@@ -18,7 +18,7 @@ import one.mir.matcher.market.OrderBookActor._
 import one.mir.matcher.market.OrderHistoryActor
 import one.mir.matcher.model._
 import one.mir.metrics.TimerExt
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.ByteStr
 import one.mir.transaction.AssetAcc
 import one.mir.transaction.assets.exchange.OrderJson._
@@ -45,7 +45,7 @@ case class MatcherApiRoute(assetPairBuilder: AssetPairBuilder,
                            orderBook: AssetPair => Option[Either[Unit, ActorRef]],
                            getMarketStatus: AssetPair => Option[MarketStatus],
                            orderBookSnapshot: OrderBookSnapshotHttpCache,
-                           wavesSettings: WavesSettings,
+                           wavesSettings: MirSettings,
                            db: DB,
                            time: Time)
     extends ApiRoute

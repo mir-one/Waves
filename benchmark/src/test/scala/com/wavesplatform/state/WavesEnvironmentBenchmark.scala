@@ -9,10 +9,10 @@ import one.mir.database.LevelDBWriter
 import one.mir.db.LevelDBFactory
 import one.mir.lang.v1.traits.Environment
 import one.mir.lang.v1.traits.domain.Recipient
-import one.mir.settings.{WavesSettings, loadConfig}
-import one.mir.state.WavesEnvironmentBenchmark._
+import one.mir.settings.{MirSettings, loadConfig}
+import one.mir.state.MirEnvironmentBenchmark._
 import one.mir.state.bench.DataTestData
-import one.mir.transaction.smart.WavesEnvironment
+import one.mir.transaction.smart.MirEnvironment
 import one.mir.utils.Base58
 import monix.eval.Coeval
 import org.iq80.leveldb.{DB, Options}
@@ -36,7 +36,7 @@ import scala.io.Codec
 @Fork(1)
 @Warmup(iterations = 10)
 @Measurement(iterations = 10)
-class WavesEnvironmentBenchmark {
+class MirEnvironmentBenchmark {
 
   @Benchmark
   def resolveAddress_test(st: ResolveAddressSt, bh: Blackhole): Unit = {
@@ -54,7 +54,7 @@ class WavesEnvironmentBenchmark {
   }
 
   @Benchmark
-  def accountBalanceOf_waves_test(st: AccountBalanceOfWavesSt, bh: Blackhole): Unit = {
+  def accountBalanceOf_waves_test(st: AccountBalanceOfMirSt, bh: Blackhole): Unit = {
     bh.consume(st.environment.accountBalanceOf(Recipient.Address(ByteVector(st.accounts.random)), None))
   }
 
@@ -71,7 +71,7 @@ class WavesEnvironmentBenchmark {
 
 }
 
-object WavesEnvironmentBenchmark {
+object MirEnvironmentBenchmark {
 
   @State(Scope.Benchmark)
   class ResolveAddressSt extends BaseSt {
@@ -87,12 +87,12 @@ object WavesEnvironmentBenchmark {
   class TransactionHeightByIdSt extends TransactionByIdSt
 
   @State(Scope.Benchmark)
-  class AccountBalanceOfWavesSt extends BaseSt {
+  class AccountBalanceOfMirSt extends BaseSt {
     val accounts: Vector[Array[Byte]] = load("accounts", benchSettings.accountsFile)(x => AddressOrAlias.fromString(x).explicitGet().bytes.arr)
   }
 
   @State(Scope.Benchmark)
-  class AccountBalanceOfAssetSt extends AccountBalanceOfWavesSt {
+  class AccountBalanceOfAssetSt extends AccountBalanceOfMirSt {
     val assets: Vector[Array[Byte]] = load("assets", benchSettings.assetsFile)(x => Base58.decode(x).get)
   }
 
@@ -106,9 +106,9 @@ object WavesEnvironmentBenchmark {
   @State(Scope.Benchmark)
   class BaseSt {
     protected val benchSettings: Settings = Settings.fromConfig(ConfigFactory.load())
-    private val wavesSettings: WavesSettings = {
+    private val wavesSettings: MirSettings = {
       val config = loadConfig(ConfigFactory.parseFile(new File(benchSettings.networkConfigFile)))
-      WavesSettings.fromConfig(config)
+      MirSettings.fromConfig(config)
     }
 
     AddressScheme.current = new AddressScheme {
@@ -123,7 +123,7 @@ object WavesEnvironmentBenchmark {
 
     val environment: Environment = {
       val state = new LevelDBWriter(db, wavesSettings.blockchainSettings.functionalitySettings, 100000, 2000, 120 * 60 * 1000)
-      new WavesEnvironment(
+      new MirEnvironment(
         AddressScheme.current.chainId,
         Coeval.raiseError(new NotImplementedError("tx is not implemented")),
         Coeval(state.height),

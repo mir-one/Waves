@@ -42,7 +42,7 @@ class MatcherActor(orderBooks: AtomicReference[Map[AssetPair, Either[Unit, Actor
   private def orderBook(pair: AssetPair) = Option(orderBooks.get()).flatMap(_.get(pair))
 
   private def getAssetName(asset: Option[AssetId], desc: Option[AssetDescription]): String =
-    asset.fold(AssetPair.WavesName) { _ =>
+    asset.fold(AssetPair.MirName) { _ =>
       desc.fold("Unknown")(d => new String(d.name, Charsets.UTF_8))
     }
 

@@ -5,7 +5,7 @@ import java.nio.file.Files
 import com.typesafe.config.ConfigFactory
 import one.mir.database.LevelDBWriter
 import one.mir.history.Domain
-import one.mir.settings.{FunctionalitySettings, WavesSettings, loadConfig}
+import one.mir.settings.{FunctionalitySettings, MirSettings, loadConfig}
 import one.mir.state.{Blockchain, BlockchainUpdaterImpl}
 import one.mir.{NTPTime, TestHelpers}
 import org.scalatest.Suite
@@ -27,7 +27,7 @@ trait WithState {
 trait WithDomain extends WithState with NTPTime {
   _: Suite =>
 
-  def withDomain[A](settings: WavesSettings = WavesSettings.fromConfig(loadConfig(ConfigFactory.load())))(test: Domain => A): A = {
+  def withDomain[A](settings: MirSettings = MirSettings.fromConfig(loadConfig(ConfigFactory.load())))(test: Domain => A): A = {
     try withState(settings.blockchainSettings.functionalitySettings) { blockchain =>
       val bcu = new BlockchainUpdaterImpl(blockchain, settings, ntpTime)
       try test(Domain(bcu))

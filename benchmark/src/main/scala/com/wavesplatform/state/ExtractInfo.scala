@@ -7,7 +7,7 @@ import com.typesafe.config.ConfigFactory
 import one.mir.database.LevelDBWriter
 import one.mir.db.LevelDBFactory
 import one.mir.lang.v1.traits.DataType
-import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.settings.{MirSettings, loadConfig}
 import one.mir.state.bench.DataTestData
 import org.iq80.leveldb.{DB, Options}
 import scodec.bits.{BitVector, ByteVector}
@@ -35,7 +35,7 @@ object ExtractInfo extends App with ScorexLogging {
   val benchSettings = Settings.fromConfig(ConfigFactory.load())
   val wavesSettings = {
     val config = loadConfig(ConfigFactory.parseFile(new File(args.head)))
-    WavesSettings.fromConfig(config)
+    MirSettings.fromConfig(config)
   }
 
   AddressScheme.current = new AddressScheme {

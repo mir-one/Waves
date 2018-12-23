@@ -28,8 +28,8 @@ class MatcherMassOrdersTestSuite extends MatcherSuiteBase {
       .id
     Seq(aliceAsset, aliceSecondAsset).foreach(matcherNode.waitForTransaction(_))
 
-    val aliceWavesPair       = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
-    val aliceSecondWavesPair = AssetPair(ByteStr.decodeBase58(aliceSecondAsset).toOption, None)
+    val aliceMirPair       = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
+    val aliceSecondMirPair = AssetPair(ByteStr.decodeBase58(aliceSecondAsset).toOption, None)
 
     // Check balances on Alice's account
     aliceNode.assertAssetBalance(aliceAcc.address, aliceAsset, someAssetAmount)
@@ -47,36 +47,36 @@ class MatcherMassOrdersTestSuite extends MatcherSuiteBase {
 
     // Alice places sell orders
     val aliceOrderIdFill = matcherNode
-      .placeOrder(aliceAcc, aliceSecondWavesPair, OrderType.SELL, 3, Order.PriceConstant, matcherFee, orderVersion, 10.minutes)
+      .placeOrder(aliceAcc, aliceSecondMirPair, OrderType.SELL, 3, Order.PriceConstant, matcherFee, orderVersion, 10.minutes)
       .message
       .id
 
     val alicePartialOrderId = matcherNode
-      .placeOrder(aliceAcc, aliceSecondWavesPair, OrderType.SELL, 3, Order.PriceConstant, matcherFee, orderVersion, 10.minutes)
+      .placeOrder(aliceAcc, aliceSecondMirPair, OrderType.SELL, 3, Order.PriceConstant, matcherFee, orderVersion, 10.minutes)
       .message
       .id
 
     val aliceOrderToCancelId =
       matcherNode
-        .placeOrder(aliceAcc, aliceSecondWavesPair, OrderType.SELL, 3, Order.PriceConstant, matcherFee, orderVersion, 70.seconds)
+        .placeOrder(aliceAcc, aliceSecondMirPair, OrderType.SELL, 3, Order.PriceConstant, matcherFee, orderVersion, 70.seconds)
         .message
         .id
 
     val aliceActiveOrderId = matcherNode
-      .placeOrder(aliceAcc, aliceSecondWavesPair, OrderType.SELL, 3, Order.PriceConstant + 100000000, matcherFee, orderVersion, 10.minutes)
+      .placeOrder(aliceAcc, aliceSecondMirPair, OrderType.SELL, 3, Order.PriceConstant + 100000000, matcherFee, orderVersion, 10.minutes)
       .message
       .id
 
-    matcherNode.waitOrderStatus(aliceSecondWavesPair, aliceOrderToCancelId, "Cancelled", 2.minutes)
+    matcherNode.waitOrderStatus(aliceSecondMirPair, aliceOrderToCancelId, "Cancelled", 2.minutes)
 
     //Bob orders should partially fill one Alice order and fill another
-    ordersRequestsGen(2, bobAcc, aliceSecondWavesPair, OrderType.BUY, 2)
+    ordersRequestsGen(2, bobAcc, aliceSecondMirPair, OrderType.BUY, 2)
 
     //check orders after filling
-    matcherNode.waitOrderStatus(aliceSecondWavesPair, alicePartialOrderId, "PartiallyFilled")
+    matcherNode.waitOrderStatus(aliceSecondMirPair, alicePartialOrderId, "PartiallyFilled")
 
-    orderStatus(aliceAcc, aliceSecondWavesPair, aliceOrderIdFill, "Filled")
-    orderStatus(aliceAcc, aliceSecondWavesPair, alicePartialOrderId, "PartiallyFilled")
+    orderStatus(aliceAcc, aliceSecondMirPair, aliceOrderIdFill, "Filled")
+    orderStatus(aliceAcc, aliceSecondMirPair, alicePartialOrderId, "PartiallyFilled")
 
     "Mass orders creation with random lifetime. Active orders still in list" in {
       matcherNode.ordersByAddress(aliceAcc, activeOnly = false).length shouldBe 4
@@ -89,11 +89,11 @@ class MatcherMassOrdersTestSuite extends MatcherSuiteBase {
 
       orderIds should contain(aliceActiveOrderId)
 
-      ordersRequestsGen(orderLimit + 1, aliceAcc, aliceWavesPair, OrderType.SELL, 3)
+      ordersRequestsGen(orderLimit + 1, aliceAcc, aliceMirPair, OrderType.SELL, 3)
 
       //wait for some orders cancelled
       Thread.sleep(5000)
-      val bobsOrderIds = ordersRequestsGen(orderLimit + 1, bobAcc, aliceWavesPair, OrderType.BUY, 2)
+      val bobsOrderIds = ordersRequestsGen(orderLimit + 1, bobAcc, aliceMirPair, OrderType.BUY, 2)
       Thread.sleep(5000)
 
       // Alice check that order Active order is still in list
@@ -102,11 +102,11 @@ class MatcherMassOrdersTestSuite extends MatcherSuiteBase {
       orderIdsAfterMatching should contain(aliceActiveOrderId)
       orderIdsAfterMatching should contain(alicePartialOrderId)
 
-      matcherNode.waitOrderStatus(aliceSecondWavesPair, aliceActiveOrderId, "Accepted")
-      matcherNode.waitOrderStatus(aliceSecondWavesPair, alicePartialOrderId, "PartiallyFilled")
+      matcherNode.waitOrderStatus(aliceSecondMirPair, aliceActiveOrderId, "Accepted")
+      matcherNode.waitOrderStatus(aliceSecondMirPair, alicePartialOrderId, "PartiallyFilled")
 
       matcherNode.fullOrderHistory(bobAcc).map(_.id) should equal(bobsOrderIds.drop(1).reverse)
-      matcherNode.orderHistoryByPair(bobAcc, aliceWavesPair).map(_.id) should equal(bobsOrderIds.drop(1).reverse)
+      matcherNode.orderHistoryByPair(bobAcc, aliceMirPair).map(_.id) should equal(bobsOrderIds.drop(1).reverse)
     }
 
     "Filled and Cancelled orders should be after Partial And Accepted" in {
@@ -131,7 +131,7 @@ class MatcherMassOrdersTestSuite extends MatcherSuiteBase {
     "check order history orders count after fill" in {
       val aliceOrderHistory = matcherNode.fullOrderHistory(aliceAcc)
       aliceOrderHistory.size shouldBe orderLimit
-      val aliceOrderHistoryByPair = matcherNode.orderHistoryByPair(aliceAcc, aliceWavesPair)
+      val aliceOrderHistoryByPair = matcherNode.orderHistoryByPair(aliceAcc, aliceMirPair)
       aliceOrderHistoryByPair.size shouldBe orderLimit
     }
 

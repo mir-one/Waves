@@ -3,7 +3,7 @@ package one.mir.transaction.smart
 import cats.kernel.Monoid
 import one.mir.lang.{Global, ScriptVersion}
 import one.mir.lang.v1.evaluator.ctx.EvaluationContext
-import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.state._
 import one.mir.transaction._
@@ -25,7 +25,7 @@ object BlockchainContext {
         Seq(
           PureContext.build(version),
           CryptoContext.build(Global),
-          WavesContext.build(version, new WavesEnvironment(nByte, in, h, blockchain), isTokenContext)
+          MirContext.build(version, new MirEnvironment(nByte, in, h, blockchain), isTokenContext)
         ))
       .evaluationContext
   }

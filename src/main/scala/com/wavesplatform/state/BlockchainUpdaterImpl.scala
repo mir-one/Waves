@@ -8,7 +8,7 @@ import one.mir.features.BlockchainFeatures
 import one.mir.features.FeatureProvider._
 import one.mir.metrics.{Instrumented, TxsInBlockchainStats}
 import one.mir.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.diffs.BlockDiffer
 import one.mir.state.reader.{CompositeBlockchain, LeaseDetails}
 import one.mir.transaction.Transaction.Type
@@ -22,7 +22,7 @@ import kamon.metric.MeasurementUnit
 import monix.reactive.Observable
 import monix.reactive.subjects.ConcurrentSubject
 
-class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, time: Time)
+class BlockchainUpdaterImpl(blockchain: Blockchain, settings: MirSettings, time: Time)
     extends BlockchainUpdater
     with NG
     with ScorexLogging
@@ -415,7 +415,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
     ngState.fold(blockchain.filledVolumeAndFee(orderId))(
       _.bestLiquidDiff.orderFills.get(orderId).orEmpty.combine(blockchain.filledVolumeAndFee(orderId)))
 
-  /** Retrieves Waves balance snapshot in the [from, to] range (inclusive) */
+  /** Retrieves Mir balance snapshot in the [from, to] range (inclusive) */
   override def balanceSnapshots(address: Address, from: Int, to: Int): Seq[BalanceSnapshot] =
     if (to <= blockchain.height || ngState.isEmpty) {
       blockchain.balanceSnapshots(address, from, to)
@@ -518,7 +518,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
 
   /** Builds a new portfolio map by applying a partial function to all portfolios on which the function is defined.
     *
-    * @note Portfolios passed to `pf` only contain Waves and Leasing balances to improve performance */
+    * @note Portfolios passed to `pf` only contain Mir and Leasing balances to improve performance */
   override def collectLposPortfolios[A](pf: PartialFunction[(Address, Portfolio), A]): Map[Address, A] =
     ngState.fold(blockchain.collectLposPortfolios(pf)) { ng =>
       val b = Map.newBuilder[Address, A]

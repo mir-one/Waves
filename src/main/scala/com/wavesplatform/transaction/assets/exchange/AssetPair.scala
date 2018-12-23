@@ -41,12 +41,12 @@ case class AssetPair(@(ApiModelProperty @field)(
 }
 
 object AssetPair {
-  val WavesName = "MIR"
+  val MirName = "MIR"
 
-  def assetIdStr(aid: Option[AssetId]): String = aid.fold(WavesName)(_.base58)
+  def assetIdStr(aid: Option[AssetId]): String = aid.fold(MirName)(_.base58)
 
   def extractAssetId(a: String): Try[Option[AssetId]] = a match {
-    case `WavesName` => Success(None)
+    case `MirName` => Success(None)
     case other       => ByteStr.decodeBase58(other).map(Option(_))
   }
 

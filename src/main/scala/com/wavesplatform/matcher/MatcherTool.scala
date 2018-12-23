@@ -15,7 +15,7 @@ import one.mir.db.openDB
 import one.mir.matcher.api.DBUtils
 import one.mir.matcher.market.{MatcherActor, OrderBookActor}
 import one.mir.matcher.model.{LimitOrder, OrderBook}
-import one.mir.settings.{WavesSettings, loadConfig}
+import one.mir.settings.{MirSettings, loadConfig}
 import one.mir.state.{ByteStr, EitherExt2}
 import one.mir.transaction.AssetId
 import one.mir.transaction.assets.exchange.{AssetPair, Order}
@@ -275,7 +275,7 @@ object MatcherTool extends ScorexLogging {
 
     val userConfig   = args.headOption.fold(ConfigFactory.empty())(f => ConfigFactory.parseFile(new File(f)))
     val actualConfig = loadConfig(userConfig)
-    val settings     = WavesSettings.fromConfig(actualConfig)
+    val settings     = MirSettings.fromConfig(actualConfig)
     val db           = openDB(settings.matcherSettings.dataDir)
 
     AddressScheme.current = new AddressScheme {

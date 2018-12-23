@@ -11,7 +11,7 @@ import monix.eval.Coeval
 import scodec.bits.ByteVector
 import shapeless._
 
-class WavesEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h: Coeval[Int], blockchain: Blockchain) extends Environment {
+class MirEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h: Coeval[Int], blockchain: Blockchain) extends Environment {
   override def height: Long = h()
 
   override def inputEntity: Tx :+: Ord :+: CNil = {

@@ -28,8 +28,8 @@ class TradingMarketsTestSuite
   matcher.waitForTransaction(wctTxId)
 
   "When some orders were placed and matcher was restarted" - {
-    val order = matcher.placeOrder(alice.privateKey, wctWavesPair, BUY, amount, price, matcherFee).message.id
-    matcher.waitOrderStatus(wctWavesPair, order, "Accepted")
+    val order = matcher.placeOrder(alice.privateKey, wctMirPair, BUY, amount, price, matcherFee).message.id
+    matcher.waitOrderStatus(wctMirPair, order, "Accepted")
 
     docker.restartNode(matcher)
 

@@ -1,7 +1,7 @@
 package one.mir.history
 
 import one.mir.database.{DBExt, Keys, LevelDBWriter}
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.{BlockchainUpdaterImpl, NG}
 import one.mir.transaction.BlockchainUpdater
 import one.mir.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
@@ -10,7 +10,7 @@ import org.iq80.leveldb.DB
 object StorageFactory extends ScorexLogging {
   private val StorageVersion = 2
 
-  def apply(settings: WavesSettings, db: DB, time: Time): BlockchainUpdater with NG = {
+  def apply(settings: MirSettings, db: DB, time: Time): BlockchainUpdater with NG = {
     checkVersion(db)
     val levelDBWriter = new LevelDBWriter(
       db,

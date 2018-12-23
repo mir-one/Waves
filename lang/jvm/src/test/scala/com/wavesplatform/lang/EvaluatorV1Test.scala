@@ -16,7 +16,7 @@ import one.mir.lang.v1.evaluator.FunctionIds._
 import one.mir.lang.v1.evaluator.ctx._
 import one.mir.lang.v1.evaluator.ctx.impl.PureContext._
 import one.mir.lang.v1.evaluator.ctx.impl.converters._
-import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext, _}
 import one.mir.lang.v1.testing.ScriptGen
 import one.mir.lang.v1.traits.Environment
@@ -41,7 +41,7 @@ class EvaluatorV1Test extends PropSpec with PropertyChecks with Matchers with Sc
     Seq(
       defaultCryptoContext,
       pureContext,
-      WavesContext.build(V1, environment, isTokenContext = false)
+      MirContext.build(V1, environment, isTokenContext = false)
     )
   )
 

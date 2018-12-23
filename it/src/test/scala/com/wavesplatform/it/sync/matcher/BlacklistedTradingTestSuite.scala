@@ -27,11 +27,11 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
 
   "When blacklists are empty and some orders was placed" - {
     val usdOrder = matcher.placeOrder(alice.privateKey, wavesUsdPair, BUY, dec8, dec2, matcherFee).message.id
-    val wctOrder = matcher.placeOrder(alice.privateKey, wctWavesPair, BUY, dec2, dec8, matcherFee).message.id
-    val ethOrder = matcher.placeOrder(alice.privateKey, ethWavesPair, SELL, dec8, dec8, matcherFee).message.id
+    val wctOrder = matcher.placeOrder(alice.privateKey, wctMirPair, BUY, dec2, dec8, matcherFee).message.id
+    val ethOrder = matcher.placeOrder(alice.privateKey, ethMirPair, SELL, dec8, dec8, matcherFee).message.id
     val btcOrder = matcher.placeOrder(bob.privateKey, wavesBtcPair, SELL, dec8, dec8, matcherFee).message.id
 
-    matcher.waitOrderStatus(wctWavesPair, btcOrder, "Accepted")
+    matcher.waitOrderStatus(wctMirPair, btcOrder, "Accepted")
 
     "If some assets and addresses are blacklisted" in {
       docker.restartNode(
@@ -44,10 +44,10 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
       )
 
       Then("orders for blacklisted assets are not available and new orders can't be placed")
-      matcher.orderStatusExpectInvalidAssetId(wctOrder, wctWavesPair, WctId.toString)
-      matcher.orderStatusExpectInvalidAssetId(ethOrder, ethWavesPair, EthId.toString)
-      matcher.expectRejectedOrderPlacement(alice.privateKey, wctWavesPair, BUY, dec2, dec8)
-      matcher.expectRejectedOrderPlacement(alice.privateKey, ethWavesPair, SELL, dec8, dec8)
+      matcher.orderStatusExpectInvalidAssetId(wctOrder, wctMirPair, WctId.toString)
+      matcher.orderStatusExpectInvalidAssetId(ethOrder, ethMirPair, EthId.toString)
+      matcher.expectRejectedOrderPlacement(alice.privateKey, wctMirPair, BUY, dec2, dec8)
+      matcher.expectRejectedOrderPlacement(alice.privateKey, ethMirPair, SELL, dec8, dec8)
       matcher.expectRejectedOrderPlacement(bob.privateKey, wavesBtcPair, SELL, dec8, dec8)
 
       And("orders of blacklisted address are still available")
@@ -57,8 +57,8 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
       matcher.orderStatus(usdOrder, wavesUsdPair).status shouldBe "Accepted"
 
       And("OrderBook for blacklisted assets is not available")
-      matcher.orderBookExpectInvalidAssetId(wctWavesPair, WctId.toString)
-      matcher.orderBookExpectInvalidAssetId(ethWavesPair, EthId.toString)
+      matcher.orderBookExpectInvalidAssetId(wctMirPair, WctId.toString)
+      matcher.orderBookExpectInvalidAssetId(ethMirPair, EthId.toString)
       matcher.orderBook(wavesBtcPair).asks.size shouldBe 1
 
       And("OrderHistory returns info about all orders")
@@ -82,20 +82,20 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
       docker.restartNode(matcher, configWithBlacklisted())
 
       Then("OrderBook for blacklisted assets is available again")
-      matcher.orderBook(wctWavesPair).bids.size shouldBe 1
-      matcher.orderBook(ethWavesPair).asks.size shouldBe 1
+      matcher.orderBook(wctMirPair).bids.size shouldBe 1
+      matcher.orderBook(ethMirPair).asks.size shouldBe 1
 
       And("order statuses are available again")
-      matcher.orderStatus(wctOrder, wctWavesPair).status shouldBe "Accepted"
-      matcher.orderStatus(ethOrder, ethWavesPair).status shouldBe "Accepted"
+      matcher.orderStatus(wctOrder, wctMirPair).status shouldBe "Accepted"
+      matcher.orderStatus(ethOrder, ethMirPair).status shouldBe "Accepted"
 
       And("new orders can be placed")
-      val newWctOrder = matcher.placeOrder(alice.privateKey, wctWavesPair, BUY, dec2, dec8, matcherFee).message.id
-      val newEthOrder = matcher.placeOrder(alice.privateKey, ethWavesPair, SELL, dec8, dec8, matcherFee).message.id
+      val newWctOrder = matcher.placeOrder(alice.privateKey, wctMirPair, BUY, dec2, dec8, matcherFee).message.id
+      val newEthOrder = matcher.placeOrder(alice.privateKey, ethMirPair, SELL, dec8, dec8, matcherFee).message.id
       val newBtcOrder = matcher.placeOrder(bob.privateKey, wavesBtcPair, SELL, dec8, dec8, matcherFee).message.id
-      matcher.waitOrderStatus(wctWavesPair, newBtcOrder, "Accepted")
-      matcher.orderStatus(newWctOrder, wctWavesPair).status shouldBe "Accepted"
-      matcher.orderStatus(newEthOrder, ethWavesPair).status shouldBe "Accepted"
+      matcher.waitOrderStatus(wctMirPair, newBtcOrder, "Accepted")
+      matcher.orderStatus(newWctOrder, wctMirPair).status shouldBe "Accepted"
+      matcher.orderStatus(newEthOrder, ethMirPair).status shouldBe "Accepted"
     }
 
   }

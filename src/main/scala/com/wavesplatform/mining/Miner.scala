@@ -7,7 +7,7 @@ import one.mir.features.BlockchainFeatures
 import one.mir.features.FeatureProvider._
 import one.mir.metrics.{BlockStats, HistogramExt, Instrumented}
 import one.mir.network._
-import one.mir.settings.{FunctionalitySettings, WavesSettings}
+import one.mir.settings.{FunctionalitySettings, MirSettings}
 import one.mir.state._
 import one.mir.state.appender.{BlockAppender, MicroblockAppender}
 import one.mir.utx.UtxPool
@@ -56,7 +56,7 @@ object MinerDebugInfo {
 class MinerImpl(allChannels: ChannelGroup,
                 blockchainUpdater: BlockchainUpdater with NG,
                 checkpoint: CheckpointService,
-                settings: WavesSettings,
+                settings: MirSettings,
                 timeService: Time,
                 utx: UtxPool,
                 wallet: Wallet,

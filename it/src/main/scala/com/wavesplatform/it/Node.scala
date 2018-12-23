@@ -5,7 +5,7 @@ import java.net.{InetSocketAddress, URL}
 import com.typesafe.config.Config
 import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
 import one.mir.it.util.GlobalTimer
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.EitherExt2
 import one.mir.state.diffs.CommonValidation
 import one.mir.utils.{Base58, LoggerFacade}
@@ -19,7 +19,7 @@ abstract class Node(config: Config) extends AutoCloseable {
   lazy val log: LoggerFacade =
     LoggerFacade(LoggerFactory.getLogger(s"${getClass.getCanonicalName}.${this.name}"))
 
-  val settings: WavesSettings = WavesSettings.fromConfig(config)
+  val settings: MirSettings = MirSettings.fromConfig(config)
   val client: AsyncHttpClient = asyncHttpClient(
     clientConfig()
       .setKeepAlive(false)

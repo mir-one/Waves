@@ -3,7 +3,7 @@ package one.mir.consensus
 import one.mir.transaction.Transaction
 
 object TransactionsOrdering {
-  trait WavesOrdering extends Ordering[Transaction] {
+  trait MirOrdering extends Ordering[Transaction] {
     def txTimestampOrder(ts: Long): Long
     private def orderBy(t: Transaction): (Double, Long, Long) = {
       val size        = t.bytes().size
@@ -17,12 +17,12 @@ object TransactionsOrdering {
     }
   }
 
-  object InBlock extends WavesOrdering {
+  object InBlock extends MirOrdering {
     // sorting from network start
     override def txTimestampOrder(ts: Long): Long = -ts
   }
 
-  object InUTXPool extends WavesOrdering {
+  object InUTXPool extends MirOrdering {
     override def txTimestampOrder(ts: Long): Long = ts
   }
 }

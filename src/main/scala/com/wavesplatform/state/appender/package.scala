@@ -3,7 +3,7 @@ package one.mir.state
 import one.mir.consensus.{GeneratingBalanceProvider, PoSSelector}
 import one.mir.mining._
 import one.mir.network._
-import one.mir.settings.{FunctionalitySettings, WavesSettings}
+import one.mir.settings.{FunctionalitySettings, MirSettings}
 import one.mir.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
@@ -53,7 +53,7 @@ package object appender extends ScorexLogging {
                                     utxStorage: UtxPool,
                                     pos: PoSSelector,
                                     time: Time,
-                                    settings: WavesSettings)(block: Block): Either[ValidationError, Option[Int]] =
+                                    settings: MirSettings)(block: Block): Either[ValidationError, Option[Int]] =
     for {
       _ <- Either.cond(
         checkpoint.isBlockValid(block.signerData.signature, blockchainUpdater.height + 1),
@@ -87,7 +87,7 @@ package object appender extends ScorexLogging {
       maybeDiscardedTxs.map(_ => baseHeight)
     }
 
-  private def blockConsensusValidation(blockchain: Blockchain, settings: WavesSettings, pos: PoSSelector, currentTs: Long, block: Block)(
+  private def blockConsensusValidation(blockchain: Blockchain, settings: MirSettings, pos: PoSSelector, currentTs: Long, block: Block)(
       genBalance: Int => Either[String, Long]): Either[ValidationError, Unit] = {
 
     val blockTime = block.timestamp

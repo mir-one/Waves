@@ -5,7 +5,7 @@ import one.mir.lang.v1.{Serde, CTX}
 import one.mir.lang.v1.compiler.CompilerV1
 import one.mir.lang.v1.compiler.Terms._
 import one.mir.lang.v1.compiler.Types._
-import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.lang.v1.parser.{Expressions, Parser}
 import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
@@ -45,7 +45,7 @@ object JsAPI {
 
   val version = one.mir.lang.ScriptVersion.Versions.V1
 
-  val wavesContext = WavesContext.build(
+  val wavesContext = MirContext.build(
     version,
     new Environment {
       override def height: Long                                                                                    = 0

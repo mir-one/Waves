@@ -42,7 +42,7 @@ object DexGenApp extends App with ScoptImplicits with FicusImplicits with Enumer
   val api: ApiRequests        = new ApiRequests(client)
 
   val parser = new OptionParser[GeneratorSettings]("generator") {
-    head("TransactionsGenerator - Waves load testing transactions generator")
+    head("TransactionsGenerator - Mir load testing transactions generator")
     opt[Int]('i', "iterations").valueName("<iterations>").text("number of iterations").action { (v, c) =>
       c.copy(worker = c.worker.copy(iterations = v))
     }

@@ -4,7 +4,7 @@ import one.mir.lang.v1.traits.domain.{Ord, Recipient, Tx}
 import one.mir.lang.v1.traits.{DataType, Environment}
 import shapeless.{:+:, CNil}
 
-object WavesContext {
+object MirContext {
   val env = new Environment {
     override def height: Long                                         = impl.Environment.height
     override def networkByte: Byte                                    = impl.Environment.networkByte

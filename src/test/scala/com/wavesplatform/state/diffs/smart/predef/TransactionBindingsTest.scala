@@ -7,14 +7,14 @@ import one.mir.lang.Testing.evaluated
 import one.mir.lang.v1.compiler.CompilerV1
 import one.mir.lang.v1.compiler.Terms.{CONST_BOOLEAN, CONST_LONG, EVALUATED}
 import one.mir.lang.v1.evaluator.EvaluatorV1
-import one.mir.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import one.mir.lang.v1.evaluator.ctx.impl.waves.MirContext
 import one.mir.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import one.mir.lang.v1.parser.Parser
 import one.mir.state._
 import one.mir.state.diffs.ProduceError._
 import one.mir.transaction.assets.exchange.{Order, OrderType}
 import one.mir.transaction.smart.BlockchainContext.In
-import one.mir.transaction.smart.WavesEnvironment
+import one.mir.transaction.smart.MirEnvironment
 import one.mir.transaction.{Proofs, ProvenTransaction, VersionedTransaction}
 import one.mir.utils.EmptyBlockchain
 import one.mir.{NoShrink, TransactionGen}
@@ -539,8 +539,8 @@ class TransactionBindingsTest extends PropSpec with PropertyChecks with Matchers
         .build(V2) |+|
         CryptoContext
           .build(Global) |+|
-        WavesContext
-          .build(V2, new WavesEnvironment(networkByte, Coeval(null), null, EmptyBlockchain), isTokenContext = true)
+        MirContext
+          .build(V2, new MirEnvironment(networkByte, Coeval(null), null, EmptyBlockchain), isTokenContext = true)
 
     for {
       compileResult <- CompilerV1(ctx.compilerContext, expr)
@@ -558,8 +558,8 @@ class TransactionBindingsTest extends PropSpec with PropertyChecks with Matchers
       PureContext.build(V2) |+|
         CryptoContext
           .build(Global) |+|
-        WavesContext
-          .build(V2, new WavesEnvironment(networkByte, Coeval(t), null, EmptyBlockchain), isTokenContext = false)
+        MirContext
+          .build(V2, new MirEnvironment(networkByte, Coeval(t), null, EmptyBlockchain), isTokenContext = false)
 
     for {
       compileResult <- CompilerV1(ctx.compilerContext, expr)

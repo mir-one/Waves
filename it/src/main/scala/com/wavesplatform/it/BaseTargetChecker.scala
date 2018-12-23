@@ -18,7 +18,7 @@ object BaseTargetChecker {
       .withFallback(defaultApplication())
       .withFallback(defaultReference())
       .resolve()
-    val settings     = WavesSettings.fromConfig(sharedConfig)
+    val settings     = MirSettings.fromConfig(sharedConfig)
     val genesisBlock = Block.genesis(settings.blockchainSettings.genesisSettings).explicitGet()
     val db           = openDB("/tmp/tmp-db")
     val time         = new NTP("ntp.pool.org")

@@ -33,22 +33,22 @@ class MatcherMigrationTestSuite extends MatcherSuiteBase {
     val t1           = aliceNode.transfer(aliceAcc.address, matcherAcc.address, aliceBalance - minFee - 250000, minFee, None, None, 2).id
     nodes.waitForHeightAriseAndTxPresent(t1)
 
-    val aliceWavesPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
+    val aliceMirPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
 
     "place order and run migration tool" in {
       // Alice places sell order
       val aliceOrder = matcherNode
-        .placeOrder(aliceAcc, aliceWavesPair, OrderType.SELL, 3000000, 3000000, matcherFee)
+        .placeOrder(aliceAcc, aliceMirPair, OrderType.SELL, 3000000, 3000000, matcherFee)
       aliceOrder.status shouldBe "OrderAccepted"
       val firstOrder = aliceOrder.message.id
 
       // check order status
-      matcherNode.waitOrderStatus(aliceWavesPair, firstOrder, "Accepted")
+      matcherNode.waitOrderStatus(aliceMirPair, firstOrder, "Accepted")
 
       // sell order should be in the aliceNode orderbook
       matcherNode.fullOrderHistory(aliceAcc).head.status shouldBe "Accepted"
 
-      val tbBefore = matcherNode.tradableBalance(aliceAcc, aliceWavesPair)
+      val tbBefore = matcherNode.tradableBalance(aliceAcc, aliceMirPair)
       val rbBefore = matcherNode.reservedBalance(aliceAcc)
 
       // stop node, run migration tool and start node again
@@ -58,10 +58,10 @@ class MatcherMigrationTestSuite extends MatcherSuiteBase {
       val height = nodes.map(_.height).max
 
       matcherNode.waitForHeight(height + 1, 40.seconds)
-      matcherNode.orderStatus(firstOrder, aliceWavesPair).status shouldBe "Accepted"
+      matcherNode.orderStatus(firstOrder, aliceMirPair).status shouldBe "Accepted"
       matcherNode.fullOrderHistory(aliceAcc).head.status shouldBe "Accepted"
 
-      val tbAfter = matcherNode.tradableBalance(aliceAcc, aliceWavesPair)
+      val tbAfter = matcherNode.tradableBalance(aliceAcc, aliceMirPair)
       val rbAfter = matcherNode.reservedBalance(aliceAcc)
 
       assert(tbBefore == tbAfter)

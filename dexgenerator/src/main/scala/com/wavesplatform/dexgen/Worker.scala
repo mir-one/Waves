@@ -136,7 +136,7 @@ class Worker(workerSettings: Settings,
         case Left(e) => throw new RuntimeException(s"[$tag] Generated transaction is wrong: $e")
         case Right(txRequest) =>
           log.info(
-            s"[$tag] ${assetId.fold("Waves")(_.base58)} balance of ${sender.address}: $balance, sending $transferAmount to ${recipient.address}")
+            s"[$tag] ${assetId.fold("Mir")(_.base58)} balance of ${sender.address}: $balance, sending $transferAmount to ${recipient.address}")
           val signedTx = createSignedTransferRequest(txRequest)
           to(endpoint).broadcastRequest(signedTx).flatMap { tx =>
             to(endpoint).waitForTransaction(tx.id)
@@ -274,7 +274,7 @@ object Worker {
 }
 
 object AssetPairCreator {
-  val WavesName = "MIR"
+  val MirName = "MIR"
 
   def createAssetPair(asset1: Option[AssetId], asset2: Option[AssetId]): AssetPair =
     if (AssetPairBuilder.assetIdOrdering.compare(asset1, asset2) > 0)

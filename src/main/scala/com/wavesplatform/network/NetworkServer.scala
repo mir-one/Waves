@@ -38,7 +38,7 @@ trait NS {
 
 object NetworkServer extends ScorexLogging {
 
-  def apply(settings: WavesSettings,
+  def apply(settings: MirSettings,
             lastBlockInfos: Observable[LastBlockInfo],
             ng: NG,
             historyReplier: HistoryReplier,

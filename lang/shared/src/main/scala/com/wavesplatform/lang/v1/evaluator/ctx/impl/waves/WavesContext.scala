@@ -14,7 +14,7 @@ import one.mir.lang.v1.{CTX, FunctionHeader}
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 
-object WavesContext {
+object MirContext {
 
   import Bindings._
   import Types._
@@ -380,7 +380,7 @@ object WavesContext {
       transactionsCommonType
     ) ++ transactionTypes
 
-    val types = buildWavesTypes(proofsEnabled)
+    val types = buildMirTypes(proofsEnabled)
 
     CTX(types, commonVars ++ vars(version.value), functions)
   }

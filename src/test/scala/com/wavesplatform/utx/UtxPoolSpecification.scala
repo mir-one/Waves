@@ -36,7 +36,7 @@ class UtxPoolSpecification extends FreeSpec with Matchers with MockFactory with 
   private def mkBlockchain(senderAccount: Address, senderBalance: Long) = {
     val config          = ConfigFactory.load()
     val genesisSettings = TestHelpers.genesisSettings(Map(senderAccount -> senderBalance))
-    val origSettings    = WavesSettings.fromConfig(config)
+    val origSettings    = MirSettings.fromConfig(config)
     val settings = origSettings.copy(
       blockchainSettings = BlockchainSettings(
         'T',
@@ -106,7 +106,7 @@ class UtxPoolSpecification extends FreeSpec with Matchers with MockFactory with 
         UtxSettings(10, 10.minutes, Set.empty, Set.empty, 5.minutes, allowTransactionsFromSmartAccounts = true)
       )
     val amountPart = (senderBalance - fee) / 2 - fee
-    val txs        = for (_ <- 1 to n) yield createWavesTransfer(sender, recipient, amountPart, fee, time.getTimestamp()).explicitGet()
+    val txs        = for (_ <- 1 to n) yield createMirTransfer(sender, recipient, amountPart, fee, time.getTimestamp()).explicitGet()
     (utx, time, txs, (offset + 1000).millis)
   }).label("twoOutOfManyValidPayments")
 

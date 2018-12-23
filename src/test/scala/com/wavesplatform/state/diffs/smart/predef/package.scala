@@ -47,7 +47,7 @@ package object predef {
 
   def scriptWithAllFunctions(tx: DataTransaction, t: TransferTransaction): String =
     s"""${dropLastLine(scriptWithPureFunctions(tx, t))}
-       |${dropLastLine(scriptWithWavesFunctions(tx, t))}
+       |${dropLastLine(scriptWithMirFunctions(tx, t))}
        |${dropLastLine(scriptWithCryptoFunctions)}
        |if rnd then pure && waves else crypto""".stripMargin
 
@@ -119,8 +119,8 @@ package object predef {
        | let pure = basic && ne && gteLong && getListSize && unary && frAction && bytesOps && strOps
        | pure""".stripMargin
 
-  def scriptWithWavesFunctions(tx: DataTransaction, t: TransferTransaction): String =
-    s""" # Waves context
+  def scriptWithMirFunctions(tx: DataTransaction, t: TransferTransaction): String =
+    s""" # Mir context
        | let txById = match tx {
        |     case _: DataTransaction => true
        |     case _: TransferTransaction =>

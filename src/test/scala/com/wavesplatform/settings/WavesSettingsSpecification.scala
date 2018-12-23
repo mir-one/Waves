@@ -5,14 +5,14 @@ import java.io.File
 import com.typesafe.config.ConfigFactory
 import org.scalatest.{FlatSpec, Matchers}
 
-class WavesSettingsSpecification extends FlatSpec with Matchers {
+class MirSettingsSpecification extends FlatSpec with Matchers {
   private val home = System.getProperty("user.home")
 
   private def config(configName: String) =
-    WavesSettings.fromConfig(ConfigFactory.parseFile(new File(s"waves-$configName.conf")).withFallback(ConfigFactory.load()))
+    MirSettings.fromConfig(ConfigFactory.parseFile(new File(s"waves-$configName.conf")).withFallback(ConfigFactory.load()))
 
-  def testConfig(configName: String)(additionalChecks: WavesSettings => Unit = _ => ()) {
-    "WavesSettings" should s"read values from default config with $configName overrides" in {
+  def testConfig(configName: String)(additionalChecks: MirSettings => Unit = _ => ()) {
+    "MirSettings" should s"read values from default config with $configName overrides" in {
       val settings = config(configName)
 
       settings.directory should be(home + "/waves")
@@ -33,14 +33,14 @@ class WavesSettingsSpecification extends FlatSpec with Matchers {
   testConfig("testnet")()
   testConfig("devnet")()
 
-  "WavesSettings" should "resolve folders correctly" in {
+  "MirSettings" should "resolve folders correctly" in {
     val config = loadConfig(ConfigFactory.parseString(s"""waves {
          |  directory = "/xxx"
          |  data-directory = "/xxx/data"
          |  ntp-server = "example.com"
          |}""".stripMargin))
 
-    val settings = WavesSettings.fromConfig(config.resolve())
+    val settings = MirSettings.fromConfig(config.resolve())
 
     settings.directory should be("/xxx")
     settings.dataDirectory should be("/xxx/data")

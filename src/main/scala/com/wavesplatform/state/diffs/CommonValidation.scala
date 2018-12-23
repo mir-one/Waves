@@ -58,15 +58,15 @@ object CommonValidation {
         }
 
         val spendings       = Monoid.combine(amountDiff, feeDiff)
-        val oldWavesBalance = blockchain.portfolio(sender).balance
+        val oldMirBalance = blockchain.portfolio(sender).balance
 
-        val newWavesBalance = oldWavesBalance + spendings.balance
-        if (newWavesBalance < 0) {
+        val newMirBalance = oldMirBalance + spendings.balance
+        if (newMirBalance < 0) {
           Left(
             GenericError(
               "Attempt to transfer unavailable funds: Transaction application leads to " +
-                s"negative waves balance to (at least) temporary negative state, current balance equals $oldWavesBalance, " +
-                s"spends equals ${spendings.balance}, result is $newWavesBalance"))
+                s"negative waves balance to (at least) temporary negative state, current balance equals $oldMirBalance, " +
+                s"spends equals ${spendings.balance}, result is $newMirBalance"))
         } else if (spendings.assets.nonEmpty) {
           val oldAssetBalances = blockchain.portfolio(sender).assets
           val balanceError = spendings.assets.collectFirst {
@@ -239,9 +239,9 @@ object CommonValidation {
       .flatMap(feeAfterSmartTokens)
       .flatMap(feeAfterSmartAccounts)
       .map {
-        case (Some((assetId, assetInfo)), amountInWaves) =>
-          (Some(assetId), Sponsorship.fromWaves(amountInWaves, assetInfo.sponsorship), amountInWaves)
-        case (None, amountInWaves) => (None, amountInWaves, amountInWaves)
+        case (Some((assetId, assetInfo)), amountInMir) =>
+          (Some(assetId), Sponsorship.fromMir(amountInMir, assetInfo.sponsorship), amountInMir)
+        case (None, amountInMir) => (None, amountInMir, amountInMir)
       }
   }
 
@@ -249,14 +249,14 @@ object CommonValidation {
     if (height >= Sponsorship.sponsoredFeesSwitchHeight(blockchain, fs)) {
       for {
         minAFee <- getMinFee(blockchain, fs, height, tx)
-        minWaves   = minAFee._3
+        minMir   = minAFee._3
         minFee     = minAFee._2
         feeAssetId = minAFee._1
         _ <- Either.cond(
           minFee <= tx.assetFee._2,
           (),
           GenericError(
-            s"Fee in ${feeAssetId.fold("MIR")(_.toString)} for ${tx.builder.classTag} does not exceed minimal value of $minWaves MIR: ${tx.assetFee._2}")
+            s"Fee in ${feeAssetId.fold("MIR")(_.toString)} for ${tx.builder.classTag} does not exceed minimal value of $minMir MIR: ${tx.assetFee._2}")
         )
       } yield ()
     } else {

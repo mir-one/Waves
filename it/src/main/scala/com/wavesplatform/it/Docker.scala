@@ -231,7 +231,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
 
         if (enableProfiling) {
           config += s"-agentpath:/usr/local/YourKit-JavaProfiler-2018.04/bin/linux-x86-64/libyjpagent.so=port=$ProfilerPort,listen=all," +
-            s"sampling,monitors,sessionname=WavesNode,dir=$ContainerRoot/profiler,logdir=$ContainerRoot "
+            s"sampling,monitors,sessionname=MirNode,dir=$ContainerRoot/profiler,logdir=$ContainerRoot "
         }
 
         val withAspectJ = Option(System.getenv("WITH_ASPECTJ")).fold(false)(_.toBoolean)
@@ -265,7 +265,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
 
       client.startContainer(containerId)
 
-      val node = new DockerNode(actualConfig, containerId, getNodeInfo(containerId, WavesSettings.fromConfig(actualConfig)))
+      val node = new DockerNode(actualConfig, containerId, getNodeInfo(containerId, MirSettings.fromConfig(actualConfig)))
       nodes.add(node)
       log.debug(s"Started $containerId -> ${node.name}: ${node.nodeInfo}")
       node
@@ -276,7 +276,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
         throw e
     }
 
-  private def getNodeInfo(containerId: String, settings: WavesSettings): NodeInfo = {
+  private def getNodeInfo(containerId: String, settings: MirSettings): NodeInfo = {
     val restApiPort    = settings.restAPISettings.port
     val matcherApiPort = settings.matcherSettings.port
     val networkPort    = settings.networkSettings.bindAddress.getPort

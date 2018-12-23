@@ -539,7 +539,7 @@ object AsyncHttpApi extends Assertions {
         .toScala
     }
 
-    def debugStateAt(height: Long): Future[Map[String, Long]] = getWithApiKey(s"/debug/stateWaves/$height").as[Map[String, Long]]
+    def debugStateAt(height: Long): Future[Map[String, Long]] = getWithApiKey(s"/debug/stateMir/$height").as[Map[String, Long]]
 
     def debugPortfoliosFor(address: String, considerUnspent: Boolean): Future[Portfolio] = {
       getWithApiKey(s"/debug/portfolios/$address?considerUnspent=$considerUnspent")

@@ -1,7 +1,7 @@
 package com
 
 import one.mir.block.Block
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state.{ByteStr, NG}
 import one.mir.transaction.ValidationError.GenericError
 import one.mir.transaction.{BlockchainUpdater, ValidationError}
@@ -21,7 +21,7 @@ package object wavesplatform extends ScorexLogging {
     }
   }
 
-  def checkGenesis(settings: WavesSettings, blockchainUpdater: BlockchainUpdater with NG): Unit = {
+  def checkGenesis(settings: MirSettings, blockchainUpdater: BlockchainUpdater with NG): Unit = {
     Block.genesis(settings.blockchainSettings.genesisSettings).flatMap(b => checkOrAppend(b, blockchainUpdater)).left.foreach { e =>
       log.error("INCORRECT NODE CONFIGURATION!!! NODE STOPPED BECAUSE OF THE FOLLOWING ERROR:")
       log.error(e.toString)

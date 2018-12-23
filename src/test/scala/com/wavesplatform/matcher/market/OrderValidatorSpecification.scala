@@ -34,7 +34,7 @@ class OrderValidatorSpecification
     with NoShrink {
 
   private val wbtc         = mkAssetId("WBTC")
-  private val pairWavesBtc = AssetPair(None, Some(wbtc))
+  private val pairMirBtc = AssetPair(None, Some(wbtc))
   private val defaultTs    = 1000
 
   private val defaultPortfolio = Portfolio(0, LeaseBalance.empty, Map(wbtc -> 10 * Constants.UnitsInWave))
@@ -309,7 +309,7 @@ class OrderValidatorSpecification
     val order = OrderV2(
       senderPublicKey = pk,
       matcherPublicKey = MatcherAccount,
-      assetPair = pairWavesBtc,
+      assetPair = pairMirBtc,
       amount = 100 * Constants.UnitsInWave,
       price = (0.0022 * Order.PriceConstant).toLong,
       timestamp = System.currentTimeMillis(),
@@ -326,10 +326,10 @@ class OrderValidatorSpecification
     Some(AssetDescription(MatcherAccount, Array.emptyByteArray, Array.emptyByteArray, decimals, reissuable = false, BigInt(0), None, 0))
 
   private def newBuyOrder: Order =
-    buy(pair = pairWavesBtc, amount = 100 * Constants.UnitsInWave, price = 0.0022, matcherFee = Some((0.003 * Constants.UnitsInWave).toLong))
+    buy(pair = pairMirBtc, amount = 100 * Constants.UnitsInWave, price = 0.0022, matcherFee = Some((0.003 * Constants.UnitsInWave).toLong))
 
   private def newBuyOrder(ts: Long): Order =
-    buy(pair = pairWavesBtc,
+    buy(pair = pairMirBtc,
         amount = 100 * Constants.UnitsInWave,
         price = 0.0022,
         matcherFee = Some((0.003 * Constants.UnitsInWave).toLong),
@@ -337,7 +337,7 @@ class OrderValidatorSpecification
 
   private def newBuyOrder(pk: PrivateKeyAccount, ts: Long = System.currentTimeMillis(), version: Byte = 1) =
     buy(
-      pair = pairWavesBtc,
+      pair = pairMirBtc,
       amount = 100 * Constants.UnitsInWave,
       price = 0.0022,
       sender = Some(pk),

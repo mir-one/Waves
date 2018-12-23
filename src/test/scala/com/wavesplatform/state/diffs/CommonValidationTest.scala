@@ -115,7 +115,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
             .selfSigned(richAcc, "test".getBytes(), "desc".getBytes(), Long.MaxValue, 2, reissuable = false, Constants.UnitsInWave, ts)
             .explicitGet()
 
-      val transferWavesTx = TransferTransactionV1
+      val transferMirTx = TransferTransactionV1
         .selfSigned(None, richAcc, recipientAcc, 10 * Constants.UnitsInWave, ts, None, 1 * Constants.UnitsInWave, Array.emptyByteArray)
         .explicitGet()
 
@@ -173,7 +173,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
         )
         .explicitGet()
 
-      (TestBlock.create(Vector[Transaction](genesisTx, issueTx, transferWavesTx, transferAssetTx) ++ sponsorTx ++ setScriptTx), transferBackTx)
+      (TestBlock.create(Vector[Transaction](genesisTx, issueTx, transferMirTx, transferAssetTx) ++ sponsorTx ++ setScriptTx), transferBackTx)
     }
 
   private def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): FunctionalitySettings =

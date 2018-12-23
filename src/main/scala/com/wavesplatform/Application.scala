@@ -21,7 +21,7 @@ import one.mir.consensus.nxt.api.http.NxtConsensusApiRoute
 import one.mir.db.openDB
 import one.mir.features.api.ActivationApiRoute
 import one.mir.history.{CheckpointServiceImpl, StorageFactory}
-import one.mir.http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
+import one.mir.http.{DebugApiRoute, NodeApiRoute, MirApiRoute}
 import one.mir.matcher.Matcher
 import one.mir.metrics.Metrics
 import one.mir.mining.{Miner, MinerImpl}
@@ -50,7 +50,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.util.Try
 
-class Application(val actorSystem: ActorSystem, val settings: WavesSettings, configRoot: ConfigObject, time: NTP) extends ScorexLogging {
+class Application(val actorSystem: ActorSystem, val settings: MirSettings, configRoot: ConfigObject, time: NTP) extends ScorexLogging {
 
   import monix.execution.Scheduler.Implicits.{global => scheduler}
 
@@ -250,7 +250,7 @@ class Application(val actorSystem: ActorSystem, val settings: WavesSettings, con
           scoreStatsReporter,
           configRoot
         ),
-        WavesApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
+        MirApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
         AssetsApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, blockchainUpdater, time),
         ActivationApiRoute(settings.restAPISettings, settings.blockchainSettings.functionalitySettings, settings.featuresSettings, blockchainUpdater),
         AssetsBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels),
@@ -368,7 +368,7 @@ object Application extends ScorexLogging {
         if (!cfg.hasPath("waves")) {
           log.error("Malformed configuration file was provided! Aborting!")
           log.error("Please, read following article about configuration file format:")
-          log.error("https://github.com/mir-one/node/wiki/Waves-Node-configuration-file")
+          log.error("https://github.com/mir-one/node/wiki/Mir-Node-configuration-file")
           forceStopApplication()
         }
         loadConfig(cfg)
@@ -403,7 +403,7 @@ object Application extends ScorexLogging {
       SystemInformationReporter.report(config)
     }
 
-    val settings = WavesSettings.fromConfig(config)
+    val settings = MirSettings.fromConfig(config)
 
     // Initialize global var with actual address scheme
     AddressScheme.current = new AddressScheme {

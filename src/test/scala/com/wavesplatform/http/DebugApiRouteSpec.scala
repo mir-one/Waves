@@ -1,12 +1,12 @@
 package one.mir.http
 
 import one.mir.{NTPTime, TestWallet}
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.api.http.ApiKeyNotValid
 
 class DebugApiRouteSpec extends RouteSpec("/debug") with RestAPISettingsHelper with TestWallet with NTPTime {
   private val sampleConfig  = com.typesafe.config.ConfigFactory.load()
-  private val wavesSettings = WavesSettings.fromConfig(sampleConfig)
+  private val wavesSettings = MirSettings.fromConfig(sampleConfig)
   private val configObject  = sampleConfig.root()
   private val route =
     DebugApiRoute(wavesSettings, ntpTime, null, null, null, null, null, null, null, null, null, null, null, null, null, configObject).route

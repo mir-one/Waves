@@ -4,7 +4,7 @@ import one.mir.consensus.PoSSelector
 import one.mir.metrics.{BlockStats, Instrumented, Metrics}
 import one.mir.mining.Miner
 import one.mir.network.{InvalidBlockStorage, PeerDatabase, formatBlocks, id}
-import one.mir.settings.WavesSettings
+import one.mir.settings.MirSettings
 import one.mir.state._
 import one.mir.utils.{ScorexLogging, Time}
 import one.mir.utx.UtxPool
@@ -26,7 +26,7 @@ object ExtensionAppender extends ScorexLogging with Instrumented {
             utxStorage: UtxPool,
             pos: PoSSelector,
             time: Time,
-            settings: WavesSettings,
+            settings: MirSettings,
             invalidBlocks: InvalidBlockStorage,
             peerDatabase: PeerDatabase,
             miner: Miner,
