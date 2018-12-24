@@ -44,12 +44,12 @@ class MatcherTickerTestSuite
     }
 
     "status of empty orderbook" in {
-//    TODO: add error message after fix of https://mirplatform.atlassian.net/browse/NODE-1151
+//    TODO: add error message after fix of https://wavesplatform.atlassian.net/browse/NODE-1151
 //      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.marketStatus(mirUsdPair), s"")
     }
 
     "error of non-existed order" in {
-      //TODO: add error message after fix of https://mirplatform.atlassian.net/browse/NODE-1151
+      //TODO: add error message after fix of https://wavesplatform.atlassian.net/browse/NODE-1151
 //      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.orderStatus(IssueUsdTx.id().toString, mirUsdPair), s"")
     }
 
@@ -65,7 +65,7 @@ class MatcherTickerTestSuite
           .getHeader("Location")
           .contains(s"MIR/${usdMirPair.amountAssetStr}"))
 
-      //TODO: add error message after fix of https://mirplatform.atlassian.net/browse/NODE-1151
+      //TODO: add error message after fix of https://wavesplatform.atlassian.net/browse/NODE-1151
 //      SyncMatcherHttpApi.assertNotFoundAndMessage(matcherNode.placeOrder(aliceNode, usdMirPair, OrderType.BUY, 1.mir, 200), "")
     }
 

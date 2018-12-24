@@ -220,7 +220,7 @@ object AsyncHttpApi extends Assertions {
 
     def lease(sourceAddress: String, recipient: String, amount: Long, fee: Long, version: Byte = 2): Future[Transaction] = {
       version match {
-        case 2 => { //TODO: @monroid refactor after https://mirplatform.atlassian.net/browse/NODE-1222 fix
+        case 2 => { //TODO: @monroid refactor after https://wavesplatform.atlassian.net/browse/NODE-1222 fix
           signAndBroadcast(
             Json.obj(
               "type"      -> 8,
@@ -237,7 +237,7 @@ object AsyncHttpApi extends Assertions {
 
     def cancelLease(sourceAddress: String, leaseId: String, fee: Long, version: Byte = 2): Future[Transaction] = {
       version match {
-        case 2 => { //TODO: @monroid refactor after https://mirplatform.atlassian.net/browse/NODE-1222 fix
+        case 2 => { //TODO: @monroid refactor after https://wavesplatform.atlassian.net/browse/NODE-1222 fix
           signAndBroadcast(
             Json.obj(
               "type"    -> 9,
@@ -263,7 +263,7 @@ object AsyncHttpApi extends Assertions {
               version: Byte = 2,
               script: Option[String] = None): Future[Transaction] = {
       version match {
-        case 2 => { //TODO: @monroid refactor after https://mirplatform.atlassian.net/browse/NODE-1222 fix
+        case 2 => { //TODO: @monroid refactor after https://wavesplatform.atlassian.net/browse/NODE-1222 fix
           val js = Json.obj(
             "type"        -> 3,
             "name"        -> name,
