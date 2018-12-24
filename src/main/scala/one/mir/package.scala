@@ -1,4 +1,4 @@
-package com
+package one
 
 import one.mir.block.Block
 import one.mir.settings.MirSettings
@@ -7,7 +7,7 @@ import one.mir.transaction.ValidationError.GenericError
 import one.mir.transaction.{BlockchainUpdater, ValidationError}
 import one.mir.utils.ScorexLogging
 
-package object mirplatform extends ScorexLogging {
+package object mir extends ScorexLogging {
   private def checkOrAppend(block: Block, blockchainUpdater: BlockchainUpdater with NG): Either[ValidationError, Unit] = {
     if (blockchainUpdater.isEmpty) {
       blockchainUpdater.processBlock(block).right.map { _ =>

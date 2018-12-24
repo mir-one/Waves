@@ -1,9 +1,9 @@
-package com
+package one
 
 import java.io.File
 import java.nio.file.Files
 
-package object mirplatform {
+package object mir {
   def createTestTemporaryFile(name: String, ext: String): File = {
     val file = Files.createTempFile(name, ext).toFile
     file.deleteOnExit()
