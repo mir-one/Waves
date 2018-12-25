@@ -11,5 +11,5 @@ object Constants extends ScorexLogging {
   val AgentName       = s"Mir v${Version.VersionString}"
 
   val UnitsInWave = 100000000L
-  val TotalMir  = 100000000L
+  val TotalMir    = 100000000L
 }

@@ -58,8 +58,8 @@ case class DebugApiRoute(ws: MirSettings,
 
   import DebugApiRoute._
 
-  private lazy val configStr             = configRoot.render(ConfigRenderOptions.concise().setJson(true).setFormatted(true))
-  private lazy val fullConfig: JsValue   = Json.parse(configStr)
+  private lazy val configStr           = configRoot.render(ConfigRenderOptions.concise().setJson(true).setFormatted(true))
+  private lazy val fullConfig: JsValue = Json.parse(configStr)
   private lazy val mirConfig: JsObject = Json.obj("mir" -> (fullConfig \ "mir").get)
 
   override val settings = ws.restAPISettings

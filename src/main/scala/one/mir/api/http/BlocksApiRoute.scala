@@ -243,14 +243,9 @@ case class BlocksApiRoute(settings: RestAPISettings,
 
   @Path("/checkpoint")
   @ApiOperation(value = "Create checkpoint", notes = "Broadcast a checkpoint", httpMethod = "POST")
-  @ApiImplicitParams(
-    Array(
-      new ApiImplicitParam(name = "message",
-                           value = "Checkpoint message",
-                           required = true,
-                           paramType = "body",
-                           dataType = "one.mir.network.Checkpoint")
-    ))
+  @ApiImplicitParams(Array(
+    new ApiImplicitParam(name = "message", value = "Checkpoint message", required = true, paramType = "body", dataType = "one.mir.network.Checkpoint")
+  ))
   @ApiResponses(
     Array(
       new ApiResponse(code = 200, message = "Json with response or error")

@@ -12,11 +12,12 @@ object JavaAdapter {
 
   lazy val compiler =
     new CompilerV1(
-      Monoid.combineAll(Seq(
-        CryptoContext.compilerContext(one.mir.lang.Global),
-        MirContext.build(version, null, false).compilerContext,
-        PureContext.build(version).compilerContext
-      )))
+      Monoid.combineAll(
+        Seq(
+          CryptoContext.compilerContext(one.mir.lang.Global),
+          MirContext.build(version, null, false).compilerContext,
+          PureContext.build(version).compilerContext
+        )))
 
   def compile(input: String): EXPR = {
     compiler

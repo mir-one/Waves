@@ -110,9 +110,8 @@ package object utils extends ScorexLogging {
             .combineAll(Seq(
               PureContext.build(version),
               CryptoContext.build(Global),
-              MirContext.build(version,
-                                 new MirEnvironment(AddressScheme.current.chainId, Coeval(???), Coeval(???), EmptyBlockchain),
-                                 isTokenContext = false)
+              MirContext
+                .build(version, new MirEnvironment(AddressScheme.current.chainId, Coeval(???), Coeval(???), EmptyBlockchain), isTokenContext = false)
             )))
       }
       .toMap

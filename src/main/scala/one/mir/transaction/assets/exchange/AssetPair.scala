@@ -47,7 +47,7 @@ object AssetPair {
 
   def extractAssetId(a: String): Try[Option[AssetId]] = a match {
     case `MirName` => Success(None)
-    case other       => ByteStr.decodeBase58(other).map(Option(_))
+    case other     => ByteStr.decodeBase58(other).map(Option(_))
   }
 
   def createAssetPair(amountAsset: String, priceAsset: String): Try[AssetPair] =

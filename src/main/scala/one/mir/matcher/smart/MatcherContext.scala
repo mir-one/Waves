@@ -67,7 +67,7 @@ object MatcherContext {
     val addressFromStringF: BaseFunction    = inaccessibleUserFunction("addressFromStringF")
     val addressFromRecipientF: BaseFunction = inaccessibleFunction("addressFromRecipientF", ADDRESSFROMRECIPIENT)
     val assetBalanceF: BaseFunction         = inaccessibleFunction("assetBalanceF", ACCOUNTASSETBALANCE)
-    val mirBalanceF: BaseFunction         = inaccessibleUserFunction("mirBalanceF")
+    val mirBalanceF: BaseFunction           = inaccessibleUserFunction("mirBalanceF")
 
     val functions = Array(
       txByIdF,

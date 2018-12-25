@@ -57,7 +57,7 @@ object CommonValidation {
           case None      => Portfolio(-feeAmount, LeaseBalance.empty, Map.empty)
         }
 
-        val spendings       = Monoid.combine(amountDiff, feeDiff)
+        val spendings     = Monoid.combine(amountDiff, feeDiff)
         val oldMirBalance = blockchain.portfolio(sender).balance
 
         val newMirBalance = oldMirBalance + spendings.balance
@@ -249,7 +249,7 @@ object CommonValidation {
     if (height >= Sponsorship.sponsoredFeesSwitchHeight(blockchain, fs)) {
       for {
         minAFee <- getMinFee(blockchain, fs, height, tx)
-        minMir   = minAFee._3
+        minMir     = minAFee._3
         minFee     = minAFee._2
         feeAssetId = minAFee._1
         _ <- Either.cond(

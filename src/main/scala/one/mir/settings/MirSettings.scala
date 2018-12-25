@@ -8,22 +8,22 @@ import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import scala.concurrent.duration._
 
 case class MirSettings(directory: String,
-                         dataDirectory: String,
-                         maxCacheSize: Int,
-                         maxRollbackDepth: Int,
-                         rememberBlocks: FiniteDuration,
-                         ntpServer: String,
-                         networkSettings: NetworkSettings,
-                         walletSettings: WalletSettings,
-                         blockchainSettings: BlockchainSettings,
-                         checkpointsSettings: CheckpointsSettings,
-                         matcherSettings: MatcherSettings,
-                         minerSettings: MinerSettings,
-                         restAPISettings: RestAPISettings,
-                         synchronizationSettings: SynchronizationSettings,
-                         utxSettings: UtxSettings,
-                         featuresSettings: FeaturesSettings,
-                         metrics: Metrics.Settings)
+                       dataDirectory: String,
+                       maxCacheSize: Int,
+                       maxRollbackDepth: Int,
+                       rememberBlocks: FiniteDuration,
+                       ntpServer: String,
+                       networkSettings: NetworkSettings,
+                       walletSettings: WalletSettings,
+                       blockchainSettings: BlockchainSettings,
+                       checkpointsSettings: CheckpointsSettings,
+                       matcherSettings: MatcherSettings,
+                       minerSettings: MinerSettings,
+                       restAPISettings: RestAPISettings,
+                       synchronizationSettings: SynchronizationSettings,
+                       utxSettings: UtxSettings,
+                       featuresSettings: FeaturesSettings,
+                       metrics: Metrics.Settings)
 
 object MirSettings {
 
