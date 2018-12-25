@@ -18,7 +18,7 @@ inTask(docker)(
   Seq(
     dockerfile := {
       val configTemplate = (Compile / resourceDirectory).value / "template.conf"
-      val startMir     = sourceDirectory.value / "container" / "start-mir.sh"
+      val startMir       = sourceDirectory.value / "container" / "start-mir.sh"
 
       val withAspectJ     = Option(System.getenv("WITH_ASPECTJ")).fold(false)(_.toBoolean)
       val aspectjAgentUrl = "http://search.maven.org/remotecontent?filepath=org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar"
@@ -99,7 +99,7 @@ inConfig(Test) {
   val commonFlags = "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
   Seq(
     test := (test dependsOn docker).value,
-    envVars in test += "CONTAINER_JAVA_OPTS"     -> s"-Xmx1500m $commonFlags",
+    envVars in test += "CONTAINER_JAVA_OPTS"     -> s"-Xmx1g $commonFlags",
     envVars in testOnly += "CONTAINER_JAVA_OPTS" -> s"-Xmx512m $commonFlags"
   ) ++ inTask(test)(itTestsCommonSettings) ++ inTask(testOnly)(itTestsCommonSettings)
 }
