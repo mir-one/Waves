@@ -10,7 +10,7 @@ class RestAPISettingsSpecification extends FlatSpec with Matchers {
         |  rest-api {
         |    enable: yes
         |    bind-address: "127.0.0.1"
-        |    port: 6869
+        |    port: 1401
         |    api-key-hash: "BASE58APIKEYHASH"
         |    cors: yes
         |    api-key-different-host: yes
@@ -23,7 +23,7 @@ class RestAPISettingsSpecification extends FlatSpec with Matchers {
 
     settings.enable should be(true)
     settings.bindAddress should be("127.0.0.1")
-    settings.port should be(6869)
+    settings.port should be(1401)
     settings.apiKeyHash should be("BASE58APIKEYHASH")
     settings.cors should be(true)
     settings.apiKeyDifferentHost should be(true)

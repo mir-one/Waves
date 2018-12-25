@@ -13,7 +13,7 @@ case class ConnectReq(@(ApiModelProperty @field)(
                       ) host: String,
                       @(ApiModelProperty @field)(
                         dataType = "integer",
-                        example = "6868",
+                        example = "1400",
                         required = true
                       ) port: Int)
 
