@@ -16,17 +16,11 @@ sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get -y install oracle-java8-installer
 
-echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-sudo apt-get update
-sudo apt-get install sbt
-
 java -version
 #sudo apt install default-jre
-wget https://github.com/mir-one/node/releases/download/v0.15.4/mir_0.15.4_all.deb
+wget https://github.com/mir-one/node/releases/download/v0.15.4a/mir_0.15.4a_all.deb
 sudo dpkg -i mir_0.15.4a_all.deb
-cd /usr/share/mir/conf/
-sudo nano mir.conf
+sudo nano /usr/share/mir/conf/mir.conf
 ```
 
 ```
@@ -36,7 +30,7 @@ miner {
 
    # Required number of connections (both incoming and outgoing) to attempt block generation. Setting this value to 0
    # enables "off-line generation".
-   quorum = 1
+   quorum = 2
 
    # Enable block generation only in the last block if not older the given period of time
    interval-after-last-block-then-generation-is-allowed = 1d
