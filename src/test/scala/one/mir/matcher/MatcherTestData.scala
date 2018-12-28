@@ -41,7 +41,7 @@ trait MatcherTestData extends NTPTime { _: Suite =>
       |    enable: yes
       |    account: ""
       |    bind-address: "127.0.0.1"
-      |    port: 6886
+      |    port: 1404
       |    order-history-file: null
       |    min-order-fee: 100000
       |    order-match-tx-fee: 100000

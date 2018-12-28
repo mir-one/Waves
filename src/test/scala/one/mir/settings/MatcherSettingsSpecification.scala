@@ -15,7 +15,7 @@ class MatcherSettingsSpecification extends FlatSpec with Matchers {
         |    enable = yes
         |    account = 3Mqjki7bLtMEBRCYeQis39myp9B4cnooDEX
         |    bind-address = 127.0.0.1
-        |    port = 6886
+        |    port = 1404
         |    min-order-fee = 100000
         |    order-match-tx-fee = 100000
         |    snapshots-interval = 999
@@ -46,7 +46,7 @@ class MatcherSettingsSpecification extends FlatSpec with Matchers {
     settings.enable should be(true)
     settings.account should be("3Mqjki7bLtMEBRCYeQis39myp9B4cnooDEX")
     settings.bindAddress should be("127.0.0.1")
-    settings.port should be(6886)
+    settings.port should be(1404)
     settings.minOrderFee should be(100000)
     settings.orderMatchTxFee should be(100000)
     settings.journalDataDir should be("/mir/matcher/journal")
