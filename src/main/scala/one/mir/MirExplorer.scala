@@ -16,7 +16,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler
 import scala.collection.JavaConverters._
 import scala.util.Try
 
-object Explorer extends ScorexLogging {
+object MirExplorer extends ScorexLogging {
   case class Stats(entryCount: Long, totalKeySize: Long, totalValueSize: Long)
 
   private val keys = Array(
