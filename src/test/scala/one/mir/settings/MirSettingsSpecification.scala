@@ -31,7 +31,6 @@ class MirSettingsSpecification extends FlatSpec with Matchers {
 
   testConfig("mainnet")()
   testConfig("testnet")()
-  testConfig("devnet")()
 
   "MirSettings" should "resolve folders correctly" in {
     val config = loadConfig(ConfigFactory.parseString(s"""mir {

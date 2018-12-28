@@ -18,18 +18,4 @@ object FirstDifferentBlock extends App {
 
   val MAINNET1 = "http://185.181.164.136:1400"
   val MAINNET2 = "http://185.58.207.12:1400"
-
-  def firstDifferent(min: Int, max: Int, areSame: Int => Boolean): Int = {
-    println("searching [" + min + ", " + max + ")")
-    if (max - min <= 1)
-      max
-    else {
-      val split = (min + max) / 2
-      if (areSame(split))
-        firstDifferent(split, max, areSame)
-      else firstDifferent(min, split, areSame)
-    }
-  }
-
-  println("first different block height is " + firstDifferent(1, 258, nodeComparator(DEVNET3D, DEVNET3)))
 }
