@@ -23,7 +23,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import scala.util.{Failure, Success, Try}
 
-object Importer extends ScorexLogging {
+object MirImporter extends ScorexLogging {
   def main(args: Array[String]): Unit = {
 
     SLF4JBridgeHandler.removeHandlersForRootLogger()

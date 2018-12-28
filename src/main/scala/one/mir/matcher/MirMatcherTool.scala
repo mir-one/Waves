@@ -27,7 +27,7 @@ import scala.collection.immutable.Set
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-object MatcherTool extends ScorexLogging {
+object MirMatcherTool extends ScorexLogging {
   private def collectStats(db: DB): Unit = {
     log.info("Collecting stats")
     val iterator = db.iterator()

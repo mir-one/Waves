@@ -15,7 +15,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler
 
 import scala.util.{Failure, Success, Try}
 
-object Exporter extends ScorexLogging {
+object MirExporter extends ScorexLogging {
   def main(args: Array[String]): Unit = {
     SLF4JBridgeHandler.removeHandlersForRootLogger()
     SLF4JBridgeHandler.install()
