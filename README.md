@@ -4,6 +4,9 @@ In the master branch there is a code with functions that is under development. T
 
 For further information please refer the official [documentation](https://docs.mir.one).
 
+
+
+
 # Installation
 
 ```
@@ -54,6 +57,12 @@ miner {
 
 sudo systemctl enable mir.service
 sudo systemctl start mir.service
+or
+sudo service mir start
+
+**juornal**
+sudo journalctl -u mir.service -f
+
 
 ## Compiling Packages from source
 
@@ -99,6 +108,9 @@ sbt packageAll
 sbt -Dnetwork=testnet packageAll
 ```
 
+
+
+
 # Running Tests
 
 `sbt test`
@@ -117,12 +129,17 @@ SBT_OPTS="${SBT_OPTS} -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled --
 
 to solve the `Metaspace error` problem.
 
+
+
+
 # Running Integration Tests
+
 
 ## TL;DR
 
  * Make sure you have [Docker](https://www.docker.com/get-docker) and SBT.
  * `sbt it/test`
+
 
 ## Customizing Tests
 
@@ -173,6 +190,9 @@ In this example, `e243fa08d496` is the image ID you need. Make sure to re-build 
 the tests) is changed. If you run the tests from SBT, there's no need to manually rebuild the image, SBT will handle
 this automatically.
 
+
+
+
 # Collecting performance metrics
 
 **Note**: all required tools will be installed though [Docker](https://docs.docker.com) for simplicity.
@@ -195,6 +215,9 @@ this automatically.
     * `-Dkamon.modules.kamon-system-metrics.auto-start=yes` enables metrics of _CPU_, _Memory_ and others;
     * See [application.conf](https://github.com/wavesplatform/Waves/blob/master/src/main/resources/application.conf)
       for more options.
+
+
+
 
 # Acknowledgement
 
