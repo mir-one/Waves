@@ -158,6 +158,8 @@ object Matcher extends ScorexLogging {
             blockchain: Blockchain,
             settings: MirSettings): Option[Matcher] =
     try {
+      if (settings.matcherSettings.account == "")
+        log.warn("No settings.matcherSettings.account")
       val privateKey = (for {
         address <- Address.fromString(settings.matcherSettings.account)
         pk      <- wallet.privateKeyAccount(address)
