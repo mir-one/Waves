@@ -21,8 +21,8 @@ sudo apt-get -y install oracle-java8-installer
 
 java -version
 #sudo apt install default-jre
-wget https://github.com/mir-one/node/releases/download/v0.15.4a/mir_0.15.4a_all.deb
-sudo dpkg -i mir_0.15.4a_all.deb
+wget https://github.com/mir-one/node/releases/download/v1.0.0/mir-node_1.0.0.deb
+sudo dpkg -i mir-node_1.0.0.deb
 sudo nano /usr/share/mir/conf/mir.conf
 ```
 
