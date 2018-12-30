@@ -30,7 +30,7 @@ package object history {
   val MicroblocksActivatedAt0MirSettings: MirSettings = settings.copy(blockchainSettings = MicroblocksActivatedAt0BlockchainSettings)
 
   val DefaultMirSettings: MirSettings = settings.copy(blockchainSettings = DefaultBlockchainSettings,
-                                                          featuresSettings = settings.featuresSettings.copy(autoShutdownOnUnsupportedFeature = false))
+                                                      featuresSettings = settings.featuresSettings.copy(autoShutdownOnUnsupportedFeature = false))
 
   val defaultSigner       = PrivateKeyAccount(Array.fill(KeyLength)(0))
   val generationSignature = ByteStr(Array.fill(Block.GeneratorSignatureLength)(0: Byte))

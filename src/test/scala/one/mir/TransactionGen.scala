@@ -34,7 +34,7 @@ trait TransactionGen extends TransactionGenBase { _: Suite =>
 
 trait TransactionGenBase extends ScriptGen with NTPTime { _: Suite =>
 
-  val ScriptExtraFee                  = 400000L
+  val ScriptExtraFee                = 400000L
   protected def mir(n: Float): Long = (n * 100000000L).toLong
 
   def byteArrayGen(length: Int): Gen[Array[Byte]] = Gen.containerOfN[Array, Byte](length, Arbitrary.arbitrary[Byte])
@@ -92,7 +92,7 @@ trait TransactionGenBase extends ScriptGen with NTPTime { _: Suite =>
   val timestampGen: Gen[Long]    = Gen.choose(1, Long.MaxValue - 100)
 
   val mirAssetGen: Gen[Option[ByteStr]] = Gen.const(None)
-  val assetIdGen: Gen[Option[ByteStr]]    = Gen.frequency((1, mirAssetGen), (10, Gen.option(bytes32gen.map(ByteStr(_)))))
+  val assetIdGen: Gen[Option[ByteStr]]  = Gen.frequency((1, mirAssetGen), (10, Gen.option(bytes32gen.map(ByteStr(_)))))
 
   val assetPairGen = assetIdGen.flatMap {
     case None => bytes32gen.map(b => AssetPair(None, Some(ByteStr(b))))
@@ -296,10 +296,10 @@ trait TransactionGenBase extends ScriptGen with NTPTime { _: Suite =>
     } yield MassTransferTransaction.selfSigned(version, assetId, sender, transfers, timestamp, feeAmount, attachment).explicitGet()
 
   def createMirTransfer(sender: PrivateKeyAccount,
-                          recipient: Address,
-                          amount: Long,
-                          fee: Long,
-                          timestamp: Long): Either[ValidationError, TransferTransactionV1] =
+                        recipient: Address,
+                        amount: Long,
+                        fee: Long,
+                        timestamp: Long): Either[ValidationError, TransferTransactionV1] =
     TransferTransactionV1.selfSigned(None, sender, recipient, amount, timestamp, None, fee, Array())
 
   val transferV1Gen = (for {

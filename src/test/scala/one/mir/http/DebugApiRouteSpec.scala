@@ -5,9 +5,9 @@ import one.mir.settings.MirSettings
 import one.mir.api.http.ApiKeyNotValid
 
 class DebugApiRouteSpec extends RouteSpec("/debug") with RestAPISettingsHelper with TestWallet with NTPTime {
-  private val sampleConfig  = com.typesafe.config.ConfigFactory.load()
-  private val mirSettings = MirSettings.fromConfig(sampleConfig)
-  private val configObject  = sampleConfig.root()
+  private val sampleConfig = com.typesafe.config.ConfigFactory.load()
+  private val mirSettings  = MirSettings.fromConfig(sampleConfig)
+  private val configObject = sampleConfig.root()
   private val route =
     DebugApiRoute(mirSettings, ntpTime, null, null, null, null, null, null, null, null, null, null, null, null, null, configObject).route
 

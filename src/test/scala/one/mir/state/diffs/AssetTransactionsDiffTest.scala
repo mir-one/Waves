@@ -102,7 +102,7 @@ class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
       genesis: GenesisTransaction = GenesisTransaction.create(issuer, ENOUGH_AMT, timestamp).explicitGet()
       (issue, _, _) <- issueReissueBurnGeneratorP(ENOUGH_AMT, issuer)
       assetTransfer <- transferGeneratorP(issuer, burner, Some(issue.assetId()), None)
-      mirTransfer <- mirTransferGeneratorP(issuer, burner)
+      mirTransfer   <- mirTransferGeneratorP(issuer, burner)
       burn = BurnTransactionV1.selfSigned(burner, issue.assetId(), assetTransfer.amount, mirTransfer.amount, timestamp).explicitGet()
     } yield (genesis, issue, assetTransfer, mirTransfer, burn)
 
@@ -224,12 +224,12 @@ class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
 
   def genesisIssueTransferReissue(code: String): Gen[(Seq[GenesisTransaction], IssueTransactionV2, TransferTransactionV1, ReissueTransactionV1)] =
     for {
-      version            <- Gen.oneOf(IssueTransactionV2.supportedVersions.toSeq)
-      timestamp          <- timestampGen
+      version          <- Gen.oneOf(IssueTransactionV2.supportedVersions.toSeq)
+      timestamp        <- timestampGen
       initialMirAmount <- Gen.choose(Long.MaxValue / 1000, Long.MaxValue / 100)
-      accountA           <- accountGen
-      accountB           <- accountGen
-      smallFee           <- Gen.choose(1l, 10l)
+      accountA         <- accountGen
+      accountB         <- accountGen
+      smallFee         <- Gen.choose(1l, 10l)
       genesisTx1 = GenesisTransaction.create(accountA, initialMirAmount, timestamp).explicitGet()
       genesisTx2 = GenesisTransaction.create(accountB, initialMirAmount, timestamp).explicitGet()
       reissuable = true

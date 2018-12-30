@@ -17,7 +17,7 @@ import scala.util.{Failure, Success}
 
 package object http {
 
-  val Mir: Long  = 100000000L
+  val Mir: Long    = 100000000L
   val ApiKeyHeader = api_key("ridethemir!")
 
   def sameSignature(target: Array[Byte])(actual: Array[Byte]): Boolean = target sameElements actual

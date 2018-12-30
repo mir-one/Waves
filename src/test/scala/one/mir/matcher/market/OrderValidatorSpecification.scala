@@ -33,9 +33,9 @@ class OrderValidatorSpecification
     with PropertyChecks
     with NoShrink {
 
-  private val wbtc         = mkAssetId("WBTC")
+  private val wbtc       = mkAssetId("WBTC")
   private val pairMirBtc = AssetPair(None, Some(wbtc))
-  private val defaultTs    = 1000
+  private val defaultTs  = 1000
 
   private val defaultPortfolio = Portfolio(0, LeaseBalance.empty, Map(wbtc -> 10 * Constants.UnitsInWave))
 

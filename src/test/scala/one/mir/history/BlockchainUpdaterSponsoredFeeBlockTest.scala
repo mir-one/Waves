@@ -36,12 +36,12 @@ class BlockchainUpdaterSponsoredFeeBlockTest
 
     master                      <- accountGen
     ts                          <- timestampGen
-    transferAssetMirFee       <- smallFeeGen
+    transferAssetMirFee         <- smallFeeGen
     sponsor                     <- accountGen
     alice                       <- accountGen
     bob                         <- accountGen
     (feeAsset, sponsorTx, _, _) <- sponsorFeeCancelSponsorFeeGen(alice)
-    mirFee                    = Sponsorship.toMir(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
+    mirFee                      = Sponsorship.toMir(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
     genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
     masterToAlice: TransferTransactionV1 = TransferTransactionV1
       .selfSigned(None,
