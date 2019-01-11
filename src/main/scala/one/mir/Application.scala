@@ -13,9 +13,9 @@ import com.typesafe.config._
 import one.mir.account.AddressScheme
 import one.mir.actor.RootActorSystem
 import one.mir.api.http._
-import one.mir.api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
+// -disabled- import one.mir.api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
 import one.mir.api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
-import one.mir.api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
+// -disabled- import one.mir.api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
 import one.mir.consensus.PoSSelector
 import one.mir.consensus.nxt.api.http.NxtConsensusApiRoute
 import one.mir.db.openDB
@@ -253,11 +253,11 @@ class Application(val actorSystem: ActorSystem, val settings: MirSettings, confi
         MirApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
         AssetsApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, blockchainUpdater, time),
         ActivationApiRoute(settings.restAPISettings, settings.blockchainSettings.functionalitySettings, settings.featuresSettings, blockchainUpdater),
-        AssetsBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels),
-        LeaseApiRoute(settings.restAPISettings, wallet, blockchainUpdater, utxStorage, allChannels, time),
-        LeaseBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels),
-        AliasApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time, blockchainUpdater),
-        AliasBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels)
+        AssetsBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels)
+        // -disabled- LeaseApiRoute(settings.restAPISettings, wallet, blockchainUpdater, utxStorage, allChannels, time)
+        // -disabled- LeaseBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels)
+        // -disabled- AliasApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time, blockchainUpdater)
+        // -disabled- AliasBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels)
       )
 
       val apiTypes: Set[Class[_]] = Set(
@@ -271,9 +271,9 @@ class Application(val actorSystem: ActorSystem, val settings: MirSettings, confi
         classOf[AddressApiRoute],
         classOf[DebugApiRoute],
         classOf[AssetsApiRoute],
-        classOf[ActivationApiRoute],
-        classOf[LeaseApiRoute],
-        classOf[AliasApiRoute]
+        classOf[ActivationApiRoute]
+        // -disabled- classOf[LeaseApiRoute]
+        // -disabled- classOf[AliasApiRoute]
       )
       val combinedRoute = CompositeHttpService(actorSystem, apiTypes, apiRoutes, settings.restAPISettings).loggingCompositeRoute
       val httpFuture    = Http().bindAndHandle(combinedRoute, settings.restAPISettings.bindAddress, settings.restAPISettings.port)
