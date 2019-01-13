@@ -6,7 +6,6 @@ import sbtassembly.MergeStrategy
 import sbtcrossproject.CrossPlugin.autoImport.crossProject
 
 enablePlugins(JavaServerAppPackaging, JDebPackaging, SystemdPlugin, GitVersioning)
-scalafmtOnCompile in ThisBuild := true
 Global / cancelable := true
 Global / coverageExcludedPackages := ".*"
 
@@ -15,7 +14,7 @@ val versionSource = Def.task {
   // Please, update the fallback version every major and minor releases.
   // This version is used then building from sources without Git repository
   // In case of not updating the version nodes build from headless sources will fail to connect to newer versions
-  val FallbackVersion = (1, 0, 1)
+  val FallbackVersion = (1, 0, 2)
 
   val versionFile      = (sourceManaged in Compile).value / "one" / "mir" / "Version.scala"
   val versionExtractor = """(\d+)\.(\d+)\.(\d+).*""".r
