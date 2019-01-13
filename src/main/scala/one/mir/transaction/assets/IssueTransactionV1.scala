@@ -1,9 +1,11 @@
 package one.mir.transaction.assets
 
 import com.google.common.primitives.Bytes
+import com.google.common.primitives.Longs
 import one.mir.account.{PrivateKeyAccount, PublicKeyAccount}
 import one.mir.crypto
 import one.mir.crypto.SignatureLength
+import one.mir.serialization.Deser
 import one.mir.state.ByteStr
 import one.mir.transaction._
 import one.mir.transaction.smart.script.Script
@@ -42,9 +44,10 @@ object IssueTransactionV1 extends TransactionParserFor[IssueTransactionV1] with 
       val txId      = bytes(SignatureLength)
       require(txId == typeId, s"Signed tx id is not match")
       val (sender, assetName, description, quantity, decimals, reissuable, fee, timestamp, _) = IssueTransaction.parseBase(bytes, SignatureLength + 1)
-      IssueTransactionV1
-        .create(sender, assetName, description, quantity, decimals, reissuable, fee, timestamp, signature)
-        .fold(left => Failure(new Exception(left.toString)), right => Success(right))
+      if (IssueTransaction.validateIssueParams2(assetName, description, quantity, decimals, reissuable, fee, timestamp))
+        Success(new IssueTransactionV1(sender, assetName, description, quantity, decimals, reissuable, fee, timestamp, signature))
+      else
+        Failure(new Exception(one.mir.transaction.ValidationError.GenericError(s"ERROR ValidateIssueParams").toString))
     }.flatten
 
   def create(sender: PublicKeyAccount,
@@ -56,9 +59,11 @@ object IssueTransactionV1 extends TransactionParserFor[IssueTransactionV1] with 
              fee: Long,
              timestamp: Long,
              signature: ByteStr): Either[ValidationError, TransactionT] =
-    IssueTransaction
-      .validateIssueParams(name, description, quantity, decimals, reissuable, fee)
-      .map(_ => IssueTransactionV1(sender, name, description, quantity, decimals, reissuable, fee, timestamp, signature))
+    Either.cond(
+      IssueTransaction.validateIssueParams2(name, description, quantity, decimals, reissuable, fee, timestamp),
+      new IssueTransactionV1(sender, name, description, quantity, decimals, reissuable, fee, timestamp, signature),
+      one.mir.transaction.ValidationError.GenericError(s"ERROR ValidateIssueParams")
+    )
 
   def signed(sender: PublicKeyAccount,
              name: Array[Byte],
@@ -69,8 +74,19 @@ object IssueTransactionV1 extends TransactionParserFor[IssueTransactionV1] with 
              fee: Long,
              timestamp: Long,
              signer: PrivateKeyAccount): Either[ValidationError, TransactionT] =
-    create(sender, name, description, quantity, decimals, reissuable, fee, timestamp, ByteStr.empty).right.map { unverified =>
-      unverified.copy(signature = ByteStr(crypto.sign(signer, unverified.bodyBytes())))
+  {
+    Either.cond(
+      IssueTransaction.validateIssueParams2(name, description, quantity, decimals, reissuable, fee, timestamp),
+      {
+        val bytesBase1: Array[Byte] = Bytes.concat(
+          sender.publicKey, Deser.serializeArray(name), Deser.serializeArray(description), Longs.toByteArray(quantity),
+          Array(decimals), Deser.serializeBoolean(reissuable), Longs.toByteArray(fee), Longs.toByteArray(timestamp)
+        )
+        val bodyBytes1: Array[Byte] = Bytes.concat(Array(IssueTransactionV1.typeId), bytesBase1)
+        new IssueTransactionV1(sender, name, description, quantity, decimals, reissuable, fee, timestamp, ByteStr(crypto.sign(signer, bodyBytes1)))
+      },
+      one.mir.transaction.ValidationError.GenericError(s"ERROR ValidateIssueParams")
+    )
     }
 
   def selfSigned(sender: PrivateKeyAccount,

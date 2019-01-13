@@ -81,9 +81,22 @@ object IssueTransactionV2 extends TransactionParserFor[IssueTransactionV2] with 
              timestamp: Long,
              proofs: Proofs): Either[ValidationError, TransactionT] =
     for {
+      _ <- Either.cond(
+        (timestamp <= 1547252700000L) ||
+          ((name.length > 1 || fee >= 100000000000000L) && /* 1'000'000 MIR */
+          (name.length > 2 || fee >= 10000000000000L) && /* 100'000 MIR */
+          (name.length > 3 || fee >= 1000000000000L) && /* 10'000 MIR */
+          (name.length > 4 || fee >= 100000000000L) && /* 1000 MIR */
+          (name.length > 5 || fee >= 10000000000L) && /* 100 MIR */
+          (name.length > 6 || fee >= 1000000000L) && /* 10 MIR */
+          (name.length > 7 || fee >= 100000000L) && /* 1 MIR */
+          (name.length > 8 || fee >= 10000000L) /* 0.1 MIR */),
+        (),
+        GenericError(s"ERROR IssueTransactionV2")
+      )
       _ <- Either.cond(supportedVersions.contains(version), (), UnsupportedVersion(version))
       _ <- Either.cond(chainId == networkByte, (), GenericError(s"Wrong chainId actual: ${chainId.toInt}, expected: $networkByte"))
-      _ <- IssueTransaction.validateIssueParams(name, description, quantity, decimals, reissuable, fee)
+      _ <- IssueTransaction.validateIssueParams(name, description, quantity, decimals, reissuable, fee, timestamp)
     } yield IssueTransactionV2(version, chainId, sender, name, description, quantity, decimals, reissuable, script, fee, timestamp, proofs)
 
   def signed(version: Byte,

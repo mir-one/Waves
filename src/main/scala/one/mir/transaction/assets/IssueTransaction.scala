@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
+import one._
 import one.mir.account.PublicKeyAccount
 import one.mir.crypto._
 import one.mir.serialization.Deser
@@ -62,7 +63,17 @@ object IssueTransaction {
                           quantity: Long,
                           decimals: Byte,
                           reissuable: Boolean,
-                          fee: Long): Either[ValidationError, Unit] = {
+                          fee: Long,
+                          timestamp: Long): Either[ValidationError, Unit] = {
+    if (timestamp <= 1547252700000L || (
+        (name.length > 1 || fee >= 100000000000000L) && /* 1'000'000 MIR */
+        (name.length > 2 || fee >= 10000000000000L) && /* 100'000 MIR */
+        (name.length > 3 || fee >= 1000000000000L) && /* 10'000 MIR */
+        (name.length > 4 || fee >= 100000000000L) && /* 1000 MIR */
+        (name.length > 5 || fee >= 10000000000L) && /* 100 MIR */
+        (name.length > 6 || fee >= 1000000000L) && /* 10 MIR */
+        (name.length > 7 || fee >= 100000000L) && /* 1 MIR */
+        (name.length > 8 || fee >= 10000000L) /* 0.1 MIR */ )) {
     (
       validateAmount(quantity, "assets"),
       validateName(name),
@@ -72,6 +83,34 @@ object IssueTransaction {
     ).mapN { case _ => () }
       .leftMap(_.head)
       .toEither
+    } else {
+      (
+        validateAmount(0, "assets"),
+        validateName(name),
+        validateFee(fee)
+      ).mapN { case _ => () }
+        .leftMap(_.head)
+        .toEither
+    }
+  }
+
+  def validateIssueParams2(name: Array[Byte], description: Array[Byte], quantity: Long, decimals: Byte, reissuable: Boolean, fee: Long, timestamp: Long): Boolean = {
+    if (timestamp <= 1547252700000L || (
+        (name.length > 1 || fee >= 100000000000000L) && /* 1'000'000 MIR */
+        (name.length > 2 || fee >= 10000000000000L) && /* 100'000 MIR */
+        (name.length > 3 || fee >= 1000000000000L) && /* 10'000 MIR */
+        (name.length > 4 || fee >= 100000000000L) && /* 1000 MIR */
+        (name.length > 5 || fee >= 10000000000L) && /* 100 MIR */
+        (name.length > 6 || fee >= 1000000000L) && /* 10 MIR */
+        (name.length > 7 || fee >= 100000000L) && /* 1 MIR */
+        (name.length > 8 || fee >= 10000000L) /* 0.1 MIR */ )) {
+      mir.transaction.validation.validateAmount2(quantity, "assets") && mir.transaction.validation.validateName2(name) &&
+        mir.transaction.validation.validateFee2(fee) && mir.transaction.validation.validateDescription2(description) &&
+        mir.transaction.validation.validateDecimals2(decimals)
+    } else {
+      mir.transaction.ValidationError.GenericError(s"ERROR ValidateIssueParams")
+      false
+    }
   }
 
   def parseBase(bytes: Array[Byte], start: Int) = {

@@ -26,6 +26,10 @@ package object validation {
       )
   }
 
+  def validateFee2(fee: Long): Boolean = {
+    fee > 0
+  }
+
   def validateAmount(amount: Long, of: String): Validated[Long] = {
     Validated
       .condNel(
@@ -33,6 +37,10 @@ package object validation {
         amount,
         ValidationError.NegativeAmount(amount, of)
       )
+  }
+
+  def validateAmount2(amount: Long, of: String): Boolean = {
+    amount > 0
   }
 
   def validateSum(amounts: Seq[Long]): Validated[Long] = {
@@ -52,6 +60,10 @@ package object validation {
       )
   }
 
+  def validateName2(name: Array[Byte]): Boolean = {
+    name.length >= MinAssetNameLength && name.length <= MaxAssetNameLength
+  }
+
   def validateDescription(description: Array[Byte]): Validated[Array[Byte]] = {
     Validated
       .condNel(
@@ -59,6 +71,10 @@ package object validation {
         description,
         ValidationError.TooBigArray
       )
+  }
+
+  def validateDescription2(description: Array[Byte]): Boolean = {
+    description.length <= MaxDescriptionLength
   }
 
   def validateAttachment(attachment: Array[Byte]): Validated[Array[Byte]] = {
@@ -77,5 +93,9 @@ package object validation {
         decimals,
         ValidationError.TooBigArray
       )
+  }
+
+  def validateDecimals2(decimals: Byte): Boolean = {
+    decimals >= 0 && decimals <= MaxDecimals
   }
 }
