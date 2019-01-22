@@ -540,7 +540,7 @@ class TransactionBindingsTest extends PropSpec with PropertyChecks with Matchers
         CryptoContext
           .build(Global) |+|
         MirContext
-          .build(V2, new MirEnvironment(networkByte, Coeval(null), null, EmptyBlockchain), isTokenContext = true)
+          .build(V2, new MirEnvironment(chainId, Coeval(null), null, EmptyBlockchain), isTokenContext = true)
 
     for {
       compileResult <- CompilerV1(ctx.compilerContext, expr)
@@ -549,7 +549,7 @@ class TransactionBindingsTest extends PropSpec with PropertyChecks with Matchers
     } yield r
   }
 
-  def runWithSmartTradingActivated(script: String, t: In = null, networkByte: Byte = networkByte): Either[String, EVALUATED] = {
+  def runWithSmartTradingActivated(script: String, t: In = null, chainId: Byte = chainId): Either[String, EVALUATED] = {
     import cats.syntax.monoid._
     import one.mir.lang.v1.CTX._
 
@@ -559,7 +559,7 @@ class TransactionBindingsTest extends PropSpec with PropertyChecks with Matchers
         CryptoContext
           .build(Global) |+|
         MirContext
-          .build(V2, new MirEnvironment(networkByte, Coeval(t), null, EmptyBlockchain), isTokenContext = false)
+          .build(V2, new MirEnvironment(chainId, Coeval(t), null, EmptyBlockchain), isTokenContext = false)
 
     for {
       compileResult <- CompilerV1(ctx.compilerContext, expr)

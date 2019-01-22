@@ -7,8 +7,6 @@ import one.mir.it.sync._
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 class IssueTransactionSuite extends BaseTransactionSuite with TableDrivenPropertyChecks {
-  val supportedVersions: List[Byte] = List(1, 2)
-
   test("asset issue changes issuer's asset balance; issuer's mir balance is decreased by fee") {
     for (v <- supportedVersions) {
       val assetName        = "myasset"

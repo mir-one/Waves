@@ -3,12 +3,13 @@ package one.mir.utils
 import one.mir.account.{Address, Alias}
 import one.mir.block.{Block, BlockHeader}
 import one.mir.state.reader.LeaseDetails
-import one.mir.state.{AccountDataInfo, AssetDescription, BalanceSnapshot, Blockchain, ByteStr, DataEntry, Diff, Portfolio, VolumeAndFee}
+import one.mir.state._
 import one.mir.transaction.Transaction.Type
 import one.mir.transaction.ValidationError.GenericError
 import one.mir.transaction.lease.LeaseTransaction
 import one.mir.transaction.smart.script.Script
 import one.mir.transaction.{AssetId, Transaction, ValidationError}
+import cats.kernel.Monoid
 
 object EmptyBlockchain extends Blockchain {
   override def height: Int = 0
@@ -82,7 +83,9 @@ object EmptyBlockchain extends Blockchain {
 
   override def balance(address: Address, mayBeAssetId: Option[AssetId]): Long = 0
 
-  override def assetDistribution(assetId: ByteStr): Map[Address, Long] = Map.empty
+  override def leaseBalance(address: Address): LeaseBalance = LeaseBalance.empty
+
+  override def assetDistribution(assetId: ByteStr): AssetDistribution = Monoid.empty[AssetDistribution]
 
   override def mirDistribution(height: Int): Map[Address, Long] = Map.empty
 
@@ -91,7 +94,8 @@ object EmptyBlockchain extends Blockchain {
   override def assetDistributionAtHeight(assetId: AssetId,
                                          height: Int,
                                          count: Int,
-                                         fromAddress: Option[Address]): Either[ValidationError, Map[Address, Long]] = Right(Map.empty)
+                                         fromAddress: Option[Address]): Either[ValidationError, AssetDistributionPage] =
+    Right(AssetDistributionPage(Paged[Address, AssetDistribution](false, None, Monoid.empty[AssetDistribution])))
 
   /** Builds a new portfolio map by applying a partial function to all portfolios on which the function is defined.
     *

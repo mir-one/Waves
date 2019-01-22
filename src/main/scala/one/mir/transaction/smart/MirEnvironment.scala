@@ -34,7 +34,7 @@ class MirEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h:
             .toOption
         case Alias(name) =>
           one.mir.account.Alias
-            .buildWithCurrentNetworkByte(name)
+            .buildWithCurrentChainId(name)
             .flatMap(blockchain.resolveAlias)
             .toOption
       }
@@ -52,23 +52,24 @@ class MirEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h:
   }
   override def resolveAlias(name: String): Either[String, Recipient.Address] =
     blockchain
-      .resolveAlias(one.mir.account.Alias.buildWithCurrentNetworkByte(name).explicitGet())
+      .resolveAlias(one.mir.account.Alias.buildWithCurrentChainId(name).explicitGet())
       .left
       .map(_.toString)
       .right
       .map(a => Recipient.Address(ByteVector(a.bytes.arr)))
 
-  override def networkByte: Byte = nByte
+  override def chainId: Byte = nByte
 
   override def accountBalanceOf(addressOrAlias: Recipient, maybeAssetId: Option[Array[Byte]]): Either[String, Long] = {
     (for {
       aoa <- addressOrAlias match {
         case Address(bytes) => AddressOrAlias.fromBytes(bytes.toArray, position = 0).map(_._1)
-        case Alias(name)    => one.mir.account.Alias.buildWithCurrentNetworkByte(name)
+        case Alias(name)    => one.mir.account.Alias.buildWithCurrentChainId(name)
       }
       address <- blockchain.resolveAlias(aoa)
       balance = blockchain.balance(address, maybeAssetId.map(ByteStr(_)))
-    } yield balance).left.map(_.toString)
+      safeBalance <- Either.cond(balance != 0L || blockchain.balance(address, None) == 0L, balance, "Balance of absent asset")
+    } yield safeBalance).left.map(_.toString)
   }
   override def transactionHeightById(id: Array[Byte]): Option[Long] =
     blockchain.transactionHeight(ByteStr(id)).map(_.toLong)

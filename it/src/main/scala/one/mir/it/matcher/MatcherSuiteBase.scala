@@ -22,8 +22,7 @@ abstract class MatcherSuiteBase
 
   val smartFee         = 0.004.mir
   val minFee           = 0.001.mir + smartFee
-  val issueFee         = 1.mir
-  val smartIssueFee    = 1.mir + smartFee
+  val issueFee         = 1.mir + smartFee
   val leasingFee       = 0.002.mir + smartFee
   val tradeFee         = 0.003.mir
   val smartTradeFee    = tradeFee + smartFee

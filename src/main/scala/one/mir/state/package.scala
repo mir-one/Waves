@@ -1,11 +1,15 @@
 package one.mir
 
+import cats.kernel.Monoid
 import one.mir.account.{Address, AddressOrAlias, Alias}
 import one.mir.block.Block
 import one.mir.transaction.Transaction.Type
 import one.mir.transaction.ValidationError.{AliasDoesNotExist, GenericError}
 import one.mir.transaction._
 import one.mir.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import one.mir.utils.Paged
+import play.api.libs.json._
+import supertagged.TaggedType
 
 import scala.reflect.ClassTag
 import scala.util.Try
@@ -131,6 +135,37 @@ package object state {
       blockchain
         .heightOf(id)
         .getOrElse(throw new IllegalStateException(s"Can't find a block: $id"))
+  }
+
+  object AssetDistribution extends TaggedType[Map[Address, Long]]
+  type AssetDistribution = AssetDistribution.Type
+
+  implicit val dstMonoid: Monoid[AssetDistribution] = new Monoid[AssetDistribution] {
+    override def empty: AssetDistribution = AssetDistribution(Map.empty[Address, Long])
+
+    override def combine(x: AssetDistribution, y: AssetDistribution): AssetDistribution = {
+      AssetDistribution(x ++ y)
+    }
+  }
+
+  implicit val dstWrites: Writes[AssetDistribution] = Writes { dst =>
+    Json
+      .toJson(dst.map {
+        case (addr, balance) => addr.stringRepr -> balance
+      })
+  }
+
+  object AssetDistributionPage extends TaggedType[Paged[Address, AssetDistribution]]
+  type AssetDistributionPage = AssetDistributionPage.Type
+
+  implicit val dstPageWrites: Writes[AssetDistributionPage] = Writes { page =>
+    JsObject(
+      Map(
+        "hasNext"  -> JsBoolean(page.hasNext),
+        "lastItem" -> Json.toJson(page.lastItem.map(_.stringRepr)),
+        "items"    -> Json.toJson(page.items)
+      )
+    )
   }
 
 }

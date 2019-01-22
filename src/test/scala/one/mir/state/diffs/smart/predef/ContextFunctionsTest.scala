@@ -7,8 +7,9 @@ import one.mir.lang.Testing._
 import one.mir.lang.v1.compiler.CompilerV1
 import one.mir.lang.v1.parser.Parser
 import one.mir.state._
-import one.mir.state.diffs.smart.smartEnabledFS
-import one.mir.state.diffs.{ENOUGH_AMT, assertDiffAndState}
+//import one.mir.state.diffs.smart.smartEnabledFS
+//import one.mir.state.diffs.{ENOUGH_AMT, assertDiffAndState}
+import one.mir.state.diffs.ENOUGH_AMT
 import one.mir.transaction.GenesisTransaction
 import one.mir.transaction.smart.SetScriptTransaction
 import one.mir.transaction.smart.script.v1.ScriptV1
@@ -59,16 +60,16 @@ class ContextFunctionsTest extends PropSpec with PropertyChecks with Matchers wi
 
   } yield (Seq(genesis1, genesis2), setScriptTransaction, dataTransaction, transfer)
 
-  property("validation of all functions from contexts") {
-    forAll(preconditionsAndPayments) {
-      case (genesis, setScriptTransaction, dataTransaction, transfer) =>
-        assertDiffAndState(smartEnabledFS) { append =>
-          append(genesis).explicitGet()
-          append(Seq(setScriptTransaction, dataTransaction)).explicitGet()
-          append(Seq(transfer)).explicitGet()
-        }
-    }
-  }
+//  property("validation of all functions from contexts") {
+//    forAll(preconditionsAndPayments) {
+//      case (genesis, setScriptTransaction, dataTransaction, transfer) =>
+//        assertDiffAndState(smartEnabledFS) { append =>
+//          append(genesis).explicitGet()
+//          append(Seq(setScriptTransaction, dataTransaction)).explicitGet()
+//          append(Seq(transfer)).explicitGet()
+//        }
+//    }
+//  }
 
   property("reading from data transaction array by key") {
     forAll(preconditionsAndPayments) {

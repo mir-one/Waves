@@ -11,7 +11,7 @@ import one.mir.consensus.TransactionsOrdering
 import one.mir.metrics.Instrumented
 import one.mir.mining.MultiDimensionalMiningConstraint
 import one.mir.settings.{FunctionalitySettings, UtxSettings}
-import one.mir.state.diffs.TransactionDiffer
+import one.mir.state.diffs.{CommonValidation, TransactionDiffer}
 import one.mir.state.reader.CompositeBlockchain.composite
 import one.mir.state.{Blockchain, ByteStr, Diff, Portfolio}
 import one.mir.transaction.ValidationError.{GenericError, SenderIsBlacklisted}
@@ -60,7 +60,7 @@ class UtxPoolImpl(time: Time, blockchain: Blockchain, fs: FunctionalitySettings,
   private val putRequestStats     = Kamon.counter("utx-pool-put-if-new")
 
   private def removeExpired(currentTs: Long): Unit = {
-    def isExpired(tx: Transaction) = (currentTs - tx.timestamp).millis > utxSettings.maxTransactionAge
+    def isExpired(tx: Transaction) = (currentTs - tx.timestamp).millis > CommonValidation.MaxTimePrevBlockOverTransactionDiff
 
     transactions.values.asScala
       .collect {

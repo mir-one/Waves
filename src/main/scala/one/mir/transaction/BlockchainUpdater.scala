@@ -6,9 +6,9 @@ import one.mir.block.Block.BlockId
 import one.mir.block.{Block, MicroBlock}
 
 trait BlockchainUpdater {
-  def processBlock(block: Block): Either[ValidationError, Option[DiscardedTransactions]]
+  def processBlock(block: Block, verify: Boolean = true): Either[ValidationError, Option[DiscardedTransactions]]
 
-  def processMicroBlock(microBlock: MicroBlock): Either[ValidationError, Unit]
+  def processMicroBlock(microBlock: MicroBlock, verify: Boolean = true): Either[ValidationError, Unit]
 
   def removeAfter(blockId: ByteStr): Either[ValidationError, DiscardedBlocks]
 

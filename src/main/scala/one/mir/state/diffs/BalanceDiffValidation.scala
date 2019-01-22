@@ -4,7 +4,7 @@ import cats.implicits._
 import one.mir.account.Address
 import one.mir.metrics.Instrumented
 import one.mir.settings.FunctionalitySettings
-import one.mir.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
+import one.mir.state.{Blockchain, ByteStr, Diff, Portfolio}
 import one.mir.transaction.ValidationError.AccountBalanceError
 import one.mir.utils.ScorexLogging
 
@@ -15,32 +15,43 @@ object BalanceDiffValidation extends ScorexLogging with Instrumented {
   def apply(b: Blockchain, currentHeight: Int, fs: FunctionalitySettings)(d: Diff): Either[AccountBalanceError, Diff] = {
     val changedAccounts = d.portfolios.keySet
 
-    val positiveBalanceErrors: Map[Address, String] = changedAccounts
-      .flatMap(acc => {
-        val portfolioDiff = d.portfolios(acc)
-        val oldPortfolio  = b.portfolio(acc)
+    def check(acc: Address): Option[(Address, String)] = {
+      val portfolioDiff = d.portfolios(acc)
 
-        val newPortfolio = oldPortfolio.combine(portfolioDiff)
+      val balance       = portfolioDiff.balance
+      lazy val oldMir = b.balance(acc, None)
+      lazy val oldLease = b.leaseBalance(acc)
+      lazy val lease    = cats.Monoid.combine(oldLease, portfolioDiff.lease)
+      (if (balance < 0) {
+         val newB = oldMir + balance
 
-        lazy val negativeBalance          = newPortfolio.balance < 0
-        lazy val negativeAssetBalance     = newPortfolio.assets.values.exists(_ < 0)
-        lazy val negativeEffectiveBalance = newPortfolio.effectiveBalance < 0
-        lazy val leasedMoreThanOwn        = newPortfolio.balance < newPortfolio.lease.out && currentHeight > fs.allowLeasedBalanceTransferUntilHeight
-
-        val err = if (negativeBalance) {
-          Some(s"negative mir balance: $acc, old: ${oldPortfolio.balance}, new: ${newPortfolio.balance}")
-        } else if (negativeAssetBalance) {
-          Some(s"negative asset balance: $acc, new portfolio: ${negativeAssetsInfo(newPortfolio)}")
-        } else if (negativeEffectiveBalance) {
-          Some(s"negative effective balance: $acc, old: ${leaseMirInfo(oldPortfolio)}, new: ${leaseMirInfo(newPortfolio)}")
-        } else if (leasedMoreThanOwn && oldPortfolio.lease.out == newPortfolio.lease.out) {
-          Some(s"$acc trying to spend leased money")
-        } else if (leasedMoreThanOwn) {
-          Some(s"leased being more than own: $acc, old: ${leaseMirInfo(oldPortfolio)}, new: ${leaseMirInfo(newPortfolio)}")
-        } else None
-        err.map(acc -> _)
+         if (newB < 0) {
+           Some(acc -> s"negative mir balance: $acc, old: ${oldMir}, new: ${newB}")
+         } else if (newB < lease.out && currentHeight > fs.allowLeasedBalanceTransferUntilHeight) {
+           Some(acc -> (if (newB + lease.in - lease.out < 0) {
+                          s"negative effective balance: $acc, old: ${(oldMir, oldLease)}, new: ${(newB, lease)}"
+                        } else if (portfolioDiff.lease.out == 0) {
+                          s"$acc trying to spend leased money"
+                        } else {
+                          s"leased being more than own: $acc, old: ${(oldMir, oldLease)}, new: ${(newB, lease)}"
+                        }))
+         } else {
+           None
+         }
+       } else {
+         None
+       }) orElse (portfolioDiff.assets find {
+        case (a, c) =>
+          // Tokens it can produce overflow are exist.
+          val oldB = b.balance(acc, Some(a))
+          val newB = oldB + c
+          newB < 0
+      } map { _ =>
+        acc -> s"negative asset balance: $acc, new portfolio: ${negativeAssetsInfo(b.portfolio(acc).combine(portfolioDiff))}"
       })
-      .toMap
+    }
+
+    val positiveBalanceErrors: Map[Address, String] = changedAccounts.flatMap(check).toMap
 
     if (positiveBalanceErrors.isEmpty) {
       Right(d)
@@ -48,8 +59,6 @@ object BalanceDiffValidation extends ScorexLogging with Instrumented {
       Left(AccountBalanceError(positiveBalanceErrors))
     }
   }
-
-  private def leaseMirInfo(p: Portfolio): (Long, LeaseBalance) = (p.balance, p.lease)
 
   private def negativeAssetsInfo(p: Portfolio): Map[ByteStr, Long] = p.assets.filter(_._2 < 0)
 }

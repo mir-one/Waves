@@ -2,7 +2,6 @@ package one.mir.it.sync.matcher.smartcontracts
 
 import com.typesafe.config.{Config, ConfigFactory}
 import one.mir.account.{AddressScheme, PrivateKeyAccount}
-import one.mir.features.BlockchainFeatures
 import one.mir.it.api.SyncHttpApi.NodeExtSync
 import one.mir.it.api.SyncMatcherHttpApi._
 import one.mir.it.matcher.MatcherSuiteBase
@@ -29,21 +28,6 @@ class OrdersFromScriptedAssetTestSuite extends MatcherSuiteBase {
   import OrdersFromScriptedAssetTestSuite._
 
   override protected def nodeConfigs: Seq[Config] = Configs
-
-  "can match orders when SmartAccTrading is still not activated" in {
-    val pair = AssetPair(None, Some(AllowAsset.id()))
-
-    val counter =
-      matcherNode.placeOrder(matcherPk, pair, OrderType.SELL, 100000, 2 * Order.PriceConstant, version = 1, fee = smartTradeFee)
-    matcherNode.waitOrderStatus(pair, counter.message.id, "Accepted")
-
-    val submitted =
-      matcherNode.placeOrder(matcherPk, pair, OrderType.BUY, 100000, 2 * Order.PriceConstant, version = 1, fee = smartTradeFee)
-    matcherNode.waitOrderStatus(pair, submitted.message.id, "Filled")
-
-    matcherNode.waitOrderInBlockchain(submitted.message.id)
-    matcherNode.waitForHeight(activationHeight + 1, 2.minutes)
-  }
 
   "can place if the script returns TRUE" in {
     val pair = AssetPair.createAssetPair(UnscriptedAssetId, AllowAssetId).get
@@ -262,14 +246,9 @@ object OrdersFromScriptedAssetTestSuite {
     ScriptCompiler(scriptText, isAssetScript = true).explicitGet()._1
   }
 
-  val activationHeight = 10
-
   private val commonConfig = ConfigFactory.parseString(s"""
                                                            |mir {
-                                                           |  blockchain.custom.functionality.pre-activated-features = {
-                                                           |    ${BlockchainFeatures.SmartAssets.id} = 0,
-                                                           |    ${BlockchainFeatures.SmartAccountTrading.id} = $activationHeight
-                                                           |  }
+                                                           |  blockchain.custom.functionality.pre-activated-features = { 9 = 0 }
                                                            |  matcher.price-assets = ["$AllowAssetId", "$DenyAssetId", "$UnscriptedAssetId"]
                                                            |}
                                                            |mir.matcher {

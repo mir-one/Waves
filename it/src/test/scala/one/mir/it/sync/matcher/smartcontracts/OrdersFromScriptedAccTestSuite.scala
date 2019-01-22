@@ -1,18 +1,15 @@
 package one.mir.it.sync.matcher.smartcontracts
 
 import com.typesafe.config.{Config, ConfigFactory}
-import one.mir.features.BlockchainFeatures
 import one.mir.it.api.SyncHttpApi._
 import one.mir.it.api.SyncMatcherHttpApi._
 import one.mir.it.matcher.MatcherSuiteBase
-import one.mir.it.sync.matcher.config.MatcherDefaultConfig._
 import one.mir.it.sync._
 import one.mir.it.util._
 import one.mir.state.{ByteStr, EitherExt2}
 import one.mir.transaction.assets.exchange.{AssetPair, Order, OrderType}
 import one.mir.transaction.smart.SetScriptTransaction
 import one.mir.transaction.smart.script.ScriptCompiler
-
 import scala.concurrent.duration._
 
 class OrdersFromScriptedAccTestSuite extends MatcherSuiteBase {
@@ -29,7 +26,7 @@ class OrdersFromScriptedAccTestSuite extends MatcherSuiteBase {
   "issue asset and run test" - {
     // Alice issues new asset
     val aliceAsset =
-      aliceNode.issue(aliceAcc.address, "AliceCoin", "AliceCoin for matcher's tests", someAssetAmount, 0, reissuable = false, smartIssueFee, 2).id
+      aliceNode.issue(aliceAcc.address, "AliceCoin", "AliceCoin for matcher's tests", someAssetAmount, 0, reissuable = false, issueFee, 2).id
     matcherNode.waitForTransaction(aliceAsset)
     val aliceMirPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
 
@@ -39,7 +36,7 @@ class OrdersFromScriptedAccTestSuite extends MatcherSuiteBase {
       matcherNode.assertAssetBalance(matcherAcc.address, aliceAsset, 0)
 
       withClue("mining was too fast, can't continue") {
-        matcherNode.height shouldBe <(activationHeight)
+        matcherNode.height shouldBe <(ActivationHeight)
       }
 
       withClue("duplicate names in contracts are denied") {
@@ -78,7 +75,7 @@ class OrdersFromScriptedAccTestSuite extends MatcherSuiteBase {
     }
 
     "invalid setScript at account" in {
-      matcherNode.waitForHeight(activationHeight, 6.minutes)
+      matcherNode.waitForHeight(ActivationHeight, 5.minutes)
       setContract(Some("true && (height > 0)"), bobAcc)
       assertBadRequestAndResponse(
         matcherNode.placeOrder(bobAcc, aliceMirPair, OrderType.BUY, 500, 2.mir * Order.PriceConstant, smartTradeFee, version = 2, 10.minutes),
@@ -109,14 +106,13 @@ class OrdersFromScriptedAccTestSuite extends MatcherSuiteBase {
 }
 
 object OrdersFromScriptedAccTestSuite {
-  val activationHeight = 25
+  val ActivationHeight = 25
+
+  import one.mir.it.sync.matcher.config.MatcherDefaultConfig._
 
   private val matcherConfig = ConfigFactory.parseString(s"""
                                                            |mir {
-                                                           |  blockchain.custom.functionality.pre-activated-features = {
-                                                           |    ${BlockchainFeatures.SmartAccountTrading.id} = $activationHeight,
-                                                           |    ${BlockchainFeatures.SmartAssets.id} = 1000
-                                                           |  }
+                                                           |  blockchain.custom.functionality.pre-activated-features = { 10 = $ActivationHeight }
                                                            |}""".stripMargin)
 
   private val updatedConfigs: Seq[Config] = Configs.map(matcherConfig.withFallback(_))

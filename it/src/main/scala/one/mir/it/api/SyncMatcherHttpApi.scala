@@ -54,9 +54,6 @@ object SyncMatcherHttpApi extends Assertions {
     def orderBookExpectInvalidAssetId(assetPair: AssetPair, assetId: String): Boolean =
       Await.result(async(m).orderBookExpectInvalidAssetId(assetPair, assetId), OrderRequestAwaitTime)
 
-    def orderStatusExpectInvalidAssetId(orderId: String, assetPair: AssetPair, assetId: String): Boolean =
-      Await.result(async(m).orderStatusExpectInvalidAssetId(orderId, assetPair, assetId), OrderRequestAwaitTime)
-
     def marketStatus(assetPair: AssetPair): MarketStatusResponse =
       sync(async(m).marketStatus(assetPair), RequestAwaitTime)
 
@@ -70,7 +67,7 @@ object SyncMatcherHttpApi extends Assertions {
       sync(async(m).orderHistoryByPair(sender, assetPair, activeOnly), RequestAwaitTime)
 
     def activeOrderHistory(sender: PrivateKeyAccount): Seq[OrderbookHistory] =
-      sync(async(m).fullOrdersHistory(sender, activeOnly = Some(true)))
+      sync(async(m).activeOrderHistory(sender))
 
     def placeOrder(order: Order): MatcherResponse =
       sync(async(m).placeOrder(order))
@@ -87,6 +84,9 @@ object SyncMatcherHttpApi extends Assertions {
 
     def orderStatus(orderId: String, assetPair: AssetPair, waitForStatus: Boolean = true): MatcherStatusResponse =
       sync(async(m).orderStatus(orderId, assetPair, waitForStatus))
+
+    def orderStatusExpectInvalidAssetId(orderId: String, assetPair: AssetPair, assetId: String): Boolean =
+      Await.result(async(m).orderStatusExpectInvalidAssetId(orderId, assetPair, assetId), OrderRequestAwaitTime)
 
     def transactionsByOrder(orderId: String): Seq[ExchangeTransaction] =
       sync(async(m).transactionsByOrder(orderId))
